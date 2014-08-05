@@ -19,8 +19,10 @@ public:
     explicit ImageProcessing(QObject *parent = 0);
     Mat shapeDetection(Mat input);
     void circleDetection();
+    double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0);
+    void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour);
 private:
-//    vector<Vec3f> circles;
+    vector<Vec3f> finding_circles;
 
 signals:
 

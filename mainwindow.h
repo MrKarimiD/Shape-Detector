@@ -29,6 +29,10 @@ private slots:
     void on_image_rButton_toggled(bool checked);
     void on_address_button_clicked();
 
+    void on_camera_rButton_toggled(bool checked);
+
+    void on_open_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
