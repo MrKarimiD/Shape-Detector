@@ -30,7 +30,7 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>660</x>
+      <x>650</x>
       <y>0</y>
       <width>20</width>
       <height>521</height>
@@ -43,9 +43,9 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>680</x>
+      <x>670</x>
       <y>10</y>
-      <width>261</width>
+      <width>271</width>
       <height>491</height>
      </rect>
     </property>

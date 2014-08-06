@@ -13,6 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->cam_label->setDisabled(true);
     ui->cam_spinBox->setDisabled(true);
     ui->open_button->setDisabled(true);
+
+    cam_timer=new QTimer();
 }
 
 MainWindow::~MainWindow()
@@ -62,28 +64,44 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
         ui->cam_label->setDisabled(true);
         ui->cam_spinBox->setDisabled(true);
         ui->open_button->setDisabled(true);
+        cam_timer->stop();
     }
 }
 
 void MainWindow::on_open_button_clicked()
 {
         Mat frame;
-        VideoCapture cap;
-        cap.open(CAP_FIREWIRE+1);
-        cap >> frame;
-//        while(true)
-//        {
-//            cap >> frame;
-//            cv::resize(frame,frame,Size(640,480),0,0,INTER_CUBIC);
-//            QImage imgIn= QImage((uchar*) frame.data, frame.cols, frame.rows, frame.step, QImage::Format_RGB888);
+//        cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,450);
+//        cap.set(CAP_PROP_WHITE_BALANCE_RED_V,450);
+//        cap.set(CAP_PROP_BRIGHTNESS,10000);
+//        cap.set(CAP_PROP_EXPOSURE,50);
+//        cap.set(CAP_PROP_SHARPNESS,4);
+//        cap.set(CAP_PROP_GAIN,100);
 
-//            ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
-//            if(waitKey(1) > 0) break;
-//        }
+        cap.open(CAP_FIREWIRE+0);
 
+
+
+
+        cap.read(frame);
+
+        cam_timer->start(20);
+        connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
         Mat outputFrame=imageProcessor->shapeDetection(frame);
         cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
-        QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
+        cvtColor(outputFrame, outputFrame, COLOR_RGB2BGR);
+        QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows,outputFrame.step, QImage::Format_MonoLSB);
 
         ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
+}
+
+void MainWindow::cam_timeout()
+{
+    Mat frame;
+    cap.read(frame);
+    Mat outputFrame=imageProcessor->shapeDetection(frame);
+    cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
+    QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
+
+    ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
 }

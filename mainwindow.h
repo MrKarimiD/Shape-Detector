@@ -9,6 +9,7 @@
 #include "QString"
 #include "QFileDialog"
 #include "imageprocessing.h"
+#include "QTimer"
 
 using namespace cv;
 using namespace std;
@@ -28,14 +29,16 @@ public:
 private slots:
     void on_image_rButton_toggled(bool checked);
     void on_address_button_clicked();
-
     void on_camera_rButton_toggled(bool checked);
-
     void on_open_button_clicked();
+    void cam_timeout();
 
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
+    QTimer *cam_timer;
+    VideoCapture cap;
+
 };
 
 #endif // MAINWINDOW_H
