@@ -113,6 +113,4 @@ void MainWindow::cam_timeout()
     QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
 
     ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
-
-    ksdfjsudhfsdhf
 }
