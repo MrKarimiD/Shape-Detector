@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->address_button->setDisabled(true);
     ui->address_lineEdit->setDisabled(true);
     ui->cam_label->setDisabled(true);
-    ui->cam_spinBox->setDisabled(true);
+    ui->cam_comboBox->setDisabled(true);
     ui->open_button->setDisabled(true);
 
     cam_timer=new QTimer();
@@ -46,6 +46,7 @@ void MainWindow::on_address_button_clicked()
     Mat inputFrame=imread(fileAddress.toStdString());
     Mat outputFrame=imageProcessor->shapeDetection(inputFrame);
     cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
+    //cvtColor(outputFrame, outputFrame, COLOR_BGR2RGBA);
     QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
 
     ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
@@ -56,13 +57,17 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
     if(ui->camera_rButton->isChecked())
     {
         ui->cam_label->setEnabled(true);
-        ui->cam_spinBox->setEnabled(true);
+        ui->cam_comboBox->setEnabled(true);
         ui->open_button->setEnabled(true);
+
+        QStringList items;
+        items<<"1"<<"0";
+        ui->cam_comboBox->addItems(items);
     }
     else
     {
         ui->cam_label->setDisabled(true);
-        ui->cam_spinBox->setDisabled(true);
+        ui->cam_comboBox->setDisabled(true);
         ui->open_button->setDisabled(true);
         cam_timer->stop();
     }
@@ -71,16 +76,19 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
 void MainWindow::on_open_button_clicked()
 {
         Mat frame;
-//        cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,450);
-//        cap.set(CAP_PROP_WHITE_BALANCE_RED_V,450);
+
 //        cap.set(CAP_PROP_BRIGHTNESS,10000);
 //        cap.set(CAP_PROP_EXPOSURE,50);
 //        cap.set(CAP_PROP_SHARPNESS,4);
 //        cap.set(CAP_PROP_GAIN,100);
 
-        cap.open(CAP_FIREWIRE+0);
+        if(ui->cam_comboBox->currentText()=="0")
+            cap.open(CAP_FIREWIRE+0);
+        else
+            cap.open(CAP_FIREWIRE+1);
 
-
+        cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
+        cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
 
 
         cap.read(frame);
@@ -89,7 +97,7 @@ void MainWindow::on_open_button_clicked()
         connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
         Mat outputFrame=imageProcessor->shapeDetection(frame);
         cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
-        cvtColor(outputFrame, outputFrame, COLOR_RGB2BGR);
+        cvtColor(outputFrame, outputFrame, COLOR_BGR2RGBA);
         QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows,outputFrame.step, QImage::Format_MonoLSB);
 
         ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
@@ -101,6 +109,7 @@ void MainWindow::cam_timeout()
     cap.read(frame);
     Mat outputFrame=imageProcessor->shapeDetection(frame);
     cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
+    //cvtColor(outputFrame, outputFrame, COLOR_BGR2RGBA);
     QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
 
     ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));

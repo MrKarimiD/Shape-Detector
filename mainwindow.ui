@@ -46,7 +46,7 @@
       <x>670</x>
       <y>10</y>
       <width>271</width>
-      <height>491</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -121,8 +121,8 @@
      <widget class="QPushButton" name="open_button">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>290</y>
+        <x>80</x>
+        <y>217</y>
         <width>99</width>
         <height>27</height>
        </rect>
@@ -134,9 +134,9 @@
      <widget class="QLabel" name="cam_label">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>200</y>
-        <width>131</width>
+        <x>2</x>
+        <y>181</y>
+        <width>121</width>
         <height>21</height>
        </rect>
       </property>
@@ -144,17 +144,78 @@
        <string>Camera Number :</string>
       </property>
      </widget>
-     <widget class="QDoubleSpinBox" name="cam_spinBox">
+     <widget class="QComboBox" name="cam_comboBox">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>220</y>
-        <width>201</width>
-        <height>21</height>
+        <x>130</x>
+        <y>180</y>
+        <width>130</width>
+        <height>27</height>
        </rect>
       </property>
+     </widget>
+     <widget class="QSlider" name="blue_slider">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>270</y>
+        <width>230</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
       <property name="value">
-       <double>0.000000000000000</double>
+       <number>500</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>250</y>
+        <width>191</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>WHITE_BALANCE_BLUE_U</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="red_slider">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>330</y>
+        <width>230</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>1000</number>
+      </property>
+      <property name="value">
+       <number>500</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>310</y>
+        <width>191</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>WHITE_BALANCE_RED_V</string>
       </property>
      </widget>
     </widget>
@@ -163,6 +224,27 @@
       <string>Filters</string>
      </attribute>
     </widget>
+   </widget>
+   <widget class="QPushButton" name="stall_button">
+    <property name="geometry">
+     <rect>
+      <x>750</x>
+      <y>450</y>
+      <width>131</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Serif</family>
+      <pointsize>16</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>Stall!</string>
+    </property>
    </widget>
   </widget>
  </widget>
