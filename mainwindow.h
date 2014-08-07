@@ -33,6 +33,10 @@ private slots:
     void on_open_button_clicked();
     void cam_timeout();
 
+    void on_address_button_2_clicked();
+
+    void on_confAddress_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
