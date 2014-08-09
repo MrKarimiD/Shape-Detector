@@ -33,9 +33,9 @@ private slots:
     void on_open_button_clicked();
     void cam_timeout();
 
-    void on_address_button_2_clicked();
-
     void on_confAddress_button_clicked();
+
+    void on_camSet_checkBox_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
@@ -43,6 +43,8 @@ private:
     QTimer *cam_timer;
     VideoCapture cap;
 
+    void enableCameraSetting();
+    void disableCameraSetting();
 };
 
 #endif // MAINWINDOW_H

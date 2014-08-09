@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -127,7 +127,7 @@
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>217</y>
+        <y>215</y>
         <width>99</width>
         <height>27</height>
        </rect>
@@ -160,10 +160,13 @@
       </property>
      </widget>
      <widget class="QSlider" name="blue_slider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>262</y>
+        <y>285</y>
         <width>230</width>
         <height>29</height>
        </rect>
@@ -178,11 +181,14 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label">
+     <widget class="QLabel" name="blue_label">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>250</y>
+        <y>273</y>
         <width>191</width>
         <height>17</height>
        </rect>
@@ -197,10 +203,13 @@
       </property>
      </widget>
      <widget class="QSlider" name="red_slider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>300</y>
+        <y>323</y>
         <width>230</width>
         <height>29</height>
        </rect>
@@ -215,11 +224,14 @@
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="label_2">
+     <widget class="QLabel" name="red_label">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>287</y>
+        <y>310</y>
         <width>191</width>
         <height>17</height>
        </rect>
@@ -233,11 +245,14 @@
        <string>WHITE_BALANCE_RED_V</string>
       </property>
      </widget>
-     <widget class="QLabel" name="label_3">
+     <widget class="QLabel" name="expo_label">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>327</y>
+        <y>350</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -252,10 +267,13 @@
       </property>
      </widget>
      <widget class="QSlider" name="exposure_slider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>337</y>
+        <y>360</y>
         <width>230</width>
         <height>29</height>
        </rect>
@@ -271,6 +289,30 @@
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="camSet_checkBox">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>2</x>
+        <y>243</y>
+        <width>181</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Edit Camera Setting</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>

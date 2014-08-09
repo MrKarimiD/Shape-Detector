@@ -14,6 +14,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->cam_comboBox->setDisabled(true);
     ui->open_button->setDisabled(true);
 
+    QStringList items;
+    items<<"1"<<"0";
+    ui->cam_comboBox->addItems(items);
+
     cam_timer=new QTimer();
 }
 
@@ -59,16 +63,15 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
         ui->cam_label->setEnabled(true);
         ui->cam_comboBox->setEnabled(true);
         ui->open_button->setEnabled(true);
-
-        QStringList items;
-        items<<"1"<<"0";
-        ui->cam_comboBox->addItems(items);
+        ui->camSet_checkBox->setEnabled(true);
     }
     else
     {
         ui->cam_label->setDisabled(true);
         ui->cam_comboBox->setDisabled(true);
         ui->open_button->setDisabled(true);
+        ui->camSet_checkBox->setDisabled(true);
+        disableCameraSetting();
         cam_timer->stop();
     }
 }
@@ -117,4 +120,36 @@ void MainWindow::cam_timeout()
 void MainWindow::on_confAddress_button_clicked()
 {
 
+}
+
+void MainWindow::enableCameraSetting()
+{
+    ui->red_slider->setEnabled(true);
+    ui->blue_slider->setEnabled(true);
+    ui->exposure_slider->setEnabled(true);
+    ui->red_label->setEnabled(true);
+    ui->blue_label->setEnabled(true);
+    ui->expo_label->setEnabled(true);
+}
+
+void MainWindow::disableCameraSetting()
+{
+    ui->red_slider->setDisabled(true);
+    ui->blue_slider->setDisabled(true);
+    ui->exposure_slider->setDisabled(true);
+    ui->red_label->setDisabled(true);
+    ui->blue_label->setDisabled(true);
+    ui->expo_label->setDisabled(true);
+}
+
+void MainWindow::on_camSet_checkBox_stateChanged(int arg1)
+{
+    if(ui->camSet_checkBox->isChecked())
+    {
+        enableCameraSetting();
+    }
+    else
+    {
+        disableCameraSetting();
+    }
 }
