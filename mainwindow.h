@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "opencv2/core/core.hpp"
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/opencv.hpp>
@@ -32,10 +33,8 @@ private slots:
     void on_camera_rButton_toggled(bool checked);
     void on_open_button_clicked();
     void cam_timeout();
-
-    void on_confAddress_button_clicked();
-
     void on_camSet_checkBox_stateChanged(int arg1);
+    void callImageProcessingFunctions(Mat input_mat);
 
 private:
     Ui::MainWindow *ui;
@@ -45,6 +44,14 @@ private:
 
     void enableCameraSetting();
     void disableCameraSetting();
+    void enableOpenCamera();
+    void disableOpenCamera();
+    void enableOpenImage();
+    void disableOpenImage();
+
+signals:
+    void imageReady(Mat image);
+
 };
 
 #endif // MAINWINDOW_H
