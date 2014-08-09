@@ -7,28 +7,6 @@ ImageProcessing::ImageProcessing(QObject *parent) :
 
 Mat ImageProcessing::shapeDetection(Mat input)
 {
-    //-------
-//    vector<Vec3f> circles;
-//    Mat outputFrame=input.clone();
-//    cvtColor(input,input,COLOR_RGB2GRAY);
-//    HoughCircles(input,circles,HOUGH_GRADIENT,2,10,150,100,0,100);
-//    for(int i=0;i<circles.size();i++)
-//    {
-//        Point center(cvRound(circles[i][0]),cvRound(circles[i][1]));
-//        double radios=circles[i][2];
-//        circle(outputFrame,center,3,Scalar(0,0,255),-1);
-//        circle(outputFrame,center,radios,Scalar(0,0,255),3,8,0);
-//    }
-//    int numberOfCircles=circles.size();
-//    //finding_circles(numberOfCircles,Vec3f,finding_circles.allocator_type);
-//    //finding_circles.resize(numberOfCircles);
-//    for(int i=0;i<numberOfCircles;i++)
-//    {
-//        finding_circles.push_back(circles.at(i));
-//    }
-//    return outputFrame;
-    //--------------------------------
-
     //cv::Mat src = cv::imread("polygon.png");
     Mat src = input.clone();
     // Convert to grayscale
@@ -100,11 +78,6 @@ Mat ImageProcessing::shapeDetection(Mat input)
     }
 
     return dst;
-}
-
-void ImageProcessing::circleDetection()
-{
-
 }
 
 double ImageProcessing::angle(Point pt1, Point pt2, Point pt0)
