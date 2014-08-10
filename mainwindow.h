@@ -35,6 +35,9 @@ private slots:
     void cam_timeout();
     void on_camSet_checkBox_stateChanged(int arg1);
     void callImageProcessingFunctions(Mat input_mat);
+    void on_xml_checkBox_stateChanged(int arg1);
+
+    void on_xml_button_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -48,6 +51,8 @@ private:
     void disableOpenCamera();
     void enableOpenImage();
     void disableOpenImage();
+    void enableXML();
+    void disableXML();
 
 signals:
     void imageReady(Mat image);

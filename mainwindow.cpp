@@ -56,6 +56,7 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
     {
         disableOpenCamera();
         disableCameraSetting();
+        disableXML();
         cam_timer->stop();
     }
 }
@@ -118,6 +119,7 @@ void MainWindow::enableOpenCamera()
     ui->cam_comboBox->setEnabled(true);
     ui->open_button->setEnabled(true);
     ui->camSet_checkBox->setEnabled(true);
+    ui->xml_checkBox->setEnabled(true);
 }
 
 void MainWindow::disableOpenCamera()
@@ -126,6 +128,7 @@ void MainWindow::disableOpenCamera()
     ui->cam_comboBox->setDisabled(true);
     ui->open_button->setDisabled(true);
     ui->camSet_checkBox->setDisabled(true);
+    ui->xml_checkBox->setDisabled(true);
 }
 
 void MainWindow::enableOpenImage()
@@ -140,6 +143,18 @@ void MainWindow::disableOpenImage()
     ui->add_label->setDisabled(true);
     ui->address_button->setDisabled(true);
     ui->address_lineEdit->setDisabled(true);
+}
+
+void MainWindow::enableXML()
+{
+    ui->xmlAdd_lineEdit->setEnabled(true);
+    ui->xml_button->setEnabled(true);
+}
+
+void MainWindow::disableXML()
+{
+    ui->xmlAdd_lineEdit->setDisabled(true);
+    ui->xml_button->setDisabled(true);
 }
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
@@ -161,4 +176,22 @@ void MainWindow::on_camSet_checkBox_stateChanged(int arg1)
     {
         disableCameraSetting();
     }
+}
+
+void MainWindow::on_xml_checkBox_stateChanged(int arg1)
+{
+    if(ui->xml_checkBox->isChecked())
+    {
+        enableXML();
+    }
+    else
+    {
+        disableXML();
+    }
+}
+
+void MainWindow::on_xml_button_clicked()
+{
+    QString fileAddress = QFileDialog::getOpenFileName(this,tr("Select Your XML File"), "/home", tr("XML Files (*.xml)"));
+    ui->xmlAdd_lineEdit->setText(fileAddress);
 }
