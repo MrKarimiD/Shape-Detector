@@ -18,6 +18,8 @@ MainWindow::MainWindow(QWidget *parent) :
     cam_timer=new QTimer();
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
+
+    imageProcessor=new ImageProcessing();
 }
 
 MainWindow::~MainWindow()
@@ -70,7 +72,7 @@ void MainWindow::on_open_button_clicked()
         else
             cap.open(CAP_FIREWIRE+1);
 
-        cap.set(CAP_PROP_FPS, 60);
+        cap.set(CAP_PROP_FPS, 15);
         cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
         cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
 //        cap.set(CAP_PROP_BRIGHTNESS,1000);
@@ -157,9 +159,25 @@ void MainWindow::disableXML()
     ui->xml_button->setDisabled(true);
 }
 
+void MainWindow::updateOutputOptions()
+{
+    imageProcessor->changeOutputSetting(ui->cont_checkBox->isChecked(),ui->geom_checkBox->isChecked()
+                                        ,ui->bound_checkBox->isChecked());
+}
+
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
-    Mat outputFrame=imageProcessor->shapeDetection(input_mat);
+    Mat inputFrame;
+    if(ui->camera_rButton->isChecked())
+    {
+        imageProcessor->applyFilters(input_mat).copyTo(inputFrame);
+    }
+    else
+    {
+        input_mat.copyTo(inputFrame);
+    }
+    Mat outputFrame;
+    imageProcessor->shapeDetection(inputFrame).copyTo(outputFrame);
     cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
     cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
     QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
@@ -194,4 +212,39 @@ void MainWindow::on_xml_button_clicked()
 {
     QString fileAddress = QFileDialog::getOpenFileName(this,tr("Select Your XML File"), "/home", tr("XML Files (*.xml)"));
     ui->xmlAdd_lineEdit->setText(fileAddress);
+    QFile inputXMLFile(fileAddress);
+    QXmlStreamReader cameraXMLSetting(&inputXMLFile);
+
+    while (!cameraXMLSetting.atEnd() && !cameraXMLSetting.hasError())
+    {
+        qDebug()<<"reading xml file";
+        cameraXMLSetting.readNext();
+        if (cameraXMLSetting.isStartElement())
+        {
+
+        }
+        else if (cameraXMLSetting.hasError())
+        {
+            qDebug() << "XML error: " << cameraXMLSetting.errorString() << endl;
+        }
+        else if (cameraXMLSetting.atEnd())
+        {
+            qDebug() << "Reached end, done" << endl;
+        }
+    }
+}
+
+void MainWindow::on_cont_checkBox_stateChanged(int arg1)
+{
+    updateOutputOptions();
+}
+
+void MainWindow::on_geom_checkBox_stateChanged(int arg1)
+{
+    updateOutputOptions();
+}
+
+void MainWindow::on_bound_checkBox_stateChanged(int arg1)
+{
+    updateOutputOptions();
 }

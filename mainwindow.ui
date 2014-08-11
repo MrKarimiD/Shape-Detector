@@ -17,7 +17,7 @@
    <widget class="QLabel" name="outputLabel">
     <property name="geometry">
      <rect>
-      <x>-40</x>
+      <x>0</x>
       <y>10</y>
       <width>640</width>
       <height>480</height>
@@ -30,7 +30,7 @@
    <widget class="Line" name="line">
     <property name="geometry">
      <rect>
-      <x>650</x>
+      <x>640</x>
       <y>0</y>
       <width>20</width>
       <height>521</height>
@@ -43,10 +43,10 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>10</y>
-      <width>271</width>
-      <height>431</height>
+      <x>660</x>
+      <y>0</y>
+      <width>281</width>
+      <height>451</height>
      </rect>
     </property>
     <property name="font">
@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -376,8 +376,67 @@
       </property>
       <property name="font">
        <font>
-        <pointsize>8</pointsize>
+        <pointsize>7</pointsize>
        </font>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="output_tab">
+     <attribute name="title">
+      <string>OutPut</string>
+     </attribute>
+     <widget class="QCheckBox" name="bound_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>2</y>
+        <width>181</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Bounded Rectangle</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="cont_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>121</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Contours</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="geom_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>100</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Geometric Labels</string>
       </property>
      </widget>
     </widget>
@@ -395,9 +454,9 @@
    <widget class="QPushButton" name="stall_button">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>450</y>
-      <width>131</width>
+      <x>710</x>
+      <y>455</y>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>

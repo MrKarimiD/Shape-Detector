@@ -11,6 +11,8 @@
 #include "QFileDialog"
 #include "imageprocessing.h"
 #include "QTimer"
+#include <QXmlStreamReader>
+#include <QFile>
 
 using namespace cv;
 using namespace std;
@@ -36,8 +38,10 @@ private slots:
     void on_camSet_checkBox_stateChanged(int arg1);
     void callImageProcessingFunctions(Mat input_mat);
     void on_xml_checkBox_stateChanged(int arg1);
-
     void on_xml_button_clicked();
+    void on_cont_checkBox_stateChanged(int arg1);
+    void on_geom_checkBox_stateChanged(int arg1);
+    void on_bound_checkBox_stateChanged(int arg1);
 
 private:
     Ui::MainWindow *ui;
@@ -53,6 +57,7 @@ private:
     void disableOpenImage();
     void enableXML();
     void disableXML();
+    void updateOutputOptions();
 
 signals:
     void imageReady(Mat image);
