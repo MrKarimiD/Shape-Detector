@@ -43,6 +43,8 @@ private slots:
     void on_geom_checkBox_stateChanged(int arg1);
     void on_bound_checkBox_stateChanged(int arg1);
 
+    void on_rotate_checkBox_stateChanged(int arg1);
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;

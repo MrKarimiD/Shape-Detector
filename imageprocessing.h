@@ -29,12 +29,12 @@ public:
     Mat applyFilters(Mat input);
     double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0);
     void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour);
-    void changeOutputSetting(bool con,bool geom,bool bound);
+    void changeOutputSetting(bool con,bool geom,bool bound,bool rotate);
 
 private:
     vector<Vec3f> finding_circles;
     //Mat cameraMatrix, distCoeffs;
-    bool drawContoursBool,drawGeometricLabels,drawBoundedRect;
+    bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect;
     bool checkAspectRatio(vector<Point> contours_poly);
 
 signals:

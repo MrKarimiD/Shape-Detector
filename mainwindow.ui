@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -407,7 +407,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>50</y>
+        <y>100</y>
         <width>121</width>
         <height>22</height>
        </rect>
@@ -425,7 +425,7 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>100</y>
+        <y>150</y>
         <width>151</width>
         <height>22</height>
        </rect>
@@ -437,6 +437,24 @@
       </property>
       <property name="text">
        <string>Geometric Labels</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="rotate_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>50</y>
+        <width>251</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>RotatedBounded Rectangle</string>
       </property>
      </widget>
     </widget>

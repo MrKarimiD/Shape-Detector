@@ -162,7 +162,7 @@ void MainWindow::disableXML()
 void MainWindow::updateOutputOptions()
 {
     imageProcessor->changeOutputSetting(ui->cont_checkBox->isChecked(),ui->geom_checkBox->isChecked()
-                                        ,ui->bound_checkBox->isChecked());
+                                        ,ui->bound_checkBox->isChecked(),ui->rotate_checkBox->isChecked());
 }
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
@@ -245,6 +245,11 @@ void MainWindow::on_geom_checkBox_stateChanged(int arg1)
 }
 
 void MainWindow::on_bound_checkBox_stateChanged(int arg1)
+{
+    updateOutputOptions();
+}
+
+void MainWindow::on_rotate_checkBox_stateChanged(int arg1)
 {
     updateOutputOptions();
 }

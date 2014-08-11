@@ -6,6 +6,7 @@ ImageProcessing::ImageProcessing(QObject *parent) :
     drawBoundedRect=false;
     drawContoursBool=false;
     drawGeometricLabels=false;
+    drawRotatedRect=false;
 }
 
 Mat ImageProcessing::shapeDetection(Mat input)
@@ -47,10 +48,20 @@ Mat ImageProcessing::shapeDetection(Mat input)
         if(drawBoundedRect)
         {
             Rect boundedRect=boundingRect( Mat(contours[i]) );
-            //RotatedRect boundedRect=minAreaRect(Mat(contours[i]) );
             rectangle( dst, boundedRect.tl(), boundedRect.br(), Scalar(255,255,255), 2, 8, 0 );
-
         }
+        if(drawRotatedRect)
+        {
+            RotatedRect rotatetBoundRect=minAreaRect(Mat(contours[i]));
+            Point2f vertices[4];
+            rotatetBoundRect.points(vertices);
+            for (int i = 0; i < 4; i++)
+            {
+                line(dst, vertices[i], vertices[(i+1)%4], Scalar(0,255,0));
+            }
+        }
+
+
 
         if(!checkAspectRatio(contours[i]))
         {
@@ -177,11 +188,12 @@ void ImageProcessing::setLabel(Mat &im, const string label, std::vector<Point> &
     }
 }
 
-void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound)
+void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound, bool rotate)
 {
     this->drawContoursBool=con;
     this->drawGeometricLabels=geom;
     this->drawBoundedRect=bound;
+    this->drawRotatedRect=rotate;
 }
 
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)
