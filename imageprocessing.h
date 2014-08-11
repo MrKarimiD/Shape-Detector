@@ -36,6 +36,7 @@ private:
     //Mat cameraMatrix, distCoeffs;
     bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect;
     bool checkAspectRatio(vector<Point> contours_poly);
+    bool checkAspectRatioForRotatedRect(RotatedRect input);
 
 signals:
 

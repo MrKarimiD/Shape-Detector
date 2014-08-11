@@ -45,25 +45,13 @@ Mat ImageProcessing::shapeDetection(Mat input)
         if (fabs(contourArea(contours[i])) < 100 || !isContourConvex(approx))
             continue;
 
-        if(drawBoundedRect)
-        {
-            Rect boundedRect=boundingRect( Mat(contours[i]) );
-            rectangle( dst, boundedRect.tl(), boundedRect.br(), Scalar(255,255,255), 2, 8, 0 );
-        }
-        if(drawRotatedRect)
-        {
-            RotatedRect rotatetBoundRect=minAreaRect(Mat(contours[i]));
-            Point2f vertices[4];
-            rotatetBoundRect.points(vertices);
-            for (int i = 0; i < 4; i++)
-            {
-                line(dst, vertices[i], vertices[(i+1)%4], Scalar(0,255,0));
-            }
-        }
-
-
-
         if(!checkAspectRatio(contours[i]))
+        {
+            continue;
+        }
+
+        RotatedRect rotatetBoundRect=minAreaRect(Mat(contours[i]));
+        if(!checkAspectRatioForRotatedRect(rotatetBoundRect))
         {
             continue;
         }
@@ -72,6 +60,22 @@ Mat ImageProcessing::shapeDetection(Mat input)
         {
             Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
             drawContours(dst,contours, i, color, 1, 8, hierarchy, 0, Point() );
+        }
+
+        if(drawBoundedRect)
+        {
+            Rect boundedRect=boundingRect( Mat(contours[i]) );
+            rectangle( dst, boundedRect.tl(), boundedRect.br(), Scalar(255,255,255), 2, 8, 0 );
+        }
+
+        if(drawRotatedRect)
+        {
+            Point2f vertices[4];
+            rotatetBoundRect.points(vertices);
+            for (int i = 0; i < 4; i++)
+            {
+                line(dst, vertices[i], vertices[(i+1)%4], Scalar(255,255,0));
+            }
         }
 
         if (approx.size() == 3)
@@ -206,6 +210,17 @@ bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)
         out=false;
     else
         out=true;
+
+    return out;
+}
+
+bool ImageProcessing::checkAspectRatioForRotatedRect(RotatedRect input)
+{
+    double aspect_ratio = float(input.size.width)/input.size.height;
+    bool out=true;
+
+    if(  (aspect_ratio>ASPECT_RATIO_TRESH) || (aspect_ratio<(1/ASPECT_RATIO_TRESH)))
+        out=false;
 
     return out;
 }
