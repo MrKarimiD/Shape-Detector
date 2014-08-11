@@ -7,9 +7,9 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    disableOpenImage();
+//    disableOpenImage();
 
-    disableOpenCamera();
+//    disableOpenCamera();
 
     QStringList items;
     items<<"1"<<"0";

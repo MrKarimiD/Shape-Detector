@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -85,6 +85,9 @@
       </property>
       <property name="text">
        <string>Camera</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QLabel" name="add_label">
@@ -161,7 +164,7 @@
      </widget>
      <widget class="QSlider" name="blue_slider">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -188,7 +191,7 @@
      </widget>
      <widget class="QLabel" name="blue_label">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -209,7 +212,7 @@
      </widget>
      <widget class="QSlider" name="red_slider">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -236,7 +239,7 @@
      </widget>
      <widget class="QLabel" name="red_label">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -257,7 +260,7 @@
      </widget>
      <widget class="QLabel" name="expo_label">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -278,7 +281,7 @@
      </widget>
      <widget class="QSlider" name="exposure_slider">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -308,7 +311,7 @@
      </widget>
      <widget class="QCheckBox" name="camSet_checkBox">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -327,12 +330,12 @@
        <string>Edit Camera Setting</string>
       </property>
       <property name="checked">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="xml_checkBox">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
@@ -454,7 +457,7 @@
        </font>
       </property>
       <property name="text">
-       <string>RotatedBounded Rectangle</string>
+       <string>Rotated Bounded Rectangle</string>
       </property>
      </widget>
     </widget>
