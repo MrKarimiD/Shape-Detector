@@ -18,14 +18,19 @@ Mat ImageProcessing::shapeDetection(Mat input)
     cvtColor(src, gray, COLOR_BGR2GRAY);
     medianBlur(gray,gray,5);
     Mat threshold_mat = Mat::zeros(gray.cols,gray.rows,CV_8UC1);
-    adaptiveThreshold(gray,threshold_mat,255,ADAPTIVE_THRESH_GAUSSIAN_C,THRESH_BINARY_INV,11,15);
+    adaptiveThreshold(gray,threshold_mat,255,ADAPTIVE_THRESH_GAUSSIAN_C,THRESH_BINARY_INV,41,5);
     //threshold( gray, threshold_mat, 127,255,THRESH_BINARY);
+    //imshow("thresh",threshold_mat);
+
+    Mat structure=getStructuringElement(MORPH_RECT,Size(3,3));
+    dilate(threshold_mat,threshold_mat,structure);
+    imshow("thresh",threshold_mat);
 
     // Use Canny instead of threshold to catch squares with gradient shading
     Mat bw;
     //Canny(gray, bw, 0, 50, 5);
     Canny(threshold_mat, bw, 0, 50, 5);
-    //imshow("Canny",threshold_mat);
+    imshow("Canny",bw);
 
     // Find contours
     vector<vector<Point> > contours;

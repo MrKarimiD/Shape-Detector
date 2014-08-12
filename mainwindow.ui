@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>10</y>
+      <y>6</y>
       <width>640</width>
       <height>480</height>
      </rect>
@@ -36,6 +36,9 @@
       <height>521</height>
      </rect>
     </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
     </property>
@@ -44,7 +47,7 @@
     <property name="geometry">
      <rect>
       <x>660</x>
-      <y>0</y>
+      <y>1</y>
       <width>281</width>
       <height>451</height>
      </rect>
@@ -70,6 +73,11 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Image</string>
       </property>
@@ -78,10 +86,15 @@
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>110</y>
+        <y>89</y>
         <width>117</width>
         <height>22</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Camera</string>
@@ -93,11 +106,16 @@
      <widget class="QLabel" name="add_label">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>30</y>
+        <x>6</x>
+        <y>23</y>
         <width>71</width>
         <height>17</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
       </property>
       <property name="text">
        <string>Address :</string>
@@ -106,9 +124,9 @@
      <widget class="QLineEdit" name="address_lineEdit">
       <property name="geometry">
        <rect>
-        <x>3</x>
-        <y>50</y>
-        <width>251</width>
+        <x>0</x>
+        <y>43</y>
+        <width>241</width>
         <height>27</height>
        </rect>
       </property>
@@ -116,9 +134,9 @@
      <widget class="QPushButton" name="address_button">
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>80</y>
-        <width>61</width>
+        <x>243</x>
+        <y>42</y>
+        <width>30</width>
         <height>27</height>
        </rect>
       </property>
@@ -129,9 +147,9 @@
      <widget class="QPushButton" name="open_button">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>175</y>
-        <width>99</width>
+        <x>200</x>
+        <y>119</y>
+        <width>61</width>
         <height>27</height>
        </rect>
       </property>
@@ -143,7 +161,7 @@
       <property name="geometry">
        <rect>
         <x>2</x>
-        <y>141</y>
+        <y>120</y>
         <width>121</width>
         <height>21</height>
        </rect>
@@ -155,9 +173,9 @@
      <widget class="QComboBox" name="cam_comboBox">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>140</y>
-        <width>130</width>
+        <x>110</x>
+        <y>119</y>
+        <width>81</width>
         <height>27</height>
        </rect>
       </property>
@@ -168,9 +186,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>245</y>
-        <width>230</width>
+        <x>3</x>
+        <y>185</y>
+        <width>240</width>
         <height>29</height>
        </rect>
       </property>
@@ -196,7 +214,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>233</y>
+        <y>173</y>
         <width>191</width>
         <height>17</height>
        </rect>
@@ -216,9 +234,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>277</y>
-        <width>230</width>
+        <x>3</x>
+        <y>217</y>
+        <width>240</width>
         <height>29</height>
        </rect>
       </property>
@@ -244,7 +262,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>267</y>
+        <y>207</y>
         <width>191</width>
         <height>17</height>
        </rect>
@@ -265,7 +283,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>297</y>
+        <y>237</y>
         <width>81</width>
         <height>17</height>
        </rect>
@@ -285,9 +303,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>307</y>
-        <width>230</width>
+        <x>3</x>
+        <y>247</y>
+        <width>240</width>
         <height>29</height>
        </rect>
       </property>
@@ -316,7 +334,7 @@
       <property name="geometry">
        <rect>
         <x>2</x>
-        <y>203</y>
+        <y>147</y>
         <width>181</width>
         <height>22</height>
        </rect>
@@ -340,7 +358,7 @@
       <property name="geometry">
        <rect>
         <x>1</x>
-        <y>336</y>
+        <y>366</y>
         <width>251</width>
         <height>22</height>
        </rect>
@@ -355,8 +373,8 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>220</x>
-        <y>360</y>
+        <x>231</x>
+        <y>390</y>
         <width>41</width>
         <height>27</height>
        </rect>
@@ -372,8 +390,8 @@
       <property name="geometry">
        <rect>
         <x>7</x>
-        <y>360</y>
-        <width>210</width>
+        <y>390</y>
+        <width>220</width>
         <height>27</height>
        </rect>
       </property>
@@ -381,6 +399,139 @@
        <font>
         <pointsize>7</pointsize>
        </font>
+      </property>
+     </widget>
+     <widget class="QLabel" name="brightness_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>270</y>
+        <width>71</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>BRIGHTNESS</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="brightness_slider">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>5</x>
+        <y>280</y>
+        <width>240</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="value">
+       <number>16</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>85</y>
+        <width>280</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="blueOut_label">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>190</y>
+        <width>31</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>490</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="redOut_label">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>222</y>
+        <width>31</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>450</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="expoOut_label">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>252</y>
+        <width>31</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>500</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="brightnessOut_label">
+      <property name="geometry">
+       <rect>
+        <x>250</x>
+        <y>284</y>
+        <width>31</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>16</string>
       </property>
      </widget>
     </widget>
@@ -465,6 +616,499 @@
      <attribute name="title">
       <string>Filters</string>
      </attribute>
+     <widget class="QCheckBox" name="medianBlur_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>2</y>
+        <width>111</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Median Blur</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="adaptiveThreshold_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>66</y>
+        <width>151</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Adaptive threshold</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="thresh_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>176</y>
+        <width>98</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Threshold</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="canny_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>292</y>
+        <width>98</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Canny</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="dilate_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>229</y>
+        <width>98</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Dilate</string>
+      </property>
+      <property name="checked">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="kernekSize_label">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>31</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Kernel Size :</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="kernelSize_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>30</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="blockSize_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>97</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Block Size :</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="blockSize_slider">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>109</y>
+        <width>210</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="singleStep">
+       <number>2</number>
+      </property>
+      <property name="value">
+       <number>41</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="c_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>127</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>C :</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="C_slider">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>137</y>
+        <width>210</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="singleStep">
+       <number>2</number>
+      </property>
+      <property name="value">
+       <number>5</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="blockSizeOut_label">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>113</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>41</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="cOut_label">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>140</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="threshOut_label">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>200</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>50</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="thresh_slider">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>196</y>
+        <width>210</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>1</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="singleStep">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="dilateSize_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>252</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>3</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="dilateSize_label">
+      <property name="geometry">
+       <rect>
+        <x>71</x>
+        <y>253</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Dilation Size :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="firstThresh_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>318</y>
+        <width>101</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>First Threshold :</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="secondThreshOut_label">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>365</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>50</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="secondThresh_label">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>352</y>
+        <width>121</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Second Threshold :</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="secondThresh_slider">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>362</y>
+        <width>210</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="singleStep">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLabel" name="firstThreshOut_label">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>332</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>0</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="firstThresh_slider">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>328</y>
+        <width>210</width>
+        <height>29</height>
+       </rect>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="singleStep">
+       <number>1</number>
+      </property>
+      <property name="value">
+       <number>0</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="apertureSize_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>389</y>
+        <width>31</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>5</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="apertureSize_label">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>390</y>
+        <width>81</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Aperture Size :</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>60</y>
+        <width>280</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>170</y>
+        <width>280</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_5">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>225</y>
+        <width>280</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="Line" name="line_6">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>282</y>
+        <width>280</width>
+        <height>3</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -476,7 +1120,7 @@
     <property name="geometry">
      <rect>
       <x>710</x>
-      <y>455</y>
+      <y>457</y>
       <width>181</width>
       <height>51</height>
      </rect>

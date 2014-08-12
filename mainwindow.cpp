@@ -7,9 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-//    disableOpenImage();
-
-//    disableOpenCamera();
+    cameraIsOpened=false;
 
     QStringList items;
     items<<"1"<<"0";
@@ -18,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     cam_timer=new QTimer();
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
+    connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
 
     imageProcessor=new ImageProcessing();
 }
@@ -68,17 +67,15 @@ void MainWindow::on_open_button_clicked()
         Mat frame;
 
         if(ui->cam_comboBox->currentText()=="0")
-            cap.open(CAP_FIREWIRE+0);
+        {
+            cameraIsOpened=cap.open(CAP_FIREWIRE+0);
+        }
         else
-            cap.open(CAP_FIREWIRE+1);
+        {
+            cameraIsOpened=cap.open(CAP_FIREWIRE+1);
+        }
 
-        cap.set(CAP_PROP_FPS, 15);
-        cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
-        cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
-//        cap.set(CAP_PROP_BRIGHTNESS,1000);
-       cap.set(CAP_PROP_EXPOSURE,ui->exposure_slider->value());
-        //cap.set(CAP_PROP_SHARPNESS,1000);
-        //cap.set(CAP_PROP_GAIN,100);
+        setCameraSetting();
 
         cap.read(frame);
 
@@ -100,9 +97,17 @@ void MainWindow::enableCameraSetting()
     ui->red_slider->setEnabled(true);
     ui->blue_slider->setEnabled(true);
     ui->exposure_slider->setEnabled(true);
+    ui->brightness_slider->setEnabled(true);
+
     ui->red_label->setEnabled(true);
     ui->blue_label->setEnabled(true);
     ui->expo_label->setEnabled(true);
+    ui->brightness_label->setEnabled(true);
+
+    ui->redOut_label->setEnabled(true);
+    ui->blueOut_label->setEnabled(true);
+    ui->expoOut_label->setEnabled(true);
+    ui->brightnessOut_label->setEnabled(true);
 }
 
 void MainWindow::disableCameraSetting()
@@ -110,9 +115,17 @@ void MainWindow::disableCameraSetting()
     ui->red_slider->setDisabled(true);
     ui->blue_slider->setDisabled(true);
     ui->exposure_slider->setDisabled(true);
+    ui->brightness_slider->setDisabled(true);
+
     ui->red_label->setDisabled(true);
     ui->blue_label->setDisabled(true);
     ui->expo_label->setDisabled(true);
+    ui->brightness_label->setDisabled(true);
+
+    ui->redOut_label->setDisabled(true);
+    ui->blueOut_label->setDisabled(true);
+    ui->expoOut_label->setDisabled(true);
+    ui->brightnessOut_label->setDisabled(true);
 }
 
 void MainWindow::enableOpenCamera()
@@ -163,6 +176,92 @@ void MainWindow::updateOutputOptions()
 {
     imageProcessor->changeOutputSetting(ui->cont_checkBox->isChecked(),ui->geom_checkBox->isChecked()
                                         ,ui->bound_checkBox->isChecked(),ui->rotate_checkBox->isChecked());
+}
+
+void MainWindow::enableMedianBlur()
+{
+    ui->kernekSize_label->setEnabled(true);
+    ui->kernelSize_lineEdit->setEnabled(true);
+}
+
+void MainWindow::disableMedianBlur()
+{
+    ui->kernekSize_label->setDisabled(true);
+    ui->kernelSize_lineEdit->setDisabled(true);
+}
+
+void MainWindow::enableAdaptiveThresholdSetting()
+{
+    ui->blockSizeOut_label->setEnabled(true);
+    ui->blockSize_label->setEnabled(true);
+    ui->blockSize_slider->setEnabled(true);
+
+    ui->c_label->setEnabled(true);
+    ui->cOut_label->setEnabled(true);
+    ui->C_slider->setEnabled(true);
+}
+
+void MainWindow::disableAdaptiveThresholdSetting()
+{
+    ui->blockSizeOut_label->setDisabled(true);
+    ui->blockSize_label->setDisabled(true);
+    ui->blockSize_slider->setDisabled(true);
+
+    ui->c_label->setDisabled(true);
+    ui->cOut_label->setDisabled(true);
+    ui->C_slider->setDisabled(true);
+}
+
+void MainWindow::enableThresholdSetting()
+{
+    ui->threshOut_label->setEnabled(true);
+    ui->thresh_slider->setEnabled(true);
+}
+
+void MainWindow::disableThresholdSetting()
+{
+    ui->threshOut_label->setDisabled(true);
+    ui->thresh_slider->setDisabled(true);
+}
+
+void MainWindow::enableDilateSetting()
+{
+    ui->dilateSize_lineEdit->setEnabled(true);
+    ui->dilateSize_label->setEnabled(true);
+}
+
+void MainWindow::disableDilateSetting()
+{
+    ui->dilateSize_lineEdit->setDisabled(true);
+    ui->dilateSize_label->setDisabled(true);
+}
+
+void MainWindow::enableCannySetting()
+{
+    ui->firstThreshOut_label->setEnabled(true);
+    ui->firstThresh_label->setEnabled(true);
+    ui->firstThresh_slider->setEnabled(true);
+
+    ui->secondThreshOut_label->setEnabled(true);
+    ui->secondThresh_label->setEnabled(true);
+    ui->secondThresh_slider->setEnabled(true);
+
+    ui->apertureSize_label->setEnabled(true);
+    ui->apertureSize_lineEdit->setEnabled(true);
+}
+
+void MainWindow::disableCannySetting()
+{
+    ui->firstThreshOut_label->setDisabled(true);
+    ui->firstThresh_label->setDisabled(true);
+    ui->firstThresh_slider->setDisabled(true);
+
+    ui->secondThreshOut_label->setDisabled(true);
+    ui->secondThresh_label->setDisabled(true);
+    ui->secondThresh_slider->setDisabled(true);
+
+    ui->apertureSize_label->setDisabled(true);
+    ui->apertureSize_lineEdit->setDisabled(true);
 }
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
@@ -252,4 +351,153 @@ void MainWindow::on_bound_checkBox_stateChanged(int arg1)
 void MainWindow::on_rotate_checkBox_stateChanged(int arg1)
 {
     updateOutputOptions();
+}
+
+void MainWindow::on_medianBlur_checkBox_stateChanged(int arg1)
+{
+    if(ui->medianBlur_checkBox->isChecked())
+    {
+        enableMedianBlur();
+    }
+    else
+    {
+        disableMedianBlur();
+    }
+}
+
+void MainWindow::on_adaptiveThreshold_checkBox_stateChanged(int arg1)
+{
+    if(ui->adaptiveThreshold_checkBox->isChecked())
+    {
+        enableAdaptiveThresholdSetting();
+    }
+    else
+    {
+        disableAdaptiveThresholdSetting();
+    }
+}
+
+void MainWindow::on_thresh_checkBox_stateChanged(int arg1)
+{
+    if(ui->thresh_checkBox->isChecked())
+    {
+        enableThresholdSetting();
+    }
+    else
+    {
+        disableThresholdSetting();
+    }
+}
+
+void MainWindow::on_dilate_checkBox_stateChanged(int arg1)
+{
+    if(ui->dilate_checkBox->isChecked())
+    {
+        enableDilateSetting();
+    }
+    else
+    {
+        disableDilateSetting();
+    }
+}
+
+void MainWindow::on_canny_checkBox_stateChanged(int arg1)
+{
+    if(ui->canny_checkBox->isChecked())
+    {
+        enableCannySetting();
+    }
+    else
+    {
+        disableCannySetting();
+    }
+}
+
+void MainWindow::on_kernelSize_lineEdit_textChanged(const QString &arg1)
+{
+    //--------------
+}
+
+void MainWindow::on_blockSize_slider_sliderMoved(int position)
+{
+    ui->blockSizeOut_label->setText(QString::number(position));
+    //--------------
+}
+
+void MainWindow::on_C_slider_sliderMoved(int position)
+{
+    ui->cOut_label->setText(QString::number(position));
+    //--------------
+}
+
+void MainWindow::on_thresh_slider_sliderMoved(int position)
+{
+    ui->threshOut_label->setText(QString::number(position));
+    //--------------
+}
+
+void MainWindow::on_firstThresh_slider_sliderMoved(int position)
+{
+    ui->firstThreshOut_label->setText(QString::number(position));
+    //--------------
+}
+
+
+void MainWindow::on_secondThresh_slider_sliderMoved(int position)
+{
+    ui->secondThreshOut_label->setText(QString::number(position));
+    //--------------
+}
+
+void MainWindow::on_dilateSize_lineEdit_textChanged(const QString &arg1)
+{
+    //--------------
+}
+
+void MainWindow::on_apertureSize_lineEdit_textChanged(const QString &arg1)
+{
+    //--------------
+}
+
+void MainWindow::on_blue_slider_sliderMoved(int position)
+{
+    ui->blueOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::on_red_slider_sliderMoved(int position)
+{
+    ui->redOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::on_exposure_slider_sliderMoved(int position)
+{
+    ui->expoOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::on_brightness_slider_sliderMoved(int position)
+{
+    ui->brightnessOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::updateCameraSetting()
+{
+    setCameraSetting();
+}
+
+void MainWindow::setCameraSetting()
+{
+    if(cameraIsOpened)
+    {
+        cap.set(CAP_PROP_FPS, 15);
+        cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
+        cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
+        cap.set(CAP_PROP_BRIGHTNESS,ui->brightness_slider->value());
+        cap.set(CAP_PROP_EXPOSURE,ui->exposure_slider->value());
+        //cap.set(CAP_PROP_SHARPNESS,1000);
+        //cap.set(CAP_PROP_GAIN,100);
+    }
 }
