@@ -526,7 +526,19 @@ void MainWindow::setCameraSetting()
         cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
         cap.set(CAP_PROP_BRIGHTNESS,ui->brightness_slider->value());
         cap.set(CAP_PROP_EXPOSURE,ui->exposure_slider->value());
-        //cap.set(CAP_PROP_SHARPNESS,1000);
-        //cap.set(CAP_PROP_GAIN,100);
+        cap.set(CAP_PROP_SHARPNESS,ui->sharpness_slider->value());
+        cap.set(CAP_PROP_GAIN,ui->gain_slider->value());
     }
+}
+
+void MainWindow::on_sharpness_slider_sliderMoved(int position)
+{
+    ui->sharpnessOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::on_gain_slider_sliderMoved(int position)
+{
+    ui->gainOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
 }
