@@ -13,6 +13,7 @@
 #include "QTimer"
 #include <QXmlStreamReader>
 #include <QFile>
+#include "filtersettings.h"
 
 using namespace cv;
 using namespace std;
@@ -69,6 +70,7 @@ private:
     QTimer *cam_timer;
     VideoCapture cap;
     bool cameraIsOpened;
+    filterSettings *filterSetting;
 
     void enableCameraSetting();
     void disableCameraSetting();
@@ -89,6 +91,7 @@ private:
     void disableDilateSetting();
     void enableCannySetting();
     void disableCannySetting();
+    void updateFilterSetting();
 
 signals:
     void imageReady(Mat image);

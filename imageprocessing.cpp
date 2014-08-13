@@ -7,35 +7,15 @@ ImageProcessing::ImageProcessing(QObject *parent) :
     drawContoursBool=false;
     drawGeometricLabels=false;
     drawRotatedRect=false;
+    filterSetting=new filterSettings();
 }
 
-Mat ImageProcessing::shapeDetection(Mat input)
+Mat ImageProcessing::shapeDetection(Mat input, Mat src)
 {
-    RNG rng(12345);
-    Mat src = input.clone();
-    // Convert to grayscale
-    Mat gray;
-    cvtColor(src, gray, COLOR_BGR2GRAY);
-    medianBlur(gray,gray,5);
-    Mat threshold_mat = Mat::zeros(gray.cols,gray.rows,CV_8UC1);
-    adaptiveThreshold(gray,threshold_mat,255,ADAPTIVE_THRESH_GAUSSIAN_C,THRESH_BINARY_INV,41,5);
-    //threshold( gray, threshold_mat, 127,255,THRESH_BINARY);
-    //imshow("thresh",threshold_mat);
-
-    Mat structure=getStructuringElement(MORPH_RECT,Size(3,3));
-    dilate(threshold_mat,threshold_mat,structure);
-    imshow("thresh",threshold_mat);
-
-    // Use Canny instead of threshold to catch squares with gradient shading
-    Mat bw;
-    //Canny(gray, bw, 0, 50, 5);
-    Canny(threshold_mat, bw, 0, 50, 5);
-    imshow("Canny",bw);
-
     // Find contours
     vector<vector<Point> > contours;
     vector<Vec4i> hierarchy;
-    findContours(bw.clone(), contours, hierarchy, RETR_LIST, CHAIN_APPROX_SIMPLE);
+    findContours(input.clone(), contours, hierarchy, RETR_LIST, CHAIN_APPROX_SIMPLE);
 
     vector<Point> approx;
     Mat dst = src.clone();
@@ -63,6 +43,7 @@ Mat ImageProcessing::shapeDetection(Mat input)
 
         if(this->drawContoursBool)
         {
+            RNG rng(12345);
             Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
             drawContours(dst,contours, i, color, 1, 8, hierarchy, 0, Point() );
         }
@@ -130,6 +111,63 @@ Mat ImageProcessing::shapeDetection(Mat input)
 }
 
 Mat ImageProcessing::applyFilters(Mat input)
+{
+    Mat src = input.clone();
+    // Convert to grayscale
+    Mat gray;
+    cvtColor(src, gray, COLOR_BGR2GRAY);
+    if(filterSetting->getUseMedianBlur())
+    {
+        medianBlur(gray,gray,filterSetting->getKernelSize());
+    }
+
+    Mat threshold_mat = Mat::zeros(gray.cols,gray.rows,CV_8UC1);
+
+    if(filterSetting->getUseAdaptiveThresh())
+    {
+        adaptiveThreshold(gray,threshold_mat,255,ADAPTIVE_THRESH_GAUSSIAN_C,THRESH_BINARY_INV,
+                          filterSetting->getBlockSize(),
+                          filterSetting->getC());
+    }
+    else
+    {
+        if(filterSetting->getUseThreshold())
+        {
+            threshold( gray, threshold_mat,filterSetting->getThreshValue(),255,THRESH_BINARY);
+        }
+        else
+        {
+           threshold_mat=gray.clone();
+        }
+    }
+
+    //imshow("thresh",threshold_mat);
+
+    if(filterSetting->getUseDilate())
+    {
+        Mat structure=getStructuringElement(MORPH_RECT,Size(filterSetting->getDilateSize(),filterSetting->getDilateSize()));
+        dilate(threshold_mat,threshold_mat,structure);
+    }
+
+    //imshow("thresh",threshold_mat);
+
+    // Use Canny instead of threshold to catch squares with gradient shading
+    Mat bw;
+    if(filterSetting->getUseCanny())
+    {
+        Canny(threshold_mat, bw,filterSetting->getFirstThresh(),filterSetting->getSecondThresh()
+              , filterSetting->getApertureSize());
+        imshow("Canny",bw);
+    }
+    else
+    {
+        bw=threshold_mat.clone();
+    }
+
+    return bw;
+}
+
+Mat ImageProcessing::undistortImage(Mat input)
 {
     Mat cameraMatrix = Mat::eye(3, 3, CV_64F);
 
@@ -203,6 +241,11 @@ void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound, bool 
     this->drawGeometricLabels=geom;
     this->drawBoundedRect=bound;
     this->drawRotatedRect=rotate;
+}
+
+void ImageProcessing::updateFilterSettings(filterSettings *fs)
+{
+    this->filterSetting=fs;
 }
 
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)

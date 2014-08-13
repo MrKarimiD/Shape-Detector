@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->cam_comboBox->addItems(items);
 
     cam_timer=new QTimer();
+    filterSetting=new filterSettings();
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
@@ -264,19 +265,47 @@ void MainWindow::disableCannySetting()
     ui->apertureSize_lineEdit->setDisabled(true);
 }
 
+void MainWindow::updateFilterSetting()
+{
+    filterSetting->setUseMedianBlur(ui->medianBlur_checkBox->isChecked());
+    filterSetting->setKernelSize(ui->kernelSize_lineEdit->text().toInt());
+
+    filterSetting->setUseAdaptiveThresh(ui->adaptiveThreshold_checkBox->isChecked());
+    filterSetting->setBlockSize(ui->blockSize_slider->value());
+    filterSetting->setC(ui->C_slider->value());
+
+    filterSetting->setUseThreshold(ui->thresh_checkBox->isChecked());
+    filterSetting->setThreshValue(ui->thresh_slider->value());
+
+    filterSetting->setUseDilate(ui->dilate_checkBox->isChecked());
+    filterSetting->setDilateSize(ui->dilateSize_lineEdit->text().toInt());
+
+    filterSetting->setUseCanny(ui->canny_checkBox->isChecked());
+    filterSetting->setFirstThresh(ui->firstThresh_slider->value());
+    filterSetting->setSecondThresh(ui->secondThresh_slider->value());
+    filterSetting->setApertureSize(ui->apertureSize_lineEdit->text().toInt());
+}
+
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
     Mat inputFrame;
     if(ui->camera_rButton->isChecked())
     {
-        imageProcessor->applyFilters(input_mat).copyTo(inputFrame);
+        imageProcessor->undistortImage(input_mat).copyTo(inputFrame);
     }
     else
     {
         input_mat.copyTo(inputFrame);
     }
+
+    updateFilterSetting();
+    imageProcessor->updateFilterSettings(filterSetting);
+
+    Mat filteredImage;
+    imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
+
     Mat outputFrame;
-    imageProcessor->shapeDetection(inputFrame).copyTo(outputFrame);
+    imageProcessor->shapeDetection(filteredImage,inputFrame).copyTo(outputFrame);
     cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
     cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
     QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);

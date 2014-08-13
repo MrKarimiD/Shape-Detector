@@ -25,7 +25,10 @@ void filterSettings::setUseMedianBlur(bool input)
 
 void filterSettings::setKernelSize(int input)
 {
-    this->kernelSize=input;
+    if(input%2==1)
+        this->kernelSize=input;
+    else
+        this->kernelSize=input-1;
 }
 
 void filterSettings::setUseAdaptiveThresh(bool input)
@@ -35,12 +38,18 @@ void filterSettings::setUseAdaptiveThresh(bool input)
 
 void filterSettings::setBlockSize(int input)
 {
-    this->blockSize=input;
+    if(input%2==1)
+        this->blockSize=input;
+    else
+        this->blockSize=input-1;
 }
 
 void filterSettings::setC(int input)
 {
-    this->C=input;
+    if(input%2==1)
+        this->C=input;
+    else
+        this->C=input-1;
 }
 
 void filterSettings::setUseThreshold(bool input)
@@ -60,7 +69,10 @@ void filterSettings::setUseDilate(bool input)
 
 void filterSettings::setDilateSize(int input)
 {
-    this->dilateSize=input;
+    if(input%2==1)
+        this->dilateSize=input;
+    else
+        this->dilateSize=input-1;
 }
 
 void filterSettings::setUseCanny(bool input)
@@ -80,7 +92,10 @@ void filterSettings::setSecondThresh(int input)
 
 void filterSettings::setApertureSize(int input)
 {
-    this->apertureSize=input;
+    if(input%2==1)
+        this->apertureSize=input;
+    else
+        this->apertureSize=input-1;
 }
 
 bool filterSettings::getUseMedianBlur()
