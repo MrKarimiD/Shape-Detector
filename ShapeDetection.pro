@@ -15,9 +15,11 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     imageprocessing.cpp \
+    filtersettings.cpp
 
 HEADERS  += mainwindow.h \
     imageprocessing.h \
+    filtersettings.h
 
 FORMS    += mainwindow.ui
 
