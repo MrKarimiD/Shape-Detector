@@ -63,9 +63,7 @@ private slots:
     void on_brightness_slider_sliderMoved(int position);
     void updateCameraSetting();
     void setCameraSetting();
-
     void on_sharpness_slider_sliderMoved(int position);
-
     void on_gain_slider_sliderMoved(int position);
 
 private:

@@ -99,16 +99,22 @@ void MainWindow::enableCameraSetting()
     ui->blue_slider->setEnabled(true);
     ui->exposure_slider->setEnabled(true);
     ui->brightness_slider->setEnabled(true);
+    ui->gain_slider->setEnabled(true);
+    ui->sharpness_slider->setEnabled(true);
 
     ui->red_label->setEnabled(true);
     ui->blue_label->setEnabled(true);
     ui->expo_label->setEnabled(true);
     ui->brightness_label->setEnabled(true);
+    ui->gain_label->setEnabled(true);
+    ui->sharpness_label->setEnabled(true);
 
     ui->redOut_label->setEnabled(true);
     ui->blueOut_label->setEnabled(true);
     ui->expoOut_label->setEnabled(true);
     ui->brightnessOut_label->setEnabled(true);
+    ui->gainOut_label->setEnabled(true);
+    ui->sharpnessOut_label->setEnabled(true);
 }
 
 void MainWindow::disableCameraSetting()
@@ -117,16 +123,22 @@ void MainWindow::disableCameraSetting()
     ui->blue_slider->setDisabled(true);
     ui->exposure_slider->setDisabled(true);
     ui->brightness_slider->setDisabled(true);
+    ui->gain_slider->setDisabled(true);
+    ui->sharpness_slider->setDisabled(true);
 
     ui->red_label->setDisabled(true);
     ui->blue_label->setDisabled(true);
     ui->expo_label->setDisabled(true);
     ui->brightness_label->setDisabled(true);
+    ui->gain_label->setDisabled(true);
+    ui->sharpness_label->setDisabled(true);
 
     ui->redOut_label->setDisabled(true);
     ui->blueOut_label->setDisabled(true);
     ui->expoOut_label->setDisabled(true);
     ui->brightnessOut_label->setDisabled(true);
+    ui->gainOut_label->setDisabled(true);
+    ui->sharpnessOut_label->setDisabled(true);
 }
 
 void MainWindow::enableOpenCamera()
