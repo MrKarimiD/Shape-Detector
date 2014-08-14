@@ -58,7 +58,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -771,6 +771,24 @@
        </rect>
       </property>
      </widget>
+     <widget class="QCheckBox" name="Crop_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>260</y>
+        <width>181</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Croped Rectangle</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="filter_tab">
      <attribute name="title">
@@ -1280,6 +1298,187 @@
       </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="crop_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>-2</y>
+        <width>98</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Crop Photo</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fPoint_label">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>20</y>
+        <width>67</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>First Point :</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fX_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>37</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>283</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fY_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>37</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>9</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="fVirgoul_label">
+      <property name="geometry">
+       <rect>
+        <x>43</x>
+        <y>40</y>
+        <width>21</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>,</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="sX_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>36</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>490</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="sVirgoul_label">
+      <property name="geometry">
+       <rect>
+        <x>153</x>
+        <y>39</y>
+        <width>21</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>,</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="sPoint_label">
+      <property name="geometry">
+       <rect>
+        <x>110</x>
+        <y>19</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Second Point :</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="sY_lineEdit">
+      <property name="geometry">
+       <rect>
+        <x>160</x>
+        <y>36</y>
+        <width>41</width>
+        <height>20</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>312</string>
+      </property>
+     </widget>
+     <widget class="Line" name="line_8">
+      <property name="geometry">
+       <rect>
+        <x>90</x>
+        <y>30</y>
+        <width>20</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="lineWidth">
+       <number>1</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="mouse_button">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>4</y>
+        <width>61</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>Turn On
+Mouse
+Intrrupt</string>
       </property>
      </widget>
     </widget>

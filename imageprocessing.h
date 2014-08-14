@@ -35,6 +35,8 @@ public:
     Mat returnAdaptiveThreshlodImage();
     Mat returnThreshlodImage();
     Mat returnCannyImage();
+    Mat returnCropedImage();
+    Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
 
 private:
     vector<Vec3f> finding_circles;
@@ -43,7 +45,7 @@ private:
     bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect;
     bool checkAspectRatio(vector<Point> contours_poly);
     bool checkAspectRatioForRotatedRect(RotatedRect input);
-    Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
+
 
 signals:
 

@@ -43,7 +43,6 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
 
         if(this->drawContoursBool)
         {
-            //RNG rng(12345);
             Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
             drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point() );
         }
@@ -260,6 +259,11 @@ Mat ImageProcessing::returnThreshlodImage()
 Mat ImageProcessing::returnCannyImage()
 {
     return Outputs[3];
+}
+
+Mat ImageProcessing::returnCropedImage()
+{
+    return Outputs[0];
 }
 
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)

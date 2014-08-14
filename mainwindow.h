@@ -14,6 +14,8 @@
 #include <QXmlStreamReader>
 #include <QFile>
 #include "filtersettings.h"
+#include "QMouseEvent"
+#include "QString"
 
 using namespace cv;
 using namespace std;
@@ -36,7 +38,7 @@ private slots:
     void on_camera_rButton_toggled(bool checked);
     void on_open_button_clicked();
     void cam_timeout();
-    void on_camSet_checkBox_stateChanged(int arg1);
+    void on_camSet_checkBox_stateChanged();
     void callImageProcessingFunctions(Mat input_mat);
     void on_xml_checkBox_stateChanged(int arg1);
     void on_xml_button_clicked();
@@ -49,14 +51,11 @@ private slots:
     void on_thresh_checkBox_stateChanged(int arg1);
     void on_dilate_checkBox_stateChanged(int arg1);
     void on_canny_checkBox_stateChanged(int arg1);
-    void on_kernelSize_lineEdit_textChanged(const QString &arg1);
     void on_blockSize_slider_sliderMoved(int position);
     void on_C_slider_sliderMoved(int position);
     void on_thresh_slider_sliderMoved(int position);
     void on_firstThresh_slider_sliderMoved(int position);
     void on_secondThresh_slider_sliderMoved(int position);
-    void on_dilateSize_lineEdit_textChanged(const QString &arg1);
-    void on_apertureSize_lineEdit_textChanged(const QString &arg1);
     void on_blue_slider_sliderMoved(int position);
     void on_red_slider_sliderMoved(int position);
     void on_exposure_slider_sliderMoved(int position);
@@ -65,13 +64,16 @@ private slots:
     void setCameraSetting();
     void on_sharpness_slider_sliderMoved(int position);
     void on_gain_slider_sliderMoved(int position);
+    void on_crop_checkBox_stateChanged();
+    void on_mouse_button_clicked();
+    void mouseDoubleClickEvent(QMouseEvent *event);
 
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
     QTimer *cam_timer;
     VideoCapture cap;
-    bool cameraIsOpened;
+    bool cameraIsOpened,mouseButtonClicked,firstPointSelected;
     filterSettings *filterSetting;
 
     void enableCameraSetting();
@@ -94,6 +96,8 @@ private:
     void enableCannySetting();
     void disableCannySetting();
     void updateFilterSetting();
+    void enableCropSetting();
+    void disableCropSetting();
 
 signals:
     void imageReady(Mat image);

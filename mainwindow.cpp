@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     cameraIsOpened=false;
+    mouseButtonClicked=false;
+    firstPointSelected=false;
 
     QStringList items;
     items<<"1"<<"0";
@@ -23,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
+    //connect(this,SIGNAL())
 
     imageProcessor=new ImageProcessing();
 }
@@ -303,6 +306,36 @@ void MainWindow::updateFilterSetting()
     filterSetting->setApertureSize(ui->apertureSize_lineEdit->text().toInt());
 }
 
+void MainWindow::enableCropSetting()
+{
+    ui->fPoint_label->setEnabled(true);
+    ui->fVirgoul_label->setEnabled(true);
+    ui->fX_lineEdit->setEnabled(true);
+    ui->fY_lineEdit->setEnabled(true);
+
+    ui->sPoint_label->setEnabled(true);
+    ui->sVirgoul_label->setEnabled(true);
+    ui->sX_lineEdit->setEnabled(true);
+    ui->sY_lineEdit->setEnabled(true);
+
+    ui->mouse_button->setEnabled(true);
+}
+
+void MainWindow::disableCropSetting()
+{
+    ui->fPoint_label->setDisabled(true);
+    ui->fVirgoul_label->setDisabled(true);
+    ui->fX_lineEdit->setDisabled(true);
+    ui->fY_lineEdit->setDisabled(true);
+
+    ui->sPoint_label->setDisabled(true);
+    ui->sVirgoul_label->setDisabled(true);
+    ui->sX_lineEdit->setDisabled(true);
+    ui->sY_lineEdit->setDisabled(true);
+
+    ui->mouse_button->setDisabled(true);
+}
+
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
     Mat inputFrame;
@@ -319,22 +352,35 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     updateFilterSetting();
     imageProcessor->updateFilterSettings(filterSetting);
 
-    Rect pic;
-    pic.width = 207;
-    pic.height = 303;
-    pic.x = 283;
-    pic.y = 9;// Point(283,9),207,303);
-
-    //Mat CropFrame(inputFrame,pic);
-
     Mat filteredImage;
-    //imageProcessor->applyFilters(CropFrame).copyTo(filteredImage);
-    imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
+    Mat crop;
+    if(ui->crop_checkBox->isChecked())
+    {
+        Rect cropedRect;
+        cropedRect.width = ui->sX_lineEdit->text().toInt()-ui->fX_lineEdit->text().toInt();
+        cropedRect.height = ui->sY_lineEdit->text().toInt()-ui->fY_lineEdit->text().toInt();
+        cropedRect.x = ui->fX_lineEdit->text().toInt();
+        cropedRect.y = ui->fY_lineEdit->text().toInt();
+
+//        Mat CropFrame(inputFrame,pic);
+        Mat CropFrame(inputFrame,cropedRect);
+        //CropFrame.copyTo(imageProcessor->Outputs[0]);
+        CropFrame.copyTo(crop);
+        imageProcessor->applyFilters(CropFrame).copyTo(filteredImage);
+   }
+    else
+    {
+        imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
+    }
 
     Mat outputFrame;
     imageProcessor->shapeDetection(filteredImage,inputFrame).copyTo(outputFrame);
 
-    if(ui->out_comboBox->currentText() == "Adaptive Threshold")
+    if(ui->out_comboBox->currentText() == "Croped")
+    {
+        crop.copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Adaptive Threshold")
     {
         imageProcessor->returnAdaptiveThreshlodImage().copyTo(outputFrame);
     }
@@ -351,7 +397,7 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     {
         cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
         QImage imgIn;
-        if(ui->out_comboBox->currentText() == "Final")
+        if(ui->out_comboBox->currentText() == "Final" || ui->out_comboBox->currentText() == "Croped")
         {
             cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
         }
@@ -365,7 +411,7 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     }
 }
 
-void MainWindow::on_camSet_checkBox_stateChanged(int arg1)
+void MainWindow::on_camSet_checkBox_stateChanged()
 {
     if(ui->camSet_checkBox->isChecked())
     {
@@ -495,10 +541,6 @@ void MainWindow::on_canny_checkBox_stateChanged(int arg1)
     }
 }
 
-void MainWindow::on_kernelSize_lineEdit_textChanged(const QString &arg1)
-{
-}
-
 void MainWindow::on_blockSize_slider_sliderMoved(int position)
 {
     ui->blockSizeOut_label->setText(QString::number(position));
@@ -523,14 +565,6 @@ void MainWindow::on_firstThresh_slider_sliderMoved(int position)
 void MainWindow::on_secondThresh_slider_sliderMoved(int position)
 {
     ui->secondThreshOut_label->setText(QString::number(position));
-}
-
-void MainWindow::on_dilateSize_lineEdit_textChanged(const QString &arg1)
-{
-}
-
-void MainWindow::on_apertureSize_lineEdit_textChanged(const QString &arg1)
-{
 }
 
 void MainWindow::on_blue_slider_sliderMoved(int position)
@@ -587,3 +621,44 @@ void MainWindow::on_gain_slider_sliderMoved(int position)
     ui->gainOut_label->setText(QString::number(position));
     emit cameraSettingChanged();
 }
+
+void MainWindow::on_crop_checkBox_stateChanged()
+{
+//    if(ui->crop_checkBox->isChecked())
+//    {
+//        enableCropSetting();
+//    }
+//    else
+//    {
+//        disableCropSetting();
+//    }
+}
+void MainWindow::on_mouse_button_clicked()
+{
+    mouseButtonClicked=!mouseButtonClicked;
+    setMouseTracking(mouseButtonClicked);
+    QString temp=(mouseButtonClicked)?"Turn Off\nMouse\nIntrrupt":"Turn On\nMouse\nIntrrupt";
+    ui->mouse_button->setText(temp);
+}
+
+void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
+{
+     if(mouseButtonClicked)
+     {
+         if(!firstPointSelected)
+         {
+             qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
+             ui->fX_lineEdit->setText(QString::number(event->x()));
+             ui->fY_lineEdit->setText(QString::number(event->y()));
+             firstPointSelected=true;
+         }
+         else
+         {
+             qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
+             ui->sX_lineEdit->setText(QString::number(event->x()));
+             ui->sY_lineEdit->setText(QString::number(event->y()));
+             firstPointSelected=false;
+         }
+     }
+}
+
