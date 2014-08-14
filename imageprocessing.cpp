@@ -7,10 +7,11 @@ ImageProcessing::ImageProcessing(QObject *parent) :
     drawContoursBool=false;
     drawGeometricLabels=false;
     drawRotatedRect=false;
+    drawBoundries=false;
     filterSetting=new filterSettings();
 }
 
-Mat ImageProcessing::shapeDetection(Mat input, Mat src)
+Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 {
     // Find contours
     vector<vector<Point> > contours;
@@ -20,6 +21,10 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
     vector<Point> approx;
     Mat dst = src.clone();
     RNG rng(12345);
+    if(drawBoundries)
+    {
+        rectangle(dst,cropedRect,Scalar(0,0,0));
+    }
     for (int i = 0; i < contours.size(); i++)
     {
         // Approximate contour with accuracy proportional
@@ -44,13 +49,13 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
         if(this->drawContoursBool)
         {
             Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
-            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point() );
+            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point(cropedRect.x,cropedRect.y) );
         }
 
         if(drawBoundedRect)
         {
             Rect boundedRect=boundingRect( Mat(contours[i]) );
-            rectangle( dst, boundedRect.tl(), boundedRect.br(), Scalar(0,128,255), 1, 8, 0 );
+            rectangle( dst, boundedRect.tl()+cropedRect.tl(), boundedRect.br()+cropedRect.tl(), Scalar(0,128,255), 1, 8, 0 );
         }
 
         if(drawRotatedRect)
@@ -59,13 +64,19 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
             rotatetBoundRect.points(vertices);
             for (int i = 0; i < 4; i++)
             {
+                vertices[i].x+=cropedRect.tl().x;
+                vertices[i].y+=cropedRect.tl().y;
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
                 line(dst, vertices[i], vertices[(i+1)%4], Scalar(147,20,255),2);
             }
         }
 
         if (approx.size() == 3)
         {
-           setLabel(dst, "TRI", contours[i]);    // Triangles
+            setLabel(dst, "TRI", contours[i],cropedRect);    // Triangles
         }
         else if (approx.size() >= 4 && approx.size() <= 6)
         {
@@ -87,11 +98,11 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
             // Use the degrees obtained above and the number of vertices
             // to determine the shape of the contour
             if (vtc == 4 && mincos >= -0.1 && maxcos <= 0.3)
-                setLabel(dst, "RECT", contours[i]);
+                setLabel(dst, "RECT", contours[i],cropedRect);
             else if (vtc == 5 && mincos >= -0.34 && maxcos <= -0.27)
-                setLabel(dst, "PENTA", contours[i]);
+                setLabel(dst, "PENTA", contours[i],cropedRect);
             else if (vtc == 6 && mincos >= -0.55 && maxcos <= -0.45)
-                setLabel(dst, "HEXA", contours[i]);
+                setLabel(dst, "HEXA", contours[i],cropedRect);
         }
         else
         {
@@ -102,12 +113,12 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
 
             if (abs(1 - ((double)r.width / r.height)) <= 0.2 &&
                 abs(1 - (area / (CV_PI * pow(radius, 2)))) <= 0.2)
-                setLabel(dst, "CIR", contours[i]);
+                setLabel(dst, "CIR", contours[i],cropedRect);
         }
     }
 
    dst.copyTo(Outputs[4]);
-    return dst;
+   return dst;
 }
 
 Mat ImageProcessing::applyFilters(Mat input)
@@ -215,7 +226,7 @@ double ImageProcessing::angle(Point pt1, Point pt2, Point pt0)
     return (dx1*dx2 + dy1*dy2)/sqrt((dx1*dx1 + dy1*dy1)*(dx2*dx2 + dy2*dy2) + 1e-10);
 }
 
-void ImageProcessing::setLabel(Mat &im, const string label, std::vector<Point> &contour)
+void ImageProcessing::setLabel(Mat &im, const string label, std::vector<Point> &contour,Rect cropedRect)
 {
     if(this->drawGeometricLabels)
     {
@@ -228,17 +239,20 @@ void ImageProcessing::setLabel(Mat &im, const string label, std::vector<Point> &
         Rect r = boundingRect(contour);
 
         Point pt(r.x + ((r.width - text.width) / 2), r.y + ((r.height + text.height) / 2));
+        pt.x+=cropedRect.x;
+        pt.y+=cropedRect.y;
         rectangle(im, pt + Point(0, baseline), pt + Point(text.width, -text.height), CV_RGB(255,255,255), CV_FILLED);
         putText(im, label, pt, fontface, scale, CV_RGB(0,0,0), thickness, 8);
     }
 }
 
-void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound, bool rotate)
+void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound, bool rotate,bool boundries)
 {
     this->drawContoursBool=con;
     this->drawGeometricLabels=geom;
     this->drawBoundedRect=bound;
     this->drawRotatedRect=rotate;
+    this->drawBoundries=boundries;
 }
 
 void ImageProcessing::updateFilterSettings(filterSettings *fs)

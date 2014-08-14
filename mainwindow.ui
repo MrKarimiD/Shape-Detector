@@ -58,7 +58,7 @@
      </font>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -104,6 +104,9 @@
       </property>
      </widget>
      <widget class="QLabel" name="add_label">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>6</x>
@@ -122,6 +125,9 @@
       </property>
      </widget>
      <widget class="QLineEdit" name="address_lineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -132,6 +138,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="address_button">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>243</x>
@@ -771,7 +780,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QCheckBox" name="Crop_checkBox">
+     <widget class="QCheckBox" name="drawCrop_checkBox">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -1349,7 +1358,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>283</string>
+       <string>0</string>
       </property>
      </widget>
      <widget class="QLineEdit" name="fY_lineEdit">
@@ -1362,7 +1371,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>9</string>
+       <string>0</string>
       </property>
      </widget>
      <widget class="QLabel" name="fVirgoul_label">
@@ -1393,7 +1402,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>490</string>
+       <string>640</string>
       </property>
      </widget>
      <widget class="QLabel" name="sVirgoul_label">
@@ -1442,7 +1451,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>312</string>
+       <string>480</string>
       </property>
      </widget>
      <widget class="Line" name="line_8">

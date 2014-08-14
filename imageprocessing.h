@@ -25,12 +25,12 @@ class ImageProcessing : public QObject
     Q_OBJECT
 public:
     explicit ImageProcessing(QObject *parent = 0);
-    Mat shapeDetection(Mat input,Mat src);
+    Mat shapeDetection(Mat input,Mat src,Rect cropedRect);
     Mat applyFilters(Mat input);
     Mat undistortImage(Mat input);
     double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0);
-    void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour);
-    void changeOutputSetting(bool con,bool geom,bool bound,bool rotate);
+    void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour,Rect cropedRect);
+    void changeOutputSetting(bool con,bool geom,bool bound,bool rotate,bool boundries);
     void updateFilterSettings(filterSettings *fs);
     Mat returnAdaptiveThreshlodImage();
     Mat returnThreshlodImage();
@@ -42,7 +42,7 @@ private:
     vector<Vec3f> finding_circles;
     filterSettings *filterSetting;
     //Mat cameraMatrix, distCoeffs;
-    bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect;
+    bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect,drawBoundries;
     bool checkAspectRatio(vector<Point> contours_poly);
     bool checkAspectRatioForRotatedRect(RotatedRect input);
 

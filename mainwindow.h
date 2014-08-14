@@ -40,17 +40,17 @@ private slots:
     void cam_timeout();
     void on_camSet_checkBox_stateChanged();
     void callImageProcessingFunctions(Mat input_mat);
-    void on_xml_checkBox_stateChanged(int arg1);
+    void on_xml_checkBox_stateChanged();
     void on_xml_button_clicked();
-    void on_cont_checkBox_stateChanged(int arg1);
-    void on_geom_checkBox_stateChanged(int arg1);
-    void on_bound_checkBox_stateChanged(int arg1);
-    void on_rotate_checkBox_stateChanged(int arg1);
-    void on_medianBlur_checkBox_stateChanged(int arg1);
-    void on_adaptiveThreshold_checkBox_stateChanged(int arg1);
-    void on_thresh_checkBox_stateChanged(int arg1);
-    void on_dilate_checkBox_stateChanged(int arg1);
-    void on_canny_checkBox_stateChanged(int arg1);
+    void on_cont_checkBox_stateChanged();
+    void on_geom_checkBox_stateChanged();
+    void on_bound_checkBox_stateChanged();
+    void on_rotate_checkBox_stateChanged();
+    void on_medianBlur_checkBox_stateChanged();
+    void on_adaptiveThreshold_checkBox_stateChanged();
+    void on_thresh_checkBox_stateChanged();
+    void on_dilate_checkBox_stateChanged();
+    void on_canny_checkBox_stateChanged();
     void on_blockSize_slider_sliderMoved(int position);
     void on_C_slider_sliderMoved(int position);
     void on_thresh_slider_sliderMoved(int position);
@@ -64,9 +64,9 @@ private slots:
     void setCameraSetting();
     void on_sharpness_slider_sliderMoved(int position);
     void on_gain_slider_sliderMoved(int position);
-    void on_crop_checkBox_stateChanged();
     void on_mouse_button_clicked();
     void mouseDoubleClickEvent(QMouseEvent *event);
+    void on_drawCrop_checkBox_stateChanged();
 
 private:
     Ui::MainWindow *ui;

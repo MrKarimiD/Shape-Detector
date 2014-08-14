@@ -37,7 +37,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_image_rButton_toggled(bool checked)
 {
-    if(ui->image_rButton->isChecked())
+    if(checked)
     {
         enableOpenImage();
 
@@ -58,7 +58,7 @@ void MainWindow::on_address_button_clicked()
 
 void MainWindow::on_camera_rButton_toggled(bool checked)
 {
-    if(ui->camera_rButton->isChecked())
+    if(checked)
     {
         enableOpenCamera();
     }
@@ -196,7 +196,8 @@ void MainWindow::disableXML()
 void MainWindow::updateOutputOptions()
 {
     imageProcessor->changeOutputSetting(ui->cont_checkBox->isChecked(),ui->geom_checkBox->isChecked()
-                                        ,ui->bound_checkBox->isChecked(),ui->rotate_checkBox->isChecked());
+                                        ,ui->bound_checkBox->isChecked(),ui->rotate_checkBox->isChecked()
+                                        ,ui->drawCrop_checkBox->isChecked());
 }
 
 void MainWindow::enableMedianBlur()
@@ -354,27 +355,29 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
 
     Mat filteredImage;
     Mat crop;
+    Rect cropedRect;
     if(ui->crop_checkBox->isChecked())
     {
-        Rect cropedRect;
         cropedRect.width = ui->sX_lineEdit->text().toInt()-ui->fX_lineEdit->text().toInt();
         cropedRect.height = ui->sY_lineEdit->text().toInt()-ui->fY_lineEdit->text().toInt();
         cropedRect.x = ui->fX_lineEdit->text().toInt();
         cropedRect.y = ui->fY_lineEdit->text().toInt();
 
-//        Mat CropFrame(inputFrame,pic);
         Mat CropFrame(inputFrame,cropedRect);
-        //CropFrame.copyTo(imageProcessor->Outputs[0]);
         CropFrame.copyTo(crop);
         imageProcessor->applyFilters(CropFrame).copyTo(filteredImage);
    }
     else
     {
         imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
+        cropedRect.width = inputFrame.rows;
+        cropedRect.height = inputFrame.cols;
+        cropedRect.x = 0;
+        cropedRect.y = 0;
     }
 
     Mat outputFrame;
-    imageProcessor->shapeDetection(filteredImage,inputFrame).copyTo(outputFrame);
+    imageProcessor->shapeDetection(filteredImage,inputFrame,cropedRect).copyTo(outputFrame);
 
     if(ui->out_comboBox->currentText() == "Croped")
     {
@@ -423,7 +426,7 @@ void MainWindow::on_camSet_checkBox_stateChanged()
     }
 }
 
-void MainWindow::on_xml_checkBox_stateChanged(int arg1)
+void MainWindow::on_xml_checkBox_stateChanged()
 {
     if(ui->xml_checkBox->isChecked())
     {
@@ -461,27 +464,27 @@ void MainWindow::on_xml_button_clicked()
     }
 }
 
-void MainWindow::on_cont_checkBox_stateChanged(int arg1)
+void MainWindow::on_cont_checkBox_stateChanged()
 {
     updateOutputOptions();
 }
 
-void MainWindow::on_geom_checkBox_stateChanged(int arg1)
+void MainWindow::on_geom_checkBox_stateChanged()
 {
     updateOutputOptions();
 }
 
-void MainWindow::on_bound_checkBox_stateChanged(int arg1)
+void MainWindow::on_bound_checkBox_stateChanged()
 {
     updateOutputOptions();
 }
 
-void MainWindow::on_rotate_checkBox_stateChanged(int arg1)
+void MainWindow::on_rotate_checkBox_stateChanged()
 {
     updateOutputOptions();
 }
 
-void MainWindow::on_medianBlur_checkBox_stateChanged(int arg1)
+void MainWindow::on_medianBlur_checkBox_stateChanged()
 {
     if(ui->medianBlur_checkBox->isChecked())
     {
@@ -493,7 +496,7 @@ void MainWindow::on_medianBlur_checkBox_stateChanged(int arg1)
     }
 }
 
-void MainWindow::on_adaptiveThreshold_checkBox_stateChanged(int arg1)
+void MainWindow::on_adaptiveThreshold_checkBox_stateChanged()
 {
     if(ui->adaptiveThreshold_checkBox->isChecked())
     {
@@ -505,7 +508,7 @@ void MainWindow::on_adaptiveThreshold_checkBox_stateChanged(int arg1)
     }
 }
 
-void MainWindow::on_thresh_checkBox_stateChanged(int arg1)
+void MainWindow::on_thresh_checkBox_stateChanged()
 {
     if(ui->thresh_checkBox->isChecked())
     {
@@ -517,7 +520,7 @@ void MainWindow::on_thresh_checkBox_stateChanged(int arg1)
     }
 }
 
-void MainWindow::on_dilate_checkBox_stateChanged(int arg1)
+void MainWindow::on_dilate_checkBox_stateChanged()
 {
     if(ui->dilate_checkBox->isChecked())
     {
@@ -529,7 +532,7 @@ void MainWindow::on_dilate_checkBox_stateChanged(int arg1)
     }
 }
 
-void MainWindow::on_canny_checkBox_stateChanged(int arg1)
+void MainWindow::on_canny_checkBox_stateChanged()
 {
     if(ui->canny_checkBox->isChecked())
     {
@@ -622,17 +625,6 @@ void MainWindow::on_gain_slider_sliderMoved(int position)
     emit cameraSettingChanged();
 }
 
-void MainWindow::on_crop_checkBox_stateChanged()
-{
-//    if(ui->crop_checkBox->isChecked())
-//    {
-//        enableCropSetting();
-//    }
-//    else
-//    {
-//        disableCropSetting();
-//    }
-}
 void MainWindow::on_mouse_button_clicked()
 {
     mouseButtonClicked=!mouseButtonClicked;
@@ -662,3 +654,7 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
      }
 }
 
+void MainWindow::on_drawCrop_checkBox_stateChanged()
+{
+    updateOutputOptions();
+}
