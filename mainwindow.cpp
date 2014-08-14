@@ -349,7 +349,6 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
         input_mat.copyTo(inputFrame);
     }
 
-    input_mat.copyTo(inputFrame);
     updateFilterSetting();
     imageProcessor->updateFilterSettings(filterSetting);
 

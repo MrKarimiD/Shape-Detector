@@ -145,7 +145,7 @@ Mat ImageProcessing::applyFilters(Mat input)
     {
         if(filterSetting->getUseThreshold())
         {
-            threshold( gray, threshold_mat,filterSetting->getThreshValue(),255,THRESH_BINARY);
+            threshold( gray, threshold_mat,filterSetting->getThreshValue(),255,THRESH_BINARY_INV);
             threshold_mat.copyTo(Outputs[2]);
         }
         else
