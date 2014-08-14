@@ -32,6 +32,9 @@ public:
     void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour);
     void changeOutputSetting(bool con,bool geom,bool bound,bool rotate);
     void updateFilterSettings(filterSettings *fs);
+    Mat returnAdaptiveThreshlodImage();
+    Mat returnThreshlodImage();
+    Mat returnCannyImage();
 
 private:
     vector<Vec3f> finding_circles;
@@ -40,6 +43,7 @@ private:
     bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect;
     bool checkAspectRatio(vector<Point> contours_poly);
     bool checkAspectRatioForRotatedRect(RotatedRect input);
+    Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
 
 signals:
 

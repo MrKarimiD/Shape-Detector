@@ -19,7 +19,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
 
     vector<Point> approx;
     Mat dst = src.clone();
-
+    RNG rng(12345);
     for (int i = 0; i < contours.size(); i++)
     {
         // Approximate contour with accuracy proportional
@@ -43,15 +43,15 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
 
         if(this->drawContoursBool)
         {
-            RNG rng(12345);
+            //RNG rng(12345);
             Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
-            drawContours(dst,contours, i, color, 1, 8, hierarchy, 0, Point() );
+            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point() );
         }
 
         if(drawBoundedRect)
         {
             Rect boundedRect=boundingRect( Mat(contours[i]) );
-            rectangle( dst, boundedRect.tl(), boundedRect.br(), Scalar(255,255,255), 2, 8, 0 );
+            rectangle( dst, boundedRect.tl(), boundedRect.br(), Scalar(0,128,255), 1, 8, 0 );
         }
 
         if(drawRotatedRect)
@@ -60,7 +60,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
             rotatetBoundRect.points(vertices);
             for (int i = 0; i < 4; i++)
             {
-                line(dst, vertices[i], vertices[(i+1)%4], Scalar(255,255,0));
+                line(dst, vertices[i], vertices[(i+1)%4], Scalar(147,20,255),2);
             }
         }
 
@@ -107,12 +107,14 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src)
         }
     }
 
+   dst.copyTo(Outputs[4]);
     return dst;
 }
 
 Mat ImageProcessing::applyFilters(Mat input)
 {
     Mat src = input.clone();
+
     // Convert to grayscale
     Mat gray;
     cvtColor(src, gray, COLOR_BGR2GRAY);
@@ -122,26 +124,25 @@ Mat ImageProcessing::applyFilters(Mat input)
     }
 
     Mat threshold_mat = Mat::zeros(gray.cols,gray.rows,CV_8UC1);
-
     if(filterSetting->getUseAdaptiveThresh())
     {
         adaptiveThreshold(gray,threshold_mat,255,ADAPTIVE_THRESH_GAUSSIAN_C,THRESH_BINARY_INV,
-                          filterSetting->getBlockSize(),
-                          filterSetting->getC());
+        filterSetting->getBlockSize(),
+        filterSetting->getC());
+        threshold_mat.copyTo(Outputs[1]);
     }
     else
     {
         if(filterSetting->getUseThreshold())
         {
             threshold( gray, threshold_mat,filterSetting->getThreshValue(),255,THRESH_BINARY);
+            threshold_mat.copyTo(Outputs[2]);
         }
         else
         {
-           threshold_mat=gray.clone();
+            threshold_mat=gray.clone();
         }
     }
-
-    //imshow("thresh",threshold_mat);
 
     if(filterSetting->getUseDilate())
     {
@@ -149,15 +150,13 @@ Mat ImageProcessing::applyFilters(Mat input)
         dilate(threshold_mat,threshold_mat,structure);
     }
 
-    //imshow("thresh",threshold_mat);
-
     // Use Canny instead of threshold to catch squares with gradient shading
     Mat bw;
     if(filterSetting->getUseCanny())
     {
         Canny(threshold_mat, bw,filterSetting->getFirstThresh(),filterSetting->getSecondThresh()
-              , filterSetting->getApertureSize());
-        imshow("Canny",bw);
+        , filterSetting->getApertureSize());
+        bw.copyTo(Outputs[3]);
     }
     else
     {
@@ -246,6 +245,21 @@ void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound, bool 
 void ImageProcessing::updateFilterSettings(filterSettings *fs)
 {
     this->filterSetting=fs;
+}
+
+Mat ImageProcessing::returnAdaptiveThreshlodImage()
+{
+    return Outputs[1];
+}
+
+Mat ImageProcessing::returnThreshlodImage()
+{
+    return Outputs[2];
+}
+
+Mat ImageProcessing::returnCannyImage()
+{
+    return Outputs[3];
 }
 
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)

@@ -13,6 +13,11 @@ MainWindow::MainWindow(QWidget *parent) :
     items<<"1"<<"0";
     ui->cam_comboBox->addItems(items);
 
+    QStringList output_items;
+    output_items<<"Croped"<<"Adaptive Threshold"<<"Threshold"<<"Canny"<<"Final";
+    ui->out_comboBox->addItems(output_items);
+    ui->out_comboBox->setCurrentIndex(4);
+
     cam_timer=new QTimer();
     filterSetting=new filterSettings();
 
@@ -310,18 +315,54 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
         input_mat.copyTo(inputFrame);
     }
 
+    input_mat.copyTo(inputFrame);
     updateFilterSetting();
     imageProcessor->updateFilterSettings(filterSetting);
 
+    Rect pic;
+    pic.width = 207;
+    pic.height = 303;
+    pic.x = 283;
+    pic.y = 9;// Point(283,9),207,303);
+
+    //Mat CropFrame(inputFrame,pic);
+
     Mat filteredImage;
+    //imageProcessor->applyFilters(CropFrame).copyTo(filteredImage);
     imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
 
     Mat outputFrame;
     imageProcessor->shapeDetection(filteredImage,inputFrame).copyTo(outputFrame);
-    cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
-    cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
-    QImage imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
-    ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
+
+    if(ui->out_comboBox->currentText() == "Adaptive Threshold")
+    {
+        imageProcessor->returnAdaptiveThreshlodImage().copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Threshold")
+    {
+        imageProcessor->returnThreshlodImage().copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Canny")
+    {
+        imageProcessor->returnCannyImage().copyTo(outputFrame);
+    }
+
+    if(!outputFrame.empty())
+    {
+        cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
+        QImage imgIn;
+        if(ui->out_comboBox->currentText() == "Final")
+        {
+            cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
+        }
+        else
+        {
+            cvtColor(outputFrame, outputFrame, COLOR_GRAY2RGB);
+       }
+
+        imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
+        ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
+    }
 }
 
 void MainWindow::on_camSet_checkBox_stateChanged(int arg1)
@@ -456,48 +497,40 @@ void MainWindow::on_canny_checkBox_stateChanged(int arg1)
 
 void MainWindow::on_kernelSize_lineEdit_textChanged(const QString &arg1)
 {
-    //--------------
 }
 
 void MainWindow::on_blockSize_slider_sliderMoved(int position)
 {
     ui->blockSizeOut_label->setText(QString::number(position));
-    //--------------
 }
 
 void MainWindow::on_C_slider_sliderMoved(int position)
 {
     ui->cOut_label->setText(QString::number(position));
-    //--------------
 }
 
 void MainWindow::on_thresh_slider_sliderMoved(int position)
 {
     ui->threshOut_label->setText(QString::number(position));
-    //--------------
 }
 
 void MainWindow::on_firstThresh_slider_sliderMoved(int position)
 {
     ui->firstThreshOut_label->setText(QString::number(position));
-    //--------------
 }
 
 
 void MainWindow::on_secondThresh_slider_sliderMoved(int position)
 {
     ui->secondThreshOut_label->setText(QString::number(position));
-    //--------------
 }
 
 void MainWindow::on_dilateSize_lineEdit_textChanged(const QString &arg1)
 {
-    //--------------
 }
 
 void MainWindow::on_apertureSize_lineEdit_textChanged(const QString &arg1)
 {
-    //--------------
 }
 
 void MainWindow::on_blue_slider_sliderMoved(int position)
