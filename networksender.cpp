@@ -1,13 +1,21 @@
 #include "networksender.h"
 
-NetworkSender::NetworkSender(QString ip, quint16 port, QObject *parent) :
+NetworkSender::NetworkSender(QObject *parent) :
     QObject(parent)
 {
     udpSocket = new QUdpSocket(this);
-    udpSocket->bind(QHostAddress(ip),port);
+}
+
+void NetworkSender::configure(QString ip, quint16 port)
+{
+    groupAddress = QHostAddress(ip);
+    udpSocket->setSocketOption(QAbstractSocket::MulticastTtlOption,1);
+    this->port = port;
 }
 
 void NetworkSender::sendData(QByteArray out)
 {
-    udpSocket->write(out);
+    qDebug()<<"Sending Data...";
+    udpSocket->writeDatagram(out.data(), out.size(),
+                                groupAddress, port);
 }

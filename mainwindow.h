@@ -18,6 +18,7 @@
 #include "QString"
 #include "QSemaphore"
 #include "QMessageBox"
+#include "networksender.h"
 
 using namespace cv;
 using namespace std;
@@ -111,14 +112,17 @@ private slots:
 
     void on_thirsM_rButton_toggled(bool checked);
 
+    void send_timer_interval();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
-    QTimer *cam_timer;
+    QTimer *cam_timer,*send_timer;
     VideoCapture cap;
     bool cameraIsOpened,mouseButtonClicked,firstPointSelected,imProcDataAvailable;
     filterSettings *filterSetting;
     QSemaphore *semaphore;
+    NetworkSender *sendingSocket;
 
     void enableCameraSetting();
 

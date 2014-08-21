@@ -47,8 +47,6 @@ public:
 
     void findColors(Mat input);
 
-    void sendSignal();
-
     Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
 
     GameGround result;
@@ -64,8 +62,8 @@ private:
     double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0);
     void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour,Rect cropedRect);
 
+    QByteArray output_bytes;
 signals:
-    void gameGroundReady(const GameGround &out);
 
 public slots:
 

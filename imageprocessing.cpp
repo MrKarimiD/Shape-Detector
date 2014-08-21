@@ -9,7 +9,9 @@ ImageProcessing::ImageProcessing(QObject *parent) :
     drawRotatedRect=false;
     drawBoundries=false;
     filterSetting=new filterSettings();
+    //sendingSocket = new NetworkSender();
 
+    //connect(this,SIGNAL(gameGroundReady(GameGround)),this,SLOT(convert(GameGround)));
 }
 
 Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
@@ -301,12 +303,6 @@ void ImageProcessing::findColors(Mat input)
 
     cvtColor(input,src,COLOR_BGR2HSV);
     inRange(src, Scalar(90,150,150), Scalar(170,255,255), thresh);
-}
-
-void ImageProcessing::sendSignal()
-{
-   qDebug()<<"sendSignal();";
-   emit gameGroundReady(result);
 }
 
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)

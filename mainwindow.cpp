@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     imProcDataAvailable=false;
 
     semaphore=new QSemaphore(1);
+    sendingSocket = new NetworkSender();
 
     QStringList items;
     items<<"1"<<"0";
@@ -23,12 +24,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->out_comboBox->addItems(output_items);
     ui->out_comboBox->setCurrentIndex(4);
 
-    cam_timer=new QTimer();
+    cam_timer = new QTimer();
+    send_timer = new QTimer();
     filterSetting=new filterSettings();
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
-    //connect(this,SIGNAL())
+    connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
 
     imageProcessor=new ImageProcessing();
 }
@@ -76,6 +78,8 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
 
 void MainWindow::on_open_button_clicked()
 {
+        sendingSocket->configure(ui->ip_lineEdit->text(),ui->port_lineEdit->text().toInt());
+
         Mat frame;
 
         if(ui->cam_comboBox->currentText()=="0")
@@ -729,52 +733,7 @@ void MainWindow::on_secondM_rButton_toggled(bool checked)
 
 void MainWindow::on_go_button_clicked()
 {
-    qDebug()<<"1";
-    semaphore->acquire(1);
-    qDebug()<<"2";
-    if(imProcDataAvailable)
-    {
-        qDebug()<<"vared if";
-        if(ui->firstM_rButton->isChecked())
-        {
-            qDebug()<<"4";
-            imageProcessor->result.setMission(1);
-            imageProcessor->result.setEndPoint(Vector2D(ui->fMendX_lineEdit->text().toInt()
-                                                        ,ui->fMendY_lineEdit->text().toInt()));
-            //imageProcessor->result.setFirstRegion(Rect2D());
-            //imageProcessor->result.setSecondRegion();
-            imageProcessor->sendSignal();
-        }
-        else if(ui->secondM_rButton->isChecked())
-        {
-            qDebug()<<"5";
-            imageProcessor->result.setMission(2);
-            imageProcessor->result.setEndPoint(Vector2D(ui->sMendX_lineEdit->text().toInt()
-                                                        ,ui->sMendY_lineEdit->text().toInt()));
-            imageProcessor->sendSignal();
-        }
-        else if(ui->thirsM_rButton->isChecked())
-        {
-            qDebug()<<"6";
-            imageProcessor->result.setMission(3);
-            if(ui->attacker_rButton->isChecked())
-                imageProcessor->result.setRole(true);
-            else if(ui->defender_rButton->isChecked())
-                imageProcessor->result.setRole(false);
-
-            imageProcessor->sendSignal();
-        }
-        else
-        {
-//            QMessageBox msgBox;
-//            msgBox.setText("Select a Mission!");
-//            //msgBox.setIcon(QMessageBox::Critical);
-//            msgBox.exec();
-            qDebug()<<"Select a Mission!";
-        }
-    }
-
-    semaphore->release(1);
+    send_timer->start(15);
 }
 
 void MainWindow::on_thirsM_rButton_toggled(bool checked)
@@ -787,4 +746,53 @@ void MainWindow::on_thirsM_rButton_toggled(bool checked)
     {
         ui->role_groupBox->setDisabled(true);
     }
+}
+
+void MainWindow::send_timer_interval()
+{
+    semaphore->acquire(1);
+
+    if(imProcDataAvailable)
+    {
+        if(ui->firstM_rButton->isChecked())
+        {
+            imageProcessor->result.setMission(1);
+            imageProcessor->result.setEndPoint(Vector2D(ui->fMendX_lineEdit->text().toInt()
+                                                        ,ui->fMendY_lineEdit->text().toInt()));
+            //imageProcessor->result.setFirstRegion(Rect2D());
+            //imageProcessor->result.setSecondRegion();
+            sendingSocket->sendData("Mission1");
+        }
+        else if(ui->secondM_rButton->isChecked())
+        {
+            imageProcessor->result.setMission(2);
+            imageProcessor->result.setEndPoint(Vector2D(ui->sMendX_lineEdit->text().toInt()
+                                                        ,ui->sMendY_lineEdit->text().toInt()));
+            sendingSocket->sendData("Mission2");
+        }
+        else if(ui->thirsM_rButton->isChecked())
+        {
+            imageProcessor->result.setMission(3);
+            if(ui->attacker_rButton->isChecked())
+                imageProcessor->result.setRole(true);
+            else if(ui->defender_rButton->isChecked())
+                imageProcessor->result.setRole(false);
+
+            sendingSocket->sendData("Mission3");
+        }
+        else
+        {
+//            QMessageBox msgBox;
+//            msgBox.setText("Select a Mission!");
+//            //msgBox.setIcon(QMessageBox::Critical);
+//            msgBox.exec();
+            qDebug()<<"Error : Select a Mission!";
+        }
+    }
+    else
+    {
+        qDebug()<<"Error : First Turn On Camera!";
+    }
+
+    semaphore->release(1);
 }

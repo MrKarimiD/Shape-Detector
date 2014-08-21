@@ -9,11 +9,14 @@ class NetworkSender : public QObject
 {
     Q_OBJECT
 public:
-    explicit NetworkSender(QString ip,quint16 port,QObject *parent = 0);
+    explicit NetworkSender(QObject *parent = 0);
+    void configure(QString ip,quint16 port);
     void sendData(QByteArray out);
 
 private:
     QUdpSocket *udpSocket;
+    QHostAddress groupAddress;
+    quint16 port;
 
 signals:
 
