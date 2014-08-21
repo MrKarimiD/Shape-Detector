@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     sendingSocket = new NetworkSender();
 
     QStringList items;
-    items<<"1"<<"0";
+    items<<"0"<<"1";
     ui->cam_comboBox->addItems(items);
 
     QStringList output_items;
