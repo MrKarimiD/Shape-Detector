@@ -16,6 +16,8 @@
 #include "filtersettings.h"
 #include "QMouseEvent"
 #include "QString"
+#include "QSemaphore"
+#include "QMessageBox"
 
 using namespace cv;
 using namespace std;
@@ -34,70 +36,141 @@ public:
 
 private slots:
     void on_image_rButton_toggled(bool checked);
+
     void on_address_button_clicked();
+
     void on_camera_rButton_toggled(bool checked);
+
     void on_open_button_clicked();
+
     void cam_timeout();
+
     void on_camSet_checkBox_stateChanged();
+
     void callImageProcessingFunctions(Mat input_mat);
+
     void on_xml_checkBox_stateChanged();
+
     void on_xml_button_clicked();
+
     void on_cont_checkBox_stateChanged();
+
     void on_geom_checkBox_stateChanged();
+
     void on_bound_checkBox_stateChanged();
+
     void on_rotate_checkBox_stateChanged();
+
     void on_medianBlur_checkBox_stateChanged();
+
     void on_adaptiveThreshold_checkBox_stateChanged();
+
     void on_thresh_checkBox_stateChanged();
+
     void on_dilate_checkBox_stateChanged();
+
     void on_canny_checkBox_stateChanged();
+
     void on_blockSize_slider_sliderMoved(int position);
+
     void on_C_slider_sliderMoved(int position);
+
     void on_thresh_slider_sliderMoved(int position);
+
     void on_firstThresh_slider_sliderMoved(int position);
+
     void on_secondThresh_slider_sliderMoved(int position);
+
     void on_blue_slider_sliderMoved(int position);
+
     void on_red_slider_sliderMoved(int position);
+
     void on_exposure_slider_sliderMoved(int position);
+
     void on_brightness_slider_sliderMoved(int position);
+
     void updateCameraSetting();
+
     void setCameraSetting();
+
     void on_sharpness_slider_sliderMoved(int position);
+
     void on_gain_slider_sliderMoved(int position);
+
     void on_mouse_button_clicked();
+
     void mouseDoubleClickEvent(QMouseEvent *event);
+
     void on_drawCrop_checkBox_stateChanged();
+
+    void on_firstM_rButton_toggled(bool checked);
+
+    void on_secondM_rButton_toggled(bool checked);
+
+    void on_go_button_clicked();
+
+    void on_thirsM_rButton_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
     QTimer *cam_timer;
     VideoCapture cap;
-    bool cameraIsOpened,mouseButtonClicked,firstPointSelected;
+    bool cameraIsOpened,mouseButtonClicked,firstPointSelected,imProcDataAvailable;
     filterSettings *filterSetting;
+    QSemaphore *semaphore;
 
     void enableCameraSetting();
+
     void disableCameraSetting();
+
     void enableOpenCamera();
+
     void disableOpenCamera();
+
     void enableOpenImage();
+
     void disableOpenImage();
+
     void enableXML();
+
     void disableXML();
+
     void updateOutputOptions();
+
     void enableMedianBlur();
+
     void disableMedianBlur();
+
     void enableAdaptiveThresholdSetting();
+
     void disableAdaptiveThresholdSetting();
+
     void enableThresholdSetting();
+
     void disableThresholdSetting();
+
     void enableDilateSetting();
+
     void disableDilateSetting();
+
     void enableCannySetting();
+
     void disableCannySetting();
+
     void updateFilterSetting();
+
     void enableCropSetting();
+
     void disableCropSetting();
+
+    void enableFirstMission();
+
+    void disableFirstMission();
+
+    void enableSecondMission();
+
+    void disableSecondMission();
 
 signals:
     void imageReady(Mat image);

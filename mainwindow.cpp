@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent) :
     cameraIsOpened=false;
     mouseButtonClicked=false;
     firstPointSelected=false;
+    imProcDataAvailable=false;
+
+    semaphore=new QSemaphore(1);
 
     QStringList items;
     items<<"1"<<"0";
@@ -337,6 +340,44 @@ void MainWindow::disableCropSetting()
     ui->mouse_button->setDisabled(true);
 }
 
+void MainWindow::enableFirstMission()
+{
+    ui->region1_groupBox->setEnabled(true);
+
+    ui->region2_groupBox->setEnabled(true);
+
+    ui->fMendX_lineEdit->setEnabled(true);
+    ui->fMendY_lineEdit->setEnabled(true);
+    ui->fMend_label->setEnabled(true);
+    ui->fMVirgoul_label->setEnabled(true);
+}
+
+void MainWindow::disableFirstMission()
+{
+    ui->region1_groupBox->setDisabled(true);
+
+    ui->region2_groupBox->setDisabled(true);
+
+    ui->fMendX_lineEdit->setDisabled(true);
+    ui->fMendY_lineEdit->setDisabled(true);
+    ui->fMend_label->setDisabled(true);
+    ui->fMVirgoul_label->setDisabled(true);
+}
+
+void MainWindow::enableSecondMission()
+{
+    ui->sMendX_lineEdit->setEnabled(true);
+    ui->sMendY_lineEdit->setEnabled(true);
+    ui->sMend_label->setEnabled(true);
+}
+
+void MainWindow::disableSecondMission()
+{
+    ui->sMendX_lineEdit->setDisabled(true);
+    ui->sMendY_lineEdit->setDisabled(true);
+    ui->sMend_label->setDisabled(true);
+}
+
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
     Mat inputFrame;
@@ -375,8 +416,13 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
         cropedRect.y = 0;
     }
 
+    semaphore->acquire();
+    imProcDataAvailable=false;
     Mat outputFrame;
     imageProcessor->shapeDetection(filteredImage,inputFrame,cropedRect).copyTo(outputFrame);
+    imageProcessor->findColors(inputFrame);
+    imProcDataAvailable=true;
+    semaphore->release();
 
     if(ui->out_comboBox->currentText() == "Croped")
     {
@@ -563,7 +609,6 @@ void MainWindow::on_firstThresh_slider_sliderMoved(int position)
     ui->firstThreshOut_label->setText(QString::number(position));
 }
 
-
 void MainWindow::on_secondThresh_slider_sliderMoved(int position)
 {
     ui->secondThreshOut_label->setText(QString::number(position));
@@ -656,4 +701,90 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 void MainWindow::on_drawCrop_checkBox_stateChanged()
 {
     updateOutputOptions();
+}
+
+void MainWindow::on_firstM_rButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableFirstMission();
+    }
+    else
+    {
+        disableFirstMission();
+    }
+}
+
+void MainWindow::on_secondM_rButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSecondMission();
+    }
+    else
+    {
+        disableSecondMission();
+    }
+}
+
+void MainWindow::on_go_button_clicked()
+{
+    qDebug()<<"1";
+    semaphore->acquire(1);
+    qDebug()<<"2";
+    if(imProcDataAvailable)
+    {
+        qDebug()<<"vared if";
+        if(ui->firstM_rButton->isChecked())
+        {
+            qDebug()<<"4";
+            imageProcessor->result.setMission(1);
+            imageProcessor->result.setEndPoint(Vector2D(ui->fMendX_lineEdit->text().toInt()
+                                                        ,ui->fMendY_lineEdit->text().toInt()));
+            //imageProcessor->result.setFirstRegion(Rect2D());
+            //imageProcessor->result.setSecondRegion();
+            imageProcessor->sendSignal();
+        }
+        else if(ui->secondM_rButton->isChecked())
+        {
+            qDebug()<<"5";
+            imageProcessor->result.setMission(2);
+            imageProcessor->result.setEndPoint(Vector2D(ui->sMendX_lineEdit->text().toInt()
+                                                        ,ui->sMendY_lineEdit->text().toInt()));
+            imageProcessor->sendSignal();
+        }
+        else if(ui->thirsM_rButton->isChecked())
+        {
+            qDebug()<<"6";
+            imageProcessor->result.setMission(3);
+            if(ui->attacker_rButton->isChecked())
+                imageProcessor->result.setRole(true);
+            else if(ui->defender_rButton->isChecked())
+                imageProcessor->result.setRole(false);
+
+            imageProcessor->sendSignal();
+        }
+        else
+        {
+//            QMessageBox msgBox;
+//            msgBox.setText("Select a Mission!");
+//            //msgBox.setIcon(QMessageBox::Critical);
+//            msgBox.exec();
+            qDebug()<<"Select a Mission!";
+        }
+    }
+
+    semaphore->release(1);
+}
+
+void MainWindow::on_thirsM_rButton_toggled(bool checked)
+{
+    if(checked)
+    {
+        ui->role_groupBox->setEnabled(true);
+    }
+    else
+    {
+        ui->role_groupBox->setDisabled(true);
+    }
 }

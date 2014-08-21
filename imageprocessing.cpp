@@ -9,10 +9,13 @@ ImageProcessing::ImageProcessing(QObject *parent) :
     drawRotatedRect=false;
     drawBoundries=false;
     filterSetting=new filterSettings();
+
 }
 
 Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 {
+    result.output.clearShapeList();
+
     // Find contours
     vector<vector<Point> > contours;
     vector<Vec4i> hierarchy;
@@ -36,9 +39,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
             continue;
 
         if(!checkAspectRatio(contours[i]))
-        {
             continue;
-        }
 
         RotatedRect rotatetBoundRect=minAreaRect(Mat(contours[i]));
         if(!checkAspectRatioForRotatedRect(rotatetBoundRect))
@@ -77,6 +78,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
         if (approx.size() == 3)
         {
             setLabel(dst, "TRI", contours[i],cropedRect);    // Triangles
+            prepareDataForOutput(contours[i],"TRI");
         }
         else if (approx.size() >= 4 && approx.size() <= 6)
         {
@@ -98,11 +100,20 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
             // Use the degrees obtained above and the number of vertices
             // to determine the shape of the contour
             if (vtc == 4 && mincos >= -0.1 && maxcos <= 0.3)
+            {
                 setLabel(dst, "RECT", contours[i],cropedRect);
+                prepareDataForOutput(contours[i],"RECT");
+            }
             else if (vtc == 5 && mincos >= -0.34 && maxcos <= -0.27)
+            {
                 setLabel(dst, "PENTA", contours[i],cropedRect);
+                prepareDataForOutput(contours[i],"PENTA");
+            }
             else if (vtc == 6 && mincos >= -0.55 && maxcos <= -0.45)
-                setLabel(dst, "HEXA", contours[i],cropedRect);
+            {
+                    setLabel(dst, "HEXA", contours[i],cropedRect);
+                    prepareDataForOutput(contours[i],"HEXA");
+            }
         }
         else
         {
@@ -113,7 +124,10 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 
             if (abs(1 - ((double)r.width / r.height)) <= 0.2 &&
                 abs(1 - (area / (CV_PI * pow(radius, 2)))) <= 0.2)
+            {
                 setLabel(dst, "CIR", contours[i],cropedRect);
+                prepareDataForOutput(contours[i],"CIR");
+            }
         }
     }
 
@@ -280,6 +294,21 @@ Mat ImageProcessing::returnCropedImage()
     return Outputs[0];
 }
 
+void ImageProcessing::findColors(Mat input)
+{
+    Mat src,thresh;
+//    input.copyTo(src);
+
+    cvtColor(input,src,COLOR_BGR2HSV);
+    inRange(src, Scalar(90,150,150), Scalar(170,255,255), thresh);
+}
+
+void ImageProcessing::sendSignal()
+{
+   qDebug()<<"sendSignal();";
+   emit gameGroundReady(result);
+}
+
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)
 {
     Rect boundedRect=boundingRect( Mat(contours_poly) );
@@ -303,4 +332,15 @@ bool ImageProcessing::checkAspectRatioForRotatedRect(RotatedRect input)
         out=false;
 
     return out;
+}
+
+void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString type)
+{
+    //qDebug()<<"prepareDataForOutput";
+    Point2f center;
+    float radius;
+    minEnclosingCircle( (Mat)contour, center, radius );
+    //qDebug()<<"Radius:"<<radius;
+    Vector2D pos(center.x,center.y);
+    result.output.addShape(pos,(double)radius,"Unkown",type);
 }

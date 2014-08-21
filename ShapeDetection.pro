@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT       += core gui xml network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,11 +15,52 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     imageprocessing.cpp \
-    filtersettings.cpp
+    filtersettings.cpp \
+    cameraoutput.cpp \
+    gameground.cpp \
+    shape.cpp \
+    networksender.cpp \
+    geom/angle_deg.cpp \
+    geom/circle_2d.cpp \
+    geom/composite_region_2d.cpp \
+    geom/convex_hull.cpp \
+    geom/delaunay_triangulation.cpp \
+    geom/line_2d.cpp \
+    geom/matrix_2d.cpp \
+    geom/polygon_2d.cpp \
+    geom/ray_2d.cpp \
+    geom/rect_2d.cpp \
+    geom/sector_2d.cpp \
+    geom/segment_2d.cpp \
+    geom/triangle_2d.cpp \
+    geom/vector_2d.cpp
 
 HEADERS  += mainwindow.h \
     imageprocessing.h \
-    filtersettings.h
+    filtersettings.h \
+    cameraoutput.h \
+    gameground.h \
+    shape.h \
+    geom/geom.h \
+    networksender.h \
+    geom/angle_deg.h \
+    geom/circle_2d.h \
+    geom/composite_region_2d.h \
+    geom/convex_hull.h \
+    geom/delaunay_triangulation.h \
+    geom/line_2d.h \
+    geom/matrix_2d.h \
+    geom/polygon_2d.h \
+    geom/ray_2d.h \
+    geom/rect_2d.h \
+    geom/region_2d.h \
+    geom/sector_2d.h \
+    geom/segment_2d.h \
+    geom/size_2d.h \
+    geom/triangle_2d.h \
+    geom/triangulation.h \
+    geom/vector_2d.h \
+    geom/geom.h
 
 FORMS    += mainwindow.ui
 
