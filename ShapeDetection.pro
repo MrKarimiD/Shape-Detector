@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     geom/sector_2d.cpp \
     geom/segment_2d.cpp \
     geom/triangle_2d.cpp \
-    geom/vector_2d.cpp
+    geom/vector_2d.cpp \
+    Prototype_Messages/GameGround.pb.cc
 
 HEADERS  += mainwindow.h \
     imageprocessing.h \
@@ -60,7 +61,9 @@ HEADERS  += mainwindow.h \
     geom/triangle_2d.h \
     geom/triangulation.h \
     geom/vector_2d.h \
-    geom/geom.h
+    geom/geom.h \
+    Packets.h \
+    Prototype_Messages/GameGround.pb.h
 
 FORMS    += mainwindow.ui
 

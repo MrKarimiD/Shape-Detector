@@ -19,6 +19,7 @@
 #include "QSemaphore"
 #include "QMessageBox"
 #include "networksender.h"
+#include "Packets.h"
 
 using namespace cv;
 using namespace std;
@@ -114,6 +115,8 @@ private slots:
 
     void send_timer_interval();
 
+    void addEveryThingToPackets();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
@@ -123,6 +126,7 @@ private:
     filterSettings *filterSetting;
     QSemaphore *semaphore;
     NetworkSender *sendingSocket;
+    union sendingPacket dataGram;
 
     void enableCameraSetting();
 

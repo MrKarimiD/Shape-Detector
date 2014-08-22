@@ -796,3 +796,8 @@ void MainWindow::send_timer_interval()
 
     semaphore->release(1);
 }
+
+void MainWindow::addEveryThingToPackets()
+{
+    //dataGram.GameData.mission = imageProcessor->result.getMission();
+}
