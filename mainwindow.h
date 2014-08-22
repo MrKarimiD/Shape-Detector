@@ -20,6 +20,7 @@
 #include "QMessageBox"
 #include "networksender.h"
 #include "Packets.h"
+#include "Prototype_Messages/GameGround.pb.h"
 
 using namespace cv;
 using namespace std;
@@ -127,6 +128,8 @@ private:
     QSemaphore *semaphore;
     NetworkSender *sendingSocket;
     union sendingPacket dataGram;
+
+    outputPacket outputPackets;
 
     void enableCameraSetting();
 

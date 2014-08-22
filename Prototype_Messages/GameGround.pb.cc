@@ -15,33 +15,33 @@
 
 namespace {
 
-const ::google::protobuf::Descriptor* GameGround_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_vector2D_descriptor_ = NULL;
+  outputPacket_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_vector2D_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_vector2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_rect2D_descriptor_ = NULL;
+  outputPacket_vector2D_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_rect2D_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_rect2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_Mission1_descriptor_ = NULL;
+  outputPacket_rect2D_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_Mission1_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_Mission1_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_line_descriptor_ = NULL;
+  outputPacket_Mission1_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_line_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_line_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_Mission2_descriptor_ = NULL;
+  outputPacket_line_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_Mission2_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_Mission2_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_circle2D_descriptor_ = NULL;
+  outputPacket_Mission2_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_circle2D_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_circle2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_Mission3_descriptor_ = NULL;
+  outputPacket_circle2D_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_Mission3_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_Mission3_reflection_ = NULL;
-const ::google::protobuf::Descriptor* GameGround_shape_descriptor_ = NULL;
+  outputPacket_Mission3_reflection_ = NULL;
+const ::google::protobuf::Descriptor* outputPacket_shape_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  GameGround_shape_reflection_ = NULL;
+  outputPacket_shape_reflection_ = NULL;
 
 }  // namespace
 
@@ -52,166 +52,166 @@ void protobuf_AssignDesc_GameGround_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "GameGround.proto");
   GOOGLE_CHECK(file != NULL);
-  GameGround_descriptor_ = file->message_type(0);
-  static const int GameGround_offsets_[10] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, mission_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, numberofshape_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, our_robot_position_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, our_robot_angle_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, opp_robot_x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, opp_robot_angle_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, shapes_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, mission1_data_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, mission2_data_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, mission3_data_),
+  outputPacket_descriptor_ = file->message_type(0);
+  static const int outputPacket_offsets_[10] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, numberofshape_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_position_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_angle_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_angle_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, shapes_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_data_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission2_data_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_data_),
   };
-  GameGround_reflection_ =
+  outputPacket_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_descriptor_,
-      GameGround::default_instance_,
-      GameGround_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround, _unknown_fields_),
+      outputPacket_descriptor_,
+      outputPacket::default_instance_,
+      outputPacket_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround));
-  GameGround_vector2D_descriptor_ = GameGround_descriptor_->nested_type(0);
-  static const int GameGround_vector2D_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_vector2D, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_vector2D, y_),
+      sizeof(outputPacket));
+  outputPacket_vector2D_descriptor_ = outputPacket_descriptor_->nested_type(0);
+  static const int outputPacket_vector2D_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, y_),
   };
-  GameGround_vector2D_reflection_ =
+  outputPacket_vector2D_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_vector2D_descriptor_,
-      GameGround_vector2D::default_instance_,
-      GameGround_vector2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_vector2D, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_vector2D, _unknown_fields_),
+      outputPacket_vector2D_descriptor_,
+      outputPacket_vector2D::default_instance_,
+      outputPacket_vector2D_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_vector2D));
-  GameGround_rect2D_descriptor_ = GameGround_descriptor_->nested_type(1);
-  static const int GameGround_rect2D_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_rect2D, tl_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_rect2D, br_),
+      sizeof(outputPacket_vector2D));
+  outputPacket_rect2D_descriptor_ = outputPacket_descriptor_->nested_type(1);
+  static const int outputPacket_rect2D_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, tl_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, br_),
   };
-  GameGround_rect2D_reflection_ =
+  outputPacket_rect2D_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_rect2D_descriptor_,
-      GameGround_rect2D::default_instance_,
-      GameGround_rect2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_rect2D, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_rect2D, _unknown_fields_),
+      outputPacket_rect2D_descriptor_,
+      outputPacket_rect2D::default_instance_,
+      outputPacket_rect2D_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_rect2D));
-  GameGround_Mission1_descriptor_ = GameGround_descriptor_->nested_type(2);
-  static const int GameGround_Mission1_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission1, isvalid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission1, region1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission1, region2_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission1, end_),
+      sizeof(outputPacket_rect2D));
+  outputPacket_Mission1_descriptor_ = outputPacket_descriptor_->nested_type(2);
+  static const int outputPacket_Mission1_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, isvalid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, region1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, region2_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, end_),
   };
-  GameGround_Mission1_reflection_ =
+  outputPacket_Mission1_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_Mission1_descriptor_,
-      GameGround_Mission1::default_instance_,
-      GameGround_Mission1_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission1, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission1, _unknown_fields_),
+      outputPacket_Mission1_descriptor_,
+      outputPacket_Mission1::default_instance_,
+      outputPacket_Mission1_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_Mission1));
-  GameGround_line_descriptor_ = GameGround_descriptor_->nested_type(3);
-  static const int GameGround_line_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_line, start_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_line, end_),
+      sizeof(outputPacket_Mission1));
+  outputPacket_line_descriptor_ = outputPacket_descriptor_->nested_type(3);
+  static const int outputPacket_line_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, start_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, end_),
   };
-  GameGround_line_reflection_ =
+  outputPacket_line_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_line_descriptor_,
-      GameGround_line::default_instance_,
-      GameGround_line_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_line, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_line, _unknown_fields_),
+      outputPacket_line_descriptor_,
+      outputPacket_line::default_instance_,
+      outputPacket_line_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_line));
-  GameGround_Mission2_descriptor_ = GameGround_descriptor_->nested_type(4);
-  static const int GameGround_Mission2_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission2, isvalid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission2, lines_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission2, end_),
+      sizeof(outputPacket_line));
+  outputPacket_Mission2_descriptor_ = outputPacket_descriptor_->nested_type(4);
+  static const int outputPacket_Mission2_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, isvalid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, lines_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, end_),
   };
-  GameGround_Mission2_reflection_ =
+  outputPacket_Mission2_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_Mission2_descriptor_,
-      GameGround_Mission2::default_instance_,
-      GameGround_Mission2_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission2, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission2, _unknown_fields_),
+      outputPacket_Mission2_descriptor_,
+      outputPacket_Mission2::default_instance_,
+      outputPacket_Mission2_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_Mission2));
-  GameGround_circle2D_descriptor_ = GameGround_descriptor_->nested_type(5);
-  static const int GameGround_circle2D_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_circle2D, center_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_circle2D, radios_),
+      sizeof(outputPacket_Mission2));
+  outputPacket_circle2D_descriptor_ = outputPacket_descriptor_->nested_type(5);
+  static const int outputPacket_circle2D_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, center_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, radios_),
   };
-  GameGround_circle2D_reflection_ =
+  outputPacket_circle2D_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_circle2D_descriptor_,
-      GameGround_circle2D::default_instance_,
-      GameGround_circle2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_circle2D, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_circle2D, _unknown_fields_),
+      outputPacket_circle2D_descriptor_,
+      outputPacket_circle2D::default_instance_,
+      outputPacket_circle2D_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_circle2D));
-  GameGround_Mission3_descriptor_ = GameGround_descriptor_->nested_type(6);
-  static const int GameGround_Mission3_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, isvalid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, isattacker_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, circularborde_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, goal1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, goal2_),
+      sizeof(outputPacket_circle2D));
+  outputPacket_Mission3_descriptor_ = outputPacket_descriptor_->nested_type(6);
+  static const int outputPacket_Mission3_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, isvalid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, isattacker_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, circularborde_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, goal1_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, goal2_),
   };
-  GameGround_Mission3_reflection_ =
+  outputPacket_Mission3_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_Mission3_descriptor_,
-      GameGround_Mission3::default_instance_,
-      GameGround_Mission3_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_Mission3, _unknown_fields_),
+      outputPacket_Mission3_descriptor_,
+      outputPacket_Mission3::default_instance_,
+      outputPacket_Mission3_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_Mission3));
-  GameGround_shape_descriptor_ = GameGround_descriptor_->nested_type(7);
-  static const int GameGround_shape_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_shape, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_shape, color_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_shape, position_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_shape, radios_),
+      sizeof(outputPacket_Mission3));
+  outputPacket_shape_descriptor_ = outputPacket_descriptor_->nested_type(7);
+  static const int outputPacket_shape_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, type_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, color_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, position_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, radios_),
   };
-  GameGround_shape_reflection_ =
+  outputPacket_shape_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      GameGround_shape_descriptor_,
-      GameGround_shape::default_instance_,
-      GameGround_shape_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_shape, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(GameGround_shape, _unknown_fields_),
+      outputPacket_shape_descriptor_,
+      outputPacket_shape::default_instance_,
+      outputPacket_shape_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(GameGround_shape));
+      sizeof(outputPacket_shape));
 }
 
 namespace {
@@ -225,46 +225,46 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_descriptor_, &GameGround::default_instance());
+    outputPacket_descriptor_, &outputPacket::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_vector2D_descriptor_, &GameGround_vector2D::default_instance());
+    outputPacket_vector2D_descriptor_, &outputPacket_vector2D::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_rect2D_descriptor_, &GameGround_rect2D::default_instance());
+    outputPacket_rect2D_descriptor_, &outputPacket_rect2D::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_Mission1_descriptor_, &GameGround_Mission1::default_instance());
+    outputPacket_Mission1_descriptor_, &outputPacket_Mission1::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_line_descriptor_, &GameGround_line::default_instance());
+    outputPacket_line_descriptor_, &outputPacket_line::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_Mission2_descriptor_, &GameGround_Mission2::default_instance());
+    outputPacket_Mission2_descriptor_, &outputPacket_Mission2::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_circle2D_descriptor_, &GameGround_circle2D::default_instance());
+    outputPacket_circle2D_descriptor_, &outputPacket_circle2D::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_Mission3_descriptor_, &GameGround_Mission3::default_instance());
+    outputPacket_Mission3_descriptor_, &outputPacket_Mission3::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    GameGround_shape_descriptor_, &GameGround_shape::default_instance());
+    outputPacket_shape_descriptor_, &outputPacket_shape::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_GameGround_2eproto() {
-  delete GameGround::default_instance_;
-  delete GameGround_reflection_;
-  delete GameGround_vector2D::default_instance_;
-  delete GameGround_vector2D_reflection_;
-  delete GameGround_rect2D::default_instance_;
-  delete GameGround_rect2D_reflection_;
-  delete GameGround_Mission1::default_instance_;
-  delete GameGround_Mission1_reflection_;
-  delete GameGround_line::default_instance_;
-  delete GameGround_line_reflection_;
-  delete GameGround_Mission2::default_instance_;
-  delete GameGround_Mission2_reflection_;
-  delete GameGround_circle2D::default_instance_;
-  delete GameGround_circle2D_reflection_;
-  delete GameGround_Mission3::default_instance_;
-  delete GameGround_Mission3_reflection_;
-  delete GameGround_shape::default_instance_;
-  delete GameGround_shape_reflection_;
+  delete outputPacket::default_instance_;
+  delete outputPacket_reflection_;
+  delete outputPacket_vector2D::default_instance_;
+  delete outputPacket_vector2D_reflection_;
+  delete outputPacket_rect2D::default_instance_;
+  delete outputPacket_rect2D_reflection_;
+  delete outputPacket_Mission1::default_instance_;
+  delete outputPacket_Mission1_reflection_;
+  delete outputPacket_line::default_instance_;
+  delete outputPacket_line_reflection_;
+  delete outputPacket_Mission2::default_instance_;
+  delete outputPacket_Mission2_reflection_;
+  delete outputPacket_circle2D::default_instance_;
+  delete outputPacket_circle2D_reflection_;
+  delete outputPacket_Mission3::default_instance_;
+  delete outputPacket_Mission3_reflection_;
+  delete outputPacket_shape::default_instance_;
+  delete outputPacket_shape_reflection_;
 }
 
 void protobuf_AddDesc_GameGround_2eproto() {
@@ -274,55 +274,56 @@ void protobuf_AddDesc_GameGround_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020GameGround.proto\"\342\010\n\nGameGround\022\017\n\007mis"
-    "sion\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\0220\n\022our"
-    "_robot_position\030\003 \002(\0132\024.GameGround.vecto"
-    "r2D\022\027\n\017our_robot_angle\030\004 \002(\001\022)\n\013opp_robo"
-    "t_x\030\006 \001(\0132\024.GameGround.vector2D\022\027\n\017opp_r"
-    "obot_angle\030\007 \001(\001\022!\n\006shapes\030\010 \003(\0132\021.GameG"
-    "round.shape\022+\n\rmission1_data\030\t \001(\0132\024.Gam"
-    "eGround.Mission1\022+\n\rmission2_data\030\n \001(\0132"
-    "\024.GameGround.Mission2\022+\n\rmission3_data\030\013"
-    " \001(\0132\024.GameGround.Mission3\032 \n\010vector2D\022\t"
-    "\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\032L\n\006rect2D\022 \n\002tl\030\001 \002"
-    "(\0132\024.GameGround.vector2D\022 \n\002br\030\002 \002(\0132\024.G"
-    "ameGround.vector2D\032\210\001\n\010Mission1\022\017\n\007isVal"
-    "id\030\001 \002(\010\022#\n\007region1\030\002 \002(\0132\022.GameGround.r"
-    "ect2D\022#\n\007region2\030\003 \002(\0132\022.GameGround.rect"
-    "2D\022!\n\003end\030\004 \002(\0132\024.GameGround.vector2D\032N\n"
-    "\004line\022#\n\005start\030\001 \002(\0132\024.GameGround.vector"
-    "2D\022!\n\003end\030\002 \002(\0132\024.GameGround.vector2D\032_\n"
-    "\010Mission2\022\017\n\007isValid\030\001 \002(\010\022\037\n\005lines\030\002 \003("
-    "\0132\020.GameGround.line\022!\n\003end\030\003 \002(\0132\024.GameG"
-    "round.vector2D\032@\n\010circle2D\022$\n\006center\030\001 \002"
-    "(\0132\024.GameGround.vector2D\022\016\n\006radios\030\002 \002(\001"
-    "\032\246\001\n\010Mission3\022\017\n\007isValid\030\001 \002(\010\022\022\n\nisAtta"
-    "cker\030\002 \002(\010\022+\n\rcircularBorde\030\003 \002(\0132\024.Game"
-    "Ground.circle2D\022#\n\005goal1\030\004 \002(\0132\024.GameGro"
-    "und.circle2D\022#\n\005goal2\030\005 \002(\0132\024.GameGround"
-    ".circle2D\032\\\n\005shape\022\014\n\004type\030\001 \002(\t\022\r\n\005colo"
-    "r\030\002 \002(\t\022&\n\010position\030\003 \002(\0132\024.GameGround.v"
-    "ector2D\022\016\n\006radios\030\004 \002(\001", 1143);
+    "\n\020GameGround.proto\"\214\t\n\014outputPacket\022\017\n\007m"
+    "ission\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\0222\n\022o"
+    "ur_robot_position\030\003 \002(\0132\026.outputPacket.v"
+    "ector2D\022\027\n\017our_robot_angle\030\004 \002(\001\022+\n\013opp_"
+    "robot_x\030\006 \001(\0132\026.outputPacket.vector2D\022\027\n"
+    "\017opp_robot_angle\030\007 \001(\001\022#\n\006shapes\030\010 \003(\0132\023"
+    ".outputPacket.shape\022-\n\rmission1_data\030\t \001"
+    "(\0132\026.outputPacket.Mission1\022-\n\rmission2_d"
+    "ata\030\n \001(\0132\026.outputPacket.Mission2\022-\n\rmis"
+    "sion3_data\030\013 \001(\0132\026.outputPacket.Mission3"
+    "\032 \n\010vector2D\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\032P\n\006re"
+    "ct2D\022\"\n\002tl\030\001 \002(\0132\026.outputPacket.vector2D"
+    "\022\"\n\002br\030\002 \002(\0132\026.outputPacket.vector2D\032\216\001\n"
+    "\010Mission1\022\017\n\007isValid\030\001 \002(\010\022%\n\007region1\030\002 "
+    "\002(\0132\024.outputPacket.rect2D\022%\n\007region2\030\003 \002"
+    "(\0132\024.outputPacket.rect2D\022#\n\003end\030\004 \002(\0132\026."
+    "outputPacket.vector2D\032R\n\004line\022%\n\005start\030\001"
+    " \002(\0132\026.outputPacket.vector2D\022#\n\003end\030\002 \002("
+    "\0132\026.outputPacket.vector2D\032c\n\010Mission2\022\017\n"
+    "\007isValid\030\001 \002(\010\022!\n\005lines\030\002 \003(\0132\022.outputPa"
+    "cket.line\022#\n\003end\030\003 \002(\0132\026.outputPacket.ve"
+    "ctor2D\032B\n\010circle2D\022&\n\006center\030\001 \002(\0132\026.out"
+    "putPacket.vector2D\022\016\n\006radios\030\002 \002(\001\032\254\001\n\010M"
+    "ission3\022\017\n\007isValid\030\001 \002(\010\022\022\n\nisAttacker\030\002"
+    " \002(\010\022-\n\rcircularBorde\030\003 \002(\0132\026.outputPack"
+    "et.circle2D\022%\n\005goal1\030\004 \002(\0132\026.outputPacke"
+    "t.circle2D\022%\n\005goal2\030\005 \002(\0132\026.outputPacket"
+    ".circle2D\032^\n\005shape\022\014\n\004type\030\001 \002(\t\022\r\n\005colo"
+    "r\030\002 \002(\t\022(\n\010position\030\003 \002(\0132\026.outputPacket"
+    ".vector2D\022\016\n\006radios\030\004 \002(\001", 1185);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "GameGround.proto", &protobuf_RegisterTypes);
-  GameGround::default_instance_ = new GameGround();
-  GameGround_vector2D::default_instance_ = new GameGround_vector2D();
-  GameGround_rect2D::default_instance_ = new GameGround_rect2D();
-  GameGround_Mission1::default_instance_ = new GameGround_Mission1();
-  GameGround_line::default_instance_ = new GameGround_line();
-  GameGround_Mission2::default_instance_ = new GameGround_Mission2();
-  GameGround_circle2D::default_instance_ = new GameGround_circle2D();
-  GameGround_Mission3::default_instance_ = new GameGround_Mission3();
-  GameGround_shape::default_instance_ = new GameGround_shape();
-  GameGround::default_instance_->InitAsDefaultInstance();
-  GameGround_vector2D::default_instance_->InitAsDefaultInstance();
-  GameGround_rect2D::default_instance_->InitAsDefaultInstance();
-  GameGround_Mission1::default_instance_->InitAsDefaultInstance();
-  GameGround_line::default_instance_->InitAsDefaultInstance();
-  GameGround_Mission2::default_instance_->InitAsDefaultInstance();
-  GameGround_circle2D::default_instance_->InitAsDefaultInstance();
-  GameGround_Mission3::default_instance_->InitAsDefaultInstance();
-  GameGround_shape::default_instance_->InitAsDefaultInstance();
+  outputPacket::default_instance_ = new outputPacket();
+  outputPacket_vector2D::default_instance_ = new outputPacket_vector2D();
+  outputPacket_rect2D::default_instance_ = new outputPacket_rect2D();
+  outputPacket_Mission1::default_instance_ = new outputPacket_Mission1();
+  outputPacket_line::default_instance_ = new outputPacket_line();
+  outputPacket_Mission2::default_instance_ = new outputPacket_Mission2();
+  outputPacket_circle2D::default_instance_ = new outputPacket_circle2D();
+  outputPacket_Mission3::default_instance_ = new outputPacket_Mission3();
+  outputPacket_shape::default_instance_ = new outputPacket_shape();
+  outputPacket::default_instance_->InitAsDefaultInstance();
+  outputPacket_vector2D::default_instance_->InitAsDefaultInstance();
+  outputPacket_rect2D::default_instance_->InitAsDefaultInstance();
+  outputPacket_Mission1::default_instance_->InitAsDefaultInstance();
+  outputPacket_line::default_instance_->InitAsDefaultInstance();
+  outputPacket_Mission2::default_instance_->InitAsDefaultInstance();
+  outputPacket_circle2D::default_instance_->InitAsDefaultInstance();
+  outputPacket_Mission3::default_instance_->InitAsDefaultInstance();
+  outputPacket_shape::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_GameGround_2eproto);
 }
 
@@ -337,61 +338,61 @@ struct StaticDescriptorInitializer_GameGround_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int GameGround_vector2D::kXFieldNumber;
-const int GameGround_vector2D::kYFieldNumber;
+const int outputPacket_vector2D::kXFieldNumber;
+const int outputPacket_vector2D::kYFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_vector2D::GameGround_vector2D()
+outputPacket_vector2D::outputPacket_vector2D()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_vector2D::InitAsDefaultInstance() {
+void outputPacket_vector2D::InitAsDefaultInstance() {
 }
 
-GameGround_vector2D::GameGround_vector2D(const GameGround_vector2D& from)
+outputPacket_vector2D::outputPacket_vector2D(const outputPacket_vector2D& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_vector2D::SharedCtor() {
+void outputPacket_vector2D::SharedCtor() {
   _cached_size_ = 0;
   x_ = 0;
   y_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_vector2D::~GameGround_vector2D() {
+outputPacket_vector2D::~outputPacket_vector2D() {
   SharedDtor();
 }
 
-void GameGround_vector2D::SharedDtor() {
+void outputPacket_vector2D::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void GameGround_vector2D::SetCachedSize(int size) const {
+void outputPacket_vector2D::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_vector2D::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_vector2D::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_vector2D_descriptor_;
+  return outputPacket_vector2D_descriptor_;
 }
 
-const GameGround_vector2D& GameGround_vector2D::default_instance() {
+const outputPacket_vector2D& outputPacket_vector2D::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_vector2D* GameGround_vector2D::default_instance_ = NULL;
+outputPacket_vector2D* outputPacket_vector2D::default_instance_ = NULL;
 
-GameGround_vector2D* GameGround_vector2D::New() const {
-  return new GameGround_vector2D;
+outputPacket_vector2D* outputPacket_vector2D::New() const {
+  return new outputPacket_vector2D;
 }
 
-void GameGround_vector2D::Clear() {
+void outputPacket_vector2D::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     x_ = 0;
     y_ = 0;
@@ -400,7 +401,7 @@ void GameGround_vector2D::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_vector2D::MergePartialFromCodedStream(
+bool outputPacket_vector2D::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -453,7 +454,7 @@ bool GameGround_vector2D::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_vector2D::SerializeWithCachedSizes(
+void outputPacket_vector2D::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required float x = 1;
   if (has_x()) {
@@ -471,7 +472,7 @@ void GameGround_vector2D::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_vector2D::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_vector2D::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required float x = 1;
   if (has_x()) {
@@ -490,7 +491,7 @@ void GameGround_vector2D::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_vector2D::ByteSize() const {
+int outputPacket_vector2D::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -516,10 +517,10 @@ int GameGround_vector2D::ByteSize() const {
   return total_size;
 }
 
-void GameGround_vector2D::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_vector2D::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_vector2D* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_vector2D*>(
+  const outputPacket_vector2D* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_vector2D*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -528,7 +529,7 @@ void GameGround_vector2D::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_vector2D::MergeFrom(const GameGround_vector2D& from) {
+void outputPacket_vector2D::MergeFrom(const outputPacket_vector2D& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_x()) {
@@ -541,25 +542,25 @@ void GameGround_vector2D::MergeFrom(const GameGround_vector2D& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_vector2D::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_vector2D::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_vector2D::CopyFrom(const GameGround_vector2D& from) {
+void outputPacket_vector2D::CopyFrom(const outputPacket_vector2D& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_vector2D::IsInitialized() const {
+bool outputPacket_vector2D::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   return true;
 }
 
-void GameGround_vector2D::Swap(GameGround_vector2D* other) {
+void outputPacket_vector2D::Swap(outputPacket_vector2D* other) {
   if (other != this) {
     std::swap(x_, other->x_);
     std::swap(y_, other->y_);
@@ -569,11 +570,11 @@ void GameGround_vector2D::Swap(GameGround_vector2D* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_vector2D::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_vector2D::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_vector2D_descriptor_;
-  metadata.reflection = GameGround_vector2D_reflection_;
+  metadata.descriptor = outputPacket_vector2D_descriptor_;
+  metadata.reflection = outputPacket_vector2D_reflection_;
   return metadata;
 }
 
@@ -581,84 +582,84 @@ void GameGround_vector2D::Swap(GameGround_vector2D* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_rect2D::kTlFieldNumber;
-const int GameGround_rect2D::kBrFieldNumber;
+const int outputPacket_rect2D::kTlFieldNumber;
+const int outputPacket_rect2D::kBrFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_rect2D::GameGround_rect2D()
+outputPacket_rect2D::outputPacket_rect2D()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_rect2D::InitAsDefaultInstance() {
-  tl_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
-  br_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
+void outputPacket_rect2D::InitAsDefaultInstance() {
+  tl_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  br_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
-GameGround_rect2D::GameGround_rect2D(const GameGround_rect2D& from)
+outputPacket_rect2D::outputPacket_rect2D(const outputPacket_rect2D& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_rect2D::SharedCtor() {
+void outputPacket_rect2D::SharedCtor() {
   _cached_size_ = 0;
   tl_ = NULL;
   br_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_rect2D::~GameGround_rect2D() {
+outputPacket_rect2D::~outputPacket_rect2D() {
   SharedDtor();
 }
 
-void GameGround_rect2D::SharedDtor() {
+void outputPacket_rect2D::SharedDtor() {
   if (this != default_instance_) {
     delete tl_;
     delete br_;
   }
 }
 
-void GameGround_rect2D::SetCachedSize(int size) const {
+void outputPacket_rect2D::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_rect2D::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_rect2D::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_rect2D_descriptor_;
+  return outputPacket_rect2D_descriptor_;
 }
 
-const GameGround_rect2D& GameGround_rect2D::default_instance() {
+const outputPacket_rect2D& outputPacket_rect2D::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_rect2D* GameGround_rect2D::default_instance_ = NULL;
+outputPacket_rect2D* outputPacket_rect2D::default_instance_ = NULL;
 
-GameGround_rect2D* GameGround_rect2D::New() const {
-  return new GameGround_rect2D;
+outputPacket_rect2D* outputPacket_rect2D::New() const {
+  return new outputPacket_rect2D;
 }
 
-void GameGround_rect2D::Clear() {
+void outputPacket_rect2D::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_tl()) {
-      if (tl_ != NULL) tl_->::GameGround_vector2D::Clear();
+      if (tl_ != NULL) tl_->::outputPacket_vector2D::Clear();
     }
     if (has_br()) {
-      if (br_ != NULL) br_->::GameGround_vector2D::Clear();
+      if (br_ != NULL) br_->::outputPacket_vector2D::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_rect2D::MergePartialFromCodedStream(
+bool outputPacket_rect2D::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .GameGround.vector2D tl = 1;
+      // required .outputPacket.vector2D tl = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -671,7 +672,7 @@ bool GameGround_rect2D::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.vector2D br = 2;
+      // required .outputPacket.vector2D br = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -701,15 +702,15 @@ bool GameGround_rect2D::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_rect2D::SerializeWithCachedSizes(
+void outputPacket_rect2D::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .GameGround.vector2D tl = 1;
+  // required .outputPacket.vector2D tl = 1;
   if (has_tl()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->tl(), output);
   }
   
-  // required .GameGround.vector2D br = 2;
+  // required .outputPacket.vector2D br = 2;
   if (has_br()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->br(), output);
@@ -721,16 +722,16 @@ void GameGround_rect2D::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_rect2D::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_rect2D::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .GameGround.vector2D tl = 1;
+  // required .outputPacket.vector2D tl = 1;
   if (has_tl()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->tl(), target);
   }
   
-  // required .GameGround.vector2D br = 2;
+  // required .outputPacket.vector2D br = 2;
   if (has_br()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -744,18 +745,18 @@ void GameGround_rect2D::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_rect2D::ByteSize() const {
+int outputPacket_rect2D::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .GameGround.vector2D tl = 1;
+    // required .outputPacket.vector2D tl = 1;
     if (has_tl()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->tl());
     }
     
-    // required .GameGround.vector2D br = 2;
+    // required .outputPacket.vector2D br = 2;
     if (has_br()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -774,10 +775,10 @@ int GameGround_rect2D::ByteSize() const {
   return total_size;
 }
 
-void GameGround_rect2D::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_rect2D::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_rect2D* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_rect2D*>(
+  const outputPacket_rect2D* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_rect2D*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -786,32 +787,32 @@ void GameGround_rect2D::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_rect2D::MergeFrom(const GameGround_rect2D& from) {
+void outputPacket_rect2D::MergeFrom(const outputPacket_rect2D& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_tl()) {
-      mutable_tl()->::GameGround_vector2D::MergeFrom(from.tl());
+      mutable_tl()->::outputPacket_vector2D::MergeFrom(from.tl());
     }
     if (from.has_br()) {
-      mutable_br()->::GameGround_vector2D::MergeFrom(from.br());
+      mutable_br()->::outputPacket_vector2D::MergeFrom(from.br());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_rect2D::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_rect2D::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_rect2D::CopyFrom(const GameGround_rect2D& from) {
+void outputPacket_rect2D::CopyFrom(const outputPacket_rect2D& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_rect2D::IsInitialized() const {
+bool outputPacket_rect2D::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   if (has_tl()) {
@@ -823,7 +824,7 @@ bool GameGround_rect2D::IsInitialized() const {
   return true;
 }
 
-void GameGround_rect2D::Swap(GameGround_rect2D* other) {
+void outputPacket_rect2D::Swap(outputPacket_rect2D* other) {
   if (other != this) {
     std::swap(tl_, other->tl_);
     std::swap(br_, other->br_);
@@ -833,11 +834,11 @@ void GameGround_rect2D::Swap(GameGround_rect2D* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_rect2D::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_rect2D::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_rect2D_descriptor_;
-  metadata.reflection = GameGround_rect2D_reflection_;
+  metadata.descriptor = outputPacket_rect2D_descriptor_;
+  metadata.reflection = outputPacket_rect2D_reflection_;
   return metadata;
 }
 
@@ -845,30 +846,30 @@ void GameGround_rect2D::Swap(GameGround_rect2D* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_Mission1::kIsValidFieldNumber;
-const int GameGround_Mission1::kRegion1FieldNumber;
-const int GameGround_Mission1::kRegion2FieldNumber;
-const int GameGround_Mission1::kEndFieldNumber;
+const int outputPacket_Mission1::kIsValidFieldNumber;
+const int outputPacket_Mission1::kRegion1FieldNumber;
+const int outputPacket_Mission1::kRegion2FieldNumber;
+const int outputPacket_Mission1::kEndFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_Mission1::GameGround_Mission1()
+outputPacket_Mission1::outputPacket_Mission1()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_Mission1::InitAsDefaultInstance() {
-  region1_ = const_cast< ::GameGround_rect2D*>(&::GameGround_rect2D::default_instance());
-  region2_ = const_cast< ::GameGround_rect2D*>(&::GameGround_rect2D::default_instance());
-  end_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
+void outputPacket_Mission1::InitAsDefaultInstance() {
+  region1_ = const_cast< ::outputPacket_rect2D*>(&::outputPacket_rect2D::default_instance());
+  region2_ = const_cast< ::outputPacket_rect2D*>(&::outputPacket_rect2D::default_instance());
+  end_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
-GameGround_Mission1::GameGround_Mission1(const GameGround_Mission1& from)
+outputPacket_Mission1::outputPacket_Mission1(const outputPacket_Mission1& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_Mission1::SharedCtor() {
+void outputPacket_Mission1::SharedCtor() {
   _cached_size_ = 0;
   isvalid_ = false;
   region1_ = NULL;
@@ -877,11 +878,11 @@ void GameGround_Mission1::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_Mission1::~GameGround_Mission1() {
+outputPacket_Mission1::~outputPacket_Mission1() {
   SharedDtor();
 }
 
-void GameGround_Mission1::SharedDtor() {
+void outputPacket_Mission1::SharedDtor() {
   if (this != default_instance_) {
     delete region1_;
     delete region2_;
@@ -889,44 +890,44 @@ void GameGround_Mission1::SharedDtor() {
   }
 }
 
-void GameGround_Mission1::SetCachedSize(int size) const {
+void outputPacket_Mission1::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_Mission1::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_Mission1::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_Mission1_descriptor_;
+  return outputPacket_Mission1_descriptor_;
 }
 
-const GameGround_Mission1& GameGround_Mission1::default_instance() {
+const outputPacket_Mission1& outputPacket_Mission1::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_Mission1* GameGround_Mission1::default_instance_ = NULL;
+outputPacket_Mission1* outputPacket_Mission1::default_instance_ = NULL;
 
-GameGround_Mission1* GameGround_Mission1::New() const {
-  return new GameGround_Mission1;
+outputPacket_Mission1* outputPacket_Mission1::New() const {
+  return new outputPacket_Mission1;
 }
 
-void GameGround_Mission1::Clear() {
+void outputPacket_Mission1::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     isvalid_ = false;
     if (has_region1()) {
-      if (region1_ != NULL) region1_->::GameGround_rect2D::Clear();
+      if (region1_ != NULL) region1_->::outputPacket_rect2D::Clear();
     }
     if (has_region2()) {
-      if (region2_ != NULL) region2_->::GameGround_rect2D::Clear();
+      if (region2_ != NULL) region2_->::outputPacket_rect2D::Clear();
     }
     if (has_end()) {
-      if (end_ != NULL) end_->::GameGround_vector2D::Clear();
+      if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_Mission1::MergePartialFromCodedStream(
+bool outputPacket_Mission1::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -947,7 +948,7 @@ bool GameGround_Mission1::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.rect2D region1 = 2;
+      // required .outputPacket.rect2D region1 = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -961,7 +962,7 @@ bool GameGround_Mission1::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.rect2D region2 = 3;
+      // required .outputPacket.rect2D region2 = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -975,7 +976,7 @@ bool GameGround_Mission1::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.vector2D end = 4;
+      // required .outputPacket.vector2D end = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1005,26 +1006,26 @@ bool GameGround_Mission1::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_Mission1::SerializeWithCachedSizes(
+void outputPacket_Mission1::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required bool isValid = 1;
   if (has_isvalid()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isvalid(), output);
   }
   
-  // required .GameGround.rect2D region1 = 2;
+  // required .outputPacket.rect2D region1 = 2;
   if (has_region1()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->region1(), output);
   }
   
-  // required .GameGround.rect2D region2 = 3;
+  // required .outputPacket.rect2D region2 = 3;
   if (has_region2()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->region2(), output);
   }
   
-  // required .GameGround.vector2D end = 4;
+  // required .outputPacket.vector2D end = 4;
   if (has_end()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->end(), output);
@@ -1036,28 +1037,28 @@ void GameGround_Mission1::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_Mission1::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_Mission1::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required bool isValid = 1;
   if (has_isvalid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isvalid(), target);
   }
   
-  // required .GameGround.rect2D region1 = 2;
+  // required .outputPacket.rect2D region1 = 2;
   if (has_region1()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->region1(), target);
   }
   
-  // required .GameGround.rect2D region2 = 3;
+  // required .outputPacket.rect2D region2 = 3;
   if (has_region2()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->region2(), target);
   }
   
-  // required .GameGround.vector2D end = 4;
+  // required .outputPacket.vector2D end = 4;
   if (has_end()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1071,7 +1072,7 @@ void GameGround_Mission1::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_Mission1::ByteSize() const {
+int outputPacket_Mission1::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1080,21 +1081,21 @@ int GameGround_Mission1::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // required .GameGround.rect2D region1 = 2;
+    // required .outputPacket.rect2D region1 = 2;
     if (has_region1()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->region1());
     }
     
-    // required .GameGround.rect2D region2 = 3;
+    // required .outputPacket.rect2D region2 = 3;
     if (has_region2()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->region2());
     }
     
-    // required .GameGround.vector2D end = 4;
+    // required .outputPacket.vector2D end = 4;
     if (has_end()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1113,10 +1114,10 @@ int GameGround_Mission1::ByteSize() const {
   return total_size;
 }
 
-void GameGround_Mission1::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_Mission1::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_Mission1* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_Mission1*>(
+  const outputPacket_Mission1* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_Mission1*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1125,38 +1126,38 @@ void GameGround_Mission1::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_Mission1::MergeFrom(const GameGround_Mission1& from) {
+void outputPacket_Mission1::MergeFrom(const outputPacket_Mission1& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_isvalid()) {
       set_isvalid(from.isvalid());
     }
     if (from.has_region1()) {
-      mutable_region1()->::GameGround_rect2D::MergeFrom(from.region1());
+      mutable_region1()->::outputPacket_rect2D::MergeFrom(from.region1());
     }
     if (from.has_region2()) {
-      mutable_region2()->::GameGround_rect2D::MergeFrom(from.region2());
+      mutable_region2()->::outputPacket_rect2D::MergeFrom(from.region2());
     }
     if (from.has_end()) {
-      mutable_end()->::GameGround_vector2D::MergeFrom(from.end());
+      mutable_end()->::outputPacket_vector2D::MergeFrom(from.end());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_Mission1::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_Mission1::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_Mission1::CopyFrom(const GameGround_Mission1& from) {
+void outputPacket_Mission1::CopyFrom(const outputPacket_Mission1& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_Mission1::IsInitialized() const {
+bool outputPacket_Mission1::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   
   if (has_region1()) {
@@ -1171,7 +1172,7 @@ bool GameGround_Mission1::IsInitialized() const {
   return true;
 }
 
-void GameGround_Mission1::Swap(GameGround_Mission1* other) {
+void outputPacket_Mission1::Swap(outputPacket_Mission1* other) {
   if (other != this) {
     std::swap(isvalid_, other->isvalid_);
     std::swap(region1_, other->region1_);
@@ -1183,11 +1184,11 @@ void GameGround_Mission1::Swap(GameGround_Mission1* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_Mission1::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_Mission1::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_Mission1_descriptor_;
-  metadata.reflection = GameGround_Mission1_reflection_;
+  metadata.descriptor = outputPacket_Mission1_descriptor_;
+  metadata.reflection = outputPacket_Mission1_reflection_;
   return metadata;
 }
 
@@ -1195,84 +1196,84 @@ void GameGround_Mission1::Swap(GameGround_Mission1* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_line::kStartFieldNumber;
-const int GameGround_line::kEndFieldNumber;
+const int outputPacket_line::kStartFieldNumber;
+const int outputPacket_line::kEndFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_line::GameGround_line()
+outputPacket_line::outputPacket_line()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_line::InitAsDefaultInstance() {
-  start_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
-  end_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
+void outputPacket_line::InitAsDefaultInstance() {
+  start_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  end_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
-GameGround_line::GameGround_line(const GameGround_line& from)
+outputPacket_line::outputPacket_line(const outputPacket_line& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_line::SharedCtor() {
+void outputPacket_line::SharedCtor() {
   _cached_size_ = 0;
   start_ = NULL;
   end_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_line::~GameGround_line() {
+outputPacket_line::~outputPacket_line() {
   SharedDtor();
 }
 
-void GameGround_line::SharedDtor() {
+void outputPacket_line::SharedDtor() {
   if (this != default_instance_) {
     delete start_;
     delete end_;
   }
 }
 
-void GameGround_line::SetCachedSize(int size) const {
+void outputPacket_line::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_line::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_line::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_line_descriptor_;
+  return outputPacket_line_descriptor_;
 }
 
-const GameGround_line& GameGround_line::default_instance() {
+const outputPacket_line& outputPacket_line::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_line* GameGround_line::default_instance_ = NULL;
+outputPacket_line* outputPacket_line::default_instance_ = NULL;
 
-GameGround_line* GameGround_line::New() const {
-  return new GameGround_line;
+outputPacket_line* outputPacket_line::New() const {
+  return new outputPacket_line;
 }
 
-void GameGround_line::Clear() {
+void outputPacket_line::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_start()) {
-      if (start_ != NULL) start_->::GameGround_vector2D::Clear();
+      if (start_ != NULL) start_->::outputPacket_vector2D::Clear();
     }
     if (has_end()) {
-      if (end_ != NULL) end_->::GameGround_vector2D::Clear();
+      if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_line::MergePartialFromCodedStream(
+bool outputPacket_line::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .GameGround.vector2D start = 1;
+      // required .outputPacket.vector2D start = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1285,7 +1286,7 @@ bool GameGround_line::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.vector2D end = 2;
+      // required .outputPacket.vector2D end = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1315,15 +1316,15 @@ bool GameGround_line::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_line::SerializeWithCachedSizes(
+void outputPacket_line::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .GameGround.vector2D start = 1;
+  // required .outputPacket.vector2D start = 1;
   if (has_start()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->start(), output);
   }
   
-  // required .GameGround.vector2D end = 2;
+  // required .outputPacket.vector2D end = 2;
   if (has_end()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->end(), output);
@@ -1335,16 +1336,16 @@ void GameGround_line::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_line::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_line::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .GameGround.vector2D start = 1;
+  // required .outputPacket.vector2D start = 1;
   if (has_start()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         1, this->start(), target);
   }
   
-  // required .GameGround.vector2D end = 2;
+  // required .outputPacket.vector2D end = 2;
   if (has_end()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1358,18 +1359,18 @@ void GameGround_line::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_line::ByteSize() const {
+int outputPacket_line::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .GameGround.vector2D start = 1;
+    // required .outputPacket.vector2D start = 1;
     if (has_start()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->start());
     }
     
-    // required .GameGround.vector2D end = 2;
+    // required .outputPacket.vector2D end = 2;
     if (has_end()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1388,10 +1389,10 @@ int GameGround_line::ByteSize() const {
   return total_size;
 }
 
-void GameGround_line::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_line::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_line* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_line*>(
+  const outputPacket_line* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_line*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1400,32 +1401,32 @@ void GameGround_line::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_line::MergeFrom(const GameGround_line& from) {
+void outputPacket_line::MergeFrom(const outputPacket_line& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_start()) {
-      mutable_start()->::GameGround_vector2D::MergeFrom(from.start());
+      mutable_start()->::outputPacket_vector2D::MergeFrom(from.start());
     }
     if (from.has_end()) {
-      mutable_end()->::GameGround_vector2D::MergeFrom(from.end());
+      mutable_end()->::outputPacket_vector2D::MergeFrom(from.end());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_line::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_line::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_line::CopyFrom(const GameGround_line& from) {
+void outputPacket_line::CopyFrom(const outputPacket_line& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_line::IsInitialized() const {
+bool outputPacket_line::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   if (has_start()) {
@@ -1437,7 +1438,7 @@ bool GameGround_line::IsInitialized() const {
   return true;
 }
 
-void GameGround_line::Swap(GameGround_line* other) {
+void outputPacket_line::Swap(outputPacket_line* other) {
   if (other != this) {
     std::swap(start_, other->start_);
     std::swap(end_, other->end_);
@@ -1447,11 +1448,11 @@ void GameGround_line::Swap(GameGround_line* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_line::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_line::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_line_descriptor_;
-  metadata.reflection = GameGround_line_reflection_;
+  metadata.descriptor = outputPacket_line_descriptor_;
+  metadata.reflection = outputPacket_line_reflection_;
   return metadata;
 }
 
@@ -1459,68 +1460,68 @@ void GameGround_line::Swap(GameGround_line* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_Mission2::kIsValidFieldNumber;
-const int GameGround_Mission2::kLinesFieldNumber;
-const int GameGround_Mission2::kEndFieldNumber;
+const int outputPacket_Mission2::kIsValidFieldNumber;
+const int outputPacket_Mission2::kLinesFieldNumber;
+const int outputPacket_Mission2::kEndFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_Mission2::GameGround_Mission2()
+outputPacket_Mission2::outputPacket_Mission2()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_Mission2::InitAsDefaultInstance() {
-  end_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
+void outputPacket_Mission2::InitAsDefaultInstance() {
+  end_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
-GameGround_Mission2::GameGround_Mission2(const GameGround_Mission2& from)
+outputPacket_Mission2::outputPacket_Mission2(const outputPacket_Mission2& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_Mission2::SharedCtor() {
+void outputPacket_Mission2::SharedCtor() {
   _cached_size_ = 0;
   isvalid_ = false;
   end_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_Mission2::~GameGround_Mission2() {
+outputPacket_Mission2::~outputPacket_Mission2() {
   SharedDtor();
 }
 
-void GameGround_Mission2::SharedDtor() {
+void outputPacket_Mission2::SharedDtor() {
   if (this != default_instance_) {
     delete end_;
   }
 }
 
-void GameGround_Mission2::SetCachedSize(int size) const {
+void outputPacket_Mission2::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_Mission2::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_Mission2::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_Mission2_descriptor_;
+  return outputPacket_Mission2_descriptor_;
 }
 
-const GameGround_Mission2& GameGround_Mission2::default_instance() {
+const outputPacket_Mission2& outputPacket_Mission2::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_Mission2* GameGround_Mission2::default_instance_ = NULL;
+outputPacket_Mission2* outputPacket_Mission2::default_instance_ = NULL;
 
-GameGround_Mission2* GameGround_Mission2::New() const {
-  return new GameGround_Mission2;
+outputPacket_Mission2* outputPacket_Mission2::New() const {
+  return new outputPacket_Mission2;
 }
 
-void GameGround_Mission2::Clear() {
+void outputPacket_Mission2::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     isvalid_ = false;
     if (has_end()) {
-      if (end_ != NULL) end_->::GameGround_vector2D::Clear();
+      if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
     }
   }
   lines_.Clear();
@@ -1528,7 +1529,7 @@ void GameGround_Mission2::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_Mission2::MergePartialFromCodedStream(
+bool outputPacket_Mission2::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -1549,7 +1550,7 @@ bool GameGround_Mission2::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated .GameGround.line lines = 2;
+      // repeated .outputPacket.line lines = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1564,7 +1565,7 @@ bool GameGround_Mission2::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.vector2D end = 3;
+      // required .outputPacket.vector2D end = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1594,20 +1595,20 @@ bool GameGround_Mission2::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_Mission2::SerializeWithCachedSizes(
+void outputPacket_Mission2::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required bool isValid = 1;
   if (has_isvalid()) {
     ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isvalid(), output);
   }
   
-  // repeated .GameGround.line lines = 2;
+  // repeated .outputPacket.line lines = 2;
   for (int i = 0; i < this->lines_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       2, this->lines(i), output);
   }
   
-  // required .GameGround.vector2D end = 3;
+  // required .outputPacket.vector2D end = 3;
   if (has_end()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->end(), output);
@@ -1619,21 +1620,21 @@ void GameGround_Mission2::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_Mission2::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_Mission2::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required bool isValid = 1;
   if (has_isvalid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isvalid(), target);
   }
   
-  // repeated .GameGround.line lines = 2;
+  // repeated .outputPacket.line lines = 2;
   for (int i = 0; i < this->lines_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         2, this->lines(i), target);
   }
   
-  // required .GameGround.vector2D end = 3;
+  // required .outputPacket.vector2D end = 3;
   if (has_end()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1647,7 +1648,7 @@ void GameGround_Mission2::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_Mission2::ByteSize() const {
+int outputPacket_Mission2::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1656,7 +1657,7 @@ int GameGround_Mission2::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // required .GameGround.vector2D end = 3;
+    // required .outputPacket.vector2D end = 3;
     if (has_end()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1664,7 +1665,7 @@ int GameGround_Mission2::ByteSize() const {
     }
     
   }
-  // repeated .GameGround.line lines = 2;
+  // repeated .outputPacket.line lines = 2;
   total_size += 1 * this->lines_size();
   for (int i = 0; i < this->lines_size(); i++) {
     total_size +=
@@ -1683,10 +1684,10 @@ int GameGround_Mission2::ByteSize() const {
   return total_size;
 }
 
-void GameGround_Mission2::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_Mission2::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_Mission2* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_Mission2*>(
+  const outputPacket_Mission2* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_Mission2*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1695,7 +1696,7 @@ void GameGround_Mission2::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_Mission2::MergeFrom(const GameGround_Mission2& from) {
+void outputPacket_Mission2::MergeFrom(const outputPacket_Mission2& from) {
   GOOGLE_CHECK_NE(&from, this);
   lines_.MergeFrom(from.lines_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1703,25 +1704,25 @@ void GameGround_Mission2::MergeFrom(const GameGround_Mission2& from) {
       set_isvalid(from.isvalid());
     }
     if (from.has_end()) {
-      mutable_end()->::GameGround_vector2D::MergeFrom(from.end());
+      mutable_end()->::outputPacket_vector2D::MergeFrom(from.end());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_Mission2::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_Mission2::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_Mission2::CopyFrom(const GameGround_Mission2& from) {
+void outputPacket_Mission2::CopyFrom(const outputPacket_Mission2& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_Mission2::IsInitialized() const {
+bool outputPacket_Mission2::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
   
   for (int i = 0; i < lines_size(); i++) {
@@ -1733,7 +1734,7 @@ bool GameGround_Mission2::IsInitialized() const {
   return true;
 }
 
-void GameGround_Mission2::Swap(GameGround_Mission2* other) {
+void outputPacket_Mission2::Swap(outputPacket_Mission2* other) {
   if (other != this) {
     std::swap(isvalid_, other->isvalid_);
     lines_.Swap(&other->lines_);
@@ -1744,11 +1745,11 @@ void GameGround_Mission2::Swap(GameGround_Mission2* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_Mission2::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_Mission2::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_Mission2_descriptor_;
-  metadata.reflection = GameGround_Mission2_reflection_;
+  metadata.descriptor = outputPacket_Mission2_descriptor_;
+  metadata.reflection = outputPacket_Mission2_reflection_;
   return metadata;
 }
 
@@ -1756,66 +1757,66 @@ void GameGround_Mission2::Swap(GameGround_Mission2* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_circle2D::kCenterFieldNumber;
-const int GameGround_circle2D::kRadiosFieldNumber;
+const int outputPacket_circle2D::kCenterFieldNumber;
+const int outputPacket_circle2D::kRadiosFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_circle2D::GameGround_circle2D()
+outputPacket_circle2D::outputPacket_circle2D()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_circle2D::InitAsDefaultInstance() {
-  center_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
+void outputPacket_circle2D::InitAsDefaultInstance() {
+  center_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
-GameGround_circle2D::GameGround_circle2D(const GameGround_circle2D& from)
+outputPacket_circle2D::outputPacket_circle2D(const outputPacket_circle2D& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_circle2D::SharedCtor() {
+void outputPacket_circle2D::SharedCtor() {
   _cached_size_ = 0;
   center_ = NULL;
   radios_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_circle2D::~GameGround_circle2D() {
+outputPacket_circle2D::~outputPacket_circle2D() {
   SharedDtor();
 }
 
-void GameGround_circle2D::SharedDtor() {
+void outputPacket_circle2D::SharedDtor() {
   if (this != default_instance_) {
     delete center_;
   }
 }
 
-void GameGround_circle2D::SetCachedSize(int size) const {
+void outputPacket_circle2D::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_circle2D::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_circle2D::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_circle2D_descriptor_;
+  return outputPacket_circle2D_descriptor_;
 }
 
-const GameGround_circle2D& GameGround_circle2D::default_instance() {
+const outputPacket_circle2D& outputPacket_circle2D::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_circle2D* GameGround_circle2D::default_instance_ = NULL;
+outputPacket_circle2D* outputPacket_circle2D::default_instance_ = NULL;
 
-GameGround_circle2D* GameGround_circle2D::New() const {
-  return new GameGround_circle2D;
+outputPacket_circle2D* outputPacket_circle2D::New() const {
+  return new outputPacket_circle2D;
 }
 
-void GameGround_circle2D::Clear() {
+void outputPacket_circle2D::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_center()) {
-      if (center_ != NULL) center_->::GameGround_vector2D::Clear();
+      if (center_ != NULL) center_->::outputPacket_vector2D::Clear();
     }
     radios_ = 0;
   }
@@ -1823,13 +1824,13 @@ void GameGround_circle2D::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_circle2D::MergePartialFromCodedStream(
+bool outputPacket_circle2D::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .GameGround.vector2D center = 1;
+      // required .outputPacket.vector2D center = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1874,9 +1875,9 @@ bool GameGround_circle2D::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_circle2D::SerializeWithCachedSizes(
+void outputPacket_circle2D::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .GameGround.vector2D center = 1;
+  // required .outputPacket.vector2D center = 1;
   if (has_center()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       1, this->center(), output);
@@ -1893,9 +1894,9 @@ void GameGround_circle2D::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_circle2D::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_circle2D::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .GameGround.vector2D center = 1;
+  // required .outputPacket.vector2D center = 1;
   if (has_center()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1914,11 +1915,11 @@ void GameGround_circle2D::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_circle2D::ByteSize() const {
+int outputPacket_circle2D::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .GameGround.vector2D center = 1;
+    // required .outputPacket.vector2D center = 1;
     if (has_center()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1942,10 +1943,10 @@ int GameGround_circle2D::ByteSize() const {
   return total_size;
 }
 
-void GameGround_circle2D::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_circle2D::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_circle2D* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_circle2D*>(
+  const outputPacket_circle2D* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_circle2D*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1954,11 +1955,11 @@ void GameGround_circle2D::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_circle2D::MergeFrom(const GameGround_circle2D& from) {
+void outputPacket_circle2D::MergeFrom(const outputPacket_circle2D& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_center()) {
-      mutable_center()->::GameGround_vector2D::MergeFrom(from.center());
+      mutable_center()->::outputPacket_vector2D::MergeFrom(from.center());
     }
     if (from.has_radios()) {
       set_radios(from.radios());
@@ -1967,19 +1968,19 @@ void GameGround_circle2D::MergeFrom(const GameGround_circle2D& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_circle2D::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_circle2D::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_circle2D::CopyFrom(const GameGround_circle2D& from) {
+void outputPacket_circle2D::CopyFrom(const outputPacket_circle2D& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_circle2D::IsInitialized() const {
+bool outputPacket_circle2D::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   if (has_center()) {
@@ -1988,7 +1989,7 @@ bool GameGround_circle2D::IsInitialized() const {
   return true;
 }
 
-void GameGround_circle2D::Swap(GameGround_circle2D* other) {
+void outputPacket_circle2D::Swap(outputPacket_circle2D* other) {
   if (other != this) {
     std::swap(center_, other->center_);
     std::swap(radios_, other->radios_);
@@ -1998,11 +1999,11 @@ void GameGround_circle2D::Swap(GameGround_circle2D* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_circle2D::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_circle2D::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_circle2D_descriptor_;
-  metadata.reflection = GameGround_circle2D_reflection_;
+  metadata.descriptor = outputPacket_circle2D_descriptor_;
+  metadata.reflection = outputPacket_circle2D_reflection_;
   return metadata;
 }
 
@@ -2010,31 +2011,31 @@ void GameGround_circle2D::Swap(GameGround_circle2D* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_Mission3::kIsValidFieldNumber;
-const int GameGround_Mission3::kIsAttackerFieldNumber;
-const int GameGround_Mission3::kCircularBordeFieldNumber;
-const int GameGround_Mission3::kGoal1FieldNumber;
-const int GameGround_Mission3::kGoal2FieldNumber;
+const int outputPacket_Mission3::kIsValidFieldNumber;
+const int outputPacket_Mission3::kIsAttackerFieldNumber;
+const int outputPacket_Mission3::kCircularBordeFieldNumber;
+const int outputPacket_Mission3::kGoal1FieldNumber;
+const int outputPacket_Mission3::kGoal2FieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_Mission3::GameGround_Mission3()
+outputPacket_Mission3::outputPacket_Mission3()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_Mission3::InitAsDefaultInstance() {
-  circularborde_ = const_cast< ::GameGround_circle2D*>(&::GameGround_circle2D::default_instance());
-  goal1_ = const_cast< ::GameGround_circle2D*>(&::GameGround_circle2D::default_instance());
-  goal2_ = const_cast< ::GameGround_circle2D*>(&::GameGround_circle2D::default_instance());
+void outputPacket_Mission3::InitAsDefaultInstance() {
+  circularborde_ = const_cast< ::outputPacket_circle2D*>(&::outputPacket_circle2D::default_instance());
+  goal1_ = const_cast< ::outputPacket_circle2D*>(&::outputPacket_circle2D::default_instance());
+  goal2_ = const_cast< ::outputPacket_circle2D*>(&::outputPacket_circle2D::default_instance());
 }
 
-GameGround_Mission3::GameGround_Mission3(const GameGround_Mission3& from)
+outputPacket_Mission3::outputPacket_Mission3(const outputPacket_Mission3& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_Mission3::SharedCtor() {
+void outputPacket_Mission3::SharedCtor() {
   _cached_size_ = 0;
   isvalid_ = false;
   isattacker_ = false;
@@ -2044,11 +2045,11 @@ void GameGround_Mission3::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_Mission3::~GameGround_Mission3() {
+outputPacket_Mission3::~outputPacket_Mission3() {
   SharedDtor();
 }
 
-void GameGround_Mission3::SharedDtor() {
+void outputPacket_Mission3::SharedDtor() {
   if (this != default_instance_) {
     delete circularborde_;
     delete goal1_;
@@ -2056,45 +2057,45 @@ void GameGround_Mission3::SharedDtor() {
   }
 }
 
-void GameGround_Mission3::SetCachedSize(int size) const {
+void outputPacket_Mission3::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_Mission3::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_Mission3::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_Mission3_descriptor_;
+  return outputPacket_Mission3_descriptor_;
 }
 
-const GameGround_Mission3& GameGround_Mission3::default_instance() {
+const outputPacket_Mission3& outputPacket_Mission3::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_Mission3* GameGround_Mission3::default_instance_ = NULL;
+outputPacket_Mission3* outputPacket_Mission3::default_instance_ = NULL;
 
-GameGround_Mission3* GameGround_Mission3::New() const {
-  return new GameGround_Mission3;
+outputPacket_Mission3* outputPacket_Mission3::New() const {
+  return new outputPacket_Mission3;
 }
 
-void GameGround_Mission3::Clear() {
+void outputPacket_Mission3::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     isvalid_ = false;
     isattacker_ = false;
     if (has_circularborde()) {
-      if (circularborde_ != NULL) circularborde_->::GameGround_circle2D::Clear();
+      if (circularborde_ != NULL) circularborde_->::outputPacket_circle2D::Clear();
     }
     if (has_goal1()) {
-      if (goal1_ != NULL) goal1_->::GameGround_circle2D::Clear();
+      if (goal1_ != NULL) goal1_->::outputPacket_circle2D::Clear();
     }
     if (has_goal2()) {
-      if (goal2_ != NULL) goal2_->::GameGround_circle2D::Clear();
+      if (goal2_ != NULL) goal2_->::outputPacket_circle2D::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_Mission3::MergePartialFromCodedStream(
+bool outputPacket_Mission3::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -2131,7 +2132,7 @@ bool GameGround_Mission3::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.circle2D circularBorde = 3;
+      // required .outputPacket.circle2D circularBorde = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2145,7 +2146,7 @@ bool GameGround_Mission3::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.circle2D goal1 = 4;
+      // required .outputPacket.circle2D goal1 = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2159,7 +2160,7 @@ bool GameGround_Mission3::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.circle2D goal2 = 5;
+      // required .outputPacket.circle2D goal2 = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2189,7 +2190,7 @@ bool GameGround_Mission3::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_Mission3::SerializeWithCachedSizes(
+void outputPacket_Mission3::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required bool isValid = 1;
   if (has_isvalid()) {
@@ -2201,19 +2202,19 @@ void GameGround_Mission3::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->isattacker(), output);
   }
   
-  // required .GameGround.circle2D circularBorde = 3;
+  // required .outputPacket.circle2D circularBorde = 3;
   if (has_circularborde()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->circularborde(), output);
   }
   
-  // required .GameGround.circle2D goal1 = 4;
+  // required .outputPacket.circle2D goal1 = 4;
   if (has_goal1()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->goal1(), output);
   }
   
-  // required .GameGround.circle2D goal2 = 5;
+  // required .outputPacket.circle2D goal2 = 5;
   if (has_goal2()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->goal2(), output);
@@ -2225,7 +2226,7 @@ void GameGround_Mission3::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_Mission3::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_Mission3::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required bool isValid = 1;
   if (has_isvalid()) {
@@ -2237,21 +2238,21 @@ void GameGround_Mission3::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->isattacker(), target);
   }
   
-  // required .GameGround.circle2D circularBorde = 3;
+  // required .outputPacket.circle2D circularBorde = 3;
   if (has_circularborde()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->circularborde(), target);
   }
   
-  // required .GameGround.circle2D goal1 = 4;
+  // required .outputPacket.circle2D goal1 = 4;
   if (has_goal1()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         4, this->goal1(), target);
   }
   
-  // required .GameGround.circle2D goal2 = 5;
+  // required .outputPacket.circle2D goal2 = 5;
   if (has_goal2()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2265,7 +2266,7 @@ void GameGround_Mission3::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_Mission3::ByteSize() const {
+int outputPacket_Mission3::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -2279,21 +2280,21 @@ int GameGround_Mission3::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // required .GameGround.circle2D circularBorde = 3;
+    // required .outputPacket.circle2D circularBorde = 3;
     if (has_circularborde()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->circularborde());
     }
     
-    // required .GameGround.circle2D goal1 = 4;
+    // required .outputPacket.circle2D goal1 = 4;
     if (has_goal1()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->goal1());
     }
     
-    // required .GameGround.circle2D goal2 = 5;
+    // required .outputPacket.circle2D goal2 = 5;
     if (has_goal2()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2312,10 +2313,10 @@ int GameGround_Mission3::ByteSize() const {
   return total_size;
 }
 
-void GameGround_Mission3::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_Mission3::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_Mission3* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_Mission3*>(
+  const outputPacket_Mission3* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_Mission3*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -2324,7 +2325,7 @@ void GameGround_Mission3::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_Mission3::MergeFrom(const GameGround_Mission3& from) {
+void outputPacket_Mission3::MergeFrom(const outputPacket_Mission3& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_isvalid()) {
@@ -2334,31 +2335,31 @@ void GameGround_Mission3::MergeFrom(const GameGround_Mission3& from) {
       set_isattacker(from.isattacker());
     }
     if (from.has_circularborde()) {
-      mutable_circularborde()->::GameGround_circle2D::MergeFrom(from.circularborde());
+      mutable_circularborde()->::outputPacket_circle2D::MergeFrom(from.circularborde());
     }
     if (from.has_goal1()) {
-      mutable_goal1()->::GameGround_circle2D::MergeFrom(from.goal1());
+      mutable_goal1()->::outputPacket_circle2D::MergeFrom(from.goal1());
     }
     if (from.has_goal2()) {
-      mutable_goal2()->::GameGround_circle2D::MergeFrom(from.goal2());
+      mutable_goal2()->::outputPacket_circle2D::MergeFrom(from.goal2());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_Mission3::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_Mission3::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_Mission3::CopyFrom(const GameGround_Mission3& from) {
+void outputPacket_Mission3::CopyFrom(const outputPacket_Mission3& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_Mission3::IsInitialized() const {
+bool outputPacket_Mission3::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
   
   if (has_circularborde()) {
@@ -2373,7 +2374,7 @@ bool GameGround_Mission3::IsInitialized() const {
   return true;
 }
 
-void GameGround_Mission3::Swap(GameGround_Mission3* other) {
+void outputPacket_Mission3::Swap(outputPacket_Mission3* other) {
   if (other != this) {
     std::swap(isvalid_, other->isvalid_);
     std::swap(isattacker_, other->isattacker_);
@@ -2386,11 +2387,11 @@ void GameGround_Mission3::Swap(GameGround_Mission3* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_Mission3::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_Mission3::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_Mission3_descriptor_;
-  metadata.reflection = GameGround_Mission3_reflection_;
+  metadata.descriptor = outputPacket_Mission3_descriptor_;
+  metadata.reflection = outputPacket_Mission3_reflection_;
   return metadata;
 }
 
@@ -2398,28 +2399,28 @@ void GameGround_Mission3::Swap(GameGround_Mission3* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround_shape::kTypeFieldNumber;
-const int GameGround_shape::kColorFieldNumber;
-const int GameGround_shape::kPositionFieldNumber;
-const int GameGround_shape::kRadiosFieldNumber;
+const int outputPacket_shape::kTypeFieldNumber;
+const int outputPacket_shape::kColorFieldNumber;
+const int outputPacket_shape::kPositionFieldNumber;
+const int outputPacket_shape::kRadiosFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround_shape::GameGround_shape()
+outputPacket_shape::outputPacket_shape()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround_shape::InitAsDefaultInstance() {
-  position_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
+void outputPacket_shape::InitAsDefaultInstance() {
+  position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
-GameGround_shape::GameGround_shape(const GameGround_shape& from)
+outputPacket_shape::outputPacket_shape(const outputPacket_shape& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround_shape::SharedCtor() {
+void outputPacket_shape::SharedCtor() {
   _cached_size_ = 0;
   type_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   color_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
@@ -2428,11 +2429,11 @@ void GameGround_shape::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround_shape::~GameGround_shape() {
+outputPacket_shape::~outputPacket_shape() {
   SharedDtor();
 }
 
-void GameGround_shape::SharedDtor() {
+void outputPacket_shape::SharedDtor() {
   if (type_ != &::google::protobuf::internal::kEmptyString) {
     delete type_;
   }
@@ -2444,27 +2445,27 @@ void GameGround_shape::SharedDtor() {
   }
 }
 
-void GameGround_shape::SetCachedSize(int size) const {
+void outputPacket_shape::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround_shape::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket_shape::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_shape_descriptor_;
+  return outputPacket_shape_descriptor_;
 }
 
-const GameGround_shape& GameGround_shape::default_instance() {
+const outputPacket_shape& outputPacket_shape::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround_shape* GameGround_shape::default_instance_ = NULL;
+outputPacket_shape* outputPacket_shape::default_instance_ = NULL;
 
-GameGround_shape* GameGround_shape::New() const {
-  return new GameGround_shape;
+outputPacket_shape* outputPacket_shape::New() const {
+  return new outputPacket_shape;
 }
 
-void GameGround_shape::Clear() {
+void outputPacket_shape::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (has_type()) {
       if (type_ != &::google::protobuf::internal::kEmptyString) {
@@ -2477,7 +2478,7 @@ void GameGround_shape::Clear() {
       }
     }
     if (has_position()) {
-      if (position_ != NULL) position_->::GameGround_vector2D::Clear();
+      if (position_ != NULL) position_->::outputPacket_vector2D::Clear();
     }
     radios_ = 0;
   }
@@ -2485,7 +2486,7 @@ void GameGround_shape::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround_shape::MergePartialFromCodedStream(
+bool outputPacket_shape::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -2524,7 +2525,7 @@ bool GameGround_shape::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.vector2D position = 3;
+      // required .outputPacket.vector2D position = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2570,7 +2571,7 @@ bool GameGround_shape::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround_shape::SerializeWithCachedSizes(
+void outputPacket_shape::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required string type = 1;
   if (has_type()) {
@@ -2590,7 +2591,7 @@ void GameGround_shape::SerializeWithCachedSizes(
       2, this->color(), output);
   }
   
-  // required .GameGround.vector2D position = 3;
+  // required .outputPacket.vector2D position = 3;
   if (has_position()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->position(), output);
@@ -2607,7 +2608,7 @@ void GameGround_shape::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround_shape::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket_shape::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required string type = 1;
   if (has_type()) {
@@ -2629,7 +2630,7 @@ void GameGround_shape::SerializeWithCachedSizes(
         2, this->color(), target);
   }
   
-  // required .GameGround.vector2D position = 3;
+  // required .outputPacket.vector2D position = 3;
   if (has_position()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2648,7 +2649,7 @@ void GameGround_shape::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround_shape::ByteSize() const {
+int outputPacket_shape::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -2666,7 +2667,7 @@ int GameGround_shape::ByteSize() const {
           this->color());
     }
     
-    // required .GameGround.vector2D position = 3;
+    // required .outputPacket.vector2D position = 3;
     if (has_position()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2690,10 +2691,10 @@ int GameGround_shape::ByteSize() const {
   return total_size;
 }
 
-void GameGround_shape::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket_shape::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround_shape* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround_shape*>(
+  const outputPacket_shape* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_shape*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -2702,7 +2703,7 @@ void GameGround_shape::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround_shape::MergeFrom(const GameGround_shape& from) {
+void outputPacket_shape::MergeFrom(const outputPacket_shape& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_type()) {
@@ -2712,7 +2713,7 @@ void GameGround_shape::MergeFrom(const GameGround_shape& from) {
       set_color(from.color());
     }
     if (from.has_position()) {
-      mutable_position()->::GameGround_vector2D::MergeFrom(from.position());
+      mutable_position()->::outputPacket_vector2D::MergeFrom(from.position());
     }
     if (from.has_radios()) {
       set_radios(from.radios());
@@ -2721,19 +2722,19 @@ void GameGround_shape::MergeFrom(const GameGround_shape& from) {
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround_shape::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket_shape::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround_shape::CopyFrom(const GameGround_shape& from) {
+void outputPacket_shape::CopyFrom(const outputPacket_shape& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround_shape::IsInitialized() const {
+bool outputPacket_shape::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   
   if (has_position()) {
@@ -2742,7 +2743,7 @@ bool GameGround_shape::IsInitialized() const {
   return true;
 }
 
-void GameGround_shape::Swap(GameGround_shape* other) {
+void outputPacket_shape::Swap(outputPacket_shape* other) {
   if (other != this) {
     std::swap(type_, other->type_);
     std::swap(color_, other->color_);
@@ -2754,11 +2755,11 @@ void GameGround_shape::Swap(GameGround_shape* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround_shape::GetMetadata() const {
+::google::protobuf::Metadata outputPacket_shape::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_shape_descriptor_;
-  metadata.reflection = GameGround_shape_reflection_;
+  metadata.descriptor = outputPacket_shape_descriptor_;
+  metadata.reflection = outputPacket_shape_reflection_;
   return metadata;
 }
 
@@ -2766,38 +2767,38 @@ void GameGround_shape::Swap(GameGround_shape* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int GameGround::kMissionFieldNumber;
-const int GameGround::kNumberOfShapeFieldNumber;
-const int GameGround::kOurRobotPositionFieldNumber;
-const int GameGround::kOurRobotAngleFieldNumber;
-const int GameGround::kOppRobotXFieldNumber;
-const int GameGround::kOppRobotAngleFieldNumber;
-const int GameGround::kShapesFieldNumber;
-const int GameGround::kMission1DataFieldNumber;
-const int GameGround::kMission2DataFieldNumber;
-const int GameGround::kMission3DataFieldNumber;
+const int outputPacket::kMissionFieldNumber;
+const int outputPacket::kNumberOfShapeFieldNumber;
+const int outputPacket::kOurRobotPositionFieldNumber;
+const int outputPacket::kOurRobotAngleFieldNumber;
+const int outputPacket::kOppRobotXFieldNumber;
+const int outputPacket::kOppRobotAngleFieldNumber;
+const int outputPacket::kShapesFieldNumber;
+const int outputPacket::kMission1DataFieldNumber;
+const int outputPacket::kMission2DataFieldNumber;
+const int outputPacket::kMission3DataFieldNumber;
 #endif  // !_MSC_VER
 
-GameGround::GameGround()
+outputPacket::outputPacket()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void GameGround::InitAsDefaultInstance() {
-  our_robot_position_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
-  opp_robot_x_ = const_cast< ::GameGround_vector2D*>(&::GameGround_vector2D::default_instance());
-  mission1_data_ = const_cast< ::GameGround_Mission1*>(&::GameGround_Mission1::default_instance());
-  mission2_data_ = const_cast< ::GameGround_Mission2*>(&::GameGround_Mission2::default_instance());
-  mission3_data_ = const_cast< ::GameGround_Mission3*>(&::GameGround_Mission3::default_instance());
+void outputPacket::InitAsDefaultInstance() {
+  our_robot_position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  opp_robot_x_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  mission1_data_ = const_cast< ::outputPacket_Mission1*>(&::outputPacket_Mission1::default_instance());
+  mission2_data_ = const_cast< ::outputPacket_Mission2*>(&::outputPacket_Mission2::default_instance());
+  mission3_data_ = const_cast< ::outputPacket_Mission3*>(&::outputPacket_Mission3::default_instance());
 }
 
-GameGround::GameGround(const GameGround& from)
+outputPacket::outputPacket(const outputPacket& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void GameGround::SharedCtor() {
+void outputPacket::SharedCtor() {
   _cached_size_ = 0;
   mission_ = 0;
   numberofshape_ = 0;
@@ -2811,11 +2812,11 @@ void GameGround::SharedCtor() {
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-GameGround::~GameGround() {
+outputPacket::~outputPacket() {
   SharedDtor();
 }
 
-void GameGround::SharedDtor() {
+void outputPacket::SharedDtor() {
   if (this != default_instance_) {
     delete our_robot_position_;
     delete opp_robot_x_;
@@ -2825,48 +2826,48 @@ void GameGround::SharedDtor() {
   }
 }
 
-void GameGround::SetCachedSize(int size) const {
+void outputPacket::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* GameGround::descriptor() {
+const ::google::protobuf::Descriptor* outputPacket::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return GameGround_descriptor_;
+  return outputPacket_descriptor_;
 }
 
-const GameGround& GameGround::default_instance() {
+const outputPacket& outputPacket::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
 }
 
-GameGround* GameGround::default_instance_ = NULL;
+outputPacket* outputPacket::default_instance_ = NULL;
 
-GameGround* GameGround::New() const {
-  return new GameGround;
+outputPacket* outputPacket::New() const {
+  return new outputPacket;
 }
 
-void GameGround::Clear() {
+void outputPacket::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     mission_ = 0;
     numberofshape_ = 0;
     if (has_our_robot_position()) {
-      if (our_robot_position_ != NULL) our_robot_position_->::GameGround_vector2D::Clear();
+      if (our_robot_position_ != NULL) our_robot_position_->::outputPacket_vector2D::Clear();
     }
     our_robot_angle_ = 0;
     if (has_opp_robot_x()) {
-      if (opp_robot_x_ != NULL) opp_robot_x_->::GameGround_vector2D::Clear();
+      if (opp_robot_x_ != NULL) opp_robot_x_->::outputPacket_vector2D::Clear();
     }
     opp_robot_angle_ = 0;
     if (has_mission1_data()) {
-      if (mission1_data_ != NULL) mission1_data_->::GameGround_Mission1::Clear();
+      if (mission1_data_ != NULL) mission1_data_->::outputPacket_Mission1::Clear();
     }
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_mission2_data()) {
-      if (mission2_data_ != NULL) mission2_data_->::GameGround_Mission2::Clear();
+      if (mission2_data_ != NULL) mission2_data_->::outputPacket_Mission2::Clear();
     }
     if (has_mission3_data()) {
-      if (mission3_data_ != NULL) mission3_data_->::GameGround_Mission3::Clear();
+      if (mission3_data_ != NULL) mission3_data_->::outputPacket_Mission3::Clear();
     }
   }
   shapes_.Clear();
@@ -2874,7 +2875,7 @@ void GameGround::Clear() {
   mutable_unknown_fields()->Clear();
 }
 
-bool GameGround::MergePartialFromCodedStream(
+bool outputPacket::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -2911,7 +2912,7 @@ bool GameGround::MergePartialFromCodedStream(
         break;
       }
       
-      // required .GameGround.vector2D our_robot_position = 3;
+      // required .outputPacket.vector2D our_robot_position = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2941,7 +2942,7 @@ bool GameGround::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .GameGround.vector2D opp_robot_x = 6;
+      // optional .outputPacket.vector2D opp_robot_x = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2971,7 +2972,7 @@ bool GameGround::MergePartialFromCodedStream(
         break;
       }
       
-      // repeated .GameGround.shape shapes = 8;
+      // repeated .outputPacket.shape shapes = 8;
       case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2986,7 +2987,7 @@ bool GameGround::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .GameGround.Mission1 mission1_data = 9;
+      // optional .outputPacket.Mission1 mission1_data = 9;
       case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -3000,7 +3001,7 @@ bool GameGround::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .GameGround.Mission2 mission2_data = 10;
+      // optional .outputPacket.Mission2 mission2_data = 10;
       case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -3014,7 +3015,7 @@ bool GameGround::MergePartialFromCodedStream(
         break;
       }
       
-      // optional .GameGround.Mission3 mission3_data = 11;
+      // optional .outputPacket.Mission3 mission3_data = 11;
       case 11: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -3044,7 +3045,7 @@ bool GameGround::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void GameGround::SerializeWithCachedSizes(
+void outputPacket::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // required int32 mission = 1;
   if (has_mission()) {
@@ -3056,7 +3057,7 @@ void GameGround::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->numberofshape(), output);
   }
   
-  // required .GameGround.vector2D our_robot_position = 3;
+  // required .outputPacket.vector2D our_robot_position = 3;
   if (has_our_robot_position()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->our_robot_position(), output);
@@ -3067,7 +3068,7 @@ void GameGround::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->our_robot_angle(), output);
   }
   
-  // optional .GameGround.vector2D opp_robot_x = 6;
+  // optional .outputPacket.vector2D opp_robot_x = 6;
   if (has_opp_robot_x()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       6, this->opp_robot_x(), output);
@@ -3078,25 +3079,25 @@ void GameGround::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteDouble(7, this->opp_robot_angle(), output);
   }
   
-  // repeated .GameGround.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 8;
   for (int i = 0; i < this->shapes_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       8, this->shapes(i), output);
   }
   
-  // optional .GameGround.Mission1 mission1_data = 9;
+  // optional .outputPacket.Mission1 mission1_data = 9;
   if (has_mission1_data()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       9, this->mission1_data(), output);
   }
   
-  // optional .GameGround.Mission2 mission2_data = 10;
+  // optional .outputPacket.Mission2 mission2_data = 10;
   if (has_mission2_data()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       10, this->mission2_data(), output);
   }
   
-  // optional .GameGround.Mission3 mission3_data = 11;
+  // optional .outputPacket.Mission3 mission3_data = 11;
   if (has_mission3_data()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       11, this->mission3_data(), output);
@@ -3108,7 +3109,7 @@ void GameGround::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* GameGround::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* outputPacket::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // required int32 mission = 1;
   if (has_mission()) {
@@ -3120,7 +3121,7 @@ void GameGround::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->numberofshape(), target);
   }
   
-  // required .GameGround.vector2D our_robot_position = 3;
+  // required .outputPacket.vector2D our_robot_position = 3;
   if (has_our_robot_position()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -3132,7 +3133,7 @@ void GameGround::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->our_robot_angle(), target);
   }
   
-  // optional .GameGround.vector2D opp_robot_x = 6;
+  // optional .outputPacket.vector2D opp_robot_x = 6;
   if (has_opp_robot_x()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -3144,28 +3145,28 @@ void GameGround::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(7, this->opp_robot_angle(), target);
   }
   
-  // repeated .GameGround.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 8;
   for (int i = 0; i < this->shapes_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         8, this->shapes(i), target);
   }
   
-  // optional .GameGround.Mission1 mission1_data = 9;
+  // optional .outputPacket.Mission1 mission1_data = 9;
   if (has_mission1_data()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         9, this->mission1_data(), target);
   }
   
-  // optional .GameGround.Mission2 mission2_data = 10;
+  // optional .outputPacket.Mission2 mission2_data = 10;
   if (has_mission2_data()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         10, this->mission2_data(), target);
   }
   
-  // optional .GameGround.Mission3 mission3_data = 11;
+  // optional .outputPacket.Mission3 mission3_data = 11;
   if (has_mission3_data()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -3179,7 +3180,7 @@ void GameGround::SerializeWithCachedSizes(
   return target;
 }
 
-int GameGround::ByteSize() const {
+int outputPacket::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -3197,7 +3198,7 @@ int GameGround::ByteSize() const {
           this->numberofshape());
     }
     
-    // required .GameGround.vector2D our_robot_position = 3;
+    // required .outputPacket.vector2D our_robot_position = 3;
     if (has_our_robot_position()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -3209,7 +3210,7 @@ int GameGround::ByteSize() const {
       total_size += 1 + 8;
     }
     
-    // optional .GameGround.vector2D opp_robot_x = 6;
+    // optional .outputPacket.vector2D opp_robot_x = 6;
     if (has_opp_robot_x()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -3221,7 +3222,7 @@ int GameGround::ByteSize() const {
       total_size += 1 + 8;
     }
     
-    // optional .GameGround.Mission1 mission1_data = 9;
+    // optional .outputPacket.Mission1 mission1_data = 9;
     if (has_mission1_data()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -3230,14 +3231,14 @@ int GameGround::ByteSize() const {
     
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional .GameGround.Mission2 mission2_data = 10;
+    // optional .outputPacket.Mission2 mission2_data = 10;
     if (has_mission2_data()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->mission2_data());
     }
     
-    // optional .GameGround.Mission3 mission3_data = 11;
+    // optional .outputPacket.Mission3 mission3_data = 11;
     if (has_mission3_data()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -3245,7 +3246,7 @@ int GameGround::ByteSize() const {
     }
     
   }
-  // repeated .GameGround.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 8;
   total_size += 1 * this->shapes_size();
   for (int i = 0; i < this->shapes_size(); i++) {
     total_size +=
@@ -3264,10 +3265,10 @@ int GameGround::ByteSize() const {
   return total_size;
 }
 
-void GameGround::MergeFrom(const ::google::protobuf::Message& from) {
+void outputPacket::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const GameGround* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const GameGround*>(
+  const outputPacket* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -3276,7 +3277,7 @@ void GameGround::MergeFrom(const ::google::protobuf::Message& from) {
   }
 }
 
-void GameGround::MergeFrom(const GameGround& from) {
+void outputPacket::MergeFrom(const outputPacket& from) {
   GOOGLE_CHECK_NE(&from, this);
   shapes_.MergeFrom(from.shapes_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -3287,45 +3288,45 @@ void GameGround::MergeFrom(const GameGround& from) {
       set_numberofshape(from.numberofshape());
     }
     if (from.has_our_robot_position()) {
-      mutable_our_robot_position()->::GameGround_vector2D::MergeFrom(from.our_robot_position());
+      mutable_our_robot_position()->::outputPacket_vector2D::MergeFrom(from.our_robot_position());
     }
     if (from.has_our_robot_angle()) {
       set_our_robot_angle(from.our_robot_angle());
     }
     if (from.has_opp_robot_x()) {
-      mutable_opp_robot_x()->::GameGround_vector2D::MergeFrom(from.opp_robot_x());
+      mutable_opp_robot_x()->::outputPacket_vector2D::MergeFrom(from.opp_robot_x());
     }
     if (from.has_opp_robot_angle()) {
       set_opp_robot_angle(from.opp_robot_angle());
     }
     if (from.has_mission1_data()) {
-      mutable_mission1_data()->::GameGround_Mission1::MergeFrom(from.mission1_data());
+      mutable_mission1_data()->::outputPacket_Mission1::MergeFrom(from.mission1_data());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_mission2_data()) {
-      mutable_mission2_data()->::GameGround_Mission2::MergeFrom(from.mission2_data());
+      mutable_mission2_data()->::outputPacket_Mission2::MergeFrom(from.mission2_data());
     }
     if (from.has_mission3_data()) {
-      mutable_mission3_data()->::GameGround_Mission3::MergeFrom(from.mission3_data());
+      mutable_mission3_data()->::outputPacket_Mission3::MergeFrom(from.mission3_data());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void GameGround::CopyFrom(const ::google::protobuf::Message& from) {
+void outputPacket::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void GameGround::CopyFrom(const GameGround& from) {
+void outputPacket::CopyFrom(const outputPacket& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool GameGround::IsInitialized() const {
+bool outputPacket::IsInitialized() const {
   if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   
   if (has_our_robot_position()) {
@@ -3349,7 +3350,7 @@ bool GameGround::IsInitialized() const {
   return true;
 }
 
-void GameGround::Swap(GameGround* other) {
+void outputPacket::Swap(outputPacket* other) {
   if (other != this) {
     std::swap(mission_, other->mission_);
     std::swap(numberofshape_, other->numberofshape_);
@@ -3367,11 +3368,11 @@ void GameGround::Swap(GameGround* other) {
   }
 }
 
-::google::protobuf::Metadata GameGround::GetMetadata() const {
+::google::protobuf::Metadata outputPacket::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = GameGround_descriptor_;
-  metadata.reflection = GameGround_reflection_;
+  metadata.descriptor = outputPacket_descriptor_;
+  metadata.reflection = outputPacket_reflection_;
   return metadata;
 }
 

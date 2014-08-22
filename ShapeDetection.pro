@@ -10,7 +10,10 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = ShapeDetection
 TEMPLATE = app
+unix:  LIBS += -lprotobuf
 
+INCLUDEPATH += geom
+INCLUDEPATH += Prototype_Messages
 
 SOURCES += main.cpp\
         mainwindow.cpp \

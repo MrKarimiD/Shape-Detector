@@ -30,26 +30,26 @@ void  protobuf_AddDesc_GameGround_2eproto();
 void protobuf_AssignDesc_GameGround_2eproto();
 void protobuf_ShutdownFile_GameGround_2eproto();
 
-class GameGround;
-class GameGround_vector2D;
-class GameGround_rect2D;
-class GameGround_Mission1;
-class GameGround_line;
-class GameGround_Mission2;
-class GameGround_circle2D;
-class GameGround_Mission3;
-class GameGround_shape;
+class outputPacket;
+class outputPacket_vector2D;
+class outputPacket_rect2D;
+class outputPacket_Mission1;
+class outputPacket_line;
+class outputPacket_Mission2;
+class outputPacket_circle2D;
+class outputPacket_Mission3;
+class outputPacket_shape;
 
 // ===================================================================
 
-class GameGround_vector2D : public ::google::protobuf::Message {
+class outputPacket_vector2D : public ::google::protobuf::Message {
  public:
-  GameGround_vector2D();
-  virtual ~GameGround_vector2D();
+  outputPacket_vector2D();
+  virtual ~outputPacket_vector2D();
   
-  GameGround_vector2D(const GameGround_vector2D& from);
+  outputPacket_vector2D(const outputPacket_vector2D& from);
   
-  inline GameGround_vector2D& operator=(const GameGround_vector2D& from) {
+  inline outputPacket_vector2D& operator=(const outputPacket_vector2D& from) {
     CopyFrom(from);
     return *this;
   }
@@ -63,17 +63,17 @@ class GameGround_vector2D : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_vector2D& default_instance();
+  static const outputPacket_vector2D& default_instance();
   
-  void Swap(GameGround_vector2D* other);
+  void Swap(outputPacket_vector2D* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_vector2D* New() const;
+  outputPacket_vector2D* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_vector2D& from);
-  void MergeFrom(const GameGround_vector2D& from);
+  void CopyFrom(const outputPacket_vector2D& from);
+  void MergeFrom(const outputPacket_vector2D& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -110,7 +110,7 @@ class GameGround_vector2D : public ::google::protobuf::Message {
   inline float y() const;
   inline void set_y(float value);
   
-  // @@protoc_insertion_point(class_scope:GameGround.vector2D)
+  // @@protoc_insertion_point(class_scope:outputPacket.vector2D)
  private:
   inline void set_has_x();
   inline void clear_has_x();
@@ -130,18 +130,18 @@ class GameGround_vector2D : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_vector2D* default_instance_;
+  static outputPacket_vector2D* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_rect2D : public ::google::protobuf::Message {
+class outputPacket_rect2D : public ::google::protobuf::Message {
  public:
-  GameGround_rect2D();
-  virtual ~GameGround_rect2D();
+  outputPacket_rect2D();
+  virtual ~outputPacket_rect2D();
   
-  GameGround_rect2D(const GameGround_rect2D& from);
+  outputPacket_rect2D(const outputPacket_rect2D& from);
   
-  inline GameGround_rect2D& operator=(const GameGround_rect2D& from) {
+  inline outputPacket_rect2D& operator=(const outputPacket_rect2D& from) {
     CopyFrom(from);
     return *this;
   }
@@ -155,17 +155,17 @@ class GameGround_rect2D : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_rect2D& default_instance();
+  static const outputPacket_rect2D& default_instance();
   
-  void Swap(GameGround_rect2D* other);
+  void Swap(outputPacket_rect2D* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_rect2D* New() const;
+  outputPacket_rect2D* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_rect2D& from);
-  void MergeFrom(const GameGround_rect2D& from);
+  void CopyFrom(const outputPacket_rect2D& from);
+  void MergeFrom(const outputPacket_rect2D& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -188,23 +188,23 @@ class GameGround_rect2D : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .GameGround.vector2D tl = 1;
+  // required .outputPacket.vector2D tl = 1;
   inline bool has_tl() const;
   inline void clear_tl();
   static const int kTlFieldNumber = 1;
-  inline const ::GameGround_vector2D& tl() const;
-  inline ::GameGround_vector2D* mutable_tl();
-  inline ::GameGround_vector2D* release_tl();
+  inline const ::outputPacket_vector2D& tl() const;
+  inline ::outputPacket_vector2D* mutable_tl();
+  inline ::outputPacket_vector2D* release_tl();
   
-  // required .GameGround.vector2D br = 2;
+  // required .outputPacket.vector2D br = 2;
   inline bool has_br() const;
   inline void clear_br();
   static const int kBrFieldNumber = 2;
-  inline const ::GameGround_vector2D& br() const;
-  inline ::GameGround_vector2D* mutable_br();
-  inline ::GameGround_vector2D* release_br();
+  inline const ::outputPacket_vector2D& br() const;
+  inline ::outputPacket_vector2D* mutable_br();
+  inline ::outputPacket_vector2D* release_br();
   
-  // @@protoc_insertion_point(class_scope:GameGround.rect2D)
+  // @@protoc_insertion_point(class_scope:outputPacket.rect2D)
  private:
   inline void set_has_tl();
   inline void clear_has_tl();
@@ -213,8 +213,8 @@ class GameGround_rect2D : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::GameGround_vector2D* tl_;
-  ::GameGround_vector2D* br_;
+  ::outputPacket_vector2D* tl_;
+  ::outputPacket_vector2D* br_;
   
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -224,18 +224,18 @@ class GameGround_rect2D : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_rect2D* default_instance_;
+  static outputPacket_rect2D* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_Mission1 : public ::google::protobuf::Message {
+class outputPacket_Mission1 : public ::google::protobuf::Message {
  public:
-  GameGround_Mission1();
-  virtual ~GameGround_Mission1();
+  outputPacket_Mission1();
+  virtual ~outputPacket_Mission1();
   
-  GameGround_Mission1(const GameGround_Mission1& from);
+  outputPacket_Mission1(const outputPacket_Mission1& from);
   
-  inline GameGround_Mission1& operator=(const GameGround_Mission1& from) {
+  inline outputPacket_Mission1& operator=(const outputPacket_Mission1& from) {
     CopyFrom(from);
     return *this;
   }
@@ -249,17 +249,17 @@ class GameGround_Mission1 : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_Mission1& default_instance();
+  static const outputPacket_Mission1& default_instance();
   
-  void Swap(GameGround_Mission1* other);
+  void Swap(outputPacket_Mission1* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_Mission1* New() const;
+  outputPacket_Mission1* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_Mission1& from);
-  void MergeFrom(const GameGround_Mission1& from);
+  void CopyFrom(const outputPacket_Mission1& from);
+  void MergeFrom(const outputPacket_Mission1& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -289,31 +289,31 @@ class GameGround_Mission1 : public ::google::protobuf::Message {
   inline bool isvalid() const;
   inline void set_isvalid(bool value);
   
-  // required .GameGround.rect2D region1 = 2;
+  // required .outputPacket.rect2D region1 = 2;
   inline bool has_region1() const;
   inline void clear_region1();
   static const int kRegion1FieldNumber = 2;
-  inline const ::GameGround_rect2D& region1() const;
-  inline ::GameGround_rect2D* mutable_region1();
-  inline ::GameGround_rect2D* release_region1();
+  inline const ::outputPacket_rect2D& region1() const;
+  inline ::outputPacket_rect2D* mutable_region1();
+  inline ::outputPacket_rect2D* release_region1();
   
-  // required .GameGround.rect2D region2 = 3;
+  // required .outputPacket.rect2D region2 = 3;
   inline bool has_region2() const;
   inline void clear_region2();
   static const int kRegion2FieldNumber = 3;
-  inline const ::GameGround_rect2D& region2() const;
-  inline ::GameGround_rect2D* mutable_region2();
-  inline ::GameGround_rect2D* release_region2();
+  inline const ::outputPacket_rect2D& region2() const;
+  inline ::outputPacket_rect2D* mutable_region2();
+  inline ::outputPacket_rect2D* release_region2();
   
-  // required .GameGround.vector2D end = 4;
+  // required .outputPacket.vector2D end = 4;
   inline bool has_end() const;
   inline void clear_end();
   static const int kEndFieldNumber = 4;
-  inline const ::GameGround_vector2D& end() const;
-  inline ::GameGround_vector2D* mutable_end();
-  inline ::GameGround_vector2D* release_end();
+  inline const ::outputPacket_vector2D& end() const;
+  inline ::outputPacket_vector2D* mutable_end();
+  inline ::outputPacket_vector2D* release_end();
   
-  // @@protoc_insertion_point(class_scope:GameGround.Mission1)
+  // @@protoc_insertion_point(class_scope:outputPacket.Mission1)
  private:
   inline void set_has_isvalid();
   inline void clear_has_isvalid();
@@ -326,9 +326,9 @@ class GameGround_Mission1 : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::GameGround_rect2D* region1_;
-  ::GameGround_rect2D* region2_;
-  ::GameGround_vector2D* end_;
+  ::outputPacket_rect2D* region1_;
+  ::outputPacket_rect2D* region2_;
+  ::outputPacket_vector2D* end_;
   bool isvalid_;
   
   mutable int _cached_size_;
@@ -339,18 +339,18 @@ class GameGround_Mission1 : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_Mission1* default_instance_;
+  static outputPacket_Mission1* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_line : public ::google::protobuf::Message {
+class outputPacket_line : public ::google::protobuf::Message {
  public:
-  GameGround_line();
-  virtual ~GameGround_line();
+  outputPacket_line();
+  virtual ~outputPacket_line();
   
-  GameGround_line(const GameGround_line& from);
+  outputPacket_line(const outputPacket_line& from);
   
-  inline GameGround_line& operator=(const GameGround_line& from) {
+  inline outputPacket_line& operator=(const outputPacket_line& from) {
     CopyFrom(from);
     return *this;
   }
@@ -364,17 +364,17 @@ class GameGround_line : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_line& default_instance();
+  static const outputPacket_line& default_instance();
   
-  void Swap(GameGround_line* other);
+  void Swap(outputPacket_line* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_line* New() const;
+  outputPacket_line* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_line& from);
-  void MergeFrom(const GameGround_line& from);
+  void CopyFrom(const outputPacket_line& from);
+  void MergeFrom(const outputPacket_line& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -397,23 +397,23 @@ class GameGround_line : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .GameGround.vector2D start = 1;
+  // required .outputPacket.vector2D start = 1;
   inline bool has_start() const;
   inline void clear_start();
   static const int kStartFieldNumber = 1;
-  inline const ::GameGround_vector2D& start() const;
-  inline ::GameGround_vector2D* mutable_start();
-  inline ::GameGround_vector2D* release_start();
+  inline const ::outputPacket_vector2D& start() const;
+  inline ::outputPacket_vector2D* mutable_start();
+  inline ::outputPacket_vector2D* release_start();
   
-  // required .GameGround.vector2D end = 2;
+  // required .outputPacket.vector2D end = 2;
   inline bool has_end() const;
   inline void clear_end();
   static const int kEndFieldNumber = 2;
-  inline const ::GameGround_vector2D& end() const;
-  inline ::GameGround_vector2D* mutable_end();
-  inline ::GameGround_vector2D* release_end();
+  inline const ::outputPacket_vector2D& end() const;
+  inline ::outputPacket_vector2D* mutable_end();
+  inline ::outputPacket_vector2D* release_end();
   
-  // @@protoc_insertion_point(class_scope:GameGround.line)
+  // @@protoc_insertion_point(class_scope:outputPacket.line)
  private:
   inline void set_has_start();
   inline void clear_has_start();
@@ -422,8 +422,8 @@ class GameGround_line : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::GameGround_vector2D* start_;
-  ::GameGround_vector2D* end_;
+  ::outputPacket_vector2D* start_;
+  ::outputPacket_vector2D* end_;
   
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -433,18 +433,18 @@ class GameGround_line : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_line* default_instance_;
+  static outputPacket_line* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_Mission2 : public ::google::protobuf::Message {
+class outputPacket_Mission2 : public ::google::protobuf::Message {
  public:
-  GameGround_Mission2();
-  virtual ~GameGround_Mission2();
+  outputPacket_Mission2();
+  virtual ~outputPacket_Mission2();
   
-  GameGround_Mission2(const GameGround_Mission2& from);
+  outputPacket_Mission2(const outputPacket_Mission2& from);
   
-  inline GameGround_Mission2& operator=(const GameGround_Mission2& from) {
+  inline outputPacket_Mission2& operator=(const outputPacket_Mission2& from) {
     CopyFrom(from);
     return *this;
   }
@@ -458,17 +458,17 @@ class GameGround_Mission2 : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_Mission2& default_instance();
+  static const outputPacket_Mission2& default_instance();
   
-  void Swap(GameGround_Mission2* other);
+  void Swap(outputPacket_Mission2* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_Mission2* New() const;
+  outputPacket_Mission2* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_Mission2& from);
-  void MergeFrom(const GameGround_Mission2& from);
+  void CopyFrom(const outputPacket_Mission2& from);
+  void MergeFrom(const outputPacket_Mission2& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -498,27 +498,27 @@ class GameGround_Mission2 : public ::google::protobuf::Message {
   inline bool isvalid() const;
   inline void set_isvalid(bool value);
   
-  // repeated .GameGround.line lines = 2;
+  // repeated .outputPacket.line lines = 2;
   inline int lines_size() const;
   inline void clear_lines();
   static const int kLinesFieldNumber = 2;
-  inline const ::GameGround_line& lines(int index) const;
-  inline ::GameGround_line* mutable_lines(int index);
-  inline ::GameGround_line* add_lines();
-  inline const ::google::protobuf::RepeatedPtrField< ::GameGround_line >&
+  inline const ::outputPacket_line& lines(int index) const;
+  inline ::outputPacket_line* mutable_lines(int index);
+  inline ::outputPacket_line* add_lines();
+  inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_line >&
       lines() const;
-  inline ::google::protobuf::RepeatedPtrField< ::GameGround_line >*
+  inline ::google::protobuf::RepeatedPtrField< ::outputPacket_line >*
       mutable_lines();
   
-  // required .GameGround.vector2D end = 3;
+  // required .outputPacket.vector2D end = 3;
   inline bool has_end() const;
   inline void clear_end();
   static const int kEndFieldNumber = 3;
-  inline const ::GameGround_vector2D& end() const;
-  inline ::GameGround_vector2D* mutable_end();
-  inline ::GameGround_vector2D* release_end();
+  inline const ::outputPacket_vector2D& end() const;
+  inline ::outputPacket_vector2D* mutable_end();
+  inline ::outputPacket_vector2D* release_end();
   
-  // @@protoc_insertion_point(class_scope:GameGround.Mission2)
+  // @@protoc_insertion_point(class_scope:outputPacket.Mission2)
  private:
   inline void set_has_isvalid();
   inline void clear_has_isvalid();
@@ -527,8 +527,8 @@ class GameGround_Mission2 : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::google::protobuf::RepeatedPtrField< ::GameGround_line > lines_;
-  ::GameGround_vector2D* end_;
+  ::google::protobuf::RepeatedPtrField< ::outputPacket_line > lines_;
+  ::outputPacket_vector2D* end_;
   bool isvalid_;
   
   mutable int _cached_size_;
@@ -539,18 +539,18 @@ class GameGround_Mission2 : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_Mission2* default_instance_;
+  static outputPacket_Mission2* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_circle2D : public ::google::protobuf::Message {
+class outputPacket_circle2D : public ::google::protobuf::Message {
  public:
-  GameGround_circle2D();
-  virtual ~GameGround_circle2D();
+  outputPacket_circle2D();
+  virtual ~outputPacket_circle2D();
   
-  GameGround_circle2D(const GameGround_circle2D& from);
+  outputPacket_circle2D(const outputPacket_circle2D& from);
   
-  inline GameGround_circle2D& operator=(const GameGround_circle2D& from) {
+  inline outputPacket_circle2D& operator=(const outputPacket_circle2D& from) {
     CopyFrom(from);
     return *this;
   }
@@ -564,17 +564,17 @@ class GameGround_circle2D : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_circle2D& default_instance();
+  static const outputPacket_circle2D& default_instance();
   
-  void Swap(GameGround_circle2D* other);
+  void Swap(outputPacket_circle2D* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_circle2D* New() const;
+  outputPacket_circle2D* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_circle2D& from);
-  void MergeFrom(const GameGround_circle2D& from);
+  void CopyFrom(const outputPacket_circle2D& from);
+  void MergeFrom(const outputPacket_circle2D& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -597,13 +597,13 @@ class GameGround_circle2D : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .GameGround.vector2D center = 1;
+  // required .outputPacket.vector2D center = 1;
   inline bool has_center() const;
   inline void clear_center();
   static const int kCenterFieldNumber = 1;
-  inline const ::GameGround_vector2D& center() const;
-  inline ::GameGround_vector2D* mutable_center();
-  inline ::GameGround_vector2D* release_center();
+  inline const ::outputPacket_vector2D& center() const;
+  inline ::outputPacket_vector2D* mutable_center();
+  inline ::outputPacket_vector2D* release_center();
   
   // required double radios = 2;
   inline bool has_radios() const;
@@ -612,7 +612,7 @@ class GameGround_circle2D : public ::google::protobuf::Message {
   inline double radios() const;
   inline void set_radios(double value);
   
-  // @@protoc_insertion_point(class_scope:GameGround.circle2D)
+  // @@protoc_insertion_point(class_scope:outputPacket.circle2D)
  private:
   inline void set_has_center();
   inline void clear_has_center();
@@ -621,7 +621,7 @@ class GameGround_circle2D : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::GameGround_vector2D* center_;
+  ::outputPacket_vector2D* center_;
   double radios_;
   
   mutable int _cached_size_;
@@ -632,18 +632,18 @@ class GameGround_circle2D : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_circle2D* default_instance_;
+  static outputPacket_circle2D* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_Mission3 : public ::google::protobuf::Message {
+class outputPacket_Mission3 : public ::google::protobuf::Message {
  public:
-  GameGround_Mission3();
-  virtual ~GameGround_Mission3();
+  outputPacket_Mission3();
+  virtual ~outputPacket_Mission3();
   
-  GameGround_Mission3(const GameGround_Mission3& from);
+  outputPacket_Mission3(const outputPacket_Mission3& from);
   
-  inline GameGround_Mission3& operator=(const GameGround_Mission3& from) {
+  inline outputPacket_Mission3& operator=(const outputPacket_Mission3& from) {
     CopyFrom(from);
     return *this;
   }
@@ -657,17 +657,17 @@ class GameGround_Mission3 : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_Mission3& default_instance();
+  static const outputPacket_Mission3& default_instance();
   
-  void Swap(GameGround_Mission3* other);
+  void Swap(outputPacket_Mission3* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_Mission3* New() const;
+  outputPacket_Mission3* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_Mission3& from);
-  void MergeFrom(const GameGround_Mission3& from);
+  void CopyFrom(const outputPacket_Mission3& from);
+  void MergeFrom(const outputPacket_Mission3& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -704,31 +704,31 @@ class GameGround_Mission3 : public ::google::protobuf::Message {
   inline bool isattacker() const;
   inline void set_isattacker(bool value);
   
-  // required .GameGround.circle2D circularBorde = 3;
+  // required .outputPacket.circle2D circularBorde = 3;
   inline bool has_circularborde() const;
   inline void clear_circularborde();
   static const int kCircularBordeFieldNumber = 3;
-  inline const ::GameGround_circle2D& circularborde() const;
-  inline ::GameGround_circle2D* mutable_circularborde();
-  inline ::GameGround_circle2D* release_circularborde();
+  inline const ::outputPacket_circle2D& circularborde() const;
+  inline ::outputPacket_circle2D* mutable_circularborde();
+  inline ::outputPacket_circle2D* release_circularborde();
   
-  // required .GameGround.circle2D goal1 = 4;
+  // required .outputPacket.circle2D goal1 = 4;
   inline bool has_goal1() const;
   inline void clear_goal1();
   static const int kGoal1FieldNumber = 4;
-  inline const ::GameGround_circle2D& goal1() const;
-  inline ::GameGround_circle2D* mutable_goal1();
-  inline ::GameGround_circle2D* release_goal1();
+  inline const ::outputPacket_circle2D& goal1() const;
+  inline ::outputPacket_circle2D* mutable_goal1();
+  inline ::outputPacket_circle2D* release_goal1();
   
-  // required .GameGround.circle2D goal2 = 5;
+  // required .outputPacket.circle2D goal2 = 5;
   inline bool has_goal2() const;
   inline void clear_goal2();
   static const int kGoal2FieldNumber = 5;
-  inline const ::GameGround_circle2D& goal2() const;
-  inline ::GameGround_circle2D* mutable_goal2();
-  inline ::GameGround_circle2D* release_goal2();
+  inline const ::outputPacket_circle2D& goal2() const;
+  inline ::outputPacket_circle2D* mutable_goal2();
+  inline ::outputPacket_circle2D* release_goal2();
   
-  // @@protoc_insertion_point(class_scope:GameGround.Mission3)
+  // @@protoc_insertion_point(class_scope:outputPacket.Mission3)
  private:
   inline void set_has_isvalid();
   inline void clear_has_isvalid();
@@ -743,9 +743,9 @@ class GameGround_Mission3 : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::GameGround_circle2D* circularborde_;
-  ::GameGround_circle2D* goal1_;
-  ::GameGround_circle2D* goal2_;
+  ::outputPacket_circle2D* circularborde_;
+  ::outputPacket_circle2D* goal1_;
+  ::outputPacket_circle2D* goal2_;
   bool isvalid_;
   bool isattacker_;
   
@@ -757,18 +757,18 @@ class GameGround_Mission3 : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_Mission3* default_instance_;
+  static outputPacket_Mission3* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround_shape : public ::google::protobuf::Message {
+class outputPacket_shape : public ::google::protobuf::Message {
  public:
-  GameGround_shape();
-  virtual ~GameGround_shape();
+  outputPacket_shape();
+  virtual ~outputPacket_shape();
   
-  GameGround_shape(const GameGround_shape& from);
+  outputPacket_shape(const outputPacket_shape& from);
   
-  inline GameGround_shape& operator=(const GameGround_shape& from) {
+  inline outputPacket_shape& operator=(const outputPacket_shape& from) {
     CopyFrom(from);
     return *this;
   }
@@ -782,17 +782,17 @@ class GameGround_shape : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround_shape& default_instance();
+  static const outputPacket_shape& default_instance();
   
-  void Swap(GameGround_shape* other);
+  void Swap(outputPacket_shape* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround_shape* New() const;
+  outputPacket_shape* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround_shape& from);
-  void MergeFrom(const GameGround_shape& from);
+  void CopyFrom(const outputPacket_shape& from);
+  void MergeFrom(const outputPacket_shape& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -837,13 +837,13 @@ class GameGround_shape : public ::google::protobuf::Message {
   inline ::std::string* mutable_color();
   inline ::std::string* release_color();
   
-  // required .GameGround.vector2D position = 3;
+  // required .outputPacket.vector2D position = 3;
   inline bool has_position() const;
   inline void clear_position();
   static const int kPositionFieldNumber = 3;
-  inline const ::GameGround_vector2D& position() const;
-  inline ::GameGround_vector2D* mutable_position();
-  inline ::GameGround_vector2D* release_position();
+  inline const ::outputPacket_vector2D& position() const;
+  inline ::outputPacket_vector2D* mutable_position();
+  inline ::outputPacket_vector2D* release_position();
   
   // required double radios = 4;
   inline bool has_radios() const;
@@ -852,7 +852,7 @@ class GameGround_shape : public ::google::protobuf::Message {
   inline double radios() const;
   inline void set_radios(double value);
   
-  // @@protoc_insertion_point(class_scope:GameGround.shape)
+  // @@protoc_insertion_point(class_scope:outputPacket.shape)
  private:
   inline void set_has_type();
   inline void clear_has_type();
@@ -867,7 +867,7 @@ class GameGround_shape : public ::google::protobuf::Message {
   
   ::std::string* type_;
   ::std::string* color_;
-  ::GameGround_vector2D* position_;
+  ::outputPacket_vector2D* position_;
   double radios_;
   
   mutable int _cached_size_;
@@ -878,18 +878,18 @@ class GameGround_shape : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround_shape* default_instance_;
+  static outputPacket_shape* default_instance_;
 };
 // -------------------------------------------------------------------
 
-class GameGround : public ::google::protobuf::Message {
+class outputPacket : public ::google::protobuf::Message {
  public:
-  GameGround();
-  virtual ~GameGround();
+  outputPacket();
+  virtual ~outputPacket();
   
-  GameGround(const GameGround& from);
+  outputPacket(const outputPacket& from);
   
-  inline GameGround& operator=(const GameGround& from) {
+  inline outputPacket& operator=(const outputPacket& from) {
     CopyFrom(from);
     return *this;
   }
@@ -903,17 +903,17 @@ class GameGround : public ::google::protobuf::Message {
   }
   
   static const ::google::protobuf::Descriptor* descriptor();
-  static const GameGround& default_instance();
+  static const outputPacket& default_instance();
   
-  void Swap(GameGround* other);
+  void Swap(outputPacket* other);
   
   // implements Message ----------------------------------------------
   
-  GameGround* New() const;
+  outputPacket* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const GameGround& from);
-  void MergeFrom(const GameGround& from);
+  void CopyFrom(const outputPacket& from);
+  void MergeFrom(const outputPacket& from);
   void Clear();
   bool IsInitialized() const;
   
@@ -934,14 +934,14 @@ class GameGround : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef GameGround_vector2D vector2D;
-  typedef GameGround_rect2D rect2D;
-  typedef GameGround_Mission1 Mission1;
-  typedef GameGround_line line;
-  typedef GameGround_Mission2 Mission2;
-  typedef GameGround_circle2D circle2D;
-  typedef GameGround_Mission3 Mission3;
-  typedef GameGround_shape shape;
+  typedef outputPacket_vector2D vector2D;
+  typedef outputPacket_rect2D rect2D;
+  typedef outputPacket_Mission1 Mission1;
+  typedef outputPacket_line line;
+  typedef outputPacket_Mission2 Mission2;
+  typedef outputPacket_circle2D circle2D;
+  typedef outputPacket_Mission3 Mission3;
+  typedef outputPacket_shape shape;
   
   // accessors -------------------------------------------------------
   
@@ -959,13 +959,13 @@ class GameGround : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 numberofshape() const;
   inline void set_numberofshape(::google::protobuf::int32 value);
   
-  // required .GameGround.vector2D our_robot_position = 3;
+  // required .outputPacket.vector2D our_robot_position = 3;
   inline bool has_our_robot_position() const;
   inline void clear_our_robot_position();
   static const int kOurRobotPositionFieldNumber = 3;
-  inline const ::GameGround_vector2D& our_robot_position() const;
-  inline ::GameGround_vector2D* mutable_our_robot_position();
-  inline ::GameGround_vector2D* release_our_robot_position();
+  inline const ::outputPacket_vector2D& our_robot_position() const;
+  inline ::outputPacket_vector2D* mutable_our_robot_position();
+  inline ::outputPacket_vector2D* release_our_robot_position();
   
   // required double our_robot_angle = 4;
   inline bool has_our_robot_angle() const;
@@ -974,13 +974,13 @@ class GameGround : public ::google::protobuf::Message {
   inline double our_robot_angle() const;
   inline void set_our_robot_angle(double value);
   
-  // optional .GameGround.vector2D opp_robot_x = 6;
+  // optional .outputPacket.vector2D opp_robot_x = 6;
   inline bool has_opp_robot_x() const;
   inline void clear_opp_robot_x();
   static const int kOppRobotXFieldNumber = 6;
-  inline const ::GameGround_vector2D& opp_robot_x() const;
-  inline ::GameGround_vector2D* mutable_opp_robot_x();
-  inline ::GameGround_vector2D* release_opp_robot_x();
+  inline const ::outputPacket_vector2D& opp_robot_x() const;
+  inline ::outputPacket_vector2D* mutable_opp_robot_x();
+  inline ::outputPacket_vector2D* release_opp_robot_x();
   
   // optional double opp_robot_angle = 7;
   inline bool has_opp_robot_angle() const;
@@ -989,43 +989,43 @@ class GameGround : public ::google::protobuf::Message {
   inline double opp_robot_angle() const;
   inline void set_opp_robot_angle(double value);
   
-  // repeated .GameGround.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 8;
   inline int shapes_size() const;
   inline void clear_shapes();
   static const int kShapesFieldNumber = 8;
-  inline const ::GameGround_shape& shapes(int index) const;
-  inline ::GameGround_shape* mutable_shapes(int index);
-  inline ::GameGround_shape* add_shapes();
-  inline const ::google::protobuf::RepeatedPtrField< ::GameGround_shape >&
+  inline const ::outputPacket_shape& shapes(int index) const;
+  inline ::outputPacket_shape* mutable_shapes(int index);
+  inline ::outputPacket_shape* add_shapes();
+  inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_shape >&
       shapes() const;
-  inline ::google::protobuf::RepeatedPtrField< ::GameGround_shape >*
+  inline ::google::protobuf::RepeatedPtrField< ::outputPacket_shape >*
       mutable_shapes();
   
-  // optional .GameGround.Mission1 mission1_data = 9;
+  // optional .outputPacket.Mission1 mission1_data = 9;
   inline bool has_mission1_data() const;
   inline void clear_mission1_data();
   static const int kMission1DataFieldNumber = 9;
-  inline const ::GameGround_Mission1& mission1_data() const;
-  inline ::GameGround_Mission1* mutable_mission1_data();
-  inline ::GameGround_Mission1* release_mission1_data();
+  inline const ::outputPacket_Mission1& mission1_data() const;
+  inline ::outputPacket_Mission1* mutable_mission1_data();
+  inline ::outputPacket_Mission1* release_mission1_data();
   
-  // optional .GameGround.Mission2 mission2_data = 10;
+  // optional .outputPacket.Mission2 mission2_data = 10;
   inline bool has_mission2_data() const;
   inline void clear_mission2_data();
   static const int kMission2DataFieldNumber = 10;
-  inline const ::GameGround_Mission2& mission2_data() const;
-  inline ::GameGround_Mission2* mutable_mission2_data();
-  inline ::GameGround_Mission2* release_mission2_data();
+  inline const ::outputPacket_Mission2& mission2_data() const;
+  inline ::outputPacket_Mission2* mutable_mission2_data();
+  inline ::outputPacket_Mission2* release_mission2_data();
   
-  // optional .GameGround.Mission3 mission3_data = 11;
+  // optional .outputPacket.Mission3 mission3_data = 11;
   inline bool has_mission3_data() const;
   inline void clear_mission3_data();
   static const int kMission3DataFieldNumber = 11;
-  inline const ::GameGround_Mission3& mission3_data() const;
-  inline ::GameGround_Mission3* mutable_mission3_data();
-  inline ::GameGround_Mission3* release_mission3_data();
+  inline const ::outputPacket_Mission3& mission3_data() const;
+  inline ::outputPacket_Mission3* mutable_mission3_data();
+  inline ::outputPacket_Mission3* release_mission3_data();
   
-  // @@protoc_insertion_point(class_scope:GameGround)
+  // @@protoc_insertion_point(class_scope:outputPacket)
  private:
   inline void set_has_mission();
   inline void clear_has_mission();
@@ -1050,14 +1050,14 @@ class GameGround : public ::google::protobuf::Message {
   
   ::google::protobuf::int32 mission_;
   ::google::protobuf::int32 numberofshape_;
-  ::GameGround_vector2D* our_robot_position_;
+  ::outputPacket_vector2D* our_robot_position_;
   double our_robot_angle_;
-  ::GameGround_vector2D* opp_robot_x_;
+  ::outputPacket_vector2D* opp_robot_x_;
   double opp_robot_angle_;
-  ::google::protobuf::RepeatedPtrField< ::GameGround_shape > shapes_;
-  ::GameGround_Mission1* mission1_data_;
-  ::GameGround_Mission2* mission2_data_;
-  ::GameGround_Mission3* mission3_data_;
+  ::google::protobuf::RepeatedPtrField< ::outputPacket_shape > shapes_;
+  ::outputPacket_Mission1* mission1_data_;
+  ::outputPacket_Mission2* mission2_data_;
+  ::outputPacket_Mission3* mission3_data_;
   
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
@@ -1067,618 +1067,618 @@ class GameGround : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_GameGround_2eproto();
   
   void InitAsDefaultInstance();
-  static GameGround* default_instance_;
+  static outputPacket* default_instance_;
 };
 // ===================================================================
 
 
 // ===================================================================
 
-// GameGround_vector2D
+// outputPacket_vector2D
 
 // required float x = 1;
-inline bool GameGround_vector2D::has_x() const {
+inline bool outputPacket_vector2D::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_vector2D::set_has_x() {
+inline void outputPacket_vector2D::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_vector2D::clear_has_x() {
+inline void outputPacket_vector2D::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_vector2D::clear_x() {
+inline void outputPacket_vector2D::clear_x() {
   x_ = 0;
   clear_has_x();
 }
-inline float GameGround_vector2D::x() const {
+inline float outputPacket_vector2D::x() const {
   return x_;
 }
-inline void GameGround_vector2D::set_x(float value) {
+inline void outputPacket_vector2D::set_x(float value) {
   set_has_x();
   x_ = value;
 }
 
 // required float y = 2;
-inline bool GameGround_vector2D::has_y() const {
+inline bool outputPacket_vector2D::has_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_vector2D::set_has_y() {
+inline void outputPacket_vector2D::set_has_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_vector2D::clear_has_y() {
+inline void outputPacket_vector2D::clear_has_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_vector2D::clear_y() {
+inline void outputPacket_vector2D::clear_y() {
   y_ = 0;
   clear_has_y();
 }
-inline float GameGround_vector2D::y() const {
+inline float outputPacket_vector2D::y() const {
   return y_;
 }
-inline void GameGround_vector2D::set_y(float value) {
+inline void outputPacket_vector2D::set_y(float value) {
   set_has_y();
   y_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_rect2D
+// outputPacket_rect2D
 
-// required .GameGround.vector2D tl = 1;
-inline bool GameGround_rect2D::has_tl() const {
+// required .outputPacket.vector2D tl = 1;
+inline bool outputPacket_rect2D::has_tl() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_rect2D::set_has_tl() {
+inline void outputPacket_rect2D::set_has_tl() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_rect2D::clear_has_tl() {
+inline void outputPacket_rect2D::clear_has_tl() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_rect2D::clear_tl() {
-  if (tl_ != NULL) tl_->::GameGround_vector2D::Clear();
+inline void outputPacket_rect2D::clear_tl() {
+  if (tl_ != NULL) tl_->::outputPacket_vector2D::Clear();
   clear_has_tl();
 }
-inline const ::GameGround_vector2D& GameGround_rect2D::tl() const {
+inline const ::outputPacket_vector2D& outputPacket_rect2D::tl() const {
   return tl_ != NULL ? *tl_ : *default_instance_->tl_;
 }
-inline ::GameGround_vector2D* GameGround_rect2D::mutable_tl() {
+inline ::outputPacket_vector2D* outputPacket_rect2D::mutable_tl() {
   set_has_tl();
-  if (tl_ == NULL) tl_ = new ::GameGround_vector2D;
+  if (tl_ == NULL) tl_ = new ::outputPacket_vector2D;
   return tl_;
 }
-inline ::GameGround_vector2D* GameGround_rect2D::release_tl() {
+inline ::outputPacket_vector2D* outputPacket_rect2D::release_tl() {
   clear_has_tl();
-  ::GameGround_vector2D* temp = tl_;
+  ::outputPacket_vector2D* temp = tl_;
   tl_ = NULL;
   return temp;
 }
 
-// required .GameGround.vector2D br = 2;
-inline bool GameGround_rect2D::has_br() const {
+// required .outputPacket.vector2D br = 2;
+inline bool outputPacket_rect2D::has_br() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_rect2D::set_has_br() {
+inline void outputPacket_rect2D::set_has_br() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_rect2D::clear_has_br() {
+inline void outputPacket_rect2D::clear_has_br() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_rect2D::clear_br() {
-  if (br_ != NULL) br_->::GameGround_vector2D::Clear();
+inline void outputPacket_rect2D::clear_br() {
+  if (br_ != NULL) br_->::outputPacket_vector2D::Clear();
   clear_has_br();
 }
-inline const ::GameGround_vector2D& GameGround_rect2D::br() const {
+inline const ::outputPacket_vector2D& outputPacket_rect2D::br() const {
   return br_ != NULL ? *br_ : *default_instance_->br_;
 }
-inline ::GameGround_vector2D* GameGround_rect2D::mutable_br() {
+inline ::outputPacket_vector2D* outputPacket_rect2D::mutable_br() {
   set_has_br();
-  if (br_ == NULL) br_ = new ::GameGround_vector2D;
+  if (br_ == NULL) br_ = new ::outputPacket_vector2D;
   return br_;
 }
-inline ::GameGround_vector2D* GameGround_rect2D::release_br() {
+inline ::outputPacket_vector2D* outputPacket_rect2D::release_br() {
   clear_has_br();
-  ::GameGround_vector2D* temp = br_;
+  ::outputPacket_vector2D* temp = br_;
   br_ = NULL;
   return temp;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_Mission1
+// outputPacket_Mission1
 
 // required bool isValid = 1;
-inline bool GameGround_Mission1::has_isvalid() const {
+inline bool outputPacket_Mission1::has_isvalid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_Mission1::set_has_isvalid() {
+inline void outputPacket_Mission1::set_has_isvalid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_Mission1::clear_has_isvalid() {
+inline void outputPacket_Mission1::clear_has_isvalid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_Mission1::clear_isvalid() {
+inline void outputPacket_Mission1::clear_isvalid() {
   isvalid_ = false;
   clear_has_isvalid();
 }
-inline bool GameGround_Mission1::isvalid() const {
+inline bool outputPacket_Mission1::isvalid() const {
   return isvalid_;
 }
-inline void GameGround_Mission1::set_isvalid(bool value) {
+inline void outputPacket_Mission1::set_isvalid(bool value) {
   set_has_isvalid();
   isvalid_ = value;
 }
 
-// required .GameGround.rect2D region1 = 2;
-inline bool GameGround_Mission1::has_region1() const {
+// required .outputPacket.rect2D region1 = 2;
+inline bool outputPacket_Mission1::has_region1() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_Mission1::set_has_region1() {
+inline void outputPacket_Mission1::set_has_region1() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_Mission1::clear_has_region1() {
+inline void outputPacket_Mission1::clear_has_region1() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_Mission1::clear_region1() {
-  if (region1_ != NULL) region1_->::GameGround_rect2D::Clear();
+inline void outputPacket_Mission1::clear_region1() {
+  if (region1_ != NULL) region1_->::outputPacket_rect2D::Clear();
   clear_has_region1();
 }
-inline const ::GameGround_rect2D& GameGround_Mission1::region1() const {
+inline const ::outputPacket_rect2D& outputPacket_Mission1::region1() const {
   return region1_ != NULL ? *region1_ : *default_instance_->region1_;
 }
-inline ::GameGround_rect2D* GameGround_Mission1::mutable_region1() {
+inline ::outputPacket_rect2D* outputPacket_Mission1::mutable_region1() {
   set_has_region1();
-  if (region1_ == NULL) region1_ = new ::GameGround_rect2D;
+  if (region1_ == NULL) region1_ = new ::outputPacket_rect2D;
   return region1_;
 }
-inline ::GameGround_rect2D* GameGround_Mission1::release_region1() {
+inline ::outputPacket_rect2D* outputPacket_Mission1::release_region1() {
   clear_has_region1();
-  ::GameGround_rect2D* temp = region1_;
+  ::outputPacket_rect2D* temp = region1_;
   region1_ = NULL;
   return temp;
 }
 
-// required .GameGround.rect2D region2 = 3;
-inline bool GameGround_Mission1::has_region2() const {
+// required .outputPacket.rect2D region2 = 3;
+inline bool outputPacket_Mission1::has_region2() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void GameGround_Mission1::set_has_region2() {
+inline void outputPacket_Mission1::set_has_region2() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void GameGround_Mission1::clear_has_region2() {
+inline void outputPacket_Mission1::clear_has_region2() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void GameGround_Mission1::clear_region2() {
-  if (region2_ != NULL) region2_->::GameGround_rect2D::Clear();
+inline void outputPacket_Mission1::clear_region2() {
+  if (region2_ != NULL) region2_->::outputPacket_rect2D::Clear();
   clear_has_region2();
 }
-inline const ::GameGround_rect2D& GameGround_Mission1::region2() const {
+inline const ::outputPacket_rect2D& outputPacket_Mission1::region2() const {
   return region2_ != NULL ? *region2_ : *default_instance_->region2_;
 }
-inline ::GameGround_rect2D* GameGround_Mission1::mutable_region2() {
+inline ::outputPacket_rect2D* outputPacket_Mission1::mutable_region2() {
   set_has_region2();
-  if (region2_ == NULL) region2_ = new ::GameGround_rect2D;
+  if (region2_ == NULL) region2_ = new ::outputPacket_rect2D;
   return region2_;
 }
-inline ::GameGround_rect2D* GameGround_Mission1::release_region2() {
+inline ::outputPacket_rect2D* outputPacket_Mission1::release_region2() {
   clear_has_region2();
-  ::GameGround_rect2D* temp = region2_;
+  ::outputPacket_rect2D* temp = region2_;
   region2_ = NULL;
   return temp;
 }
 
-// required .GameGround.vector2D end = 4;
-inline bool GameGround_Mission1::has_end() const {
+// required .outputPacket.vector2D end = 4;
+inline bool outputPacket_Mission1::has_end() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void GameGround_Mission1::set_has_end() {
+inline void outputPacket_Mission1::set_has_end() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void GameGround_Mission1::clear_has_end() {
+inline void outputPacket_Mission1::clear_has_end() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void GameGround_Mission1::clear_end() {
-  if (end_ != NULL) end_->::GameGround_vector2D::Clear();
+inline void outputPacket_Mission1::clear_end() {
+  if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
   clear_has_end();
 }
-inline const ::GameGround_vector2D& GameGround_Mission1::end() const {
+inline const ::outputPacket_vector2D& outputPacket_Mission1::end() const {
   return end_ != NULL ? *end_ : *default_instance_->end_;
 }
-inline ::GameGround_vector2D* GameGround_Mission1::mutable_end() {
+inline ::outputPacket_vector2D* outputPacket_Mission1::mutable_end() {
   set_has_end();
-  if (end_ == NULL) end_ = new ::GameGround_vector2D;
+  if (end_ == NULL) end_ = new ::outputPacket_vector2D;
   return end_;
 }
-inline ::GameGround_vector2D* GameGround_Mission1::release_end() {
+inline ::outputPacket_vector2D* outputPacket_Mission1::release_end() {
   clear_has_end();
-  ::GameGround_vector2D* temp = end_;
+  ::outputPacket_vector2D* temp = end_;
   end_ = NULL;
   return temp;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_line
+// outputPacket_line
 
-// required .GameGround.vector2D start = 1;
-inline bool GameGround_line::has_start() const {
+// required .outputPacket.vector2D start = 1;
+inline bool outputPacket_line::has_start() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_line::set_has_start() {
+inline void outputPacket_line::set_has_start() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_line::clear_has_start() {
+inline void outputPacket_line::clear_has_start() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_line::clear_start() {
-  if (start_ != NULL) start_->::GameGround_vector2D::Clear();
+inline void outputPacket_line::clear_start() {
+  if (start_ != NULL) start_->::outputPacket_vector2D::Clear();
   clear_has_start();
 }
-inline const ::GameGround_vector2D& GameGround_line::start() const {
+inline const ::outputPacket_vector2D& outputPacket_line::start() const {
   return start_ != NULL ? *start_ : *default_instance_->start_;
 }
-inline ::GameGround_vector2D* GameGround_line::mutable_start() {
+inline ::outputPacket_vector2D* outputPacket_line::mutable_start() {
   set_has_start();
-  if (start_ == NULL) start_ = new ::GameGround_vector2D;
+  if (start_ == NULL) start_ = new ::outputPacket_vector2D;
   return start_;
 }
-inline ::GameGround_vector2D* GameGround_line::release_start() {
+inline ::outputPacket_vector2D* outputPacket_line::release_start() {
   clear_has_start();
-  ::GameGround_vector2D* temp = start_;
+  ::outputPacket_vector2D* temp = start_;
   start_ = NULL;
   return temp;
 }
 
-// required .GameGround.vector2D end = 2;
-inline bool GameGround_line::has_end() const {
+// required .outputPacket.vector2D end = 2;
+inline bool outputPacket_line::has_end() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_line::set_has_end() {
+inline void outputPacket_line::set_has_end() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_line::clear_has_end() {
+inline void outputPacket_line::clear_has_end() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_line::clear_end() {
-  if (end_ != NULL) end_->::GameGround_vector2D::Clear();
+inline void outputPacket_line::clear_end() {
+  if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
   clear_has_end();
 }
-inline const ::GameGround_vector2D& GameGround_line::end() const {
+inline const ::outputPacket_vector2D& outputPacket_line::end() const {
   return end_ != NULL ? *end_ : *default_instance_->end_;
 }
-inline ::GameGround_vector2D* GameGround_line::mutable_end() {
+inline ::outputPacket_vector2D* outputPacket_line::mutable_end() {
   set_has_end();
-  if (end_ == NULL) end_ = new ::GameGround_vector2D;
+  if (end_ == NULL) end_ = new ::outputPacket_vector2D;
   return end_;
 }
-inline ::GameGround_vector2D* GameGround_line::release_end() {
+inline ::outputPacket_vector2D* outputPacket_line::release_end() {
   clear_has_end();
-  ::GameGround_vector2D* temp = end_;
+  ::outputPacket_vector2D* temp = end_;
   end_ = NULL;
   return temp;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_Mission2
+// outputPacket_Mission2
 
 // required bool isValid = 1;
-inline bool GameGround_Mission2::has_isvalid() const {
+inline bool outputPacket_Mission2::has_isvalid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_Mission2::set_has_isvalid() {
+inline void outputPacket_Mission2::set_has_isvalid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_Mission2::clear_has_isvalid() {
+inline void outputPacket_Mission2::clear_has_isvalid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_Mission2::clear_isvalid() {
+inline void outputPacket_Mission2::clear_isvalid() {
   isvalid_ = false;
   clear_has_isvalid();
 }
-inline bool GameGround_Mission2::isvalid() const {
+inline bool outputPacket_Mission2::isvalid() const {
   return isvalid_;
 }
-inline void GameGround_Mission2::set_isvalid(bool value) {
+inline void outputPacket_Mission2::set_isvalid(bool value) {
   set_has_isvalid();
   isvalid_ = value;
 }
 
-// repeated .GameGround.line lines = 2;
-inline int GameGround_Mission2::lines_size() const {
+// repeated .outputPacket.line lines = 2;
+inline int outputPacket_Mission2::lines_size() const {
   return lines_.size();
 }
-inline void GameGround_Mission2::clear_lines() {
+inline void outputPacket_Mission2::clear_lines() {
   lines_.Clear();
 }
-inline const ::GameGround_line& GameGround_Mission2::lines(int index) const {
+inline const ::outputPacket_line& outputPacket_Mission2::lines(int index) const {
   return lines_.Get(index);
 }
-inline ::GameGround_line* GameGround_Mission2::mutable_lines(int index) {
+inline ::outputPacket_line* outputPacket_Mission2::mutable_lines(int index) {
   return lines_.Mutable(index);
 }
-inline ::GameGround_line* GameGround_Mission2::add_lines() {
+inline ::outputPacket_line* outputPacket_Mission2::add_lines() {
   return lines_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::GameGround_line >&
-GameGround_Mission2::lines() const {
+inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_line >&
+outputPacket_Mission2::lines() const {
   return lines_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::GameGround_line >*
-GameGround_Mission2::mutable_lines() {
+inline ::google::protobuf::RepeatedPtrField< ::outputPacket_line >*
+outputPacket_Mission2::mutable_lines() {
   return &lines_;
 }
 
-// required .GameGround.vector2D end = 3;
-inline bool GameGround_Mission2::has_end() const {
+// required .outputPacket.vector2D end = 3;
+inline bool outputPacket_Mission2::has_end() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void GameGround_Mission2::set_has_end() {
+inline void outputPacket_Mission2::set_has_end() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void GameGround_Mission2::clear_has_end() {
+inline void outputPacket_Mission2::clear_has_end() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void GameGround_Mission2::clear_end() {
-  if (end_ != NULL) end_->::GameGround_vector2D::Clear();
+inline void outputPacket_Mission2::clear_end() {
+  if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
   clear_has_end();
 }
-inline const ::GameGround_vector2D& GameGround_Mission2::end() const {
+inline const ::outputPacket_vector2D& outputPacket_Mission2::end() const {
   return end_ != NULL ? *end_ : *default_instance_->end_;
 }
-inline ::GameGround_vector2D* GameGround_Mission2::mutable_end() {
+inline ::outputPacket_vector2D* outputPacket_Mission2::mutable_end() {
   set_has_end();
-  if (end_ == NULL) end_ = new ::GameGround_vector2D;
+  if (end_ == NULL) end_ = new ::outputPacket_vector2D;
   return end_;
 }
-inline ::GameGround_vector2D* GameGround_Mission2::release_end() {
+inline ::outputPacket_vector2D* outputPacket_Mission2::release_end() {
   clear_has_end();
-  ::GameGround_vector2D* temp = end_;
+  ::outputPacket_vector2D* temp = end_;
   end_ = NULL;
   return temp;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_circle2D
+// outputPacket_circle2D
 
-// required .GameGround.vector2D center = 1;
-inline bool GameGround_circle2D::has_center() const {
+// required .outputPacket.vector2D center = 1;
+inline bool outputPacket_circle2D::has_center() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_circle2D::set_has_center() {
+inline void outputPacket_circle2D::set_has_center() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_circle2D::clear_has_center() {
+inline void outputPacket_circle2D::clear_has_center() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_circle2D::clear_center() {
-  if (center_ != NULL) center_->::GameGround_vector2D::Clear();
+inline void outputPacket_circle2D::clear_center() {
+  if (center_ != NULL) center_->::outputPacket_vector2D::Clear();
   clear_has_center();
 }
-inline const ::GameGround_vector2D& GameGround_circle2D::center() const {
+inline const ::outputPacket_vector2D& outputPacket_circle2D::center() const {
   return center_ != NULL ? *center_ : *default_instance_->center_;
 }
-inline ::GameGround_vector2D* GameGround_circle2D::mutable_center() {
+inline ::outputPacket_vector2D* outputPacket_circle2D::mutable_center() {
   set_has_center();
-  if (center_ == NULL) center_ = new ::GameGround_vector2D;
+  if (center_ == NULL) center_ = new ::outputPacket_vector2D;
   return center_;
 }
-inline ::GameGround_vector2D* GameGround_circle2D::release_center() {
+inline ::outputPacket_vector2D* outputPacket_circle2D::release_center() {
   clear_has_center();
-  ::GameGround_vector2D* temp = center_;
+  ::outputPacket_vector2D* temp = center_;
   center_ = NULL;
   return temp;
 }
 
 // required double radios = 2;
-inline bool GameGround_circle2D::has_radios() const {
+inline bool outputPacket_circle2D::has_radios() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_circle2D::set_has_radios() {
+inline void outputPacket_circle2D::set_has_radios() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_circle2D::clear_has_radios() {
+inline void outputPacket_circle2D::clear_has_radios() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_circle2D::clear_radios() {
+inline void outputPacket_circle2D::clear_radios() {
   radios_ = 0;
   clear_has_radios();
 }
-inline double GameGround_circle2D::radios() const {
+inline double outputPacket_circle2D::radios() const {
   return radios_;
 }
-inline void GameGround_circle2D::set_radios(double value) {
+inline void outputPacket_circle2D::set_radios(double value) {
   set_has_radios();
   radios_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_Mission3
+// outputPacket_Mission3
 
 // required bool isValid = 1;
-inline bool GameGround_Mission3::has_isvalid() const {
+inline bool outputPacket_Mission3::has_isvalid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_Mission3::set_has_isvalid() {
+inline void outputPacket_Mission3::set_has_isvalid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_Mission3::clear_has_isvalid() {
+inline void outputPacket_Mission3::clear_has_isvalid() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_Mission3::clear_isvalid() {
+inline void outputPacket_Mission3::clear_isvalid() {
   isvalid_ = false;
   clear_has_isvalid();
 }
-inline bool GameGround_Mission3::isvalid() const {
+inline bool outputPacket_Mission3::isvalid() const {
   return isvalid_;
 }
-inline void GameGround_Mission3::set_isvalid(bool value) {
+inline void outputPacket_Mission3::set_isvalid(bool value) {
   set_has_isvalid();
   isvalid_ = value;
 }
 
 // required bool isAttacker = 2;
-inline bool GameGround_Mission3::has_isattacker() const {
+inline bool outputPacket_Mission3::has_isattacker() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_Mission3::set_has_isattacker() {
+inline void outputPacket_Mission3::set_has_isattacker() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_Mission3::clear_has_isattacker() {
+inline void outputPacket_Mission3::clear_has_isattacker() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_Mission3::clear_isattacker() {
+inline void outputPacket_Mission3::clear_isattacker() {
   isattacker_ = false;
   clear_has_isattacker();
 }
-inline bool GameGround_Mission3::isattacker() const {
+inline bool outputPacket_Mission3::isattacker() const {
   return isattacker_;
 }
-inline void GameGround_Mission3::set_isattacker(bool value) {
+inline void outputPacket_Mission3::set_isattacker(bool value) {
   set_has_isattacker();
   isattacker_ = value;
 }
 
-// required .GameGround.circle2D circularBorde = 3;
-inline bool GameGround_Mission3::has_circularborde() const {
+// required .outputPacket.circle2D circularBorde = 3;
+inline bool outputPacket_Mission3::has_circularborde() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void GameGround_Mission3::set_has_circularborde() {
+inline void outputPacket_Mission3::set_has_circularborde() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void GameGround_Mission3::clear_has_circularborde() {
+inline void outputPacket_Mission3::clear_has_circularborde() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void GameGround_Mission3::clear_circularborde() {
-  if (circularborde_ != NULL) circularborde_->::GameGround_circle2D::Clear();
+inline void outputPacket_Mission3::clear_circularborde() {
+  if (circularborde_ != NULL) circularborde_->::outputPacket_circle2D::Clear();
   clear_has_circularborde();
 }
-inline const ::GameGround_circle2D& GameGround_Mission3::circularborde() const {
+inline const ::outputPacket_circle2D& outputPacket_Mission3::circularborde() const {
   return circularborde_ != NULL ? *circularborde_ : *default_instance_->circularborde_;
 }
-inline ::GameGround_circle2D* GameGround_Mission3::mutable_circularborde() {
+inline ::outputPacket_circle2D* outputPacket_Mission3::mutable_circularborde() {
   set_has_circularborde();
-  if (circularborde_ == NULL) circularborde_ = new ::GameGround_circle2D;
+  if (circularborde_ == NULL) circularborde_ = new ::outputPacket_circle2D;
   return circularborde_;
 }
-inline ::GameGround_circle2D* GameGround_Mission3::release_circularborde() {
+inline ::outputPacket_circle2D* outputPacket_Mission3::release_circularborde() {
   clear_has_circularborde();
-  ::GameGround_circle2D* temp = circularborde_;
+  ::outputPacket_circle2D* temp = circularborde_;
   circularborde_ = NULL;
   return temp;
 }
 
-// required .GameGround.circle2D goal1 = 4;
-inline bool GameGround_Mission3::has_goal1() const {
+// required .outputPacket.circle2D goal1 = 4;
+inline bool outputPacket_Mission3::has_goal1() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void GameGround_Mission3::set_has_goal1() {
+inline void outputPacket_Mission3::set_has_goal1() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void GameGround_Mission3::clear_has_goal1() {
+inline void outputPacket_Mission3::clear_has_goal1() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void GameGround_Mission3::clear_goal1() {
-  if (goal1_ != NULL) goal1_->::GameGround_circle2D::Clear();
+inline void outputPacket_Mission3::clear_goal1() {
+  if (goal1_ != NULL) goal1_->::outputPacket_circle2D::Clear();
   clear_has_goal1();
 }
-inline const ::GameGround_circle2D& GameGround_Mission3::goal1() const {
+inline const ::outputPacket_circle2D& outputPacket_Mission3::goal1() const {
   return goal1_ != NULL ? *goal1_ : *default_instance_->goal1_;
 }
-inline ::GameGround_circle2D* GameGround_Mission3::mutable_goal1() {
+inline ::outputPacket_circle2D* outputPacket_Mission3::mutable_goal1() {
   set_has_goal1();
-  if (goal1_ == NULL) goal1_ = new ::GameGround_circle2D;
+  if (goal1_ == NULL) goal1_ = new ::outputPacket_circle2D;
   return goal1_;
 }
-inline ::GameGround_circle2D* GameGround_Mission3::release_goal1() {
+inline ::outputPacket_circle2D* outputPacket_Mission3::release_goal1() {
   clear_has_goal1();
-  ::GameGround_circle2D* temp = goal1_;
+  ::outputPacket_circle2D* temp = goal1_;
   goal1_ = NULL;
   return temp;
 }
 
-// required .GameGround.circle2D goal2 = 5;
-inline bool GameGround_Mission3::has_goal2() const {
+// required .outputPacket.circle2D goal2 = 5;
+inline bool outputPacket_Mission3::has_goal2() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void GameGround_Mission3::set_has_goal2() {
+inline void outputPacket_Mission3::set_has_goal2() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void GameGround_Mission3::clear_has_goal2() {
+inline void outputPacket_Mission3::clear_has_goal2() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void GameGround_Mission3::clear_goal2() {
-  if (goal2_ != NULL) goal2_->::GameGround_circle2D::Clear();
+inline void outputPacket_Mission3::clear_goal2() {
+  if (goal2_ != NULL) goal2_->::outputPacket_circle2D::Clear();
   clear_has_goal2();
 }
-inline const ::GameGround_circle2D& GameGround_Mission3::goal2() const {
+inline const ::outputPacket_circle2D& outputPacket_Mission3::goal2() const {
   return goal2_ != NULL ? *goal2_ : *default_instance_->goal2_;
 }
-inline ::GameGround_circle2D* GameGround_Mission3::mutable_goal2() {
+inline ::outputPacket_circle2D* outputPacket_Mission3::mutable_goal2() {
   set_has_goal2();
-  if (goal2_ == NULL) goal2_ = new ::GameGround_circle2D;
+  if (goal2_ == NULL) goal2_ = new ::outputPacket_circle2D;
   return goal2_;
 }
-inline ::GameGround_circle2D* GameGround_Mission3::release_goal2() {
+inline ::outputPacket_circle2D* outputPacket_Mission3::release_goal2() {
   clear_has_goal2();
-  ::GameGround_circle2D* temp = goal2_;
+  ::outputPacket_circle2D* temp = goal2_;
   goal2_ = NULL;
   return temp;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround_shape
+// outputPacket_shape
 
 // required string type = 1;
-inline bool GameGround_shape::has_type() const {
+inline bool outputPacket_shape::has_type() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround_shape::set_has_type() {
+inline void outputPacket_shape::set_has_type() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround_shape::clear_has_type() {
+inline void outputPacket_shape::clear_has_type() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround_shape::clear_type() {
+inline void outputPacket_shape::clear_type() {
   if (type_ != &::google::protobuf::internal::kEmptyString) {
     type_->clear();
   }
   clear_has_type();
 }
-inline const ::std::string& GameGround_shape::type() const {
+inline const ::std::string& outputPacket_shape::type() const {
   return *type_;
 }
-inline void GameGround_shape::set_type(const ::std::string& value) {
+inline void outputPacket_shape::set_type(const ::std::string& value) {
   set_has_type();
   if (type_ == &::google::protobuf::internal::kEmptyString) {
     type_ = new ::std::string;
   }
   type_->assign(value);
 }
-inline void GameGround_shape::set_type(const char* value) {
+inline void outputPacket_shape::set_type(const char* value) {
   set_has_type();
   if (type_ == &::google::protobuf::internal::kEmptyString) {
     type_ = new ::std::string;
   }
   type_->assign(value);
 }
-inline void GameGround_shape::set_type(const char* value, size_t size) {
+inline void outputPacket_shape::set_type(const char* value, size_t size) {
   set_has_type();
   if (type_ == &::google::protobuf::internal::kEmptyString) {
     type_ = new ::std::string;
   }
   type_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* GameGround_shape::mutable_type() {
+inline ::std::string* outputPacket_shape::mutable_type() {
   set_has_type();
   if (type_ == &::google::protobuf::internal::kEmptyString) {
     type_ = new ::std::string;
   }
   return type_;
 }
-inline ::std::string* GameGround_shape::release_type() {
+inline ::std::string* outputPacket_shape::release_type() {
   clear_has_type();
   if (type_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -1690,53 +1690,53 @@ inline ::std::string* GameGround_shape::release_type() {
 }
 
 // required string color = 2;
-inline bool GameGround_shape::has_color() const {
+inline bool outputPacket_shape::has_color() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround_shape::set_has_color() {
+inline void outputPacket_shape::set_has_color() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround_shape::clear_has_color() {
+inline void outputPacket_shape::clear_has_color() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround_shape::clear_color() {
+inline void outputPacket_shape::clear_color() {
   if (color_ != &::google::protobuf::internal::kEmptyString) {
     color_->clear();
   }
   clear_has_color();
 }
-inline const ::std::string& GameGround_shape::color() const {
+inline const ::std::string& outputPacket_shape::color() const {
   return *color_;
 }
-inline void GameGround_shape::set_color(const ::std::string& value) {
+inline void outputPacket_shape::set_color(const ::std::string& value) {
   set_has_color();
   if (color_ == &::google::protobuf::internal::kEmptyString) {
     color_ = new ::std::string;
   }
   color_->assign(value);
 }
-inline void GameGround_shape::set_color(const char* value) {
+inline void outputPacket_shape::set_color(const char* value) {
   set_has_color();
   if (color_ == &::google::protobuf::internal::kEmptyString) {
     color_ = new ::std::string;
   }
   color_->assign(value);
 }
-inline void GameGround_shape::set_color(const char* value, size_t size) {
+inline void outputPacket_shape::set_color(const char* value, size_t size) {
   set_has_color();
   if (color_ == &::google::protobuf::internal::kEmptyString) {
     color_ = new ::std::string;
   }
   color_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline ::std::string* GameGround_shape::mutable_color() {
+inline ::std::string* outputPacket_shape::mutable_color() {
   set_has_color();
   if (color_ == &::google::protobuf::internal::kEmptyString) {
     color_ = new ::std::string;
   }
   return color_;
 }
-inline ::std::string* GameGround_shape::release_color() {
+inline ::std::string* outputPacket_shape::release_color() {
   clear_has_color();
   if (color_ == &::google::protobuf::internal::kEmptyString) {
     return NULL;
@@ -1747,315 +1747,315 @@ inline ::std::string* GameGround_shape::release_color() {
   }
 }
 
-// required .GameGround.vector2D position = 3;
-inline bool GameGround_shape::has_position() const {
+// required .outputPacket.vector2D position = 3;
+inline bool outputPacket_shape::has_position() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void GameGround_shape::set_has_position() {
+inline void outputPacket_shape::set_has_position() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void GameGround_shape::clear_has_position() {
+inline void outputPacket_shape::clear_has_position() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void GameGround_shape::clear_position() {
-  if (position_ != NULL) position_->::GameGround_vector2D::Clear();
+inline void outputPacket_shape::clear_position() {
+  if (position_ != NULL) position_->::outputPacket_vector2D::Clear();
   clear_has_position();
 }
-inline const ::GameGround_vector2D& GameGround_shape::position() const {
+inline const ::outputPacket_vector2D& outputPacket_shape::position() const {
   return position_ != NULL ? *position_ : *default_instance_->position_;
 }
-inline ::GameGround_vector2D* GameGround_shape::mutable_position() {
+inline ::outputPacket_vector2D* outputPacket_shape::mutable_position() {
   set_has_position();
-  if (position_ == NULL) position_ = new ::GameGround_vector2D;
+  if (position_ == NULL) position_ = new ::outputPacket_vector2D;
   return position_;
 }
-inline ::GameGround_vector2D* GameGround_shape::release_position() {
+inline ::outputPacket_vector2D* outputPacket_shape::release_position() {
   clear_has_position();
-  ::GameGround_vector2D* temp = position_;
+  ::outputPacket_vector2D* temp = position_;
   position_ = NULL;
   return temp;
 }
 
 // required double radios = 4;
-inline bool GameGround_shape::has_radios() const {
+inline bool outputPacket_shape::has_radios() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void GameGround_shape::set_has_radios() {
+inline void outputPacket_shape::set_has_radios() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void GameGround_shape::clear_has_radios() {
+inline void outputPacket_shape::clear_has_radios() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void GameGround_shape::clear_radios() {
+inline void outputPacket_shape::clear_radios() {
   radios_ = 0;
   clear_has_radios();
 }
-inline double GameGround_shape::radios() const {
+inline double outputPacket_shape::radios() const {
   return radios_;
 }
-inline void GameGround_shape::set_radios(double value) {
+inline void outputPacket_shape::set_radios(double value) {
   set_has_radios();
   radios_ = value;
 }
 
 // -------------------------------------------------------------------
 
-// GameGround
+// outputPacket
 
 // required int32 mission = 1;
-inline bool GameGround::has_mission() const {
+inline bool outputPacket::has_mission() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void GameGround::set_has_mission() {
+inline void outputPacket::set_has_mission() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void GameGround::clear_has_mission() {
+inline void outputPacket::clear_has_mission() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void GameGround::clear_mission() {
+inline void outputPacket::clear_mission() {
   mission_ = 0;
   clear_has_mission();
 }
-inline ::google::protobuf::int32 GameGround::mission() const {
+inline ::google::protobuf::int32 outputPacket::mission() const {
   return mission_;
 }
-inline void GameGround::set_mission(::google::protobuf::int32 value) {
+inline void outputPacket::set_mission(::google::protobuf::int32 value) {
   set_has_mission();
   mission_ = value;
 }
 
 // required int32 numberOfShape = 2;
-inline bool GameGround::has_numberofshape() const {
+inline bool outputPacket::has_numberofshape() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void GameGround::set_has_numberofshape() {
+inline void outputPacket::set_has_numberofshape() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void GameGround::clear_has_numberofshape() {
+inline void outputPacket::clear_has_numberofshape() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void GameGround::clear_numberofshape() {
+inline void outputPacket::clear_numberofshape() {
   numberofshape_ = 0;
   clear_has_numberofshape();
 }
-inline ::google::protobuf::int32 GameGround::numberofshape() const {
+inline ::google::protobuf::int32 outputPacket::numberofshape() const {
   return numberofshape_;
 }
-inline void GameGround::set_numberofshape(::google::protobuf::int32 value) {
+inline void outputPacket::set_numberofshape(::google::protobuf::int32 value) {
   set_has_numberofshape();
   numberofshape_ = value;
 }
 
-// required .GameGround.vector2D our_robot_position = 3;
-inline bool GameGround::has_our_robot_position() const {
+// required .outputPacket.vector2D our_robot_position = 3;
+inline bool outputPacket::has_our_robot_position() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void GameGround::set_has_our_robot_position() {
+inline void outputPacket::set_has_our_robot_position() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void GameGround::clear_has_our_robot_position() {
+inline void outputPacket::clear_has_our_robot_position() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void GameGround::clear_our_robot_position() {
-  if (our_robot_position_ != NULL) our_robot_position_->::GameGround_vector2D::Clear();
+inline void outputPacket::clear_our_robot_position() {
+  if (our_robot_position_ != NULL) our_robot_position_->::outputPacket_vector2D::Clear();
   clear_has_our_robot_position();
 }
-inline const ::GameGround_vector2D& GameGround::our_robot_position() const {
+inline const ::outputPacket_vector2D& outputPacket::our_robot_position() const {
   return our_robot_position_ != NULL ? *our_robot_position_ : *default_instance_->our_robot_position_;
 }
-inline ::GameGround_vector2D* GameGround::mutable_our_robot_position() {
+inline ::outputPacket_vector2D* outputPacket::mutable_our_robot_position() {
   set_has_our_robot_position();
-  if (our_robot_position_ == NULL) our_robot_position_ = new ::GameGround_vector2D;
+  if (our_robot_position_ == NULL) our_robot_position_ = new ::outputPacket_vector2D;
   return our_robot_position_;
 }
-inline ::GameGround_vector2D* GameGround::release_our_robot_position() {
+inline ::outputPacket_vector2D* outputPacket::release_our_robot_position() {
   clear_has_our_robot_position();
-  ::GameGround_vector2D* temp = our_robot_position_;
+  ::outputPacket_vector2D* temp = our_robot_position_;
   our_robot_position_ = NULL;
   return temp;
 }
 
 // required double our_robot_angle = 4;
-inline bool GameGround::has_our_robot_angle() const {
+inline bool outputPacket::has_our_robot_angle() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void GameGround::set_has_our_robot_angle() {
+inline void outputPacket::set_has_our_robot_angle() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void GameGround::clear_has_our_robot_angle() {
+inline void outputPacket::clear_has_our_robot_angle() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void GameGround::clear_our_robot_angle() {
+inline void outputPacket::clear_our_robot_angle() {
   our_robot_angle_ = 0;
   clear_has_our_robot_angle();
 }
-inline double GameGround::our_robot_angle() const {
+inline double outputPacket::our_robot_angle() const {
   return our_robot_angle_;
 }
-inline void GameGround::set_our_robot_angle(double value) {
+inline void outputPacket::set_our_robot_angle(double value) {
   set_has_our_robot_angle();
   our_robot_angle_ = value;
 }
 
-// optional .GameGround.vector2D opp_robot_x = 6;
-inline bool GameGround::has_opp_robot_x() const {
+// optional .outputPacket.vector2D opp_robot_x = 6;
+inline bool outputPacket::has_opp_robot_x() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void GameGround::set_has_opp_robot_x() {
+inline void outputPacket::set_has_opp_robot_x() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void GameGround::clear_has_opp_robot_x() {
+inline void outputPacket::clear_has_opp_robot_x() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void GameGround::clear_opp_robot_x() {
-  if (opp_robot_x_ != NULL) opp_robot_x_->::GameGround_vector2D::Clear();
+inline void outputPacket::clear_opp_robot_x() {
+  if (opp_robot_x_ != NULL) opp_robot_x_->::outputPacket_vector2D::Clear();
   clear_has_opp_robot_x();
 }
-inline const ::GameGround_vector2D& GameGround::opp_robot_x() const {
+inline const ::outputPacket_vector2D& outputPacket::opp_robot_x() const {
   return opp_robot_x_ != NULL ? *opp_robot_x_ : *default_instance_->opp_robot_x_;
 }
-inline ::GameGround_vector2D* GameGround::mutable_opp_robot_x() {
+inline ::outputPacket_vector2D* outputPacket::mutable_opp_robot_x() {
   set_has_opp_robot_x();
-  if (opp_robot_x_ == NULL) opp_robot_x_ = new ::GameGround_vector2D;
+  if (opp_robot_x_ == NULL) opp_robot_x_ = new ::outputPacket_vector2D;
   return opp_robot_x_;
 }
-inline ::GameGround_vector2D* GameGround::release_opp_robot_x() {
+inline ::outputPacket_vector2D* outputPacket::release_opp_robot_x() {
   clear_has_opp_robot_x();
-  ::GameGround_vector2D* temp = opp_robot_x_;
+  ::outputPacket_vector2D* temp = opp_robot_x_;
   opp_robot_x_ = NULL;
   return temp;
 }
 
 // optional double opp_robot_angle = 7;
-inline bool GameGround::has_opp_robot_angle() const {
+inline bool outputPacket::has_opp_robot_angle() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void GameGround::set_has_opp_robot_angle() {
+inline void outputPacket::set_has_opp_robot_angle() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void GameGround::clear_has_opp_robot_angle() {
+inline void outputPacket::clear_has_opp_robot_angle() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void GameGround::clear_opp_robot_angle() {
+inline void outputPacket::clear_opp_robot_angle() {
   opp_robot_angle_ = 0;
   clear_has_opp_robot_angle();
 }
-inline double GameGround::opp_robot_angle() const {
+inline double outputPacket::opp_robot_angle() const {
   return opp_robot_angle_;
 }
-inline void GameGround::set_opp_robot_angle(double value) {
+inline void outputPacket::set_opp_robot_angle(double value) {
   set_has_opp_robot_angle();
   opp_robot_angle_ = value;
 }
 
-// repeated .GameGround.shape shapes = 8;
-inline int GameGround::shapes_size() const {
+// repeated .outputPacket.shape shapes = 8;
+inline int outputPacket::shapes_size() const {
   return shapes_.size();
 }
-inline void GameGround::clear_shapes() {
+inline void outputPacket::clear_shapes() {
   shapes_.Clear();
 }
-inline const ::GameGround_shape& GameGround::shapes(int index) const {
+inline const ::outputPacket_shape& outputPacket::shapes(int index) const {
   return shapes_.Get(index);
 }
-inline ::GameGround_shape* GameGround::mutable_shapes(int index) {
+inline ::outputPacket_shape* outputPacket::mutable_shapes(int index) {
   return shapes_.Mutable(index);
 }
-inline ::GameGround_shape* GameGround::add_shapes() {
+inline ::outputPacket_shape* outputPacket::add_shapes() {
   return shapes_.Add();
 }
-inline const ::google::protobuf::RepeatedPtrField< ::GameGround_shape >&
-GameGround::shapes() const {
+inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_shape >&
+outputPacket::shapes() const {
   return shapes_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::GameGround_shape >*
-GameGround::mutable_shapes() {
+inline ::google::protobuf::RepeatedPtrField< ::outputPacket_shape >*
+outputPacket::mutable_shapes() {
   return &shapes_;
 }
 
-// optional .GameGround.Mission1 mission1_data = 9;
-inline bool GameGround::has_mission1_data() const {
+// optional .outputPacket.Mission1 mission1_data = 9;
+inline bool outputPacket::has_mission1_data() const {
   return (_has_bits_[0] & 0x00000080u) != 0;
 }
-inline void GameGround::set_has_mission1_data() {
+inline void outputPacket::set_has_mission1_data() {
   _has_bits_[0] |= 0x00000080u;
 }
-inline void GameGround::clear_has_mission1_data() {
+inline void outputPacket::clear_has_mission1_data() {
   _has_bits_[0] &= ~0x00000080u;
 }
-inline void GameGround::clear_mission1_data() {
-  if (mission1_data_ != NULL) mission1_data_->::GameGround_Mission1::Clear();
+inline void outputPacket::clear_mission1_data() {
+  if (mission1_data_ != NULL) mission1_data_->::outputPacket_Mission1::Clear();
   clear_has_mission1_data();
 }
-inline const ::GameGround_Mission1& GameGround::mission1_data() const {
+inline const ::outputPacket_Mission1& outputPacket::mission1_data() const {
   return mission1_data_ != NULL ? *mission1_data_ : *default_instance_->mission1_data_;
 }
-inline ::GameGround_Mission1* GameGround::mutable_mission1_data() {
+inline ::outputPacket_Mission1* outputPacket::mutable_mission1_data() {
   set_has_mission1_data();
-  if (mission1_data_ == NULL) mission1_data_ = new ::GameGround_Mission1;
+  if (mission1_data_ == NULL) mission1_data_ = new ::outputPacket_Mission1;
   return mission1_data_;
 }
-inline ::GameGround_Mission1* GameGround::release_mission1_data() {
+inline ::outputPacket_Mission1* outputPacket::release_mission1_data() {
   clear_has_mission1_data();
-  ::GameGround_Mission1* temp = mission1_data_;
+  ::outputPacket_Mission1* temp = mission1_data_;
   mission1_data_ = NULL;
   return temp;
 }
 
-// optional .GameGround.Mission2 mission2_data = 10;
-inline bool GameGround::has_mission2_data() const {
+// optional .outputPacket.Mission2 mission2_data = 10;
+inline bool outputPacket::has_mission2_data() const {
   return (_has_bits_[0] & 0x00000100u) != 0;
 }
-inline void GameGround::set_has_mission2_data() {
+inline void outputPacket::set_has_mission2_data() {
   _has_bits_[0] |= 0x00000100u;
 }
-inline void GameGround::clear_has_mission2_data() {
+inline void outputPacket::clear_has_mission2_data() {
   _has_bits_[0] &= ~0x00000100u;
 }
-inline void GameGround::clear_mission2_data() {
-  if (mission2_data_ != NULL) mission2_data_->::GameGround_Mission2::Clear();
+inline void outputPacket::clear_mission2_data() {
+  if (mission2_data_ != NULL) mission2_data_->::outputPacket_Mission2::Clear();
   clear_has_mission2_data();
 }
-inline const ::GameGround_Mission2& GameGround::mission2_data() const {
+inline const ::outputPacket_Mission2& outputPacket::mission2_data() const {
   return mission2_data_ != NULL ? *mission2_data_ : *default_instance_->mission2_data_;
 }
-inline ::GameGround_Mission2* GameGround::mutable_mission2_data() {
+inline ::outputPacket_Mission2* outputPacket::mutable_mission2_data() {
   set_has_mission2_data();
-  if (mission2_data_ == NULL) mission2_data_ = new ::GameGround_Mission2;
+  if (mission2_data_ == NULL) mission2_data_ = new ::outputPacket_Mission2;
   return mission2_data_;
 }
-inline ::GameGround_Mission2* GameGround::release_mission2_data() {
+inline ::outputPacket_Mission2* outputPacket::release_mission2_data() {
   clear_has_mission2_data();
-  ::GameGround_Mission2* temp = mission2_data_;
+  ::outputPacket_Mission2* temp = mission2_data_;
   mission2_data_ = NULL;
   return temp;
 }
 
-// optional .GameGround.Mission3 mission3_data = 11;
-inline bool GameGround::has_mission3_data() const {
+// optional .outputPacket.Mission3 mission3_data = 11;
+inline bool outputPacket::has_mission3_data() const {
   return (_has_bits_[0] & 0x00000200u) != 0;
 }
-inline void GameGround::set_has_mission3_data() {
+inline void outputPacket::set_has_mission3_data() {
   _has_bits_[0] |= 0x00000200u;
 }
-inline void GameGround::clear_has_mission3_data() {
+inline void outputPacket::clear_has_mission3_data() {
   _has_bits_[0] &= ~0x00000200u;
 }
-inline void GameGround::clear_mission3_data() {
-  if (mission3_data_ != NULL) mission3_data_->::GameGround_Mission3::Clear();
+inline void outputPacket::clear_mission3_data() {
+  if (mission3_data_ != NULL) mission3_data_->::outputPacket_Mission3::Clear();
   clear_has_mission3_data();
 }
-inline const ::GameGround_Mission3& GameGround::mission3_data() const {
+inline const ::outputPacket_Mission3& outputPacket::mission3_data() const {
   return mission3_data_ != NULL ? *mission3_data_ : *default_instance_->mission3_data_;
 }
-inline ::GameGround_Mission3* GameGround::mutable_mission3_data() {
+inline ::outputPacket_Mission3* outputPacket::mutable_mission3_data() {
   set_has_mission3_data();
-  if (mission3_data_ == NULL) mission3_data_ = new ::GameGround_Mission3;
+  if (mission3_data_ == NULL) mission3_data_ = new ::outputPacket_Mission3;
   return mission3_data_;
 }
-inline ::GameGround_Mission3* GameGround::release_mission3_data() {
+inline ::outputPacket_Mission3* outputPacket::release_mission3_data() {
   clear_has_mission3_data();
-  ::GameGround_Mission3* temp = mission3_data_;
+  ::outputPacket_Mission3* temp = mission3_data_;
   mission3_data_ = NULL;
   return temp;
 }
