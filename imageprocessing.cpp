@@ -16,7 +16,7 @@ ImageProcessing::ImageProcessing(QObject *parent) :
 
 Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 {
-    result.output.clearShapeList();
+    //result.output.clearShapeList();
 
     // Find contours
     vector<vector<Point> > contours;
@@ -337,6 +337,6 @@ void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString 
     float radius;
     minEnclosingCircle( (Mat)contour, center, radius );
     //qDebug()<<"Radius:"<<radius;
-    Vector2D pos(center.x,center.y);
-    result.output.addShape(pos,(double)radius,"Unkown",type);
+//    Vector2D pos(center.x,center.y);
+//    result.output.addShape(pos,(double)radius,"Unkown",type);
 }

@@ -8,6 +8,7 @@ GameGround::GameGround(QObject *parent) :
 void GameGround::setMission(int mission)
 {
     this->mission=mission;
+    dataGram.set_mission(mission);
 }
 
 void GameGround::setEndPoint(Vector2D input)
@@ -53,4 +54,9 @@ Rect2D GameGround::getRegion2()
 bool GameGround::getRole()
 {
     return this->isAttacker;
+}
+
+void GameGround::addEveryThingToPackets()
+{
+
 }

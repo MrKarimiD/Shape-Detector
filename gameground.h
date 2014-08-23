@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include "cameraoutput.h"
+#include "Prototype_Messages/GameGround.pb.h"
 
 class GameGround : public QObject
 {
@@ -21,12 +22,16 @@ public:
     Rect2D getRegion2();
     bool getRole();
 
+    void addEveryThingToPackets();
+
     CameraOutput output;
+
 private:
     int mission;
     Rect2D region[2];
     Vector2D endPoint;
     bool isAttacker;
+    outputPacket dataGram;
 signals:
 
 public slots:

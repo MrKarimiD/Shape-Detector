@@ -1940,7 +1940,7 @@ Intrrupt</string>
         <string>0</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="brY_lineEdit_2">
+      <widget class="QLineEdit" name="region2_brY_lineEdit">
        <property name="geometry">
         <rect>
          <x>57</x>

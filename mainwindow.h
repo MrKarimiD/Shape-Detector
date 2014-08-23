@@ -19,8 +19,8 @@
 #include "QSemaphore"
 #include "QMessageBox"
 #include "networksender.h"
-#include "Packets.h"
 #include "Prototype_Messages/GameGround.pb.h"
+
 
 using namespace cv;
 using namespace std;
@@ -116,8 +116,6 @@ private slots:
 
     void send_timer_interval();
 
-    void addEveryThingToPackets();
-
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
@@ -127,9 +125,6 @@ private:
     filterSettings *filterSetting;
     QSemaphore *semaphore;
     NetworkSender *sendingSocket;
-    union sendingPacket dataGram;
-
-    outputPacket outputPackets;
 
     void enableCameraSetting();
 

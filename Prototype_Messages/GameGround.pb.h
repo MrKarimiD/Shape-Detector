@@ -40,6 +40,25 @@ class outputPacket_circle2D;
 class outputPacket_Mission3;
 class outputPacket_shape;
 
+enum outputPacket_MessageType {
+  outputPacket_MessageType_INITIALIZE = 0,
+  outputPacket_MessageType_DATA = 1
+};
+bool outputPacket_MessageType_IsValid(int value);
+const outputPacket_MessageType outputPacket_MessageType_MessageType_MIN = outputPacket_MessageType_INITIALIZE;
+const outputPacket_MessageType outputPacket_MessageType_MessageType_MAX = outputPacket_MessageType_DATA;
+const int outputPacket_MessageType_MessageType_ARRAYSIZE = outputPacket_MessageType_MessageType_MAX + 1;
+
+const ::google::protobuf::EnumDescriptor* outputPacket_MessageType_descriptor();
+inline const ::std::string& outputPacket_MessageType_Name(outputPacket_MessageType value) {
+  return ::google::protobuf::internal::NameOfEnum(
+    outputPacket_MessageType_descriptor(), value);
+}
+inline bool outputPacket_MessageType_Parse(
+    const ::std::string& name, outputPacket_MessageType* value) {
+  return ::google::protobuf::internal::ParseNamedEnum<outputPacket_MessageType>(
+    outputPacket_MessageType_descriptor(), name, value);
+}
 // ===================================================================
 
 class outputPacket_vector2D : public ::google::protobuf::Message {
@@ -704,29 +723,29 @@ class outputPacket_Mission3 : public ::google::protobuf::Message {
   inline bool isattacker() const;
   inline void set_isattacker(bool value);
   
-  // required .outputPacket.circle2D circularBorde = 3;
+  // required .outputPacket.vector2D circularBorde = 3;
   inline bool has_circularborde() const;
   inline void clear_circularborde();
   static const int kCircularBordeFieldNumber = 3;
-  inline const ::outputPacket_circle2D& circularborde() const;
-  inline ::outputPacket_circle2D* mutable_circularborde();
-  inline ::outputPacket_circle2D* release_circularborde();
+  inline const ::outputPacket_vector2D& circularborde() const;
+  inline ::outputPacket_vector2D* mutable_circularborde();
+  inline ::outputPacket_vector2D* release_circularborde();
   
-  // required .outputPacket.circle2D goal1 = 4;
+  // required .outputPacket.vector2D goal1 = 4;
   inline bool has_goal1() const;
   inline void clear_goal1();
   static const int kGoal1FieldNumber = 4;
-  inline const ::outputPacket_circle2D& goal1() const;
-  inline ::outputPacket_circle2D* mutable_goal1();
-  inline ::outputPacket_circle2D* release_goal1();
+  inline const ::outputPacket_vector2D& goal1() const;
+  inline ::outputPacket_vector2D* mutable_goal1();
+  inline ::outputPacket_vector2D* release_goal1();
   
-  // required .outputPacket.circle2D goal2 = 5;
+  // required .outputPacket.vector2D goal2 = 5;
   inline bool has_goal2() const;
   inline void clear_goal2();
   static const int kGoal2FieldNumber = 5;
-  inline const ::outputPacket_circle2D& goal2() const;
-  inline ::outputPacket_circle2D* mutable_goal2();
-  inline ::outputPacket_circle2D* release_goal2();
+  inline const ::outputPacket_vector2D& goal2() const;
+  inline ::outputPacket_vector2D* mutable_goal2();
+  inline ::outputPacket_vector2D* release_goal2();
   
   // @@protoc_insertion_point(class_scope:outputPacket.Mission3)
  private:
@@ -743,9 +762,9 @@ class outputPacket_Mission3 : public ::google::protobuf::Message {
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::outputPacket_circle2D* circularborde_;
-  ::outputPacket_circle2D* goal1_;
-  ::outputPacket_circle2D* goal2_;
+  ::outputPacket_vector2D* circularborde_;
+  ::outputPacket_vector2D* goal1_;
+  ::outputPacket_vector2D* goal2_;
   bool isvalid_;
   bool isattacker_;
   
@@ -943,6 +962,30 @@ class outputPacket : public ::google::protobuf::Message {
   typedef outputPacket_Mission3 Mission3;
   typedef outputPacket_shape shape;
   
+  typedef outputPacket_MessageType MessageType;
+  static const MessageType INITIALIZE = outputPacket_MessageType_INITIALIZE;
+  static const MessageType DATA = outputPacket_MessageType_DATA;
+  static inline bool MessageType_IsValid(int value) {
+    return outputPacket_MessageType_IsValid(value);
+  }
+  static const MessageType MessageType_MIN =
+    outputPacket_MessageType_MessageType_MIN;
+  static const MessageType MessageType_MAX =
+    outputPacket_MessageType_MessageType_MAX;
+  static const int MessageType_ARRAYSIZE =
+    outputPacket_MessageType_MessageType_ARRAYSIZE;
+  static inline const ::google::protobuf::EnumDescriptor*
+  MessageType_descriptor() {
+    return outputPacket_MessageType_descriptor();
+  }
+  static inline const ::std::string& MessageType_Name(MessageType value) {
+    return outputPacket_MessageType_Name(value);
+  }
+  static inline bool MessageType_Parse(const ::std::string& name,
+      MessageType* value) {
+    return outputPacket_MessageType_Parse(name, value);
+  }
+  
   // accessors -------------------------------------------------------
   
   // required int32 mission = 1;
@@ -959,28 +1002,35 @@ class outputPacket : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 numberofshape() const;
   inline void set_numberofshape(::google::protobuf::int32 value);
   
-  // required .outputPacket.vector2D our_robot_position = 3;
+  // required .outputPacket.MessageType type = 3 [default = DATA];
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 3;
+  inline ::outputPacket_MessageType type() const;
+  inline void set_type(::outputPacket_MessageType value);
+  
+  // required .outputPacket.vector2D our_robot_position = 4;
   inline bool has_our_robot_position() const;
   inline void clear_our_robot_position();
-  static const int kOurRobotPositionFieldNumber = 3;
+  static const int kOurRobotPositionFieldNumber = 4;
   inline const ::outputPacket_vector2D& our_robot_position() const;
   inline ::outputPacket_vector2D* mutable_our_robot_position();
   inline ::outputPacket_vector2D* release_our_robot_position();
   
-  // required double our_robot_angle = 4;
+  // required double our_robot_angle = 5;
   inline bool has_our_robot_angle() const;
   inline void clear_our_robot_angle();
-  static const int kOurRobotAngleFieldNumber = 4;
+  static const int kOurRobotAngleFieldNumber = 5;
   inline double our_robot_angle() const;
   inline void set_our_robot_angle(double value);
   
-  // optional .outputPacket.vector2D opp_robot_x = 6;
-  inline bool has_opp_robot_x() const;
-  inline void clear_opp_robot_x();
-  static const int kOppRobotXFieldNumber = 6;
-  inline const ::outputPacket_vector2D& opp_robot_x() const;
-  inline ::outputPacket_vector2D* mutable_opp_robot_x();
-  inline ::outputPacket_vector2D* release_opp_robot_x();
+  // optional .outputPacket.vector2D opp_robot_position = 6;
+  inline bool has_opp_robot_position() const;
+  inline void clear_opp_robot_position();
+  static const int kOppRobotPositionFieldNumber = 6;
+  inline const ::outputPacket_vector2D& opp_robot_position() const;
+  inline ::outputPacket_vector2D* mutable_opp_robot_position();
+  inline ::outputPacket_vector2D* release_opp_robot_position();
   
   // optional double opp_robot_angle = 7;
   inline bool has_opp_robot_angle() const;
@@ -1031,12 +1081,14 @@ class outputPacket : public ::google::protobuf::Message {
   inline void clear_has_mission();
   inline void set_has_numberofshape();
   inline void clear_has_numberofshape();
+  inline void set_has_type();
+  inline void clear_has_type();
   inline void set_has_our_robot_position();
   inline void clear_has_our_robot_position();
   inline void set_has_our_robot_angle();
   inline void clear_has_our_robot_angle();
-  inline void set_has_opp_robot_x();
-  inline void clear_has_opp_robot_x();
+  inline void set_has_opp_robot_position();
+  inline void clear_has_opp_robot_position();
   inline void set_has_opp_robot_angle();
   inline void clear_has_opp_robot_angle();
   inline void set_has_mission1_data();
@@ -1052,15 +1104,16 @@ class outputPacket : public ::google::protobuf::Message {
   ::google::protobuf::int32 numberofshape_;
   ::outputPacket_vector2D* our_robot_position_;
   double our_robot_angle_;
-  ::outputPacket_vector2D* opp_robot_x_;
+  ::outputPacket_vector2D* opp_robot_position_;
   double opp_robot_angle_;
   ::google::protobuf::RepeatedPtrField< ::outputPacket_shape > shapes_;
   ::outputPacket_Mission1* mission1_data_;
   ::outputPacket_Mission2* mission2_data_;
   ::outputPacket_Mission3* mission3_data_;
+  int type_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(10 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
   
   friend void  protobuf_AddDesc_GameGround_2eproto();
   friend void protobuf_AssignDesc_GameGround_2eproto();
@@ -1540,7 +1593,7 @@ inline void outputPacket_Mission3::set_isattacker(bool value) {
   isattacker_ = value;
 }
 
-// required .outputPacket.circle2D circularBorde = 3;
+// required .outputPacket.vector2D circularBorde = 3;
 inline bool outputPacket_Mission3::has_circularborde() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1551,25 +1604,25 @@ inline void outputPacket_Mission3::clear_has_circularborde() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void outputPacket_Mission3::clear_circularborde() {
-  if (circularborde_ != NULL) circularborde_->::outputPacket_circle2D::Clear();
+  if (circularborde_ != NULL) circularborde_->::outputPacket_vector2D::Clear();
   clear_has_circularborde();
 }
-inline const ::outputPacket_circle2D& outputPacket_Mission3::circularborde() const {
+inline const ::outputPacket_vector2D& outputPacket_Mission3::circularborde() const {
   return circularborde_ != NULL ? *circularborde_ : *default_instance_->circularborde_;
 }
-inline ::outputPacket_circle2D* outputPacket_Mission3::mutable_circularborde() {
+inline ::outputPacket_vector2D* outputPacket_Mission3::mutable_circularborde() {
   set_has_circularborde();
-  if (circularborde_ == NULL) circularborde_ = new ::outputPacket_circle2D;
+  if (circularborde_ == NULL) circularborde_ = new ::outputPacket_vector2D;
   return circularborde_;
 }
-inline ::outputPacket_circle2D* outputPacket_Mission3::release_circularborde() {
+inline ::outputPacket_vector2D* outputPacket_Mission3::release_circularborde() {
   clear_has_circularborde();
-  ::outputPacket_circle2D* temp = circularborde_;
+  ::outputPacket_vector2D* temp = circularborde_;
   circularborde_ = NULL;
   return temp;
 }
 
-// required .outputPacket.circle2D goal1 = 4;
+// required .outputPacket.vector2D goal1 = 4;
 inline bool outputPacket_Mission3::has_goal1() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -1580,25 +1633,25 @@ inline void outputPacket_Mission3::clear_has_goal1() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void outputPacket_Mission3::clear_goal1() {
-  if (goal1_ != NULL) goal1_->::outputPacket_circle2D::Clear();
+  if (goal1_ != NULL) goal1_->::outputPacket_vector2D::Clear();
   clear_has_goal1();
 }
-inline const ::outputPacket_circle2D& outputPacket_Mission3::goal1() const {
+inline const ::outputPacket_vector2D& outputPacket_Mission3::goal1() const {
   return goal1_ != NULL ? *goal1_ : *default_instance_->goal1_;
 }
-inline ::outputPacket_circle2D* outputPacket_Mission3::mutable_goal1() {
+inline ::outputPacket_vector2D* outputPacket_Mission3::mutable_goal1() {
   set_has_goal1();
-  if (goal1_ == NULL) goal1_ = new ::outputPacket_circle2D;
+  if (goal1_ == NULL) goal1_ = new ::outputPacket_vector2D;
   return goal1_;
 }
-inline ::outputPacket_circle2D* outputPacket_Mission3::release_goal1() {
+inline ::outputPacket_vector2D* outputPacket_Mission3::release_goal1() {
   clear_has_goal1();
-  ::outputPacket_circle2D* temp = goal1_;
+  ::outputPacket_vector2D* temp = goal1_;
   goal1_ = NULL;
   return temp;
 }
 
-// required .outputPacket.circle2D goal2 = 5;
+// required .outputPacket.vector2D goal2 = 5;
 inline bool outputPacket_Mission3::has_goal2() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -1609,20 +1662,20 @@ inline void outputPacket_Mission3::clear_has_goal2() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void outputPacket_Mission3::clear_goal2() {
-  if (goal2_ != NULL) goal2_->::outputPacket_circle2D::Clear();
+  if (goal2_ != NULL) goal2_->::outputPacket_vector2D::Clear();
   clear_has_goal2();
 }
-inline const ::outputPacket_circle2D& outputPacket_Mission3::goal2() const {
+inline const ::outputPacket_vector2D& outputPacket_Mission3::goal2() const {
   return goal2_ != NULL ? *goal2_ : *default_instance_->goal2_;
 }
-inline ::outputPacket_circle2D* outputPacket_Mission3::mutable_goal2() {
+inline ::outputPacket_vector2D* outputPacket_Mission3::mutable_goal2() {
   set_has_goal2();
-  if (goal2_ == NULL) goal2_ = new ::outputPacket_circle2D;
+  if (goal2_ == NULL) goal2_ = new ::outputPacket_vector2D;
   return goal2_;
 }
-inline ::outputPacket_circle2D* outputPacket_Mission3::release_goal2() {
+inline ::outputPacket_vector2D* outputPacket_Mission3::release_goal2() {
   clear_has_goal2();
-  ::outputPacket_circle2D* temp = goal2_;
+  ::outputPacket_vector2D* temp = goal2_;
   goal2_ = NULL;
   return temp;
 }
@@ -1846,15 +1899,38 @@ inline void outputPacket::set_numberofshape(::google::protobuf::int32 value) {
   numberofshape_ = value;
 }
 
-// required .outputPacket.vector2D our_robot_position = 3;
-inline bool outputPacket::has_our_robot_position() const {
+// required .outputPacket.MessageType type = 3 [default = DATA];
+inline bool outputPacket::has_type() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void outputPacket::set_has_our_robot_position() {
+inline void outputPacket::set_has_type() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void outputPacket::clear_has_our_robot_position() {
+inline void outputPacket::clear_has_type() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void outputPacket::clear_type() {
+  type_ = 1;
+  clear_has_type();
+}
+inline ::outputPacket_MessageType outputPacket::type() const {
+  return static_cast< ::outputPacket_MessageType >(type_);
+}
+inline void outputPacket::set_type(::outputPacket_MessageType value) {
+  GOOGLE_DCHECK(::outputPacket_MessageType_IsValid(value));
+  set_has_type();
+  type_ = value;
+}
+
+// required .outputPacket.vector2D our_robot_position = 4;
+inline bool outputPacket::has_our_robot_position() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void outputPacket::set_has_our_robot_position() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void outputPacket::clear_has_our_robot_position() {
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void outputPacket::clear_our_robot_position() {
   if (our_robot_position_ != NULL) our_robot_position_->::outputPacket_vector2D::Clear();
@@ -1875,15 +1951,15 @@ inline ::outputPacket_vector2D* outputPacket::release_our_robot_position() {
   return temp;
 }
 
-// required double our_robot_angle = 4;
+// required double our_robot_angle = 5;
 inline bool outputPacket::has_our_robot_angle() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void outputPacket::set_has_our_robot_angle() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void outputPacket::clear_has_our_robot_angle() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void outputPacket::clear_our_robot_angle() {
   our_robot_angle_ = 0;
@@ -1897,44 +1973,44 @@ inline void outputPacket::set_our_robot_angle(double value) {
   our_robot_angle_ = value;
 }
 
-// optional .outputPacket.vector2D opp_robot_x = 6;
-inline bool outputPacket::has_opp_robot_x() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+// optional .outputPacket.vector2D opp_robot_position = 6;
+inline bool outputPacket::has_opp_robot_position() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void outputPacket::set_has_opp_robot_x() {
-  _has_bits_[0] |= 0x00000010u;
+inline void outputPacket::set_has_opp_robot_position() {
+  _has_bits_[0] |= 0x00000020u;
 }
-inline void outputPacket::clear_has_opp_robot_x() {
-  _has_bits_[0] &= ~0x00000010u;
+inline void outputPacket::clear_has_opp_robot_position() {
+  _has_bits_[0] &= ~0x00000020u;
 }
-inline void outputPacket::clear_opp_robot_x() {
-  if (opp_robot_x_ != NULL) opp_robot_x_->::outputPacket_vector2D::Clear();
-  clear_has_opp_robot_x();
+inline void outputPacket::clear_opp_robot_position() {
+  if (opp_robot_position_ != NULL) opp_robot_position_->::outputPacket_vector2D::Clear();
+  clear_has_opp_robot_position();
 }
-inline const ::outputPacket_vector2D& outputPacket::opp_robot_x() const {
-  return opp_robot_x_ != NULL ? *opp_robot_x_ : *default_instance_->opp_robot_x_;
+inline const ::outputPacket_vector2D& outputPacket::opp_robot_position() const {
+  return opp_robot_position_ != NULL ? *opp_robot_position_ : *default_instance_->opp_robot_position_;
 }
-inline ::outputPacket_vector2D* outputPacket::mutable_opp_robot_x() {
-  set_has_opp_robot_x();
-  if (opp_robot_x_ == NULL) opp_robot_x_ = new ::outputPacket_vector2D;
-  return opp_robot_x_;
+inline ::outputPacket_vector2D* outputPacket::mutable_opp_robot_position() {
+  set_has_opp_robot_position();
+  if (opp_robot_position_ == NULL) opp_robot_position_ = new ::outputPacket_vector2D;
+  return opp_robot_position_;
 }
-inline ::outputPacket_vector2D* outputPacket::release_opp_robot_x() {
-  clear_has_opp_robot_x();
-  ::outputPacket_vector2D* temp = opp_robot_x_;
-  opp_robot_x_ = NULL;
+inline ::outputPacket_vector2D* outputPacket::release_opp_robot_position() {
+  clear_has_opp_robot_position();
+  ::outputPacket_vector2D* temp = opp_robot_position_;
+  opp_robot_position_ = NULL;
   return temp;
 }
 
 // optional double opp_robot_angle = 7;
 inline bool outputPacket::has_opp_robot_angle() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void outputPacket::set_has_opp_robot_angle() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void outputPacket::clear_has_opp_robot_angle() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void outputPacket::clear_opp_robot_angle() {
   opp_robot_angle_ = 0;
@@ -1975,13 +2051,13 @@ outputPacket::mutable_shapes() {
 
 // optional .outputPacket.Mission1 mission1_data = 9;
 inline bool outputPacket::has_mission1_data() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void outputPacket::set_has_mission1_data() {
-  _has_bits_[0] |= 0x00000080u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void outputPacket::clear_has_mission1_data() {
-  _has_bits_[0] &= ~0x00000080u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void outputPacket::clear_mission1_data() {
   if (mission1_data_ != NULL) mission1_data_->::outputPacket_Mission1::Clear();
@@ -2004,13 +2080,13 @@ inline ::outputPacket_Mission1* outputPacket::release_mission1_data() {
 
 // optional .outputPacket.Mission2 mission2_data = 10;
 inline bool outputPacket::has_mission2_data() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void outputPacket::set_has_mission2_data() {
-  _has_bits_[0] |= 0x00000100u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void outputPacket::clear_has_mission2_data() {
-  _has_bits_[0] &= ~0x00000100u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void outputPacket::clear_mission2_data() {
   if (mission2_data_ != NULL) mission2_data_->::outputPacket_Mission2::Clear();
@@ -2033,13 +2109,13 @@ inline ::outputPacket_Mission2* outputPacket::release_mission2_data() {
 
 // optional .outputPacket.Mission3 mission3_data = 11;
 inline bool outputPacket::has_mission3_data() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void outputPacket::set_has_mission3_data() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void outputPacket::clear_has_mission3_data() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void outputPacket::clear_mission3_data() {
   if (mission3_data_ != NULL) mission3_data_->::outputPacket_Mission3::Clear();
@@ -2067,6 +2143,10 @@ inline ::outputPacket_Mission3* outputPacket::release_mission3_data() {
 namespace google {
 namespace protobuf {
 
+template <>
+inline const EnumDescriptor* GetEnumDescriptor< ::outputPacket_MessageType>() {
+  return ::outputPacket_MessageType_descriptor();
+}
 
 }  // namespace google
 }  // namespace protobuf

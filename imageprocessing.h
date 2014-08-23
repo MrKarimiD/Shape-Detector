@@ -12,7 +12,7 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/nonfree/cuda.hpp>
-#include <gameground.h>
+#include <Prototype_Messages/GameGround.pb.h>
 
 #define ASPECT_RATIO_TRESH 4
 
@@ -27,11 +27,13 @@ class ImageProcessing : public QObject
 public:
     explicit ImageProcessing(QObject *parent = 0);
 
-    Mat shapeDetection(Mat input,Mat src,Rect cropedRect);
+    Mat undistortImage(Mat input);
 
     Mat applyFilters(Mat input);
 
-    Mat undistortImage(Mat input);
+    Mat shapeDetection(Mat input,Mat src,Rect cropedRect);
+
+    void findColors(Mat input);
 
     void changeOutputSetting(bool con,bool geom,bool bound,bool rotate,bool boundries);
 
@@ -45,11 +47,9 @@ public:
 
     Mat returnCropedImage();
 
-    void findColors(Mat input);
-
     Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
 
-    GameGround result;
+    outputPacket result;
 
 private:
     vector<Vec3f> finding_circles;
@@ -62,7 +62,6 @@ private:
     double angle(cv::Point pt1, cv::Point pt2, cv::Point pt0);
     void setLabel(cv::Mat& im, const std::string label, std::vector<cv::Point>& contour,Rect cropedRect);
 
-    QByteArray output_bytes;
 signals:
 
 public slots:

@@ -19,9 +19,6 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     imageprocessing.cpp \
     filtersettings.cpp \
-    cameraoutput.cpp \
-    gameground.cpp \
-    shape.cpp \
     networksender.cpp \
     geom/angle_deg.cpp \
     geom/circle_2d.cpp \
@@ -42,9 +39,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     imageprocessing.h \
     filtersettings.h \
-    cameraoutput.h \
-    gameground.h \
-    shape.h \
     geom/geom.h \
     networksender.h \
     geom/angle_deg.h \
@@ -65,7 +59,6 @@ HEADERS  += mainwindow.h \
     geom/triangulation.h \
     geom/vector_2d.h \
     geom/geom.h \
-    Packets.h \
     Prototype_Messages/GameGround.pb.h
 
 FORMS    += mainwindow.ui

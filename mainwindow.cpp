@@ -384,6 +384,7 @@ void MainWindow::disableSecondMission()
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
+    //undisort image
     Mat inputFrame;
     if(ui->camera_rButton->isChecked())
     {
@@ -394,9 +395,11 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
         input_mat.copyTo(inputFrame);
     }
 
+    //update filter setting from ui
     updateFilterSetting();
     imageProcessor->updateFilterSettings(filterSetting);
 
+    //croped image for better performance
     Mat filteredImage;
     Mat crop;
     Rect cropedRect;
@@ -652,6 +655,7 @@ void MainWindow::setCameraSetting()
     if(cameraIsOpened)
     {
         cap.set(CAP_PROP_FPS, 15);
+        cap.set(CAP_PROP_FRAME_HEIGHT,320);
         cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
         cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
         cap.set(CAP_PROP_BRIGHTNESS,ui->brightness_slider->value());
@@ -752,40 +756,76 @@ void MainWindow::send_timer_interval()
 {
     semaphore->acquire(1);
 
+    imageProcessor->result.Clear();
+
     if(imProcDataAvailable)
     {
         if(ui->firstM_rButton->isChecked())
         {
-            imageProcessor->result.setMission(1);
-            imageProcessor->result.setEndPoint(Vector2D(ui->fMendX_lineEdit->text().toInt()
-                                                        ,ui->fMendY_lineEdit->text().toInt()));
-            //imageProcessor->result.setFirstRegion(Rect2D());
-            //imageProcessor->result.setSecondRegion();
-            sendingSocket->sendData("Mission1");
+            outputPacket_vector2D tl;
+            tl.set_x(ui->region1_tlX_lineEdit->text().toFloat());
+            tl.set_y(ui->region1_tlY_lineEdit->text().toFloat());
+            outputPacket_vector2D br;
+            br.set_x(ui->region1_brX_lineEdit->text().toFloat());
+            br.set_y(ui->region1_brY_lineEdit->text().toFloat());
+
+            outputPacket_rect2D region1;
+            region1.mutable_tl()->CopyFrom(tl);
+            region1.mutable_br()->CopyFrom(br);
+
+            tl.Clear();  br.Clear();
+            tl.set_x(ui->region2_tlX_lineEdit->text().toFloat());
+            tl.set_y(ui->region2_tlY_lineEdit->text().toFloat());
+            br.set_x(ui->region2_brX_lineEdit->text().toFloat());
+            br.set_y(ui->region2_brY_lineEdit->text().toFloat());
+            outputPacket_rect2D region2;
+            region2.mutable_tl()->CopyFrom(tl);
+            region2.mutable_br()->CopyFrom(br);
+
+            outputPacket_vector2D end;
+            end.set_x(ui->fMendX_lineEdit->text().toFloat());
+            end.set_y(ui->fMendY_lineEdit->text().toFloat());
+
+            outputPacket_Mission1 mission1;
+            mission1.set_isvalid(true);
+            mission1.mutable_region1()->CopyFrom(region1);
+            mission1.mutable_region2()->CopyFrom(region2);
+            mission1.mutable_end()->CopyFrom(end);
+
+            imageProcessor->result.set_mission(1);
+            imageProcessor->result.mutable_mission1_data()->CopyFrom(mission1);
+
+            //sendingSocket->sendData(imageProcessor->result.SerializeToCodedStream());
         }
         else if(ui->secondM_rButton->isChecked())
         {
-            imageProcessor->result.setMission(2);
-            imageProcessor->result.setEndPoint(Vector2D(ui->sMendX_lineEdit->text().toInt()
-                                                        ,ui->sMendY_lineEdit->text().toInt()));
-            sendingSocket->sendData("Mission2");
+            imageProcessor->result.set_mission(2);
+            outputPacket_vector2D end;
+            end.set_x(ui->sMendX_lineEdit->text().toFloat());
+            end.set_y(ui->sMendY_lineEdit->text().toFloat());
+            outputPacket_Mission2 mission2;
+            mission2.set_isvalid(true);
+            mission2.mutable_end()->CopyFrom(end);
+            //sendingSocket->sendData("Mission2");
         }
         else if(ui->thirsM_rButton->isChecked())
         {
-            imageProcessor->result.setMission(3);
+            imageProcessor->result.set_mission(3);
+            outputPacket_Mission3 misssion3;
+            misssion3.set_isvalid(true);
+
             if(ui->attacker_rButton->isChecked())
-                imageProcessor->result.setRole(true);
+                misssion3.set_isattacker(true);
             else if(ui->defender_rButton->isChecked())
-                imageProcessor->result.setRole(false);
+                misssion3.set_isattacker(false);
+
+            outputPacket_circle2D circle;
+            //circle.set
 
             sendingSocket->sendData("Mission3");
         }
         else
         {
-//            QMessageBox msgBox;
-//            msgBox.setText("Select a Mission!");
-//            //msgBox.setIcon(QMessageBox::Critical);
-//            msgBox.exec();
             qDebug()<<"Error : Select a Mission!";
         }
     }
@@ -795,9 +835,4 @@ void MainWindow::send_timer_interval()
     }
 
     semaphore->release(1);
-}
-
-void MainWindow::addEveryThingToPackets()
-{
-    //dataGram.GameData.mission = imageProcessor->result.getMission();
 }

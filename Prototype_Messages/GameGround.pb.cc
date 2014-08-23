@@ -42,6 +42,7 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* outputPacket_shape_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   outputPacket_shape_reflection_ = NULL;
+const ::google::protobuf::EnumDescriptor* outputPacket_MessageType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -53,12 +54,13 @@ void protobuf_AssignDesc_GameGround_2eproto() {
       "GameGround.proto");
   GOOGLE_CHECK(file != NULL);
   outputPacket_descriptor_ = file->message_type(0);
-  static const int outputPacket_offsets_[10] = {
+  static const int outputPacket_offsets_[11] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, numberofshape_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_position_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_angle_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_position_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_angle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, shapes_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_data_),
@@ -212,6 +214,7 @@ void protobuf_AssignDesc_GameGround_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(outputPacket_shape));
+  outputPacket_MessageType_descriptor_ = outputPacket_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -274,36 +277,38 @@ void protobuf_AddDesc_GameGround_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020GameGround.proto\"\214\t\n\014outputPacket\022\017\n\007m"
-    "ission\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\0222\n\022o"
-    "ur_robot_position\030\003 \002(\0132\026.outputPacket.v"
-    "ector2D\022\027\n\017our_robot_angle\030\004 \002(\001\022+\n\013opp_"
-    "robot_x\030\006 \001(\0132\026.outputPacket.vector2D\022\027\n"
-    "\017opp_robot_angle\030\007 \001(\001\022#\n\006shapes\030\010 \003(\0132\023"
-    ".outputPacket.shape\022-\n\rmission1_data\030\t \001"
-    "(\0132\026.outputPacket.Mission1\022-\n\rmission2_d"
-    "ata\030\n \001(\0132\026.outputPacket.Mission2\022-\n\rmis"
-    "sion3_data\030\013 \001(\0132\026.outputPacket.Mission3"
-    "\032 \n\010vector2D\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\032P\n\006re"
-    "ct2D\022\"\n\002tl\030\001 \002(\0132\026.outputPacket.vector2D"
-    "\022\"\n\002br\030\002 \002(\0132\026.outputPacket.vector2D\032\216\001\n"
-    "\010Mission1\022\017\n\007isValid\030\001 \002(\010\022%\n\007region1\030\002 "
-    "\002(\0132\024.outputPacket.rect2D\022%\n\007region2\030\003 \002"
-    "(\0132\024.outputPacket.rect2D\022#\n\003end\030\004 \002(\0132\026."
-    "outputPacket.vector2D\032R\n\004line\022%\n\005start\030\001"
-    " \002(\0132\026.outputPacket.vector2D\022#\n\003end\030\002 \002("
-    "\0132\026.outputPacket.vector2D\032c\n\010Mission2\022\017\n"
-    "\007isValid\030\001 \002(\010\022!\n\005lines\030\002 \003(\0132\022.outputPa"
-    "cket.line\022#\n\003end\030\003 \002(\0132\026.outputPacket.ve"
-    "ctor2D\032B\n\010circle2D\022&\n\006center\030\001 \002(\0132\026.out"
-    "putPacket.vector2D\022\016\n\006radios\030\002 \002(\001\032\254\001\n\010M"
-    "ission3\022\017\n\007isValid\030\001 \002(\010\022\022\n\nisAttacker\030\002"
-    " \002(\010\022-\n\rcircularBorde\030\003 \002(\0132\026.outputPack"
-    "et.circle2D\022%\n\005goal1\030\004 \002(\0132\026.outputPacke"
-    "t.circle2D\022%\n\005goal2\030\005 \002(\0132\026.outputPacket"
-    ".circle2D\032^\n\005shape\022\014\n\004type\030\001 \002(\t\022\r\n\005colo"
-    "r\030\002 \002(\t\022(\n\010position\030\003 \002(\0132\026.outputPacket"
-    ".vector2D\022\016\n\006radios\030\004 \002(\001", 1185);
+    "\n\020GameGround.proto\"\353\t\n\014outputPacket\022\017\n\007m"
+    "ission\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\022-\n\004t"
+    "ype\030\003 \002(\0162\031.outputPacket.MessageType:\004DA"
+    "TA\0222\n\022our_robot_position\030\004 \002(\0132\026.outputP"
+    "acket.vector2D\022\027\n\017our_robot_angle\030\005 \002(\001\022"
+    "2\n\022opp_robot_position\030\006 \001(\0132\026.outputPack"
+    "et.vector2D\022\027\n\017opp_robot_angle\030\007 \001(\001\022#\n\006"
+    "shapes\030\010 \003(\0132\023.outputPacket.shape\022-\n\rmis"
+    "sion1_data\030\t \001(\0132\026.outputPacket.Mission1"
+    "\022-\n\rmission2_data\030\n \001(\0132\026.outputPacket.M"
+    "ission2\022-\n\rmission3_data\030\013 \001(\0132\026.outputP"
+    "acket.Mission3\032 \n\010vector2D\022\t\n\001x\030\001 \002(\002\022\t\n"
+    "\001y\030\002 \002(\002\032P\n\006rect2D\022\"\n\002tl\030\001 \002(\0132\026.outputP"
+    "acket.vector2D\022\"\n\002br\030\002 \002(\0132\026.outputPacke"
+    "t.vector2D\032\216\001\n\010Mission1\022\017\n\007isValid\030\001 \002(\010"
+    "\022%\n\007region1\030\002 \002(\0132\024.outputPacket.rect2D\022"
+    "%\n\007region2\030\003 \002(\0132\024.outputPacket.rect2D\022#"
+    "\n\003end\030\004 \002(\0132\026.outputPacket.vector2D\032R\n\004l"
+    "ine\022%\n\005start\030\001 \002(\0132\026.outputPacket.vector"
+    "2D\022#\n\003end\030\002 \002(\0132\026.outputPacket.vector2D\032"
+    "c\n\010Mission2\022\017\n\007isValid\030\001 \002(\010\022!\n\005lines\030\002 "
+    "\003(\0132\022.outputPacket.line\022#\n\003end\030\003 \002(\0132\026.o"
+    "utputPacket.vector2D\032B\n\010circle2D\022&\n\006cent"
+    "er\030\001 \002(\0132\026.outputPacket.vector2D\022\016\n\006radi"
+    "os\030\002 \002(\001\032\254\001\n\010Mission3\022\017\n\007isValid\030\001 \002(\010\022\022"
+    "\n\nisAttacker\030\002 \002(\010\022-\n\rcircularBorde\030\003 \002("
+    "\0132\026.outputPacket.vector2D\022%\n\005goal1\030\004 \002(\013"
+    "2\026.outputPacket.vector2D\022%\n\005goal2\030\005 \002(\0132"
+    "\026.outputPacket.vector2D\032^\n\005shape\022\014\n\004type"
+    "\030\001 \002(\t\022\r\n\005color\030\002 \002(\t\022(\n\010position\030\003 \002(\0132"
+    "\026.outputPacket.vector2D\022\016\n\006radios\030\004 \002(\001\""
+    "\'\n\013MessageType\022\016\n\nINITIALIZE\020\000\022\010\n\004DATA\020\001", 1280);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "GameGround.proto", &protobuf_RegisterTypes);
   outputPacket::default_instance_ = new outputPacket();
@@ -337,6 +342,27 @@ struct StaticDescriptorInitializer_GameGround_2eproto {
 
 // ===================================================================
 
+const ::google::protobuf::EnumDescriptor* outputPacket_MessageType_descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return outputPacket_MessageType_descriptor_;
+}
+bool outputPacket_MessageType_IsValid(int value) {
+  switch(value) {
+    case 0:
+    case 1:
+      return true;
+    default:
+      return false;
+  }
+}
+
+#ifndef _MSC_VER
+const outputPacket_MessageType outputPacket::INITIALIZE;
+const outputPacket_MessageType outputPacket::DATA;
+const outputPacket_MessageType outputPacket::MessageType_MIN;
+const outputPacket_MessageType outputPacket::MessageType_MAX;
+const int outputPacket::MessageType_ARRAYSIZE;
+#endif  // _MSC_VER
 #ifndef _MSC_VER
 const int outputPacket_vector2D::kXFieldNumber;
 const int outputPacket_vector2D::kYFieldNumber;
@@ -2024,9 +2050,9 @@ outputPacket_Mission3::outputPacket_Mission3()
 }
 
 void outputPacket_Mission3::InitAsDefaultInstance() {
-  circularborde_ = const_cast< ::outputPacket_circle2D*>(&::outputPacket_circle2D::default_instance());
-  goal1_ = const_cast< ::outputPacket_circle2D*>(&::outputPacket_circle2D::default_instance());
-  goal2_ = const_cast< ::outputPacket_circle2D*>(&::outputPacket_circle2D::default_instance());
+  circularborde_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  goal1_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  goal2_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
 outputPacket_Mission3::outputPacket_Mission3(const outputPacket_Mission3& from)
@@ -2082,13 +2108,13 @@ void outputPacket_Mission3::Clear() {
     isvalid_ = false;
     isattacker_ = false;
     if (has_circularborde()) {
-      if (circularborde_ != NULL) circularborde_->::outputPacket_circle2D::Clear();
+      if (circularborde_ != NULL) circularborde_->::outputPacket_vector2D::Clear();
     }
     if (has_goal1()) {
-      if (goal1_ != NULL) goal1_->::outputPacket_circle2D::Clear();
+      if (goal1_ != NULL) goal1_->::outputPacket_vector2D::Clear();
     }
     if (has_goal2()) {
-      if (goal2_ != NULL) goal2_->::outputPacket_circle2D::Clear();
+      if (goal2_ != NULL) goal2_->::outputPacket_vector2D::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -2132,7 +2158,7 @@ bool outputPacket_Mission3::MergePartialFromCodedStream(
         break;
       }
       
-      // required .outputPacket.circle2D circularBorde = 3;
+      // required .outputPacket.vector2D circularBorde = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2146,7 +2172,7 @@ bool outputPacket_Mission3::MergePartialFromCodedStream(
         break;
       }
       
-      // required .outputPacket.circle2D goal1 = 4;
+      // required .outputPacket.vector2D goal1 = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2160,7 +2186,7 @@ bool outputPacket_Mission3::MergePartialFromCodedStream(
         break;
       }
       
-      // required .outputPacket.circle2D goal2 = 5;
+      // required .outputPacket.vector2D goal2 = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2202,19 +2228,19 @@ void outputPacket_Mission3::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->isattacker(), output);
   }
   
-  // required .outputPacket.circle2D circularBorde = 3;
+  // required .outputPacket.vector2D circularBorde = 3;
   if (has_circularborde()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->circularborde(), output);
   }
   
-  // required .outputPacket.circle2D goal1 = 4;
+  // required .outputPacket.vector2D goal1 = 4;
   if (has_goal1()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->goal1(), output);
   }
   
-  // required .outputPacket.circle2D goal2 = 5;
+  // required .outputPacket.vector2D goal2 = 5;
   if (has_goal2()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       5, this->goal2(), output);
@@ -2238,21 +2264,21 @@ void outputPacket_Mission3::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->isattacker(), target);
   }
   
-  // required .outputPacket.circle2D circularBorde = 3;
+  // required .outputPacket.vector2D circularBorde = 3;
   if (has_circularborde()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         3, this->circularborde(), target);
   }
   
-  // required .outputPacket.circle2D goal1 = 4;
+  // required .outputPacket.vector2D goal1 = 4;
   if (has_goal1()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         4, this->goal1(), target);
   }
   
-  // required .outputPacket.circle2D goal2 = 5;
+  // required .outputPacket.vector2D goal2 = 5;
   if (has_goal2()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -2280,21 +2306,21 @@ int outputPacket_Mission3::ByteSize() const {
       total_size += 1 + 1;
     }
     
-    // required .outputPacket.circle2D circularBorde = 3;
+    // required .outputPacket.vector2D circularBorde = 3;
     if (has_circularborde()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->circularborde());
     }
     
-    // required .outputPacket.circle2D goal1 = 4;
+    // required .outputPacket.vector2D goal1 = 4;
     if (has_goal1()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->goal1());
     }
     
-    // required .outputPacket.circle2D goal2 = 5;
+    // required .outputPacket.vector2D goal2 = 5;
     if (has_goal2()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -2335,13 +2361,13 @@ void outputPacket_Mission3::MergeFrom(const outputPacket_Mission3& from) {
       set_isattacker(from.isattacker());
     }
     if (from.has_circularborde()) {
-      mutable_circularborde()->::outputPacket_circle2D::MergeFrom(from.circularborde());
+      mutable_circularborde()->::outputPacket_vector2D::MergeFrom(from.circularborde());
     }
     if (from.has_goal1()) {
-      mutable_goal1()->::outputPacket_circle2D::MergeFrom(from.goal1());
+      mutable_goal1()->::outputPacket_vector2D::MergeFrom(from.goal1());
     }
     if (from.has_goal2()) {
-      mutable_goal2()->::outputPacket_circle2D::MergeFrom(from.goal2());
+      mutable_goal2()->::outputPacket_vector2D::MergeFrom(from.goal2());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2769,9 +2795,10 @@ void outputPacket_shape::Swap(outputPacket_shape* other) {
 #ifndef _MSC_VER
 const int outputPacket::kMissionFieldNumber;
 const int outputPacket::kNumberOfShapeFieldNumber;
+const int outputPacket::kTypeFieldNumber;
 const int outputPacket::kOurRobotPositionFieldNumber;
 const int outputPacket::kOurRobotAngleFieldNumber;
-const int outputPacket::kOppRobotXFieldNumber;
+const int outputPacket::kOppRobotPositionFieldNumber;
 const int outputPacket::kOppRobotAngleFieldNumber;
 const int outputPacket::kShapesFieldNumber;
 const int outputPacket::kMission1DataFieldNumber;
@@ -2786,7 +2813,7 @@ outputPacket::outputPacket()
 
 void outputPacket::InitAsDefaultInstance() {
   our_robot_position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  opp_robot_x_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
+  opp_robot_position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
   mission1_data_ = const_cast< ::outputPacket_Mission1*>(&::outputPacket_Mission1::default_instance());
   mission2_data_ = const_cast< ::outputPacket_Mission2*>(&::outputPacket_Mission2::default_instance());
   mission3_data_ = const_cast< ::outputPacket_Mission3*>(&::outputPacket_Mission3::default_instance());
@@ -2802,9 +2829,10 @@ void outputPacket::SharedCtor() {
   _cached_size_ = 0;
   mission_ = 0;
   numberofshape_ = 0;
+  type_ = 1;
   our_robot_position_ = NULL;
   our_robot_angle_ = 0;
-  opp_robot_x_ = NULL;
+  opp_robot_position_ = NULL;
   opp_robot_angle_ = 0;
   mission1_data_ = NULL;
   mission2_data_ = NULL;
@@ -2819,7 +2847,7 @@ outputPacket::~outputPacket() {
 void outputPacket::SharedDtor() {
   if (this != default_instance_) {
     delete our_robot_position_;
-    delete opp_robot_x_;
+    delete opp_robot_position_;
     delete mission1_data_;
     delete mission2_data_;
     delete mission3_data_;
@@ -2850,19 +2878,20 @@ void outputPacket::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     mission_ = 0;
     numberofshape_ = 0;
+    type_ = 1;
     if (has_our_robot_position()) {
       if (our_robot_position_ != NULL) our_robot_position_->::outputPacket_vector2D::Clear();
     }
     our_robot_angle_ = 0;
-    if (has_opp_robot_x()) {
-      if (opp_robot_x_ != NULL) opp_robot_x_->::outputPacket_vector2D::Clear();
+    if (has_opp_robot_position()) {
+      if (opp_robot_position_ != NULL) opp_robot_position_->::outputPacket_vector2D::Clear();
     }
     opp_robot_angle_ = 0;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_mission1_data()) {
       if (mission1_data_ != NULL) mission1_data_->::outputPacket_Mission1::Clear();
     }
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (has_mission2_data()) {
       if (mission2_data_ != NULL) mission2_data_->::outputPacket_Mission2::Clear();
     }
@@ -2908,12 +2937,33 @@ bool outputPacket::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_our_robot_position;
+        if (input->ExpectTag(24)) goto parse_type;
         break;
       }
       
-      // required .outputPacket.vector2D our_robot_position = 3;
+      // required .outputPacket.MessageType type = 3 [default = DATA];
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_type:
+          int value;
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
+                 input, &value)));
+          if (::outputPacket_MessageType_IsValid(value)) {
+            set_type(static_cast< ::outputPacket_MessageType >(value));
+          } else {
+            mutable_unknown_fields()->AddVarint(3, value);
+          }
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_our_robot_position;
+        break;
+      }
+      
+      // required .outputPacket.vector2D our_robot_position = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_our_robot_position:
@@ -2922,12 +2972,12 @@ bool outputPacket::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(33)) goto parse_our_robot_angle;
+        if (input->ExpectTag(41)) goto parse_our_robot_angle;
         break;
       }
       
-      // required double our_robot_angle = 4;
-      case 4: {
+      // required double our_robot_angle = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_our_robot_angle:
@@ -2938,17 +2988,17 @@ bool outputPacket::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_opp_robot_x;
+        if (input->ExpectTag(50)) goto parse_opp_robot_position;
         break;
       }
       
-      // optional .outputPacket.vector2D opp_robot_x = 6;
+      // optional .outputPacket.vector2D opp_robot_position = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_opp_robot_x:
+         parse_opp_robot_position:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_opp_robot_x()));
+               input, mutable_opp_robot_position()));
         } else {
           goto handle_uninterpreted;
         }
@@ -3057,21 +3107,27 @@ void outputPacket::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->numberofshape(), output);
   }
   
-  // required .outputPacket.vector2D our_robot_position = 3;
+  // required .outputPacket.MessageType type = 3 [default = DATA];
+  if (has_type()) {
+    ::google::protobuf::internal::WireFormatLite::WriteEnum(
+      3, this->type(), output);
+  }
+  
+  // required .outputPacket.vector2D our_robot_position = 4;
   if (has_our_robot_position()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->our_robot_position(), output);
+      4, this->our_robot_position(), output);
   }
   
-  // required double our_robot_angle = 4;
+  // required double our_robot_angle = 5;
   if (has_our_robot_angle()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->our_robot_angle(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->our_robot_angle(), output);
   }
   
-  // optional .outputPacket.vector2D opp_robot_x = 6;
-  if (has_opp_robot_x()) {
+  // optional .outputPacket.vector2D opp_robot_position = 6;
+  if (has_opp_robot_position()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->opp_robot_x(), output);
+      6, this->opp_robot_position(), output);
   }
   
   // optional double opp_robot_angle = 7;
@@ -3121,23 +3177,29 @@ void outputPacket::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->numberofshape(), target);
   }
   
-  // required .outputPacket.vector2D our_robot_position = 3;
+  // required .outputPacket.MessageType type = 3 [default = DATA];
+  if (has_type()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
+      3, this->type(), target);
+  }
+  
+  // required .outputPacket.vector2D our_robot_position = 4;
   if (has_our_robot_position()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        3, this->our_robot_position(), target);
+        4, this->our_robot_position(), target);
   }
   
-  // required double our_robot_angle = 4;
+  // required double our_robot_angle = 5;
   if (has_our_robot_angle()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->our_robot_angle(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->our_robot_angle(), target);
   }
   
-  // optional .outputPacket.vector2D opp_robot_x = 6;
-  if (has_opp_robot_x()) {
+  // optional .outputPacket.vector2D opp_robot_position = 6;
+  if (has_opp_robot_position()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        6, this->opp_robot_x(), target);
+        6, this->opp_robot_position(), target);
   }
   
   // optional double opp_robot_angle = 7;
@@ -3198,23 +3260,29 @@ int outputPacket::ByteSize() const {
           this->numberofshape());
     }
     
-    // required .outputPacket.vector2D our_robot_position = 3;
+    // required .outputPacket.MessageType type = 3 [default = DATA];
+    if (has_type()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+    }
+    
+    // required .outputPacket.vector2D our_robot_position = 4;
     if (has_our_robot_position()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->our_robot_position());
     }
     
-    // required double our_robot_angle = 4;
+    // required double our_robot_angle = 5;
     if (has_our_robot_angle()) {
       total_size += 1 + 8;
     }
     
-    // optional .outputPacket.vector2D opp_robot_x = 6;
-    if (has_opp_robot_x()) {
+    // optional .outputPacket.vector2D opp_robot_position = 6;
+    if (has_opp_robot_position()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->opp_robot_x());
+          this->opp_robot_position());
     }
     
     // optional double opp_robot_angle = 7;
@@ -3222,6 +3290,8 @@ int outputPacket::ByteSize() const {
       total_size += 1 + 8;
     }
     
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .outputPacket.Mission1 mission1_data = 9;
     if (has_mission1_data()) {
       total_size += 1 +
@@ -3229,8 +3299,6 @@ int outputPacket::ByteSize() const {
           this->mission1_data());
     }
     
-  }
-  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     // optional .outputPacket.Mission2 mission2_data = 10;
     if (has_mission2_data()) {
       total_size += 1 +
@@ -3287,23 +3355,26 @@ void outputPacket::MergeFrom(const outputPacket& from) {
     if (from.has_numberofshape()) {
       set_numberofshape(from.numberofshape());
     }
+    if (from.has_type()) {
+      set_type(from.type());
+    }
     if (from.has_our_robot_position()) {
       mutable_our_robot_position()->::outputPacket_vector2D::MergeFrom(from.our_robot_position());
     }
     if (from.has_our_robot_angle()) {
       set_our_robot_angle(from.our_robot_angle());
     }
-    if (from.has_opp_robot_x()) {
-      mutable_opp_robot_x()->::outputPacket_vector2D::MergeFrom(from.opp_robot_x());
+    if (from.has_opp_robot_position()) {
+      mutable_opp_robot_position()->::outputPacket_vector2D::MergeFrom(from.opp_robot_position());
     }
     if (from.has_opp_robot_angle()) {
       set_opp_robot_angle(from.opp_robot_angle());
     }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_mission1_data()) {
       mutable_mission1_data()->::outputPacket_Mission1::MergeFrom(from.mission1_data());
     }
-  }
-  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
     if (from.has_mission2_data()) {
       mutable_mission2_data()->::outputPacket_Mission2::MergeFrom(from.mission2_data());
     }
@@ -3327,13 +3398,13 @@ void outputPacket::CopyFrom(const outputPacket& from) {
 }
 
 bool outputPacket::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
   
   if (has_our_robot_position()) {
     if (!this->our_robot_position().IsInitialized()) return false;
   }
-  if (has_opp_robot_x()) {
-    if (!this->opp_robot_x().IsInitialized()) return false;
+  if (has_opp_robot_position()) {
+    if (!this->opp_robot_position().IsInitialized()) return false;
   }
   for (int i = 0; i < shapes_size(); i++) {
     if (!this->shapes(i).IsInitialized()) return false;
@@ -3354,9 +3425,10 @@ void outputPacket::Swap(outputPacket* other) {
   if (other != this) {
     std::swap(mission_, other->mission_);
     std::swap(numberofshape_, other->numberofshape_);
+    std::swap(type_, other->type_);
     std::swap(our_robot_position_, other->our_robot_position_);
     std::swap(our_robot_angle_, other->our_robot_angle_);
-    std::swap(opp_robot_x_, other->opp_robot_x_);
+    std::swap(opp_robot_position_, other->opp_robot_position_);
     std::swap(opp_robot_angle_, other->opp_robot_angle_);
     shapes_.Swap(&other->shapes_);
     std::swap(mission1_data_, other->mission1_data_);

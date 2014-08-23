@@ -50,11 +50,11 @@ message outputPacket
 
 		required bool isAttacker = 2;
 		
-		required circle2D circularBorde = 3;
+		required vector2D circularBorde = 3;
 		
-		required circle2D goal1 = 4;
+		required vector2D goal1 = 4;
 		
-		required circle2D goal2 = 5;
+		required vector2D goal2 = 5;
 	}
 	
 	message shape
@@ -64,14 +64,22 @@ message outputPacket
 		required vector2D position = 3;
 		required double radios = 4;
 	}
-  
-	required int32 mission = 1;
+  	
+	enum MessageType 
+	{
+		INITIALIZE = 0;
+		DATA = 1;
+		
+	}
+
+  	required int32 mission = 1;
 	required int32 numberOfShape = 2;
+	required MessageType type = 3 [default = DATA];
 	
-	required vector2D our_robot_position = 3;
-	required double our_robot_angle = 4;
+	required vector2D our_robot_position = 4;
+	required double our_robot_angle = 5;
 	
-	optional vector2D opp_robot_x = 6;
+	optional vector2D opp_robot_position = 6;
 	optional double opp_robot_angle = 7;
 
 	repeated shape shapes = 8;	
