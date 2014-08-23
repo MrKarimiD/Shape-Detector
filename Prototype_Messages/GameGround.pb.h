@@ -1009,7 +1009,7 @@ class outputPacket : public ::google::protobuf::Message {
   inline ::outputPacket_MessageType type() const;
   inline void set_type(::outputPacket_MessageType value);
   
-  // required .outputPacket.vector2D our_robot_position = 4;
+  // optional .outputPacket.vector2D our_robot_position = 4;
   inline bool has_our_robot_position() const;
   inline void clear_our_robot_position();
   static const int kOurRobotPositionFieldNumber = 4;
@@ -1017,7 +1017,7 @@ class outputPacket : public ::google::protobuf::Message {
   inline ::outputPacket_vector2D* mutable_our_robot_position();
   inline ::outputPacket_vector2D* release_our_robot_position();
   
-  // required double our_robot_angle = 5;
+  // optional double our_robot_angle = 5;
   inline bool has_our_robot_angle() const;
   inline void clear_our_robot_angle();
   static const int kOurRobotAngleFieldNumber = 5;
@@ -1922,7 +1922,7 @@ inline void outputPacket::set_type(::outputPacket_MessageType value) {
   type_ = value;
 }
 
-// required .outputPacket.vector2D our_robot_position = 4;
+// optional .outputPacket.vector2D our_robot_position = 4;
 inline bool outputPacket::has_our_robot_position() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -1951,7 +1951,7 @@ inline ::outputPacket_vector2D* outputPacket::release_our_robot_position() {
   return temp;
 }
 
-// required double our_robot_angle = 5;
+// optional double our_robot_angle = 5;
 inline bool outputPacket::has_our_robot_angle() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }

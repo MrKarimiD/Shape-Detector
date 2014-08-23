@@ -76,8 +76,8 @@ message outputPacket
 	required int32 numberOfShape = 2;
 	required MessageType type = 3 [default = DATA];
 	
-	required vector2D our_robot_position = 4;
-	required double our_robot_angle = 5;
+	optional vector2D our_robot_position = 4;
+	optional double our_robot_angle = 5;
 	
 	optional vector2D opp_robot_position = 6;
 	optional double opp_robot_angle = 7;

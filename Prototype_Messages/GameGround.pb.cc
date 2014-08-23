@@ -280,8 +280,8 @@ void protobuf_AddDesc_GameGround_2eproto() {
     "\n\020GameGround.proto\"\353\t\n\014outputPacket\022\017\n\007m"
     "ission\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\022-\n\004t"
     "ype\030\003 \002(\0162\031.outputPacket.MessageType:\004DA"
-    "TA\0222\n\022our_robot_position\030\004 \002(\0132\026.outputP"
-    "acket.vector2D\022\027\n\017our_robot_angle\030\005 \002(\001\022"
+    "TA\0222\n\022our_robot_position\030\004 \001(\0132\026.outputP"
+    "acket.vector2D\022\027\n\017our_robot_angle\030\005 \001(\001\022"
     "2\n\022opp_robot_position\030\006 \001(\0132\026.outputPack"
     "et.vector2D\022\027\n\017opp_robot_angle\030\007 \001(\001\022#\n\006"
     "shapes\030\010 \003(\0132\023.outputPacket.shape\022-\n\rmis"
@@ -2962,7 +2962,7 @@ bool outputPacket::MergePartialFromCodedStream(
         break;
       }
       
-      // required .outputPacket.vector2D our_robot_position = 4;
+      // optional .outputPacket.vector2D our_robot_position = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -2976,7 +2976,7 @@ bool outputPacket::MergePartialFromCodedStream(
         break;
       }
       
-      // required double our_robot_angle = 5;
+      // optional double our_robot_angle = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
@@ -3113,13 +3113,13 @@ void outputPacket::SerializeWithCachedSizes(
       3, this->type(), output);
   }
   
-  // required .outputPacket.vector2D our_robot_position = 4;
+  // optional .outputPacket.vector2D our_robot_position = 4;
   if (has_our_robot_position()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       4, this->our_robot_position(), output);
   }
   
-  // required double our_robot_angle = 5;
+  // optional double our_robot_angle = 5;
   if (has_our_robot_angle()) {
     ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->our_robot_angle(), output);
   }
@@ -3183,14 +3183,14 @@ void outputPacket::SerializeWithCachedSizes(
       3, this->type(), target);
   }
   
-  // required .outputPacket.vector2D our_robot_position = 4;
+  // optional .outputPacket.vector2D our_robot_position = 4;
   if (has_our_robot_position()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         4, this->our_robot_position(), target);
   }
   
-  // required double our_robot_angle = 5;
+  // optional double our_robot_angle = 5;
   if (has_our_robot_angle()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->our_robot_angle(), target);
   }
@@ -3266,14 +3266,14 @@ int outputPacket::ByteSize() const {
         ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
     }
     
-    // required .outputPacket.vector2D our_robot_position = 4;
+    // optional .outputPacket.vector2D our_robot_position = 4;
     if (has_our_robot_position()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->our_robot_position());
     }
     
-    // required double our_robot_angle = 5;
+    // optional double our_robot_angle = 5;
     if (has_our_robot_angle()) {
       total_size += 1 + 8;
     }
@@ -3398,7 +3398,7 @@ void outputPacket::CopyFrom(const outputPacket& from) {
 }
 
 bool outputPacket::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   
   if (has_our_robot_position()) {
     if (!this->our_robot_position().IsInitialized()) return false;
