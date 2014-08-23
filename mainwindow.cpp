@@ -19,6 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     items<<"0"<<"1";
     ui->cam_comboBox->addItems(items);
 
+    QStringList fps_items;
+    fps_items<<"15"<<"30"<<"60";
+    ui->fps_comboBox->addItems(fps_items);
+
     QStringList output_items;
     output_items<<"Croped"<<"Adaptive Threshold"<<"Threshold"<<"Canny"<<"Final";
     ui->out_comboBox->addItems(output_items);
@@ -95,7 +99,7 @@ void MainWindow::on_open_button_clicked()
 
         cap.read(frame);
 
-        cam_timer->start(15);
+        cam_timer->start(5);
         connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
 
         emit imageReady(frame);
@@ -106,6 +110,7 @@ void MainWindow::cam_timeout()
     Mat frame;
     cap.read(frame);
     emit imageReady(frame);
+    qDebug()<<"cam read";
 }
 
 void MainWindow::enableCameraSetting()
@@ -382,6 +387,100 @@ void MainWindow::disableSecondMission()
     ui->sMend_label->setDisabled(true);
 }
 
+void MainWindow::setInitializeMessage(int mission)
+{
+    switch(mission)
+    {
+    case 1 :
+    {
+        outputPacket_vector2D tl;
+        tl.set_x(ui->region1_tlX_lineEdit->text().toFloat());
+        tl.set_y(ui->region1_tlY_lineEdit->text().toFloat());
+        outputPacket_vector2D br;
+        br.set_x(ui->region1_brX_lineEdit->text().toFloat());
+        br.set_y(ui->region1_brY_lineEdit->text().toFloat());
+
+        outputPacket_rect2D region1;
+        region1.mutable_tl()->CopyFrom(tl);
+        region1.mutable_br()->CopyFrom(br);
+
+        tl.Clear();  br.Clear();
+        tl.set_x(ui->region2_tlX_lineEdit->text().toFloat());
+        tl.set_y(ui->region2_tlY_lineEdit->text().toFloat());
+        br.set_x(ui->region2_brX_lineEdit->text().toFloat());
+        br.set_y(ui->region2_brY_lineEdit->text().toFloat());
+        outputPacket_rect2D region2;
+        region2.mutable_tl()->CopyFrom(tl);
+        region2.mutable_br()->CopyFrom(br);
+
+        outputPacket_vector2D end;
+        end.set_x(ui->fMendX_lineEdit->text().toFloat());
+        end.set_y(ui->fMendY_lineEdit->text().toFloat());
+
+        outputPacket_Mission1 mission1;
+        mission1.set_isvalid(true);
+        mission1.mutable_region1()->CopyFrom(region1);
+        mission1.mutable_region2()->CopyFrom(region2);
+        mission1.mutable_end()->CopyFrom(end);
+
+        imageProcessor->result.set_mission(1);
+        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
+        imageProcessor->result.mutable_mission1_data()->CopyFrom(mission1);
+        //sendingSocket->sendData(imageProcessor->result.SerializeToCodedStream());
+        break;
+    }
+    case 2 :
+    {
+        imageProcessor->result.set_mission(2);
+        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
+        outputPacket_vector2D end2;
+        end2.set_x(ui->sMendX_lineEdit->text().toFloat());
+        end2.set_y(ui->sMendY_lineEdit->text().toFloat());
+        outputPacket_Mission2 mission2;
+        mission2.set_isvalid(true);
+        mission2.mutable_end()->CopyFrom(end2);
+        //sendingSocket->sendData("Mission2");
+        break;
+    }
+    case 3:
+    {
+        imageProcessor->result.set_mission(3);
+        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
+        outputPacket_Mission3 misssion3;
+        misssion3.set_isvalid(true);
+
+        if(ui->attacker_rButton->isChecked())
+            misssion3.set_isattacker(true);
+        else if(ui->defender_rButton->isChecked())
+            misssion3.set_isattacker(false);
+
+        outputPacket_vector2D center;
+        //Border Center
+        center.set_x(ui->border_X_lineEdit->text().toFloat());
+        center.set_y(ui->border_Y_lineEdit->text().toFloat());
+        misssion3.mutable_circularborde()->CopyFrom(center);
+
+        center.Clear();
+
+        //goal1 center
+        center.set_x(ui->goal1_X_lineEdit->text().toFloat());
+        center.set_y(ui->goal1_Y_lineEdit->text().toFloat());
+        misssion3.mutable_goal1()->CopyFrom(center);
+
+        center.Clear();
+
+        //goal2 center
+        center.set_x(ui->goal2_X_lineEdit->text().toFloat());
+        center.set_y(ui->goal2_Y_lineEdit->text().toFloat());
+        misssion3.mutable_goal2()->CopyFrom(center);
+
+        imageProcessor->result.mutable_mission3_data()->CopyFrom(misssion3);
+        //sendingSocket->sendData("Mission3");
+        break;
+    }
+    }
+}
+
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
     //undisort image
@@ -430,6 +529,8 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     imageProcessor->findColors(inputFrame);
     imProcDataAvailable=true;
     semaphore->release();
+
+    qDebug()<<"process";
 
     if(ui->out_comboBox->currentText() == "Croped")
     {
@@ -654,7 +755,7 @@ void MainWindow::setCameraSetting()
 {
     if(cameraIsOpened)
     {
-        cap.set(CAP_PROP_FPS, 15);
+        cap.set(CAP_PROP_FPS, ui->fps_comboBox->currentText().toInt());
         cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
         cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
         cap.set(CAP_PROP_BRIGHTNESS,ui->brightness_slider->value());
@@ -740,91 +841,15 @@ void MainWindow::on_go_button_clicked()
 
     if(ui->firstM_rButton->isChecked())
     {
-        outputPacket_vector2D tl;
-        tl.set_x(ui->region1_tlX_lineEdit->text().toFloat());
-        tl.set_y(ui->region1_tlY_lineEdit->text().toFloat());
-        outputPacket_vector2D br;
-        br.set_x(ui->region1_brX_lineEdit->text().toFloat());
-        br.set_y(ui->region1_brY_lineEdit->text().toFloat());
-
-        outputPacket_rect2D region1;
-        region1.mutable_tl()->CopyFrom(tl);
-        region1.mutable_br()->CopyFrom(br);
-
-        tl.Clear();  br.Clear();
-        tl.set_x(ui->region2_tlX_lineEdit->text().toFloat());
-        tl.set_y(ui->region2_tlY_lineEdit->text().toFloat());
-        br.set_x(ui->region2_brX_lineEdit->text().toFloat());
-        br.set_y(ui->region2_brY_lineEdit->text().toFloat());
-        outputPacket_rect2D region2;
-        region2.mutable_tl()->CopyFrom(tl);
-        region2.mutable_br()->CopyFrom(br);
-
-        outputPacket_vector2D end;
-        end.set_x(ui->fMendX_lineEdit->text().toFloat());
-        end.set_y(ui->fMendY_lineEdit->text().toFloat());
-
-        outputPacket_Mission1 mission1;
-        mission1.set_isvalid(true);
-        mission1.mutable_region1()->CopyFrom(region1);
-        mission1.mutable_region2()->CopyFrom(region2);
-        mission1.mutable_end()->CopyFrom(end);
-
-        imageProcessor->result.set_mission(1);
-        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-        imageProcessor->result.mutable_mission1_data()->CopyFrom(mission1);
-
-
-        //sendingSocket->sendData(imageProcessor->result.SerializeToCodedStream());
+        setInitializeMessage(1);
     }
     else if(ui->secondM_rButton->isChecked())
     {
-        imageProcessor->result.set_mission(2);
-        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-        outputPacket_vector2D end;
-        end.set_x(ui->sMendX_lineEdit->text().toFloat());
-        end.set_y(ui->sMendY_lineEdit->text().toFloat());
-        outputPacket_Mission2 mission2;
-        mission2.set_isvalid(true);
-        mission2.mutable_end()->CopyFrom(end);
-
-        //sendingSocket->sendData("Mission2");
+        setInitializeMessage(2);
     }
     else if(ui->thirsM_rButton->isChecked())
     {
-        imageProcessor->result.set_mission(3);
-        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-        outputPacket_Mission3 misssion3;
-        misssion3.set_isvalid(true);
-
-        if(ui->attacker_rButton->isChecked())
-            misssion3.set_isattacker(true);
-        else if(ui->defender_rButton->isChecked())
-            misssion3.set_isattacker(false);
-
-        outputPacket_vector2D center;
-        //Border Center
-        center.set_x(ui->border_X_lineEdit->text().toFloat());
-        center.set_y(ui->border_Y_lineEdit->text().toFloat());
-        misssion3.mutable_circularborde()->CopyFrom(center);
-
-        center.Clear();
-
-        //goal1 center
-        center.set_x(ui->goal1_X_lineEdit->text().toFloat());
-        center.set_y(ui->goal1_Y_lineEdit->text().toFloat());
-        misssion3.mutable_goal1()->CopyFrom(center);
-
-        center.Clear();
-
-        //goal2 center
-        center.set_x(ui->goal2_X_lineEdit->text().toFloat());
-        center.set_y(ui->goal2_Y_lineEdit->text().toFloat());
-        misssion3.mutable_goal2()->CopyFrom(center);
-
-        imageProcessor->result.mutable_mission3_data()->CopyFrom(misssion3);
-
-        //sendingSocket->sendData("Mission3");
+        setInitializeMessage(3);
     }
     else
     {

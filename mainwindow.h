@@ -178,6 +178,8 @@ private:
 
     void disableSecondMission();
 
+    void setInitializeMessage(int mission);
+
 signals:
     void imageReady(Mat image);
     void cameraSettingChanged();

@@ -47,6 +47,8 @@ public:
 
     Mat returnCropedImage();
 
+    void addShape(float x,float y,double radius,string type,string color);
+
     Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
 
     outputPacket result;
