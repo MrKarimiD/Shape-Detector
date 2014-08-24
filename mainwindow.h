@@ -114,7 +114,7 @@ private slots:
 
     void on_thirsM_rButton_toggled(bool checked);
 
-    void send_timer_interval();
+    void sendDataPacket();
 
 private:
     Ui::MainWindow *ui;

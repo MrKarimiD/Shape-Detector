@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
-    connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
+    //connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
 
     imageProcessor=new ImageProcessing();
 }
@@ -110,7 +110,6 @@ void MainWindow::cam_timeout()
     Mat frame;
     cap.read(frame);
     emit imageReady(frame);
-    qDebug()<<"cam read";
 }
 
 void MainWindow::enableCameraSetting()
@@ -433,13 +432,26 @@ void MainWindow::setInitializeMessage(int mission)
     {
         imageProcessor->result.set_mission(2);
         imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
+        imageProcessor->result.set_numberofshape(0);
         outputPacket_vector2D end2;
         end2.set_x(ui->sMendX_lineEdit->text().toFloat());
         end2.set_y(ui->sMendY_lineEdit->text().toFloat());
         outputPacket_Mission2 mission2;
         mission2.set_isvalid(true);
         mission2.mutable_end()->CopyFrom(end2);
+        imageProcessor->result.mutable_mission2_data()->CopyFrom(mission2);
         //sendingSocket->sendData("Mission2");
+        qDebug()<<"mission2:"<<mission2.end().x()<<","<<mission2.end().y();
+        qDebug()<<"endpoint:"<<imageProcessor->result.mission2_data().end().x()<<","<<imageProcessor->result.mission2_data().end().y();
+        if(imageProcessor->result.IsInitialized())
+        {
+            qDebug()<<"is valid";
+        }
+        else
+        {
+            qDebug()<<"not valid";
+        }
+
         break;
     }
     case 3:
@@ -479,6 +491,8 @@ void MainWindow::setInitializeMessage(int mission)
         break;
     }
     }
+
+
 }
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
@@ -529,8 +543,6 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     imageProcessor->findColors(inputFrame);
     imProcDataAvailable=true;
     semaphore->release();
-
-    qDebug()<<"process";
 
     if(ui->out_comboBox->currentText() == "Croped")
     {
@@ -856,6 +868,7 @@ void MainWindow::on_go_button_clicked()
         qDebug()<<"Error : Select a Mission!";
     }
 
+    sendDataPacket();
     send_timer->start(15);
 }
 
@@ -873,85 +886,11 @@ void MainWindow::on_thirsM_rButton_toggled(bool checked)
     }
 }
 
-void MainWindow::send_timer_interval()
+void MainWindow::sendDataPacket()
 {
-    if(imProcDataAvailable)
-    {
-        if(ui->firstM_rButton->isChecked())
-        {
-            outputPacket_vector2D tl;
-            tl.set_x(ui->region1_tlX_lineEdit->text().toFloat());
-            tl.set_y(ui->region1_tlY_lineEdit->text().toFloat());
-            outputPacket_vector2D br;
-            br.set_x(ui->region1_brX_lineEdit->text().toFloat());
-            br.set_y(ui->region1_brY_lineEdit->text().toFloat());
-
-            outputPacket_rect2D region1;
-            region1.mutable_tl()->CopyFrom(tl);
-            region1.mutable_br()->CopyFrom(br);
-
-            tl.Clear();  br.Clear();
-            tl.set_x(ui->region2_tlX_lineEdit->text().toFloat());
-            tl.set_y(ui->region2_tlY_lineEdit->text().toFloat());
-            br.set_x(ui->region2_brX_lineEdit->text().toFloat());
-            br.set_y(ui->region2_brY_lineEdit->text().toFloat());
-            outputPacket_rect2D region2;
-            region2.mutable_tl()->CopyFrom(tl);
-            region2.mutable_br()->CopyFrom(br);
-
-            outputPacket_vector2D end;
-            end.set_x(ui->fMendX_lineEdit->text().toFloat());
-            end.set_y(ui->fMendY_lineEdit->text().toFloat());
-
-            outputPacket_Mission1 mission1;
-            mission1.set_isvalid(true);
-            mission1.mutable_region1()->CopyFrom(region1);
-            mission1.mutable_region2()->CopyFrom(region2);
-            mission1.mutable_end()->CopyFrom(end);
-
-            imageProcessor->result.set_mission(1);
-            imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-            imageProcessor->result.mutable_mission1_data()->CopyFrom(mission1);
-
-
-            //sendingSocket->sendData(imageProcessor->result.SerializeToCodedStream());
-        }
-        else if(ui->secondM_rButton->isChecked())
-        {
-            imageProcessor->result.set_mission(2);
-            outputPacket_vector2D end;
-            end.set_x(ui->sMendX_lineEdit->text().toFloat());
-            end.set_y(ui->sMendY_lineEdit->text().toFloat());
-            outputPacket_Mission2 mission2;
-            mission2.set_isvalid(true);
-            mission2.mutable_end()->CopyFrom(end);
-            //sendingSocket->sendData("Mission2");
-        }
-        else if(ui->thirsM_rButton->isChecked())
-        {
-            imageProcessor->result.set_mission(3);
-            outputPacket_Mission3 misssion3;
-            misssion3.set_isvalid(true);
-
-            if(ui->attacker_rButton->isChecked())
-                misssion3.set_isattacker(true);
-            else if(ui->defender_rButton->isChecked())
-                misssion3.set_isattacker(false);
-
-            outputPacket_circle2D circle;
-            //circle.set
-
-            sendingSocket->sendData("Mission3");
-        }
-        else
-        {
-            qDebug()<<"Error : Select a Mission!";
-        }
-    }
-    else
-    {
-        qDebug()<<"Error : First Turn On Camera!";
-    }
-
-    semaphore->release(1);
+    imageProcessor->result.set_type(outputPacket_MessageType_DATA);
+    imageProcessor->result.set_numberofshape(0);
+    string data;
+    imageProcessor->result.SerializeToString(&data);
+    sendingSocket->sendData(data);
 }
