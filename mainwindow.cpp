@@ -390,109 +390,78 @@ void MainWindow::setInitializeMessage(int mission)
 {
     switch(mission)
     {
-    case 1 :
-    {
-        outputPacket_vector2D tl;
-        tl.set_x(ui->region1_tlX_lineEdit->text().toFloat());
-        tl.set_y(ui->region1_tlY_lineEdit->text().toFloat());
-        outputPacket_vector2D br;
-        br.set_x(ui->region1_brX_lineEdit->text().toFloat());
-        br.set_y(ui->region1_brY_lineEdit->text().toFloat());
-
-        outputPacket_rect2D region1;
-        region1.mutable_tl()->CopyFrom(tl);
-        region1.mutable_br()->CopyFrom(br);
-
-        tl.Clear();  br.Clear();
-        tl.set_x(ui->region2_tlX_lineEdit->text().toFloat());
-        tl.set_y(ui->region2_tlY_lineEdit->text().toFloat());
-        br.set_x(ui->region2_brX_lineEdit->text().toFloat());
-        br.set_y(ui->region2_brY_lineEdit->text().toFloat());
-        outputPacket_rect2D region2;
-        region2.mutable_tl()->CopyFrom(tl);
-        region2.mutable_br()->CopyFrom(br);
-
-        outputPacket_vector2D end;
-        end.set_x(ui->fMendX_lineEdit->text().toFloat());
-        end.set_y(ui->fMendY_lineEdit->text().toFloat());
-
-        outputPacket_Mission1 mission1;
-        mission1.set_isvalid(true);
-        mission1.mutable_region1()->CopyFrom(region1);
-        mission1.mutable_region2()->CopyFrom(region2);
-        mission1.mutable_end()->CopyFrom(end);
-
-        imageProcessor->result.set_mission(1);
-        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-        imageProcessor->result.mutable_mission1_data()->CopyFrom(mission1);
-        //sendingSocket->sendData(imageProcessor->result.SerializeToCodedStream());
-        break;
-    }
-    case 2 :
-    {
-        imageProcessor->result.set_mission(2);
-        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-        imageProcessor->result.set_numberofshape(0);
-        outputPacket_vector2D end2;
-        end2.set_x(ui->sMendX_lineEdit->text().toFloat());
-        end2.set_y(ui->sMendY_lineEdit->text().toFloat());
-        outputPacket_Mission2 mission2;
-        mission2.set_isvalid(true);
-        mission2.mutable_end()->CopyFrom(end2);
-        imageProcessor->result.mutable_mission2_data()->CopyFrom(mission2);
-        //sendingSocket->sendData("Mission2");
-        qDebug()<<"mission2:"<<mission2.end().x()<<","<<mission2.end().y();
-        qDebug()<<"endpoint:"<<imageProcessor->result.mission2_data().end().x()<<","<<imageProcessor->result.mission2_data().end().y();
-        if(imageProcessor->result.IsInitialized())
+        case 1 :
         {
-            qDebug()<<"is valid";
+            imageProcessor->result.set_mission(1);
+            imageProcessor->result.set_type(0);
+            imageProcessor->result.set_numberofshape(0);
+
+            imageProcessor->result.set_mission1_isvalid(true);
+            imageProcessor->result.set_mission1_region1_tl_x(ui->region1_tlX_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_region1_tl_y(ui->region1_tlY_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_region1_br_x(ui->region1_brX_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_region1_br_y(ui->region1_brY_lineEdit->text().toFloat());
+
+            imageProcessor->result.set_mission1_region2_tl_x(ui->region2_tlX_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_region2_tl_y(ui->region2_tlY_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_region2_br_x(ui->region2_brX_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_region2_br_y(ui->region2_brY_lineEdit->text().toFloat());
+
+            imageProcessor->result.set_mission1_end_x(ui->fMendX_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission1_end_y(ui->fMendY_lineEdit->text().toFloat());
+
+            break;
         }
-        else
+        case 2 :
         {
-            qDebug()<<"not valid";
+            imageProcessor->result.set_mission(2);
+            imageProcessor->result.set_type(11);
+            imageProcessor->result.set_numberofshape(0);
+
+            imageProcessor->result.set_mission2_isvalid(true);
+            imageProcessor->result.set_mission2_end_x(ui->sMendX_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission2_end_y(ui->sMendY_lineEdit->text().toFloat());
+
+            qDebug()<<"endpoint:"<<imageProcessor->result.mission2_end_x()<<","<<imageProcessor->result.mission2_end_y();
+            if(imageProcessor->result.IsInitialized())
+            {
+                qDebug()<<"is valid";
+            }
+            else
+            {
+                qDebug()<<"not valid";
+            }
+
+            break;
         }
+        case 3:
+        {
+            imageProcessor->result.set_mission(3);
+            imageProcessor->result.set_type(0);
+            imageProcessor->result.set_numberofshape(0);
 
-        break;
+            imageProcessor->result.set_mission3_isvalid(true);
+
+            if(ui->attacker_rButton->isChecked())
+                imageProcessor->result.set_mission3_isattacker(true);
+            else if(ui->defender_rButton->isChecked())
+                imageProcessor->result.set_mission3_isattacker(false);
+
+            //Border Center
+            imageProcessor->result.set_mission3_circularborde_x(ui->border_X_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission3_circularborde_y(ui->border_Y_lineEdit->text().toFloat());
+
+            //goal1 center
+            imageProcessor->result.set_mission3_goal1_x(ui->goal1_X_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission3_goal1_y(ui->goal1_Y_lineEdit->text().toFloat());
+
+            //goal2 center
+            imageProcessor->result.set_mission3_goal2_x(ui->goal2_X_lineEdit->text().toFloat());
+            imageProcessor->result.set_mission3_goal2_x(ui->goal2_Y_lineEdit->text().toFloat());
+
+            break;
+        }
     }
-    case 3:
-    {
-        imageProcessor->result.set_mission(3);
-        imageProcessor->result.set_type(outputPacket_MessageType_INITIALIZE);
-        outputPacket_Mission3 misssion3;
-        misssion3.set_isvalid(true);
-
-        if(ui->attacker_rButton->isChecked())
-            misssion3.set_isattacker(true);
-        else if(ui->defender_rButton->isChecked())
-            misssion3.set_isattacker(false);
-
-        outputPacket_vector2D center;
-        //Border Center
-        center.set_x(ui->border_X_lineEdit->text().toFloat());
-        center.set_y(ui->border_Y_lineEdit->text().toFloat());
-        misssion3.mutable_circularborde()->CopyFrom(center);
-
-        center.Clear();
-
-        //goal1 center
-        center.set_x(ui->goal1_X_lineEdit->text().toFloat());
-        center.set_y(ui->goal1_Y_lineEdit->text().toFloat());
-        misssion3.mutable_goal1()->CopyFrom(center);
-
-        center.Clear();
-
-        //goal2 center
-        center.set_x(ui->goal2_X_lineEdit->text().toFloat());
-        center.set_y(ui->goal2_Y_lineEdit->text().toFloat());
-        misssion3.mutable_goal2()->CopyFrom(center);
-
-        imageProcessor->result.mutable_mission3_data()->CopyFrom(misssion3);
-        //sendingSocket->sendData("Mission3");
-        break;
-    }
-    }
-
-
 }
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
@@ -888,9 +857,13 @@ void MainWindow::on_thirsM_rButton_toggled(bool checked)
 
 void MainWindow::sendDataPacket()
 {
-    imageProcessor->result.set_type(outputPacket_MessageType_DATA);
-    imageProcessor->result.set_numberofshape(0);
+//    imageProcessor->result.set_type(1);
+//    imageProcessor->result.set_numberofshape(0);
     string data;
     imageProcessor->result.SerializeToString(&data);
-    sendingSocket->sendData(data);
+    QString s = QString::fromStdString(data);
+    QByteArray q_data;
+    q_data.append(s);
+    sendingSocket->sendData(q_data);
+
 }

@@ -31,336 +31,10 @@ void protobuf_AssignDesc_GameGround_2eproto();
 void protobuf_ShutdownFile_GameGround_2eproto();
 
 class outputPacket;
-class outputPacket_vector2D;
-class outputPacket_rect2D;
-class outputPacket_Mission1;
 class outputPacket_line;
-class outputPacket_Mission2;
-class outputPacket_circle2D;
-class outputPacket_Mission3;
 class outputPacket_shape;
 
-enum outputPacket_MessageType {
-  outputPacket_MessageType_INITIALIZE = 0,
-  outputPacket_MessageType_DATA = 1
-};
-bool outputPacket_MessageType_IsValid(int value);
-const outputPacket_MessageType outputPacket_MessageType_MessageType_MIN = outputPacket_MessageType_INITIALIZE;
-const outputPacket_MessageType outputPacket_MessageType_MessageType_MAX = outputPacket_MessageType_DATA;
-const int outputPacket_MessageType_MessageType_ARRAYSIZE = outputPacket_MessageType_MessageType_MAX + 1;
-
-const ::google::protobuf::EnumDescriptor* outputPacket_MessageType_descriptor();
-inline const ::std::string& outputPacket_MessageType_Name(outputPacket_MessageType value) {
-  return ::google::protobuf::internal::NameOfEnum(
-    outputPacket_MessageType_descriptor(), value);
-}
-inline bool outputPacket_MessageType_Parse(
-    const ::std::string& name, outputPacket_MessageType* value) {
-  return ::google::protobuf::internal::ParseNamedEnum<outputPacket_MessageType>(
-    outputPacket_MessageType_descriptor(), name, value);
-}
 // ===================================================================
-
-class outputPacket_vector2D : public ::google::protobuf::Message {
- public:
-  outputPacket_vector2D();
-  virtual ~outputPacket_vector2D();
-  
-  outputPacket_vector2D(const outputPacket_vector2D& from);
-  
-  inline outputPacket_vector2D& operator=(const outputPacket_vector2D& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const outputPacket_vector2D& default_instance();
-  
-  void Swap(outputPacket_vector2D* other);
-  
-  // implements Message ----------------------------------------------
-  
-  outputPacket_vector2D* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const outputPacket_vector2D& from);
-  void MergeFrom(const outputPacket_vector2D& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // required float x = 1;
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 1;
-  inline float x() const;
-  inline void set_x(float value);
-  
-  // required float y = 2;
-  inline bool has_y() const;
-  inline void clear_y();
-  static const int kYFieldNumber = 2;
-  inline float y() const;
-  inline void set_y(float value);
-  
-  // @@protoc_insertion_point(class_scope:outputPacket.vector2D)
- private:
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_y();
-  inline void clear_has_y();
-  
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  
-  float x_;
-  float y_;
-  
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-  
-  friend void  protobuf_AddDesc_GameGround_2eproto();
-  friend void protobuf_AssignDesc_GameGround_2eproto();
-  friend void protobuf_ShutdownFile_GameGround_2eproto();
-  
-  void InitAsDefaultInstance();
-  static outputPacket_vector2D* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class outputPacket_rect2D : public ::google::protobuf::Message {
- public:
-  outputPacket_rect2D();
-  virtual ~outputPacket_rect2D();
-  
-  outputPacket_rect2D(const outputPacket_rect2D& from);
-  
-  inline outputPacket_rect2D& operator=(const outputPacket_rect2D& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const outputPacket_rect2D& default_instance();
-  
-  void Swap(outputPacket_rect2D* other);
-  
-  // implements Message ----------------------------------------------
-  
-  outputPacket_rect2D* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const outputPacket_rect2D& from);
-  void MergeFrom(const outputPacket_rect2D& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // required .outputPacket.vector2D tl = 1;
-  inline bool has_tl() const;
-  inline void clear_tl();
-  static const int kTlFieldNumber = 1;
-  inline const ::outputPacket_vector2D& tl() const;
-  inline ::outputPacket_vector2D* mutable_tl();
-  inline ::outputPacket_vector2D* release_tl();
-  
-  // required .outputPacket.vector2D br = 2;
-  inline bool has_br() const;
-  inline void clear_br();
-  static const int kBrFieldNumber = 2;
-  inline const ::outputPacket_vector2D& br() const;
-  inline ::outputPacket_vector2D* mutable_br();
-  inline ::outputPacket_vector2D* release_br();
-  
-  // @@protoc_insertion_point(class_scope:outputPacket.rect2D)
- private:
-  inline void set_has_tl();
-  inline void clear_has_tl();
-  inline void set_has_br();
-  inline void clear_has_br();
-  
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  
-  ::outputPacket_vector2D* tl_;
-  ::outputPacket_vector2D* br_;
-  
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-  
-  friend void  protobuf_AddDesc_GameGround_2eproto();
-  friend void protobuf_AssignDesc_GameGround_2eproto();
-  friend void protobuf_ShutdownFile_GameGround_2eproto();
-  
-  void InitAsDefaultInstance();
-  static outputPacket_rect2D* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class outputPacket_Mission1 : public ::google::protobuf::Message {
- public:
-  outputPacket_Mission1();
-  virtual ~outputPacket_Mission1();
-  
-  outputPacket_Mission1(const outputPacket_Mission1& from);
-  
-  inline outputPacket_Mission1& operator=(const outputPacket_Mission1& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const outputPacket_Mission1& default_instance();
-  
-  void Swap(outputPacket_Mission1* other);
-  
-  // implements Message ----------------------------------------------
-  
-  outputPacket_Mission1* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const outputPacket_Mission1& from);
-  void MergeFrom(const outputPacket_Mission1& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // required bool isValid = 1;
-  inline bool has_isvalid() const;
-  inline void clear_isvalid();
-  static const int kIsValidFieldNumber = 1;
-  inline bool isvalid() const;
-  inline void set_isvalid(bool value);
-  
-  // required .outputPacket.rect2D region1 = 2;
-  inline bool has_region1() const;
-  inline void clear_region1();
-  static const int kRegion1FieldNumber = 2;
-  inline const ::outputPacket_rect2D& region1() const;
-  inline ::outputPacket_rect2D* mutable_region1();
-  inline ::outputPacket_rect2D* release_region1();
-  
-  // required .outputPacket.rect2D region2 = 3;
-  inline bool has_region2() const;
-  inline void clear_region2();
-  static const int kRegion2FieldNumber = 3;
-  inline const ::outputPacket_rect2D& region2() const;
-  inline ::outputPacket_rect2D* mutable_region2();
-  inline ::outputPacket_rect2D* release_region2();
-  
-  // required .outputPacket.vector2D end = 4;
-  inline bool has_end() const;
-  inline void clear_end();
-  static const int kEndFieldNumber = 4;
-  inline const ::outputPacket_vector2D& end() const;
-  inline ::outputPacket_vector2D* mutable_end();
-  inline ::outputPacket_vector2D* release_end();
-  
-  // @@protoc_insertion_point(class_scope:outputPacket.Mission1)
- private:
-  inline void set_has_isvalid();
-  inline void clear_has_isvalid();
-  inline void set_has_region1();
-  inline void clear_has_region1();
-  inline void set_has_region2();
-  inline void clear_has_region2();
-  inline void set_has_end();
-  inline void clear_has_end();
-  
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  
-  ::outputPacket_rect2D* region1_;
-  ::outputPacket_rect2D* region2_;
-  ::outputPacket_vector2D* end_;
-  bool isvalid_;
-  
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
-  
-  friend void  protobuf_AddDesc_GameGround_2eproto();
-  friend void protobuf_AssignDesc_GameGround_2eproto();
-  friend void protobuf_ShutdownFile_GameGround_2eproto();
-  
-  void InitAsDefaultInstance();
-  static outputPacket_Mission1* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class outputPacket_line : public ::google::protobuf::Message {
  public:
@@ -416,36 +90,54 @@ class outputPacket_line : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required .outputPacket.vector2D start = 1;
-  inline bool has_start() const;
-  inline void clear_start();
-  static const int kStartFieldNumber = 1;
-  inline const ::outputPacket_vector2D& start() const;
-  inline ::outputPacket_vector2D* mutable_start();
-  inline ::outputPacket_vector2D* release_start();
+  // required float start_x = 1;
+  inline bool has_start_x() const;
+  inline void clear_start_x();
+  static const int kStartXFieldNumber = 1;
+  inline float start_x() const;
+  inline void set_start_x(float value);
   
-  // required .outputPacket.vector2D end = 2;
-  inline bool has_end() const;
-  inline void clear_end();
-  static const int kEndFieldNumber = 2;
-  inline const ::outputPacket_vector2D& end() const;
-  inline ::outputPacket_vector2D* mutable_end();
-  inline ::outputPacket_vector2D* release_end();
+  // required float start_y = 2;
+  inline bool has_start_y() const;
+  inline void clear_start_y();
+  static const int kStartYFieldNumber = 2;
+  inline float start_y() const;
+  inline void set_start_y(float value);
+  
+  // required float end_x = 3;
+  inline bool has_end_x() const;
+  inline void clear_end_x();
+  static const int kEndXFieldNumber = 3;
+  inline float end_x() const;
+  inline void set_end_x(float value);
+  
+  // required float end_y = 4;
+  inline bool has_end_y() const;
+  inline void clear_end_y();
+  static const int kEndYFieldNumber = 4;
+  inline float end_y() const;
+  inline void set_end_y(float value);
   
   // @@protoc_insertion_point(class_scope:outputPacket.line)
  private:
-  inline void set_has_start();
-  inline void clear_has_start();
-  inline void set_has_end();
-  inline void clear_has_end();
+  inline void set_has_start_x();
+  inline void clear_has_start_x();
+  inline void set_has_start_y();
+  inline void clear_has_start_y();
+  inline void set_has_end_x();
+  inline void clear_has_end_x();
+  inline void set_has_end_y();
+  inline void clear_has_end_y();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::outputPacket_vector2D* start_;
-  ::outputPacket_vector2D* end_;
+  float start_x_;
+  float start_y_;
+  float end_x_;
+  float end_y_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
   
   friend void  protobuf_AddDesc_GameGround_2eproto();
   friend void protobuf_AssignDesc_GameGround_2eproto();
@@ -453,330 +145,6 @@ class outputPacket_line : public ::google::protobuf::Message {
   
   void InitAsDefaultInstance();
   static outputPacket_line* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class outputPacket_Mission2 : public ::google::protobuf::Message {
- public:
-  outputPacket_Mission2();
-  virtual ~outputPacket_Mission2();
-  
-  outputPacket_Mission2(const outputPacket_Mission2& from);
-  
-  inline outputPacket_Mission2& operator=(const outputPacket_Mission2& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const outputPacket_Mission2& default_instance();
-  
-  void Swap(outputPacket_Mission2* other);
-  
-  // implements Message ----------------------------------------------
-  
-  outputPacket_Mission2* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const outputPacket_Mission2& from);
-  void MergeFrom(const outputPacket_Mission2& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // required bool isValid = 1;
-  inline bool has_isvalid() const;
-  inline void clear_isvalid();
-  static const int kIsValidFieldNumber = 1;
-  inline bool isvalid() const;
-  inline void set_isvalid(bool value);
-  
-  // repeated .outputPacket.line lines = 2;
-  inline int lines_size() const;
-  inline void clear_lines();
-  static const int kLinesFieldNumber = 2;
-  inline const ::outputPacket_line& lines(int index) const;
-  inline ::outputPacket_line* mutable_lines(int index);
-  inline ::outputPacket_line* add_lines();
-  inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_line >&
-      lines() const;
-  inline ::google::protobuf::RepeatedPtrField< ::outputPacket_line >*
-      mutable_lines();
-  
-  // required .outputPacket.vector2D end = 3;
-  inline bool has_end() const;
-  inline void clear_end();
-  static const int kEndFieldNumber = 3;
-  inline const ::outputPacket_vector2D& end() const;
-  inline ::outputPacket_vector2D* mutable_end();
-  inline ::outputPacket_vector2D* release_end();
-  
-  // @@protoc_insertion_point(class_scope:outputPacket.Mission2)
- private:
-  inline void set_has_isvalid();
-  inline void clear_has_isvalid();
-  inline void set_has_end();
-  inline void clear_has_end();
-  
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  
-  ::google::protobuf::RepeatedPtrField< ::outputPacket_line > lines_;
-  ::outputPacket_vector2D* end_;
-  bool isvalid_;
-  
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-  
-  friend void  protobuf_AddDesc_GameGround_2eproto();
-  friend void protobuf_AssignDesc_GameGround_2eproto();
-  friend void protobuf_ShutdownFile_GameGround_2eproto();
-  
-  void InitAsDefaultInstance();
-  static outputPacket_Mission2* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class outputPacket_circle2D : public ::google::protobuf::Message {
- public:
-  outputPacket_circle2D();
-  virtual ~outputPacket_circle2D();
-  
-  outputPacket_circle2D(const outputPacket_circle2D& from);
-  
-  inline outputPacket_circle2D& operator=(const outputPacket_circle2D& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const outputPacket_circle2D& default_instance();
-  
-  void Swap(outputPacket_circle2D* other);
-  
-  // implements Message ----------------------------------------------
-  
-  outputPacket_circle2D* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const outputPacket_circle2D& from);
-  void MergeFrom(const outputPacket_circle2D& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // required .outputPacket.vector2D center = 1;
-  inline bool has_center() const;
-  inline void clear_center();
-  static const int kCenterFieldNumber = 1;
-  inline const ::outputPacket_vector2D& center() const;
-  inline ::outputPacket_vector2D* mutable_center();
-  inline ::outputPacket_vector2D* release_center();
-  
-  // required double radios = 2;
-  inline bool has_radios() const;
-  inline void clear_radios();
-  static const int kRadiosFieldNumber = 2;
-  inline double radios() const;
-  inline void set_radios(double value);
-  
-  // @@protoc_insertion_point(class_scope:outputPacket.circle2D)
- private:
-  inline void set_has_center();
-  inline void clear_has_center();
-  inline void set_has_radios();
-  inline void clear_has_radios();
-  
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  
-  ::outputPacket_vector2D* center_;
-  double radios_;
-  
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-  
-  friend void  protobuf_AddDesc_GameGround_2eproto();
-  friend void protobuf_AssignDesc_GameGround_2eproto();
-  friend void protobuf_ShutdownFile_GameGround_2eproto();
-  
-  void InitAsDefaultInstance();
-  static outputPacket_circle2D* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class outputPacket_Mission3 : public ::google::protobuf::Message {
- public:
-  outputPacket_Mission3();
-  virtual ~outputPacket_Mission3();
-  
-  outputPacket_Mission3(const outputPacket_Mission3& from);
-  
-  inline outputPacket_Mission3& operator=(const outputPacket_Mission3& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-  
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-  
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const outputPacket_Mission3& default_instance();
-  
-  void Swap(outputPacket_Mission3* other);
-  
-  // implements Message ----------------------------------------------
-  
-  outputPacket_Mission3* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const outputPacket_Mission3& from);
-  void MergeFrom(const outputPacket_Mission3& from);
-  void Clear();
-  bool IsInitialized() const;
-  
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-  
-  ::google::protobuf::Metadata GetMetadata() const;
-  
-  // nested types ----------------------------------------------------
-  
-  // accessors -------------------------------------------------------
-  
-  // required bool isValid = 1;
-  inline bool has_isvalid() const;
-  inline void clear_isvalid();
-  static const int kIsValidFieldNumber = 1;
-  inline bool isvalid() const;
-  inline void set_isvalid(bool value);
-  
-  // required bool isAttacker = 2;
-  inline bool has_isattacker() const;
-  inline void clear_isattacker();
-  static const int kIsAttackerFieldNumber = 2;
-  inline bool isattacker() const;
-  inline void set_isattacker(bool value);
-  
-  // required .outputPacket.vector2D circularBorde = 3;
-  inline bool has_circularborde() const;
-  inline void clear_circularborde();
-  static const int kCircularBordeFieldNumber = 3;
-  inline const ::outputPacket_vector2D& circularborde() const;
-  inline ::outputPacket_vector2D* mutable_circularborde();
-  inline ::outputPacket_vector2D* release_circularborde();
-  
-  // required .outputPacket.vector2D goal1 = 4;
-  inline bool has_goal1() const;
-  inline void clear_goal1();
-  static const int kGoal1FieldNumber = 4;
-  inline const ::outputPacket_vector2D& goal1() const;
-  inline ::outputPacket_vector2D* mutable_goal1();
-  inline ::outputPacket_vector2D* release_goal1();
-  
-  // required .outputPacket.vector2D goal2 = 5;
-  inline bool has_goal2() const;
-  inline void clear_goal2();
-  static const int kGoal2FieldNumber = 5;
-  inline const ::outputPacket_vector2D& goal2() const;
-  inline ::outputPacket_vector2D* mutable_goal2();
-  inline ::outputPacket_vector2D* release_goal2();
-  
-  // @@protoc_insertion_point(class_scope:outputPacket.Mission3)
- private:
-  inline void set_has_isvalid();
-  inline void clear_has_isvalid();
-  inline void set_has_isattacker();
-  inline void clear_has_isattacker();
-  inline void set_has_circularborde();
-  inline void clear_has_circularborde();
-  inline void set_has_goal1();
-  inline void clear_has_goal1();
-  inline void set_has_goal2();
-  inline void clear_has_goal2();
-  
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-  
-  ::outputPacket_vector2D* circularborde_;
-  ::outputPacket_vector2D* goal1_;
-  ::outputPacket_vector2D* goal2_;
-  bool isvalid_;
-  bool isattacker_;
-  
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
-  
-  friend void  protobuf_AddDesc_GameGround_2eproto();
-  friend void protobuf_AssignDesc_GameGround_2eproto();
-  friend void protobuf_ShutdownFile_GameGround_2eproto();
-  
-  void InitAsDefaultInstance();
-  static outputPacket_Mission3* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -856,18 +224,24 @@ class outputPacket_shape : public ::google::protobuf::Message {
   inline ::std::string* mutable_color();
   inline ::std::string* release_color();
   
-  // required .outputPacket.vector2D position = 3;
-  inline bool has_position() const;
-  inline void clear_position();
-  static const int kPositionFieldNumber = 3;
-  inline const ::outputPacket_vector2D& position() const;
-  inline ::outputPacket_vector2D* mutable_position();
-  inline ::outputPacket_vector2D* release_position();
+  // required float position_x = 3;
+  inline bool has_position_x() const;
+  inline void clear_position_x();
+  static const int kPositionXFieldNumber = 3;
+  inline float position_x() const;
+  inline void set_position_x(float value);
   
-  // required double radios = 4;
+  // required float position_y = 4;
+  inline bool has_position_y() const;
+  inline void clear_position_y();
+  static const int kPositionYFieldNumber = 4;
+  inline float position_y() const;
+  inline void set_position_y(float value);
+  
+  // required double radios = 5;
   inline bool has_radios() const;
   inline void clear_radios();
-  static const int kRadiosFieldNumber = 4;
+  static const int kRadiosFieldNumber = 5;
   inline double radios() const;
   inline void set_radios(double value);
   
@@ -877,8 +251,10 @@ class outputPacket_shape : public ::google::protobuf::Message {
   inline void clear_has_type();
   inline void set_has_color();
   inline void clear_has_color();
-  inline void set_has_position();
-  inline void clear_has_position();
+  inline void set_has_position_x();
+  inline void clear_has_position_x();
+  inline void set_has_position_y();
+  inline void clear_has_position_y();
   inline void set_has_radios();
   inline void clear_has_radios();
   
@@ -886,11 +262,12 @@ class outputPacket_shape : public ::google::protobuf::Message {
   
   ::std::string* type_;
   ::std::string* color_;
-  ::outputPacket_vector2D* position_;
+  float position_x_;
+  float position_y_;
   double radios_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
   
   friend void  protobuf_AddDesc_GameGround_2eproto();
   friend void protobuf_AssignDesc_GameGround_2eproto();
@@ -953,38 +330,8 @@ class outputPacket : public ::google::protobuf::Message {
   
   // nested types ----------------------------------------------------
   
-  typedef outputPacket_vector2D vector2D;
-  typedef outputPacket_rect2D rect2D;
-  typedef outputPacket_Mission1 Mission1;
   typedef outputPacket_line line;
-  typedef outputPacket_Mission2 Mission2;
-  typedef outputPacket_circle2D circle2D;
-  typedef outputPacket_Mission3 Mission3;
   typedef outputPacket_shape shape;
-  
-  typedef outputPacket_MessageType MessageType;
-  static const MessageType INITIALIZE = outputPacket_MessageType_INITIALIZE;
-  static const MessageType DATA = outputPacket_MessageType_DATA;
-  static inline bool MessageType_IsValid(int value) {
-    return outputPacket_MessageType_IsValid(value);
-  }
-  static const MessageType MessageType_MIN =
-    outputPacket_MessageType_MessageType_MIN;
-  static const MessageType MessageType_MAX =
-    outputPacket_MessageType_MessageType_MAX;
-  static const int MessageType_ARRAYSIZE =
-    outputPacket_MessageType_MessageType_ARRAYSIZE;
-  static inline const ::google::protobuf::EnumDescriptor*
-  MessageType_descriptor() {
-    return outputPacket_MessageType_descriptor();
-  }
-  static inline const ::std::string& MessageType_Name(MessageType value) {
-    return outputPacket_MessageType_Name(value);
-  }
-  static inline bool MessageType_Parse(const ::std::string& name,
-      MessageType* value) {
-    return outputPacket_MessageType_Parse(name, value);
-  }
   
   // accessors -------------------------------------------------------
   
@@ -1002,47 +349,59 @@ class outputPacket : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 numberofshape() const;
   inline void set_numberofshape(::google::protobuf::int32 value);
   
-  // required .outputPacket.MessageType type = 3 [default = DATA];
+  // required int32 type = 3;
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 3;
-  inline ::outputPacket_MessageType type() const;
-  inline void set_type(::outputPacket_MessageType value);
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
   
-  // optional .outputPacket.vector2D our_robot_position = 4;
-  inline bool has_our_robot_position() const;
-  inline void clear_our_robot_position();
-  static const int kOurRobotPositionFieldNumber = 4;
-  inline const ::outputPacket_vector2D& our_robot_position() const;
-  inline ::outputPacket_vector2D* mutable_our_robot_position();
-  inline ::outputPacket_vector2D* release_our_robot_position();
+  // optional float our_robot_position_x = 4;
+  inline bool has_our_robot_position_x() const;
+  inline void clear_our_robot_position_x();
+  static const int kOurRobotPositionXFieldNumber = 4;
+  inline float our_robot_position_x() const;
+  inline void set_our_robot_position_x(float value);
   
-  // optional double our_robot_angle = 5;
+  // optional float our_robot_position_y = 5;
+  inline bool has_our_robot_position_y() const;
+  inline void clear_our_robot_position_y();
+  static const int kOurRobotPositionYFieldNumber = 5;
+  inline float our_robot_position_y() const;
+  inline void set_our_robot_position_y(float value);
+  
+  // optional double our_robot_angle = 6;
   inline bool has_our_robot_angle() const;
   inline void clear_our_robot_angle();
-  static const int kOurRobotAngleFieldNumber = 5;
+  static const int kOurRobotAngleFieldNumber = 6;
   inline double our_robot_angle() const;
   inline void set_our_robot_angle(double value);
   
-  // optional .outputPacket.vector2D opp_robot_position = 6;
-  inline bool has_opp_robot_position() const;
-  inline void clear_opp_robot_position();
-  static const int kOppRobotPositionFieldNumber = 6;
-  inline const ::outputPacket_vector2D& opp_robot_position() const;
-  inline ::outputPacket_vector2D* mutable_opp_robot_position();
-  inline ::outputPacket_vector2D* release_opp_robot_position();
+  // optional float opp_robot_position_x = 7;
+  inline bool has_opp_robot_position_x() const;
+  inline void clear_opp_robot_position_x();
+  static const int kOppRobotPositionXFieldNumber = 7;
+  inline float opp_robot_position_x() const;
+  inline void set_opp_robot_position_x(float value);
   
-  // optional double opp_robot_angle = 7;
+  // optional float opp_robot_position_y = 8;
+  inline bool has_opp_robot_position_y() const;
+  inline void clear_opp_robot_position_y();
+  static const int kOppRobotPositionYFieldNumber = 8;
+  inline float opp_robot_position_y() const;
+  inline void set_opp_robot_position_y(float value);
+  
+  // optional double opp_robot_angle = 9;
   inline bool has_opp_robot_angle() const;
   inline void clear_opp_robot_angle();
-  static const int kOppRobotAngleFieldNumber = 7;
+  static const int kOppRobotAngleFieldNumber = 9;
   inline double opp_robot_angle() const;
   inline void set_opp_robot_angle(double value);
   
-  // repeated .outputPacket.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 10;
   inline int shapes_size() const;
   inline void clear_shapes();
-  static const int kShapesFieldNumber = 8;
+  static const int kShapesFieldNumber = 10;
   inline const ::outputPacket_shape& shapes(int index) const;
   inline ::outputPacket_shape* mutable_shapes(int index);
   inline ::outputPacket_shape* add_shapes();
@@ -1051,29 +410,171 @@ class outputPacket : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::outputPacket_shape >*
       mutable_shapes();
   
-  // optional .outputPacket.Mission1 mission1_data = 9;
-  inline bool has_mission1_data() const;
-  inline void clear_mission1_data();
-  static const int kMission1DataFieldNumber = 9;
-  inline const ::outputPacket_Mission1& mission1_data() const;
-  inline ::outputPacket_Mission1* mutable_mission1_data();
-  inline ::outputPacket_Mission1* release_mission1_data();
+  // optional bool mission1_isValid = 11;
+  inline bool has_mission1_isvalid() const;
+  inline void clear_mission1_isvalid();
+  static const int kMission1IsValidFieldNumber = 11;
+  inline bool mission1_isvalid() const;
+  inline void set_mission1_isvalid(bool value);
   
-  // optional .outputPacket.Mission2 mission2_data = 10;
-  inline bool has_mission2_data() const;
-  inline void clear_mission2_data();
-  static const int kMission2DataFieldNumber = 10;
-  inline const ::outputPacket_Mission2& mission2_data() const;
-  inline ::outputPacket_Mission2* mutable_mission2_data();
-  inline ::outputPacket_Mission2* release_mission2_data();
+  // optional float mission1_region1_tl_x = 12;
+  inline bool has_mission1_region1_tl_x() const;
+  inline void clear_mission1_region1_tl_x();
+  static const int kMission1Region1TlXFieldNumber = 12;
+  inline float mission1_region1_tl_x() const;
+  inline void set_mission1_region1_tl_x(float value);
   
-  // optional .outputPacket.Mission3 mission3_data = 11;
-  inline bool has_mission3_data() const;
-  inline void clear_mission3_data();
-  static const int kMission3DataFieldNumber = 11;
-  inline const ::outputPacket_Mission3& mission3_data() const;
-  inline ::outputPacket_Mission3* mutable_mission3_data();
-  inline ::outputPacket_Mission3* release_mission3_data();
+  // optional float mission1_region1_tl_y = 13;
+  inline bool has_mission1_region1_tl_y() const;
+  inline void clear_mission1_region1_tl_y();
+  static const int kMission1Region1TlYFieldNumber = 13;
+  inline float mission1_region1_tl_y() const;
+  inline void set_mission1_region1_tl_y(float value);
+  
+  // optional float mission1_region1_br_x = 14;
+  inline bool has_mission1_region1_br_x() const;
+  inline void clear_mission1_region1_br_x();
+  static const int kMission1Region1BrXFieldNumber = 14;
+  inline float mission1_region1_br_x() const;
+  inline void set_mission1_region1_br_x(float value);
+  
+  // optional float mission1_region1_br_y = 15;
+  inline bool has_mission1_region1_br_y() const;
+  inline void clear_mission1_region1_br_y();
+  static const int kMission1Region1BrYFieldNumber = 15;
+  inline float mission1_region1_br_y() const;
+  inline void set_mission1_region1_br_y(float value);
+  
+  // optional float mission1_region2_tl_x = 16;
+  inline bool has_mission1_region2_tl_x() const;
+  inline void clear_mission1_region2_tl_x();
+  static const int kMission1Region2TlXFieldNumber = 16;
+  inline float mission1_region2_tl_x() const;
+  inline void set_mission1_region2_tl_x(float value);
+  
+  // optional float mission1_region2_tl_y = 17;
+  inline bool has_mission1_region2_tl_y() const;
+  inline void clear_mission1_region2_tl_y();
+  static const int kMission1Region2TlYFieldNumber = 17;
+  inline float mission1_region2_tl_y() const;
+  inline void set_mission1_region2_tl_y(float value);
+  
+  // optional float mission1_region2_br_x = 18;
+  inline bool has_mission1_region2_br_x() const;
+  inline void clear_mission1_region2_br_x();
+  static const int kMission1Region2BrXFieldNumber = 18;
+  inline float mission1_region2_br_x() const;
+  inline void set_mission1_region2_br_x(float value);
+  
+  // optional float mission1_region2_br_y = 19;
+  inline bool has_mission1_region2_br_y() const;
+  inline void clear_mission1_region2_br_y();
+  static const int kMission1Region2BrYFieldNumber = 19;
+  inline float mission1_region2_br_y() const;
+  inline void set_mission1_region2_br_y(float value);
+  
+  // optional float mission1_end_x = 20;
+  inline bool has_mission1_end_x() const;
+  inline void clear_mission1_end_x();
+  static const int kMission1EndXFieldNumber = 20;
+  inline float mission1_end_x() const;
+  inline void set_mission1_end_x(float value);
+  
+  // optional float mission1_end_y = 21;
+  inline bool has_mission1_end_y() const;
+  inline void clear_mission1_end_y();
+  static const int kMission1EndYFieldNumber = 21;
+  inline float mission1_end_y() const;
+  inline void set_mission1_end_y(float value);
+  
+  // optional bool mission2_isValid = 22;
+  inline bool has_mission2_isvalid() const;
+  inline void clear_mission2_isvalid();
+  static const int kMission2IsValidFieldNumber = 22;
+  inline bool mission2_isvalid() const;
+  inline void set_mission2_isvalid(bool value);
+  
+  // optional float mission2_end_x = 23;
+  inline bool has_mission2_end_x() const;
+  inline void clear_mission2_end_x();
+  static const int kMission2EndXFieldNumber = 23;
+  inline float mission2_end_x() const;
+  inline void set_mission2_end_x(float value);
+  
+  // optional float mission2_end_y = 24;
+  inline bool has_mission2_end_y() const;
+  inline void clear_mission2_end_y();
+  static const int kMission2EndYFieldNumber = 24;
+  inline float mission2_end_y() const;
+  inline void set_mission2_end_y(float value);
+  
+  // repeated .outputPacket.line mission2_lines = 25;
+  inline int mission2_lines_size() const;
+  inline void clear_mission2_lines();
+  static const int kMission2LinesFieldNumber = 25;
+  inline const ::outputPacket_line& mission2_lines(int index) const;
+  inline ::outputPacket_line* mutable_mission2_lines(int index);
+  inline ::outputPacket_line* add_mission2_lines();
+  inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_line >&
+      mission2_lines() const;
+  inline ::google::protobuf::RepeatedPtrField< ::outputPacket_line >*
+      mutable_mission2_lines();
+  
+  // optional bool mission3_isValid = 26;
+  inline bool has_mission3_isvalid() const;
+  inline void clear_mission3_isvalid();
+  static const int kMission3IsValidFieldNumber = 26;
+  inline bool mission3_isvalid() const;
+  inline void set_mission3_isvalid(bool value);
+  
+  // optional bool mission3_isAttacker = 27;
+  inline bool has_mission3_isattacker() const;
+  inline void clear_mission3_isattacker();
+  static const int kMission3IsAttackerFieldNumber = 27;
+  inline bool mission3_isattacker() const;
+  inline void set_mission3_isattacker(bool value);
+  
+  // optional float mission3_circularBorde_x = 28;
+  inline bool has_mission3_circularborde_x() const;
+  inline void clear_mission3_circularborde_x();
+  static const int kMission3CircularBordeXFieldNumber = 28;
+  inline float mission3_circularborde_x() const;
+  inline void set_mission3_circularborde_x(float value);
+  
+  // optional float mission3_circularBorde_y = 29;
+  inline bool has_mission3_circularborde_y() const;
+  inline void clear_mission3_circularborde_y();
+  static const int kMission3CircularBordeYFieldNumber = 29;
+  inline float mission3_circularborde_y() const;
+  inline void set_mission3_circularborde_y(float value);
+  
+  // optional float mission3_goal1_x = 30;
+  inline bool has_mission3_goal1_x() const;
+  inline void clear_mission3_goal1_x();
+  static const int kMission3Goal1XFieldNumber = 30;
+  inline float mission3_goal1_x() const;
+  inline void set_mission3_goal1_x(float value);
+  
+  // optional float mission3_goal1_y = 31;
+  inline bool has_mission3_goal1_y() const;
+  inline void clear_mission3_goal1_y();
+  static const int kMission3Goal1YFieldNumber = 31;
+  inline float mission3_goal1_y() const;
+  inline void set_mission3_goal1_y(float value);
+  
+  // optional float mission3_goal2_x = 32;
+  inline bool has_mission3_goal2_x() const;
+  inline void clear_mission3_goal2_x();
+  static const int kMission3Goal2XFieldNumber = 32;
+  inline float mission3_goal2_x() const;
+  inline void set_mission3_goal2_x(float value);
+  
+  // optional float mission3_goal2_y = 33;
+  inline bool has_mission3_goal2_y() const;
+  inline void clear_mission3_goal2_y();
+  static const int kMission3Goal2YFieldNumber = 33;
+  inline float mission3_goal2_y() const;
+  inline void set_mission3_goal2_y(float value);
   
   // @@protoc_insertion_point(class_scope:outputPacket)
  private:
@@ -1083,37 +584,101 @@ class outputPacket : public ::google::protobuf::Message {
   inline void clear_has_numberofshape();
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_our_robot_position();
-  inline void clear_has_our_robot_position();
+  inline void set_has_our_robot_position_x();
+  inline void clear_has_our_robot_position_x();
+  inline void set_has_our_robot_position_y();
+  inline void clear_has_our_robot_position_y();
   inline void set_has_our_robot_angle();
   inline void clear_has_our_robot_angle();
-  inline void set_has_opp_robot_position();
-  inline void clear_has_opp_robot_position();
+  inline void set_has_opp_robot_position_x();
+  inline void clear_has_opp_robot_position_x();
+  inline void set_has_opp_robot_position_y();
+  inline void clear_has_opp_robot_position_y();
   inline void set_has_opp_robot_angle();
   inline void clear_has_opp_robot_angle();
-  inline void set_has_mission1_data();
-  inline void clear_has_mission1_data();
-  inline void set_has_mission2_data();
-  inline void clear_has_mission2_data();
-  inline void set_has_mission3_data();
-  inline void clear_has_mission3_data();
+  inline void set_has_mission1_isvalid();
+  inline void clear_has_mission1_isvalid();
+  inline void set_has_mission1_region1_tl_x();
+  inline void clear_has_mission1_region1_tl_x();
+  inline void set_has_mission1_region1_tl_y();
+  inline void clear_has_mission1_region1_tl_y();
+  inline void set_has_mission1_region1_br_x();
+  inline void clear_has_mission1_region1_br_x();
+  inline void set_has_mission1_region1_br_y();
+  inline void clear_has_mission1_region1_br_y();
+  inline void set_has_mission1_region2_tl_x();
+  inline void clear_has_mission1_region2_tl_x();
+  inline void set_has_mission1_region2_tl_y();
+  inline void clear_has_mission1_region2_tl_y();
+  inline void set_has_mission1_region2_br_x();
+  inline void clear_has_mission1_region2_br_x();
+  inline void set_has_mission1_region2_br_y();
+  inline void clear_has_mission1_region2_br_y();
+  inline void set_has_mission1_end_x();
+  inline void clear_has_mission1_end_x();
+  inline void set_has_mission1_end_y();
+  inline void clear_has_mission1_end_y();
+  inline void set_has_mission2_isvalid();
+  inline void clear_has_mission2_isvalid();
+  inline void set_has_mission2_end_x();
+  inline void clear_has_mission2_end_x();
+  inline void set_has_mission2_end_y();
+  inline void clear_has_mission2_end_y();
+  inline void set_has_mission3_isvalid();
+  inline void clear_has_mission3_isvalid();
+  inline void set_has_mission3_isattacker();
+  inline void clear_has_mission3_isattacker();
+  inline void set_has_mission3_circularborde_x();
+  inline void clear_has_mission3_circularborde_x();
+  inline void set_has_mission3_circularborde_y();
+  inline void clear_has_mission3_circularborde_y();
+  inline void set_has_mission3_goal1_x();
+  inline void clear_has_mission3_goal1_x();
+  inline void set_has_mission3_goal1_y();
+  inline void clear_has_mission3_goal1_y();
+  inline void set_has_mission3_goal2_x();
+  inline void clear_has_mission3_goal2_x();
+  inline void set_has_mission3_goal2_y();
+  inline void clear_has_mission3_goal2_y();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
   ::google::protobuf::int32 mission_;
   ::google::protobuf::int32 numberofshape_;
-  ::outputPacket_vector2D* our_robot_position_;
+  ::google::protobuf::int32 type_;
+  float our_robot_position_x_;
   double our_robot_angle_;
-  ::outputPacket_vector2D* opp_robot_position_;
+  float our_robot_position_y_;
+  float opp_robot_position_x_;
   double opp_robot_angle_;
   ::google::protobuf::RepeatedPtrField< ::outputPacket_shape > shapes_;
-  ::outputPacket_Mission1* mission1_data_;
-  ::outputPacket_Mission2* mission2_data_;
-  ::outputPacket_Mission3* mission3_data_;
-  int type_;
+  float opp_robot_position_y_;
+  float mission1_region1_tl_x_;
+  float mission1_region1_tl_y_;
+  float mission1_region1_br_x_;
+  float mission1_region1_br_y_;
+  float mission1_region2_tl_x_;
+  float mission1_region2_tl_y_;
+  float mission1_region2_br_x_;
+  float mission1_region2_br_y_;
+  float mission1_end_x_;
+  float mission1_end_y_;
+  bool mission1_isvalid_;
+  bool mission2_isvalid_;
+  bool mission3_isvalid_;
+  bool mission3_isattacker_;
+  float mission2_end_x_;
+  float mission2_end_y_;
+  ::google::protobuf::RepeatedPtrField< ::outputPacket_line > mission2_lines_;
+  float mission3_circularborde_x_;
+  float mission3_circularborde_y_;
+  float mission3_goal1_x_;
+  float mission3_goal1_y_;
+  float mission3_goal2_x_;
+  float mission3_goal2_y_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(11 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(33 + 31) / 32];
   
   friend void  protobuf_AddDesc_GameGround_2eproto();
   friend void protobuf_AssignDesc_GameGround_2eproto();
@@ -1127,557 +692,94 @@ class outputPacket : public ::google::protobuf::Message {
 
 // ===================================================================
 
-// outputPacket_vector2D
-
-// required float x = 1;
-inline bool outputPacket_vector2D::has_x() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void outputPacket_vector2D::set_has_x() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void outputPacket_vector2D::clear_has_x() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void outputPacket_vector2D::clear_x() {
-  x_ = 0;
-  clear_has_x();
-}
-inline float outputPacket_vector2D::x() const {
-  return x_;
-}
-inline void outputPacket_vector2D::set_x(float value) {
-  set_has_x();
-  x_ = value;
-}
-
-// required float y = 2;
-inline bool outputPacket_vector2D::has_y() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void outputPacket_vector2D::set_has_y() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void outputPacket_vector2D::clear_has_y() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void outputPacket_vector2D::clear_y() {
-  y_ = 0;
-  clear_has_y();
-}
-inline float outputPacket_vector2D::y() const {
-  return y_;
-}
-inline void outputPacket_vector2D::set_y(float value) {
-  set_has_y();
-  y_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// outputPacket_rect2D
-
-// required .outputPacket.vector2D tl = 1;
-inline bool outputPacket_rect2D::has_tl() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void outputPacket_rect2D::set_has_tl() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void outputPacket_rect2D::clear_has_tl() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void outputPacket_rect2D::clear_tl() {
-  if (tl_ != NULL) tl_->::outputPacket_vector2D::Clear();
-  clear_has_tl();
-}
-inline const ::outputPacket_vector2D& outputPacket_rect2D::tl() const {
-  return tl_ != NULL ? *tl_ : *default_instance_->tl_;
-}
-inline ::outputPacket_vector2D* outputPacket_rect2D::mutable_tl() {
-  set_has_tl();
-  if (tl_ == NULL) tl_ = new ::outputPacket_vector2D;
-  return tl_;
-}
-inline ::outputPacket_vector2D* outputPacket_rect2D::release_tl() {
-  clear_has_tl();
-  ::outputPacket_vector2D* temp = tl_;
-  tl_ = NULL;
-  return temp;
-}
-
-// required .outputPacket.vector2D br = 2;
-inline bool outputPacket_rect2D::has_br() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void outputPacket_rect2D::set_has_br() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void outputPacket_rect2D::clear_has_br() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void outputPacket_rect2D::clear_br() {
-  if (br_ != NULL) br_->::outputPacket_vector2D::Clear();
-  clear_has_br();
-}
-inline const ::outputPacket_vector2D& outputPacket_rect2D::br() const {
-  return br_ != NULL ? *br_ : *default_instance_->br_;
-}
-inline ::outputPacket_vector2D* outputPacket_rect2D::mutable_br() {
-  set_has_br();
-  if (br_ == NULL) br_ = new ::outputPacket_vector2D;
-  return br_;
-}
-inline ::outputPacket_vector2D* outputPacket_rect2D::release_br() {
-  clear_has_br();
-  ::outputPacket_vector2D* temp = br_;
-  br_ = NULL;
-  return temp;
-}
-
-// -------------------------------------------------------------------
-
-// outputPacket_Mission1
-
-// required bool isValid = 1;
-inline bool outputPacket_Mission1::has_isvalid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void outputPacket_Mission1::set_has_isvalid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void outputPacket_Mission1::clear_has_isvalid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void outputPacket_Mission1::clear_isvalid() {
-  isvalid_ = false;
-  clear_has_isvalid();
-}
-inline bool outputPacket_Mission1::isvalid() const {
-  return isvalid_;
-}
-inline void outputPacket_Mission1::set_isvalid(bool value) {
-  set_has_isvalid();
-  isvalid_ = value;
-}
-
-// required .outputPacket.rect2D region1 = 2;
-inline bool outputPacket_Mission1::has_region1() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void outputPacket_Mission1::set_has_region1() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void outputPacket_Mission1::clear_has_region1() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void outputPacket_Mission1::clear_region1() {
-  if (region1_ != NULL) region1_->::outputPacket_rect2D::Clear();
-  clear_has_region1();
-}
-inline const ::outputPacket_rect2D& outputPacket_Mission1::region1() const {
-  return region1_ != NULL ? *region1_ : *default_instance_->region1_;
-}
-inline ::outputPacket_rect2D* outputPacket_Mission1::mutable_region1() {
-  set_has_region1();
-  if (region1_ == NULL) region1_ = new ::outputPacket_rect2D;
-  return region1_;
-}
-inline ::outputPacket_rect2D* outputPacket_Mission1::release_region1() {
-  clear_has_region1();
-  ::outputPacket_rect2D* temp = region1_;
-  region1_ = NULL;
-  return temp;
-}
-
-// required .outputPacket.rect2D region2 = 3;
-inline bool outputPacket_Mission1::has_region2() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void outputPacket_Mission1::set_has_region2() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void outputPacket_Mission1::clear_has_region2() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void outputPacket_Mission1::clear_region2() {
-  if (region2_ != NULL) region2_->::outputPacket_rect2D::Clear();
-  clear_has_region2();
-}
-inline const ::outputPacket_rect2D& outputPacket_Mission1::region2() const {
-  return region2_ != NULL ? *region2_ : *default_instance_->region2_;
-}
-inline ::outputPacket_rect2D* outputPacket_Mission1::mutable_region2() {
-  set_has_region2();
-  if (region2_ == NULL) region2_ = new ::outputPacket_rect2D;
-  return region2_;
-}
-inline ::outputPacket_rect2D* outputPacket_Mission1::release_region2() {
-  clear_has_region2();
-  ::outputPacket_rect2D* temp = region2_;
-  region2_ = NULL;
-  return temp;
-}
-
-// required .outputPacket.vector2D end = 4;
-inline bool outputPacket_Mission1::has_end() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void outputPacket_Mission1::set_has_end() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void outputPacket_Mission1::clear_has_end() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void outputPacket_Mission1::clear_end() {
-  if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
-  clear_has_end();
-}
-inline const ::outputPacket_vector2D& outputPacket_Mission1::end() const {
-  return end_ != NULL ? *end_ : *default_instance_->end_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission1::mutable_end() {
-  set_has_end();
-  if (end_ == NULL) end_ = new ::outputPacket_vector2D;
-  return end_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission1::release_end() {
-  clear_has_end();
-  ::outputPacket_vector2D* temp = end_;
-  end_ = NULL;
-  return temp;
-}
-
-// -------------------------------------------------------------------
-
 // outputPacket_line
 
-// required .outputPacket.vector2D start = 1;
-inline bool outputPacket_line::has_start() const {
+// required float start_x = 1;
+inline bool outputPacket_line::has_start_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void outputPacket_line::set_has_start() {
+inline void outputPacket_line::set_has_start_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void outputPacket_line::clear_has_start() {
+inline void outputPacket_line::clear_has_start_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void outputPacket_line::clear_start() {
-  if (start_ != NULL) start_->::outputPacket_vector2D::Clear();
-  clear_has_start();
+inline void outputPacket_line::clear_start_x() {
+  start_x_ = 0;
+  clear_has_start_x();
 }
-inline const ::outputPacket_vector2D& outputPacket_line::start() const {
-  return start_ != NULL ? *start_ : *default_instance_->start_;
+inline float outputPacket_line::start_x() const {
+  return start_x_;
 }
-inline ::outputPacket_vector2D* outputPacket_line::mutable_start() {
-  set_has_start();
-  if (start_ == NULL) start_ = new ::outputPacket_vector2D;
-  return start_;
-}
-inline ::outputPacket_vector2D* outputPacket_line::release_start() {
-  clear_has_start();
-  ::outputPacket_vector2D* temp = start_;
-  start_ = NULL;
-  return temp;
+inline void outputPacket_line::set_start_x(float value) {
+  set_has_start_x();
+  start_x_ = value;
 }
 
-// required .outputPacket.vector2D end = 2;
-inline bool outputPacket_line::has_end() const {
+// required float start_y = 2;
+inline bool outputPacket_line::has_start_y() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void outputPacket_line::set_has_end() {
+inline void outputPacket_line::set_has_start_y() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void outputPacket_line::clear_has_end() {
+inline void outputPacket_line::clear_has_start_y() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void outputPacket_line::clear_end() {
-  if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
-  clear_has_end();
+inline void outputPacket_line::clear_start_y() {
+  start_y_ = 0;
+  clear_has_start_y();
 }
-inline const ::outputPacket_vector2D& outputPacket_line::end() const {
-  return end_ != NULL ? *end_ : *default_instance_->end_;
+inline float outputPacket_line::start_y() const {
+  return start_y_;
 }
-inline ::outputPacket_vector2D* outputPacket_line::mutable_end() {
-  set_has_end();
-  if (end_ == NULL) end_ = new ::outputPacket_vector2D;
-  return end_;
-}
-inline ::outputPacket_vector2D* outputPacket_line::release_end() {
-  clear_has_end();
-  ::outputPacket_vector2D* temp = end_;
-  end_ = NULL;
-  return temp;
+inline void outputPacket_line::set_start_y(float value) {
+  set_has_start_y();
+  start_y_ = value;
 }
 
-// -------------------------------------------------------------------
-
-// outputPacket_Mission2
-
-// required bool isValid = 1;
-inline bool outputPacket_Mission2::has_isvalid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void outputPacket_Mission2::set_has_isvalid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void outputPacket_Mission2::clear_has_isvalid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void outputPacket_Mission2::clear_isvalid() {
-  isvalid_ = false;
-  clear_has_isvalid();
-}
-inline bool outputPacket_Mission2::isvalid() const {
-  return isvalid_;
-}
-inline void outputPacket_Mission2::set_isvalid(bool value) {
-  set_has_isvalid();
-  isvalid_ = value;
-}
-
-// repeated .outputPacket.line lines = 2;
-inline int outputPacket_Mission2::lines_size() const {
-  return lines_.size();
-}
-inline void outputPacket_Mission2::clear_lines() {
-  lines_.Clear();
-}
-inline const ::outputPacket_line& outputPacket_Mission2::lines(int index) const {
-  return lines_.Get(index);
-}
-inline ::outputPacket_line* outputPacket_Mission2::mutable_lines(int index) {
-  return lines_.Mutable(index);
-}
-inline ::outputPacket_line* outputPacket_Mission2::add_lines() {
-  return lines_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_line >&
-outputPacket_Mission2::lines() const {
-  return lines_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::outputPacket_line >*
-outputPacket_Mission2::mutable_lines() {
-  return &lines_;
-}
-
-// required .outputPacket.vector2D end = 3;
-inline bool outputPacket_Mission2::has_end() const {
+// required float end_x = 3;
+inline bool outputPacket_line::has_end_x() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void outputPacket_Mission2::set_has_end() {
+inline void outputPacket_line::set_has_end_x() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void outputPacket_Mission2::clear_has_end() {
+inline void outputPacket_line::clear_has_end_x() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void outputPacket_Mission2::clear_end() {
-  if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
-  clear_has_end();
+inline void outputPacket_line::clear_end_x() {
+  end_x_ = 0;
+  clear_has_end_x();
 }
-inline const ::outputPacket_vector2D& outputPacket_Mission2::end() const {
-  return end_ != NULL ? *end_ : *default_instance_->end_;
+inline float outputPacket_line::end_x() const {
+  return end_x_;
 }
-inline ::outputPacket_vector2D* outputPacket_Mission2::mutable_end() {
-  set_has_end();
-  if (end_ == NULL) end_ = new ::outputPacket_vector2D;
-  return end_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission2::release_end() {
-  clear_has_end();
-  ::outputPacket_vector2D* temp = end_;
-  end_ = NULL;
-  return temp;
+inline void outputPacket_line::set_end_x(float value) {
+  set_has_end_x();
+  end_x_ = value;
 }
 
-// -------------------------------------------------------------------
-
-// outputPacket_circle2D
-
-// required .outputPacket.vector2D center = 1;
-inline bool outputPacket_circle2D::has_center() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void outputPacket_circle2D::set_has_center() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void outputPacket_circle2D::clear_has_center() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void outputPacket_circle2D::clear_center() {
-  if (center_ != NULL) center_->::outputPacket_vector2D::Clear();
-  clear_has_center();
-}
-inline const ::outputPacket_vector2D& outputPacket_circle2D::center() const {
-  return center_ != NULL ? *center_ : *default_instance_->center_;
-}
-inline ::outputPacket_vector2D* outputPacket_circle2D::mutable_center() {
-  set_has_center();
-  if (center_ == NULL) center_ = new ::outputPacket_vector2D;
-  return center_;
-}
-inline ::outputPacket_vector2D* outputPacket_circle2D::release_center() {
-  clear_has_center();
-  ::outputPacket_vector2D* temp = center_;
-  center_ = NULL;
-  return temp;
-}
-
-// required double radios = 2;
-inline bool outputPacket_circle2D::has_radios() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void outputPacket_circle2D::set_has_radios() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void outputPacket_circle2D::clear_has_radios() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void outputPacket_circle2D::clear_radios() {
-  radios_ = 0;
-  clear_has_radios();
-}
-inline double outputPacket_circle2D::radios() const {
-  return radios_;
-}
-inline void outputPacket_circle2D::set_radios(double value) {
-  set_has_radios();
-  radios_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// outputPacket_Mission3
-
-// required bool isValid = 1;
-inline bool outputPacket_Mission3::has_isvalid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void outputPacket_Mission3::set_has_isvalid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void outputPacket_Mission3::clear_has_isvalid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void outputPacket_Mission3::clear_isvalid() {
-  isvalid_ = false;
-  clear_has_isvalid();
-}
-inline bool outputPacket_Mission3::isvalid() const {
-  return isvalid_;
-}
-inline void outputPacket_Mission3::set_isvalid(bool value) {
-  set_has_isvalid();
-  isvalid_ = value;
-}
-
-// required bool isAttacker = 2;
-inline bool outputPacket_Mission3::has_isattacker() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void outputPacket_Mission3::set_has_isattacker() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void outputPacket_Mission3::clear_has_isattacker() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void outputPacket_Mission3::clear_isattacker() {
-  isattacker_ = false;
-  clear_has_isattacker();
-}
-inline bool outputPacket_Mission3::isattacker() const {
-  return isattacker_;
-}
-inline void outputPacket_Mission3::set_isattacker(bool value) {
-  set_has_isattacker();
-  isattacker_ = value;
-}
-
-// required .outputPacket.vector2D circularBorde = 3;
-inline bool outputPacket_Mission3::has_circularborde() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void outputPacket_Mission3::set_has_circularborde() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void outputPacket_Mission3::clear_has_circularborde() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void outputPacket_Mission3::clear_circularborde() {
-  if (circularborde_ != NULL) circularborde_->::outputPacket_vector2D::Clear();
-  clear_has_circularborde();
-}
-inline const ::outputPacket_vector2D& outputPacket_Mission3::circularborde() const {
-  return circularborde_ != NULL ? *circularborde_ : *default_instance_->circularborde_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission3::mutable_circularborde() {
-  set_has_circularborde();
-  if (circularborde_ == NULL) circularborde_ = new ::outputPacket_vector2D;
-  return circularborde_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission3::release_circularborde() {
-  clear_has_circularborde();
-  ::outputPacket_vector2D* temp = circularborde_;
-  circularborde_ = NULL;
-  return temp;
-}
-
-// required .outputPacket.vector2D goal1 = 4;
-inline bool outputPacket_Mission3::has_goal1() const {
+// required float end_y = 4;
+inline bool outputPacket_line::has_end_y() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void outputPacket_Mission3::set_has_goal1() {
+inline void outputPacket_line::set_has_end_y() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void outputPacket_Mission3::clear_has_goal1() {
+inline void outputPacket_line::clear_has_end_y() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void outputPacket_Mission3::clear_goal1() {
-  if (goal1_ != NULL) goal1_->::outputPacket_vector2D::Clear();
-  clear_has_goal1();
+inline void outputPacket_line::clear_end_y() {
+  end_y_ = 0;
+  clear_has_end_y();
 }
-inline const ::outputPacket_vector2D& outputPacket_Mission3::goal1() const {
-  return goal1_ != NULL ? *goal1_ : *default_instance_->goal1_;
+inline float outputPacket_line::end_y() const {
+  return end_y_;
 }
-inline ::outputPacket_vector2D* outputPacket_Mission3::mutable_goal1() {
-  set_has_goal1();
-  if (goal1_ == NULL) goal1_ = new ::outputPacket_vector2D;
-  return goal1_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission3::release_goal1() {
-  clear_has_goal1();
-  ::outputPacket_vector2D* temp = goal1_;
-  goal1_ = NULL;
-  return temp;
-}
-
-// required .outputPacket.vector2D goal2 = 5;
-inline bool outputPacket_Mission3::has_goal2() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void outputPacket_Mission3::set_has_goal2() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void outputPacket_Mission3::clear_has_goal2() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void outputPacket_Mission3::clear_goal2() {
-  if (goal2_ != NULL) goal2_->::outputPacket_vector2D::Clear();
-  clear_has_goal2();
-}
-inline const ::outputPacket_vector2D& outputPacket_Mission3::goal2() const {
-  return goal2_ != NULL ? *goal2_ : *default_instance_->goal2_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission3::mutable_goal2() {
-  set_has_goal2();
-  if (goal2_ == NULL) goal2_ = new ::outputPacket_vector2D;
-  return goal2_;
-}
-inline ::outputPacket_vector2D* outputPacket_Mission3::release_goal2() {
-  clear_has_goal2();
-  ::outputPacket_vector2D* temp = goal2_;
-  goal2_ = NULL;
-  return temp;
+inline void outputPacket_line::set_end_y(float value) {
+  set_has_end_y();
+  end_y_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1800,44 +902,59 @@ inline ::std::string* outputPacket_shape::release_color() {
   }
 }
 
-// required .outputPacket.vector2D position = 3;
-inline bool outputPacket_shape::has_position() const {
+// required float position_x = 3;
+inline bool outputPacket_shape::has_position_x() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void outputPacket_shape::set_has_position() {
+inline void outputPacket_shape::set_has_position_x() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void outputPacket_shape::clear_has_position() {
+inline void outputPacket_shape::clear_has_position_x() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void outputPacket_shape::clear_position() {
-  if (position_ != NULL) position_->::outputPacket_vector2D::Clear();
-  clear_has_position();
+inline void outputPacket_shape::clear_position_x() {
+  position_x_ = 0;
+  clear_has_position_x();
 }
-inline const ::outputPacket_vector2D& outputPacket_shape::position() const {
-  return position_ != NULL ? *position_ : *default_instance_->position_;
+inline float outputPacket_shape::position_x() const {
+  return position_x_;
 }
-inline ::outputPacket_vector2D* outputPacket_shape::mutable_position() {
-  set_has_position();
-  if (position_ == NULL) position_ = new ::outputPacket_vector2D;
-  return position_;
-}
-inline ::outputPacket_vector2D* outputPacket_shape::release_position() {
-  clear_has_position();
-  ::outputPacket_vector2D* temp = position_;
-  position_ = NULL;
-  return temp;
+inline void outputPacket_shape::set_position_x(float value) {
+  set_has_position_x();
+  position_x_ = value;
 }
 
-// required double radios = 4;
-inline bool outputPacket_shape::has_radios() const {
+// required float position_y = 4;
+inline bool outputPacket_shape::has_position_y() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void outputPacket_shape::set_has_radios() {
+inline void outputPacket_shape::set_has_position_y() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void outputPacket_shape::clear_has_radios() {
+inline void outputPacket_shape::clear_has_position_y() {
   _has_bits_[0] &= ~0x00000008u;
+}
+inline void outputPacket_shape::clear_position_y() {
+  position_y_ = 0;
+  clear_has_position_y();
+}
+inline float outputPacket_shape::position_y() const {
+  return position_y_;
+}
+inline void outputPacket_shape::set_position_y(float value) {
+  set_has_position_y();
+  position_y_ = value;
+}
+
+// required double radios = 5;
+inline bool outputPacket_shape::has_radios() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void outputPacket_shape::set_has_radios() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void outputPacket_shape::clear_has_radios() {
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void outputPacket_shape::clear_radios() {
   radios_ = 0;
@@ -1899,7 +1016,7 @@ inline void outputPacket::set_numberofshape(::google::protobuf::int32 value) {
   numberofshape_ = value;
 }
 
-// required .outputPacket.MessageType type = 3 [default = DATA];
+// required int32 type = 3;
 inline bool outputPacket::has_type() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1910,56 +1027,70 @@ inline void outputPacket::clear_has_type() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void outputPacket::clear_type() {
-  type_ = 1;
+  type_ = 0;
   clear_has_type();
 }
-inline ::outputPacket_MessageType outputPacket::type() const {
-  return static_cast< ::outputPacket_MessageType >(type_);
+inline ::google::protobuf::int32 outputPacket::type() const {
+  return type_;
 }
-inline void outputPacket::set_type(::outputPacket_MessageType value) {
-  GOOGLE_DCHECK(::outputPacket_MessageType_IsValid(value));
+inline void outputPacket::set_type(::google::protobuf::int32 value) {
   set_has_type();
   type_ = value;
 }
 
-// optional .outputPacket.vector2D our_robot_position = 4;
-inline bool outputPacket::has_our_robot_position() const {
+// optional float our_robot_position_x = 4;
+inline bool outputPacket::has_our_robot_position_x() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void outputPacket::set_has_our_robot_position() {
+inline void outputPacket::set_has_our_robot_position_x() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void outputPacket::clear_has_our_robot_position() {
+inline void outputPacket::clear_has_our_robot_position_x() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void outputPacket::clear_our_robot_position() {
-  if (our_robot_position_ != NULL) our_robot_position_->::outputPacket_vector2D::Clear();
-  clear_has_our_robot_position();
+inline void outputPacket::clear_our_robot_position_x() {
+  our_robot_position_x_ = 0;
+  clear_has_our_robot_position_x();
 }
-inline const ::outputPacket_vector2D& outputPacket::our_robot_position() const {
-  return our_robot_position_ != NULL ? *our_robot_position_ : *default_instance_->our_robot_position_;
+inline float outputPacket::our_robot_position_x() const {
+  return our_robot_position_x_;
 }
-inline ::outputPacket_vector2D* outputPacket::mutable_our_robot_position() {
-  set_has_our_robot_position();
-  if (our_robot_position_ == NULL) our_robot_position_ = new ::outputPacket_vector2D;
-  return our_robot_position_;
-}
-inline ::outputPacket_vector2D* outputPacket::release_our_robot_position() {
-  clear_has_our_robot_position();
-  ::outputPacket_vector2D* temp = our_robot_position_;
-  our_robot_position_ = NULL;
-  return temp;
+inline void outputPacket::set_our_robot_position_x(float value) {
+  set_has_our_robot_position_x();
+  our_robot_position_x_ = value;
 }
 
-// optional double our_robot_angle = 5;
-inline bool outputPacket::has_our_robot_angle() const {
+// optional float our_robot_position_y = 5;
+inline bool outputPacket::has_our_robot_position_y() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void outputPacket::set_has_our_robot_angle() {
+inline void outputPacket::set_has_our_robot_position_y() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void outputPacket::clear_has_our_robot_angle() {
+inline void outputPacket::clear_has_our_robot_position_y() {
   _has_bits_[0] &= ~0x00000010u;
+}
+inline void outputPacket::clear_our_robot_position_y() {
+  our_robot_position_y_ = 0;
+  clear_has_our_robot_position_y();
+}
+inline float outputPacket::our_robot_position_y() const {
+  return our_robot_position_y_;
+}
+inline void outputPacket::set_our_robot_position_y(float value) {
+  set_has_our_robot_position_y();
+  our_robot_position_y_ = value;
+}
+
+// optional double our_robot_angle = 6;
+inline bool outputPacket::has_our_robot_angle() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void outputPacket::set_has_our_robot_angle() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void outputPacket::clear_has_our_robot_angle() {
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void outputPacket::clear_our_robot_angle() {
   our_robot_angle_ = 0;
@@ -1973,44 +1104,59 @@ inline void outputPacket::set_our_robot_angle(double value) {
   our_robot_angle_ = value;
 }
 
-// optional .outputPacket.vector2D opp_robot_position = 6;
-inline bool outputPacket::has_opp_robot_position() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void outputPacket::set_has_opp_robot_position() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void outputPacket::clear_has_opp_robot_position() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void outputPacket::clear_opp_robot_position() {
-  if (opp_robot_position_ != NULL) opp_robot_position_->::outputPacket_vector2D::Clear();
-  clear_has_opp_robot_position();
-}
-inline const ::outputPacket_vector2D& outputPacket::opp_robot_position() const {
-  return opp_robot_position_ != NULL ? *opp_robot_position_ : *default_instance_->opp_robot_position_;
-}
-inline ::outputPacket_vector2D* outputPacket::mutable_opp_robot_position() {
-  set_has_opp_robot_position();
-  if (opp_robot_position_ == NULL) opp_robot_position_ = new ::outputPacket_vector2D;
-  return opp_robot_position_;
-}
-inline ::outputPacket_vector2D* outputPacket::release_opp_robot_position() {
-  clear_has_opp_robot_position();
-  ::outputPacket_vector2D* temp = opp_robot_position_;
-  opp_robot_position_ = NULL;
-  return temp;
-}
-
-// optional double opp_robot_angle = 7;
-inline bool outputPacket::has_opp_robot_angle() const {
+// optional float opp_robot_position_x = 7;
+inline bool outputPacket::has_opp_robot_position_x() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void outputPacket::set_has_opp_robot_angle() {
+inline void outputPacket::set_has_opp_robot_position_x() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void outputPacket::clear_has_opp_robot_angle() {
+inline void outputPacket::clear_has_opp_robot_position_x() {
   _has_bits_[0] &= ~0x00000040u;
+}
+inline void outputPacket::clear_opp_robot_position_x() {
+  opp_robot_position_x_ = 0;
+  clear_has_opp_robot_position_x();
+}
+inline float outputPacket::opp_robot_position_x() const {
+  return opp_robot_position_x_;
+}
+inline void outputPacket::set_opp_robot_position_x(float value) {
+  set_has_opp_robot_position_x();
+  opp_robot_position_x_ = value;
+}
+
+// optional float opp_robot_position_y = 8;
+inline bool outputPacket::has_opp_robot_position_y() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void outputPacket::set_has_opp_robot_position_y() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void outputPacket::clear_has_opp_robot_position_y() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void outputPacket::clear_opp_robot_position_y() {
+  opp_robot_position_y_ = 0;
+  clear_has_opp_robot_position_y();
+}
+inline float outputPacket::opp_robot_position_y() const {
+  return opp_robot_position_y_;
+}
+inline void outputPacket::set_opp_robot_position_y(float value) {
+  set_has_opp_robot_position_y();
+  opp_robot_position_y_ = value;
+}
+
+// optional double opp_robot_angle = 9;
+inline bool outputPacket::has_opp_robot_angle() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void outputPacket::set_has_opp_robot_angle() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void outputPacket::clear_has_opp_robot_angle() {
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void outputPacket::clear_opp_robot_angle() {
   opp_robot_angle_ = 0;
@@ -2024,7 +1170,7 @@ inline void outputPacket::set_opp_robot_angle(double value) {
   opp_robot_angle_ = value;
 }
 
-// repeated .outputPacket.shape shapes = 8;
+// repeated .outputPacket.shape shapes = 10;
 inline int outputPacket::shapes_size() const {
   return shapes_.size();
 }
@@ -2049,91 +1195,513 @@ outputPacket::mutable_shapes() {
   return &shapes_;
 }
 
-// optional .outputPacket.Mission1 mission1_data = 9;
-inline bool outputPacket::has_mission1_data() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void outputPacket::set_has_mission1_data() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void outputPacket::clear_has_mission1_data() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void outputPacket::clear_mission1_data() {
-  if (mission1_data_ != NULL) mission1_data_->::outputPacket_Mission1::Clear();
-  clear_has_mission1_data();
-}
-inline const ::outputPacket_Mission1& outputPacket::mission1_data() const {
-  return mission1_data_ != NULL ? *mission1_data_ : *default_instance_->mission1_data_;
-}
-inline ::outputPacket_Mission1* outputPacket::mutable_mission1_data() {
-  set_has_mission1_data();
-  if (mission1_data_ == NULL) mission1_data_ = new ::outputPacket_Mission1;
-  return mission1_data_;
-}
-inline ::outputPacket_Mission1* outputPacket::release_mission1_data() {
-  clear_has_mission1_data();
-  ::outputPacket_Mission1* temp = mission1_data_;
-  mission1_data_ = NULL;
-  return temp;
-}
-
-// optional .outputPacket.Mission2 mission2_data = 10;
-inline bool outputPacket::has_mission2_data() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
-inline void outputPacket::set_has_mission2_data() {
-  _has_bits_[0] |= 0x00000200u;
-}
-inline void outputPacket::clear_has_mission2_data() {
-  _has_bits_[0] &= ~0x00000200u;
-}
-inline void outputPacket::clear_mission2_data() {
-  if (mission2_data_ != NULL) mission2_data_->::outputPacket_Mission2::Clear();
-  clear_has_mission2_data();
-}
-inline const ::outputPacket_Mission2& outputPacket::mission2_data() const {
-  return mission2_data_ != NULL ? *mission2_data_ : *default_instance_->mission2_data_;
-}
-inline ::outputPacket_Mission2* outputPacket::mutable_mission2_data() {
-  set_has_mission2_data();
-  if (mission2_data_ == NULL) mission2_data_ = new ::outputPacket_Mission2;
-  return mission2_data_;
-}
-inline ::outputPacket_Mission2* outputPacket::release_mission2_data() {
-  clear_has_mission2_data();
-  ::outputPacket_Mission2* temp = mission2_data_;
-  mission2_data_ = NULL;
-  return temp;
-}
-
-// optional .outputPacket.Mission3 mission3_data = 11;
-inline bool outputPacket::has_mission3_data() const {
+// optional bool mission1_isValid = 11;
+inline bool outputPacket::has_mission1_isvalid() const {
   return (_has_bits_[0] & 0x00000400u) != 0;
 }
-inline void outputPacket::set_has_mission3_data() {
+inline void outputPacket::set_has_mission1_isvalid() {
   _has_bits_[0] |= 0x00000400u;
 }
-inline void outputPacket::clear_has_mission3_data() {
+inline void outputPacket::clear_has_mission1_isvalid() {
   _has_bits_[0] &= ~0x00000400u;
 }
-inline void outputPacket::clear_mission3_data() {
-  if (mission3_data_ != NULL) mission3_data_->::outputPacket_Mission3::Clear();
-  clear_has_mission3_data();
+inline void outputPacket::clear_mission1_isvalid() {
+  mission1_isvalid_ = false;
+  clear_has_mission1_isvalid();
 }
-inline const ::outputPacket_Mission3& outputPacket::mission3_data() const {
-  return mission3_data_ != NULL ? *mission3_data_ : *default_instance_->mission3_data_;
+inline bool outputPacket::mission1_isvalid() const {
+  return mission1_isvalid_;
 }
-inline ::outputPacket_Mission3* outputPacket::mutable_mission3_data() {
-  set_has_mission3_data();
-  if (mission3_data_ == NULL) mission3_data_ = new ::outputPacket_Mission3;
-  return mission3_data_;
+inline void outputPacket::set_mission1_isvalid(bool value) {
+  set_has_mission1_isvalid();
+  mission1_isvalid_ = value;
 }
-inline ::outputPacket_Mission3* outputPacket::release_mission3_data() {
-  clear_has_mission3_data();
-  ::outputPacket_Mission3* temp = mission3_data_;
-  mission3_data_ = NULL;
-  return temp;
+
+// optional float mission1_region1_tl_x = 12;
+inline bool outputPacket::has_mission1_region1_tl_x() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void outputPacket::set_has_mission1_region1_tl_x() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void outputPacket::clear_has_mission1_region1_tl_x() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void outputPacket::clear_mission1_region1_tl_x() {
+  mission1_region1_tl_x_ = 0;
+  clear_has_mission1_region1_tl_x();
+}
+inline float outputPacket::mission1_region1_tl_x() const {
+  return mission1_region1_tl_x_;
+}
+inline void outputPacket::set_mission1_region1_tl_x(float value) {
+  set_has_mission1_region1_tl_x();
+  mission1_region1_tl_x_ = value;
+}
+
+// optional float mission1_region1_tl_y = 13;
+inline bool outputPacket::has_mission1_region1_tl_y() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region1_tl_y() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void outputPacket::clear_has_mission1_region1_tl_y() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void outputPacket::clear_mission1_region1_tl_y() {
+  mission1_region1_tl_y_ = 0;
+  clear_has_mission1_region1_tl_y();
+}
+inline float outputPacket::mission1_region1_tl_y() const {
+  return mission1_region1_tl_y_;
+}
+inline void outputPacket::set_mission1_region1_tl_y(float value) {
+  set_has_mission1_region1_tl_y();
+  mission1_region1_tl_y_ = value;
+}
+
+// optional float mission1_region1_br_x = 14;
+inline bool outputPacket::has_mission1_region1_br_x() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region1_br_x() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void outputPacket::clear_has_mission1_region1_br_x() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void outputPacket::clear_mission1_region1_br_x() {
+  mission1_region1_br_x_ = 0;
+  clear_has_mission1_region1_br_x();
+}
+inline float outputPacket::mission1_region1_br_x() const {
+  return mission1_region1_br_x_;
+}
+inline void outputPacket::set_mission1_region1_br_x(float value) {
+  set_has_mission1_region1_br_x();
+  mission1_region1_br_x_ = value;
+}
+
+// optional float mission1_region1_br_y = 15;
+inline bool outputPacket::has_mission1_region1_br_y() const {
+  return (_has_bits_[0] & 0x00004000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region1_br_y() {
+  _has_bits_[0] |= 0x00004000u;
+}
+inline void outputPacket::clear_has_mission1_region1_br_y() {
+  _has_bits_[0] &= ~0x00004000u;
+}
+inline void outputPacket::clear_mission1_region1_br_y() {
+  mission1_region1_br_y_ = 0;
+  clear_has_mission1_region1_br_y();
+}
+inline float outputPacket::mission1_region1_br_y() const {
+  return mission1_region1_br_y_;
+}
+inline void outputPacket::set_mission1_region1_br_y(float value) {
+  set_has_mission1_region1_br_y();
+  mission1_region1_br_y_ = value;
+}
+
+// optional float mission1_region2_tl_x = 16;
+inline bool outputPacket::has_mission1_region2_tl_x() const {
+  return (_has_bits_[0] & 0x00008000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region2_tl_x() {
+  _has_bits_[0] |= 0x00008000u;
+}
+inline void outputPacket::clear_has_mission1_region2_tl_x() {
+  _has_bits_[0] &= ~0x00008000u;
+}
+inline void outputPacket::clear_mission1_region2_tl_x() {
+  mission1_region2_tl_x_ = 0;
+  clear_has_mission1_region2_tl_x();
+}
+inline float outputPacket::mission1_region2_tl_x() const {
+  return mission1_region2_tl_x_;
+}
+inline void outputPacket::set_mission1_region2_tl_x(float value) {
+  set_has_mission1_region2_tl_x();
+  mission1_region2_tl_x_ = value;
+}
+
+// optional float mission1_region2_tl_y = 17;
+inline bool outputPacket::has_mission1_region2_tl_y() const {
+  return (_has_bits_[0] & 0x00010000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region2_tl_y() {
+  _has_bits_[0] |= 0x00010000u;
+}
+inline void outputPacket::clear_has_mission1_region2_tl_y() {
+  _has_bits_[0] &= ~0x00010000u;
+}
+inline void outputPacket::clear_mission1_region2_tl_y() {
+  mission1_region2_tl_y_ = 0;
+  clear_has_mission1_region2_tl_y();
+}
+inline float outputPacket::mission1_region2_tl_y() const {
+  return mission1_region2_tl_y_;
+}
+inline void outputPacket::set_mission1_region2_tl_y(float value) {
+  set_has_mission1_region2_tl_y();
+  mission1_region2_tl_y_ = value;
+}
+
+// optional float mission1_region2_br_x = 18;
+inline bool outputPacket::has_mission1_region2_br_x() const {
+  return (_has_bits_[0] & 0x00020000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region2_br_x() {
+  _has_bits_[0] |= 0x00020000u;
+}
+inline void outputPacket::clear_has_mission1_region2_br_x() {
+  _has_bits_[0] &= ~0x00020000u;
+}
+inline void outputPacket::clear_mission1_region2_br_x() {
+  mission1_region2_br_x_ = 0;
+  clear_has_mission1_region2_br_x();
+}
+inline float outputPacket::mission1_region2_br_x() const {
+  return mission1_region2_br_x_;
+}
+inline void outputPacket::set_mission1_region2_br_x(float value) {
+  set_has_mission1_region2_br_x();
+  mission1_region2_br_x_ = value;
+}
+
+// optional float mission1_region2_br_y = 19;
+inline bool outputPacket::has_mission1_region2_br_y() const {
+  return (_has_bits_[0] & 0x00040000u) != 0;
+}
+inline void outputPacket::set_has_mission1_region2_br_y() {
+  _has_bits_[0] |= 0x00040000u;
+}
+inline void outputPacket::clear_has_mission1_region2_br_y() {
+  _has_bits_[0] &= ~0x00040000u;
+}
+inline void outputPacket::clear_mission1_region2_br_y() {
+  mission1_region2_br_y_ = 0;
+  clear_has_mission1_region2_br_y();
+}
+inline float outputPacket::mission1_region2_br_y() const {
+  return mission1_region2_br_y_;
+}
+inline void outputPacket::set_mission1_region2_br_y(float value) {
+  set_has_mission1_region2_br_y();
+  mission1_region2_br_y_ = value;
+}
+
+// optional float mission1_end_x = 20;
+inline bool outputPacket::has_mission1_end_x() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void outputPacket::set_has_mission1_end_x() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void outputPacket::clear_has_mission1_end_x() {
+  _has_bits_[0] &= ~0x00080000u;
+}
+inline void outputPacket::clear_mission1_end_x() {
+  mission1_end_x_ = 0;
+  clear_has_mission1_end_x();
+}
+inline float outputPacket::mission1_end_x() const {
+  return mission1_end_x_;
+}
+inline void outputPacket::set_mission1_end_x(float value) {
+  set_has_mission1_end_x();
+  mission1_end_x_ = value;
+}
+
+// optional float mission1_end_y = 21;
+inline bool outputPacket::has_mission1_end_y() const {
+  return (_has_bits_[0] & 0x00100000u) != 0;
+}
+inline void outputPacket::set_has_mission1_end_y() {
+  _has_bits_[0] |= 0x00100000u;
+}
+inline void outputPacket::clear_has_mission1_end_y() {
+  _has_bits_[0] &= ~0x00100000u;
+}
+inline void outputPacket::clear_mission1_end_y() {
+  mission1_end_y_ = 0;
+  clear_has_mission1_end_y();
+}
+inline float outputPacket::mission1_end_y() const {
+  return mission1_end_y_;
+}
+inline void outputPacket::set_mission1_end_y(float value) {
+  set_has_mission1_end_y();
+  mission1_end_y_ = value;
+}
+
+// optional bool mission2_isValid = 22;
+inline bool outputPacket::has_mission2_isvalid() const {
+  return (_has_bits_[0] & 0x00200000u) != 0;
+}
+inline void outputPacket::set_has_mission2_isvalid() {
+  _has_bits_[0] |= 0x00200000u;
+}
+inline void outputPacket::clear_has_mission2_isvalid() {
+  _has_bits_[0] &= ~0x00200000u;
+}
+inline void outputPacket::clear_mission2_isvalid() {
+  mission2_isvalid_ = false;
+  clear_has_mission2_isvalid();
+}
+inline bool outputPacket::mission2_isvalid() const {
+  return mission2_isvalid_;
+}
+inline void outputPacket::set_mission2_isvalid(bool value) {
+  set_has_mission2_isvalid();
+  mission2_isvalid_ = value;
+}
+
+// optional float mission2_end_x = 23;
+inline bool outputPacket::has_mission2_end_x() const {
+  return (_has_bits_[0] & 0x00400000u) != 0;
+}
+inline void outputPacket::set_has_mission2_end_x() {
+  _has_bits_[0] |= 0x00400000u;
+}
+inline void outputPacket::clear_has_mission2_end_x() {
+  _has_bits_[0] &= ~0x00400000u;
+}
+inline void outputPacket::clear_mission2_end_x() {
+  mission2_end_x_ = 0;
+  clear_has_mission2_end_x();
+}
+inline float outputPacket::mission2_end_x() const {
+  return mission2_end_x_;
+}
+inline void outputPacket::set_mission2_end_x(float value) {
+  set_has_mission2_end_x();
+  mission2_end_x_ = value;
+}
+
+// optional float mission2_end_y = 24;
+inline bool outputPacket::has_mission2_end_y() const {
+  return (_has_bits_[0] & 0x00800000u) != 0;
+}
+inline void outputPacket::set_has_mission2_end_y() {
+  _has_bits_[0] |= 0x00800000u;
+}
+inline void outputPacket::clear_has_mission2_end_y() {
+  _has_bits_[0] &= ~0x00800000u;
+}
+inline void outputPacket::clear_mission2_end_y() {
+  mission2_end_y_ = 0;
+  clear_has_mission2_end_y();
+}
+inline float outputPacket::mission2_end_y() const {
+  return mission2_end_y_;
+}
+inline void outputPacket::set_mission2_end_y(float value) {
+  set_has_mission2_end_y();
+  mission2_end_y_ = value;
+}
+
+// repeated .outputPacket.line mission2_lines = 25;
+inline int outputPacket::mission2_lines_size() const {
+  return mission2_lines_.size();
+}
+inline void outputPacket::clear_mission2_lines() {
+  mission2_lines_.Clear();
+}
+inline const ::outputPacket_line& outputPacket::mission2_lines(int index) const {
+  return mission2_lines_.Get(index);
+}
+inline ::outputPacket_line* outputPacket::mutable_mission2_lines(int index) {
+  return mission2_lines_.Mutable(index);
+}
+inline ::outputPacket_line* outputPacket::add_mission2_lines() {
+  return mission2_lines_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::outputPacket_line >&
+outputPacket::mission2_lines() const {
+  return mission2_lines_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::outputPacket_line >*
+outputPacket::mutable_mission2_lines() {
+  return &mission2_lines_;
+}
+
+// optional bool mission3_isValid = 26;
+inline bool outputPacket::has_mission3_isvalid() const {
+  return (_has_bits_[0] & 0x02000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_isvalid() {
+  _has_bits_[0] |= 0x02000000u;
+}
+inline void outputPacket::clear_has_mission3_isvalid() {
+  _has_bits_[0] &= ~0x02000000u;
+}
+inline void outputPacket::clear_mission3_isvalid() {
+  mission3_isvalid_ = false;
+  clear_has_mission3_isvalid();
+}
+inline bool outputPacket::mission3_isvalid() const {
+  return mission3_isvalid_;
+}
+inline void outputPacket::set_mission3_isvalid(bool value) {
+  set_has_mission3_isvalid();
+  mission3_isvalid_ = value;
+}
+
+// optional bool mission3_isAttacker = 27;
+inline bool outputPacket::has_mission3_isattacker() const {
+  return (_has_bits_[0] & 0x04000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_isattacker() {
+  _has_bits_[0] |= 0x04000000u;
+}
+inline void outputPacket::clear_has_mission3_isattacker() {
+  _has_bits_[0] &= ~0x04000000u;
+}
+inline void outputPacket::clear_mission3_isattacker() {
+  mission3_isattacker_ = false;
+  clear_has_mission3_isattacker();
+}
+inline bool outputPacket::mission3_isattacker() const {
+  return mission3_isattacker_;
+}
+inline void outputPacket::set_mission3_isattacker(bool value) {
+  set_has_mission3_isattacker();
+  mission3_isattacker_ = value;
+}
+
+// optional float mission3_circularBorde_x = 28;
+inline bool outputPacket::has_mission3_circularborde_x() const {
+  return (_has_bits_[0] & 0x08000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_circularborde_x() {
+  _has_bits_[0] |= 0x08000000u;
+}
+inline void outputPacket::clear_has_mission3_circularborde_x() {
+  _has_bits_[0] &= ~0x08000000u;
+}
+inline void outputPacket::clear_mission3_circularborde_x() {
+  mission3_circularborde_x_ = 0;
+  clear_has_mission3_circularborde_x();
+}
+inline float outputPacket::mission3_circularborde_x() const {
+  return mission3_circularborde_x_;
+}
+inline void outputPacket::set_mission3_circularborde_x(float value) {
+  set_has_mission3_circularborde_x();
+  mission3_circularborde_x_ = value;
+}
+
+// optional float mission3_circularBorde_y = 29;
+inline bool outputPacket::has_mission3_circularborde_y() const {
+  return (_has_bits_[0] & 0x10000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_circularborde_y() {
+  _has_bits_[0] |= 0x10000000u;
+}
+inline void outputPacket::clear_has_mission3_circularborde_y() {
+  _has_bits_[0] &= ~0x10000000u;
+}
+inline void outputPacket::clear_mission3_circularborde_y() {
+  mission3_circularborde_y_ = 0;
+  clear_has_mission3_circularborde_y();
+}
+inline float outputPacket::mission3_circularborde_y() const {
+  return mission3_circularborde_y_;
+}
+inline void outputPacket::set_mission3_circularborde_y(float value) {
+  set_has_mission3_circularborde_y();
+  mission3_circularborde_y_ = value;
+}
+
+// optional float mission3_goal1_x = 30;
+inline bool outputPacket::has_mission3_goal1_x() const {
+  return (_has_bits_[0] & 0x20000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_goal1_x() {
+  _has_bits_[0] |= 0x20000000u;
+}
+inline void outputPacket::clear_has_mission3_goal1_x() {
+  _has_bits_[0] &= ~0x20000000u;
+}
+inline void outputPacket::clear_mission3_goal1_x() {
+  mission3_goal1_x_ = 0;
+  clear_has_mission3_goal1_x();
+}
+inline float outputPacket::mission3_goal1_x() const {
+  return mission3_goal1_x_;
+}
+inline void outputPacket::set_mission3_goal1_x(float value) {
+  set_has_mission3_goal1_x();
+  mission3_goal1_x_ = value;
+}
+
+// optional float mission3_goal1_y = 31;
+inline bool outputPacket::has_mission3_goal1_y() const {
+  return (_has_bits_[0] & 0x40000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_goal1_y() {
+  _has_bits_[0] |= 0x40000000u;
+}
+inline void outputPacket::clear_has_mission3_goal1_y() {
+  _has_bits_[0] &= ~0x40000000u;
+}
+inline void outputPacket::clear_mission3_goal1_y() {
+  mission3_goal1_y_ = 0;
+  clear_has_mission3_goal1_y();
+}
+inline float outputPacket::mission3_goal1_y() const {
+  return mission3_goal1_y_;
+}
+inline void outputPacket::set_mission3_goal1_y(float value) {
+  set_has_mission3_goal1_y();
+  mission3_goal1_y_ = value;
+}
+
+// optional float mission3_goal2_x = 32;
+inline bool outputPacket::has_mission3_goal2_x() const {
+  return (_has_bits_[0] & 0x80000000u) != 0;
+}
+inline void outputPacket::set_has_mission3_goal2_x() {
+  _has_bits_[0] |= 0x80000000u;
+}
+inline void outputPacket::clear_has_mission3_goal2_x() {
+  _has_bits_[0] &= ~0x80000000u;
+}
+inline void outputPacket::clear_mission3_goal2_x() {
+  mission3_goal2_x_ = 0;
+  clear_has_mission3_goal2_x();
+}
+inline float outputPacket::mission3_goal2_x() const {
+  return mission3_goal2_x_;
+}
+inline void outputPacket::set_mission3_goal2_x(float value) {
+  set_has_mission3_goal2_x();
+  mission3_goal2_x_ = value;
+}
+
+// optional float mission3_goal2_y = 33;
+inline bool outputPacket::has_mission3_goal2_y() const {
+  return (_has_bits_[1] & 0x00000001u) != 0;
+}
+inline void outputPacket::set_has_mission3_goal2_y() {
+  _has_bits_[1] |= 0x00000001u;
+}
+inline void outputPacket::clear_has_mission3_goal2_y() {
+  _has_bits_[1] &= ~0x00000001u;
+}
+inline void outputPacket::clear_mission3_goal2_y() {
+  mission3_goal2_y_ = 0;
+  clear_has_mission3_goal2_y();
+}
+inline float outputPacket::mission3_goal2_y() const {
+  return mission3_goal2_y_;
+}
+inline void outputPacket::set_mission3_goal2_y(float value) {
+  set_has_mission3_goal2_y();
+  mission3_goal2_y_ = value;
 }
 
 
@@ -2143,10 +1711,6 @@ inline ::outputPacket_Mission3* outputPacket::release_mission3_data() {
 namespace google {
 namespace protobuf {
 
-template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::outputPacket_MessageType>() {
-  return ::outputPacket_MessageType_descriptor();
-}
 
 }  // namespace google
 }  // namespace protobuf

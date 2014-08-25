@@ -11,7 +11,7 @@ class NetworkSender : public QObject
 public:
     explicit NetworkSender(QObject *parent = 0);
     void configure(QString ip,quint16 port);
-    void sendData(std::string out);
+    void sendData(QByteArray out);
 
 private:
     QUdpSocket *udpSocket;

@@ -1,0 +1,90 @@
+message outputPacket
+{
+	message vector2D
+	{
+		required float x = 1;
+		required float y = 2;
+	}
+	
+	message rect2D
+	{
+		required vector2D tl = 1;
+		required vector2D br = 2;
+	}	
+	
+	message Mission1 
+	{
+		required bool isValid = 1;		
+		
+		required rect2D region1 = 2;
+		
+		required rect2D region2 = 3;
+		
+		required vector2D end = 4;
+	}
+
+	message line
+	{
+		required vector2D start = 1;
+		required vector2D end = 2;
+	}
+
+	message Mission2
+	{
+		required bool isValid = 1;
+	
+		repeated line lines = 2;
+		
+		required vector2D end = 3;
+	}
+	
+	message circle2D
+	{
+		required vector2D center = 1;
+		required double radios = 2;
+	}
+	
+	message Mission3
+	{
+		required bool isValid = 1;
+
+		required bool isAttacker = 2;
+		
+		required vector2D circularBorde = 3;
+		
+		required vector2D goal1 = 4;
+		
+		required vector2D goal2 = 5;
+	}
+	
+	message shape
+	{
+		required string type = 1;
+		required string color = 2;
+		required vector2D position = 3;
+		required double radios = 4;
+	}
+  	
+	enum MessageType 
+	{
+		INITIALIZE = 0;
+		DATA = 1;
+		
+	}
+
+  	required int32 mission = 1;
+	required int32 numberOfShape = 2;
+	required MessageType type = 3 [default = DATA];
+	
+	optional vector2D our_robot_position = 4;
+	optional double our_robot_angle = 5;
+	
+	optional vector2D opp_robot_position = 6;
+	optional double opp_robot_angle = 7;
+
+	repeated shape shapes = 8;	
+	
+	optional Mission1 mission1_data = 9;
+	optional Mission2 mission2_data = 10;
+	optional Mission3 mission3_data = 11;
+}

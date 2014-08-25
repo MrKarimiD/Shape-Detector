@@ -1,90 +1,71 @@
+//I killed oop in this message!
 message outputPacket
 {
-	message vector2D
-	{
-		required float x = 1;
-		required float y = 2;
-	}
-	
-	message rect2D
-	{
-		required vector2D tl = 1;
-		required vector2D br = 2;
-	}	
-	
-	message Mission1 
-	{
-		required bool isValid = 1;		
-		
-		required rect2D region1 = 2;
-		
-		required rect2D region2 = 3;
-		
-		required vector2D end = 4;
-	}
-
 	message line
 	{
-		required vector2D start = 1;
-		required vector2D end = 2;
+		required float start_x = 1;
+		required float start_y = 2;
+		required float end_x = 3;
+		required float end_y = 4;
 	}
 
-	message Mission2
-	{
-		required bool isValid = 1;
-	
-		repeated line lines = 2;
-		
-		required vector2D end = 3;
-	}
-	
-	message circle2D
-	{
-		required vector2D center = 1;
-		required double radios = 2;
-	}
-	
-	message Mission3
-	{
-		required bool isValid = 1;
-
-		required bool isAttacker = 2;
-		
-		required vector2D circularBorde = 3;
-		
-		required vector2D goal1 = 4;
-		
-		required vector2D goal2 = 5;
-	}
-	
 	message shape
 	{
 		required string type = 1;
 		required string color = 2;
-		required vector2D position = 3;
-		required double radios = 4;
+		required float position_x = 3;
+		required float position_y = 4;
+		required double radios = 5;
 	}
   	
-	enum MessageType 
-	{
-		INITIALIZE = 0;
-		DATA = 1;
-		
-	}
-
-  	required int32 mission = 1;
+	required int32 mission = 1;
 	required int32 numberOfShape = 2;
-	required MessageType type = 3 [default = DATA];
+	required int32 type = 3;
 	
-	optional vector2D our_robot_position = 4;
-	optional double our_robot_angle = 5;
+	optional float our_robot_position_x = 4;
+	optional float our_robot_position_y = 5;
+	optional double our_robot_angle = 6;
 	
-	optional vector2D opp_robot_position = 6;
-	optional double opp_robot_angle = 7;
+	optional float opp_robot_position_x = 7;
+	optional float opp_robot_position_y = 8;
+	optional double opp_robot_angle = 9;
 
-	repeated shape shapes = 8;	
+	repeated shape shapes = 10;	
 	
-	optional Mission1 mission1_data = 9;
-	optional Mission2 mission2_data = 10;
-	optional Mission3 mission3_data = 11;
+	//Mission1	
+	optional bool mission1_isValid = 11;
+	optional float mission1_region1_tl_x = 12;
+	optional float mission1_region1_tl_y = 13;
+	optional float mission1_region1_br_x = 14;
+	optional float mission1_region1_br_y = 15;
+		
+	optional float mission1_region2_tl_x = 16;
+	optional float mission1_region2_tl_y = 17;
+	optional float mission1_region2_br_x = 18;
+	optional float mission1_region2_br_y = 19;
+		
+	optional float mission1_end_x = 20;
+	optional float mission1_end_y = 21;
+	
+	//Mission2
+	optional bool mission2_isValid = 22;
+
+	optional float mission2_end_x = 23;
+	optional float mission2_end_y = 24;
+	
+	repeated line mission2_lines = 25;
+
+	//Mission3
+	optional bool mission3_isValid = 26;
+
+	optional bool mission3_isAttacker = 27;
+		
+	optional float  mission3_circularBorde_x = 28;
+	optional float  mission3_circularBorde_y = 29;
+		
+	optional float  mission3_goal1_x = 30;
+	optional float  mission3_goal1_y = 31;
+		
+	optional float  mission3_goal2_x = 32;
+	optional float  mission3_goal2_y = 33;
 }

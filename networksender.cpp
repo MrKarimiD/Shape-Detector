@@ -13,7 +13,7 @@ void NetworkSender::configure(QString ip, quint16 port)
     this->port = port;
 }
 
-void NetworkSender::sendData(std::string out)
+void NetworkSender::sendData(QByteArray out)
 {
     qDebug()<<"Sending Data...";
     udpSocket->writeDatagram(out.data(), out.size(),

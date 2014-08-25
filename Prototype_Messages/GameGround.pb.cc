@@ -18,31 +18,12 @@ namespace {
 const ::google::protobuf::Descriptor* outputPacket_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   outputPacket_reflection_ = NULL;
-const ::google::protobuf::Descriptor* outputPacket_vector2D_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  outputPacket_vector2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* outputPacket_rect2D_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  outputPacket_rect2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* outputPacket_Mission1_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  outputPacket_Mission1_reflection_ = NULL;
 const ::google::protobuf::Descriptor* outputPacket_line_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   outputPacket_line_reflection_ = NULL;
-const ::google::protobuf::Descriptor* outputPacket_Mission2_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  outputPacket_Mission2_reflection_ = NULL;
-const ::google::protobuf::Descriptor* outputPacket_circle2D_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  outputPacket_circle2D_reflection_ = NULL;
-const ::google::protobuf::Descriptor* outputPacket_Mission3_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  outputPacket_Mission3_reflection_ = NULL;
 const ::google::protobuf::Descriptor* outputPacket_shape_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   outputPacket_shape_reflection_ = NULL;
-const ::google::protobuf::EnumDescriptor* outputPacket_MessageType_descriptor_ = NULL;
 
 }  // namespace
 
@@ -54,18 +35,40 @@ void protobuf_AssignDesc_GameGround_2eproto() {
       "GameGround.proto");
   GOOGLE_CHECK(file != NULL);
   outputPacket_descriptor_ = file->message_type(0);
-  static const int outputPacket_offsets_[11] = {
+  static const int outputPacket_offsets_[33] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, numberofshape_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_position_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_position_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_position_y_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, our_robot_angle_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_position_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_position_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_position_y_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, opp_robot_angle_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, shapes_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_data_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission2_data_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_data_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_isvalid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region1_tl_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region1_tl_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region1_br_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region1_br_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region2_tl_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region2_tl_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region2_br_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_region2_br_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_end_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission1_end_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission2_isvalid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission2_end_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission2_end_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission2_lines_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_isvalid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_isattacker_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_circularborde_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_circularborde_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_goal1_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_goal1_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_goal2_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket, mission3_goal2_y_),
   };
   outputPacket_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -78,60 +81,12 @@ void protobuf_AssignDesc_GameGround_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(outputPacket));
-  outputPacket_vector2D_descriptor_ = outputPacket_descriptor_->nested_type(0);
-  static const int outputPacket_vector2D_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, y_),
-  };
-  outputPacket_vector2D_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      outputPacket_vector2D_descriptor_,
-      outputPacket_vector2D::default_instance_,
-      outputPacket_vector2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_vector2D, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(outputPacket_vector2D));
-  outputPacket_rect2D_descriptor_ = outputPacket_descriptor_->nested_type(1);
-  static const int outputPacket_rect2D_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, tl_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, br_),
-  };
-  outputPacket_rect2D_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      outputPacket_rect2D_descriptor_,
-      outputPacket_rect2D::default_instance_,
-      outputPacket_rect2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_rect2D, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(outputPacket_rect2D));
-  outputPacket_Mission1_descriptor_ = outputPacket_descriptor_->nested_type(2);
-  static const int outputPacket_Mission1_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, isvalid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, region1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, region2_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, end_),
-  };
-  outputPacket_Mission1_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      outputPacket_Mission1_descriptor_,
-      outputPacket_Mission1::default_instance_,
-      outputPacket_Mission1_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission1, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(outputPacket_Mission1));
-  outputPacket_line_descriptor_ = outputPacket_descriptor_->nested_type(3);
-  static const int outputPacket_line_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, start_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, end_),
+  outputPacket_line_descriptor_ = outputPacket_descriptor_->nested_type(0);
+  static const int outputPacket_line_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, start_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, start_y_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, end_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_line, end_y_),
   };
   outputPacket_line_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -144,63 +99,12 @@ void protobuf_AssignDesc_GameGround_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(outputPacket_line));
-  outputPacket_Mission2_descriptor_ = outputPacket_descriptor_->nested_type(4);
-  static const int outputPacket_Mission2_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, isvalid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, lines_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, end_),
-  };
-  outputPacket_Mission2_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      outputPacket_Mission2_descriptor_,
-      outputPacket_Mission2::default_instance_,
-      outputPacket_Mission2_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission2, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(outputPacket_Mission2));
-  outputPacket_circle2D_descriptor_ = outputPacket_descriptor_->nested_type(5);
-  static const int outputPacket_circle2D_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, center_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, radios_),
-  };
-  outputPacket_circle2D_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      outputPacket_circle2D_descriptor_,
-      outputPacket_circle2D::default_instance_,
-      outputPacket_circle2D_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_circle2D, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(outputPacket_circle2D));
-  outputPacket_Mission3_descriptor_ = outputPacket_descriptor_->nested_type(6);
-  static const int outputPacket_Mission3_offsets_[5] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, isvalid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, isattacker_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, circularborde_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, goal1_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, goal2_),
-  };
-  outputPacket_Mission3_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      outputPacket_Mission3_descriptor_,
-      outputPacket_Mission3::default_instance_,
-      outputPacket_Mission3_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_Mission3, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(outputPacket_Mission3));
-  outputPacket_shape_descriptor_ = outputPacket_descriptor_->nested_type(7);
-  static const int outputPacket_shape_offsets_[4] = {
+  outputPacket_shape_descriptor_ = outputPacket_descriptor_->nested_type(1);
+  static const int outputPacket_shape_offsets_[5] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, color_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, position_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, position_x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, position_y_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(outputPacket_shape, radios_),
   };
   outputPacket_shape_reflection_ =
@@ -214,7 +118,6 @@ void protobuf_AssignDesc_GameGround_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(outputPacket_shape));
-  outputPacket_MessageType_descriptor_ = outputPacket_descriptor_->enum_type(0);
 }
 
 namespace {
@@ -230,19 +133,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     outputPacket_descriptor_, &outputPacket::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    outputPacket_vector2D_descriptor_, &outputPacket_vector2D::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    outputPacket_rect2D_descriptor_, &outputPacket_rect2D::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    outputPacket_Mission1_descriptor_, &outputPacket_Mission1::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     outputPacket_line_descriptor_, &outputPacket_line::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    outputPacket_Mission2_descriptor_, &outputPacket_Mission2::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    outputPacket_circle2D_descriptor_, &outputPacket_circle2D::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    outputPacket_Mission3_descriptor_, &outputPacket_Mission3::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     outputPacket_shape_descriptor_, &outputPacket_shape::default_instance());
 }
@@ -252,20 +143,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void protobuf_ShutdownFile_GameGround_2eproto() {
   delete outputPacket::default_instance_;
   delete outputPacket_reflection_;
-  delete outputPacket_vector2D::default_instance_;
-  delete outputPacket_vector2D_reflection_;
-  delete outputPacket_rect2D::default_instance_;
-  delete outputPacket_rect2D_reflection_;
-  delete outputPacket_Mission1::default_instance_;
-  delete outputPacket_Mission1_reflection_;
   delete outputPacket_line::default_instance_;
   delete outputPacket_line_reflection_;
-  delete outputPacket_Mission2::default_instance_;
-  delete outputPacket_Mission2_reflection_;
-  delete outputPacket_circle2D::default_instance_;
-  delete outputPacket_circle2D_reflection_;
-  delete outputPacket_Mission3::default_instance_;
-  delete outputPacket_Mission3_reflection_;
   delete outputPacket_shape::default_instance_;
   delete outputPacket_shape_reflection_;
 }
@@ -277,57 +156,42 @@ void protobuf_AddDesc_GameGround_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\020GameGround.proto\"\353\t\n\014outputPacket\022\017\n\007m"
-    "ission\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\022-\n\004t"
-    "ype\030\003 \002(\0162\031.outputPacket.MessageType:\004DA"
-    "TA\0222\n\022our_robot_position\030\004 \001(\0132\026.outputP"
-    "acket.vector2D\022\027\n\017our_robot_angle\030\005 \001(\001\022"
-    "2\n\022opp_robot_position\030\006 \001(\0132\026.outputPack"
-    "et.vector2D\022\027\n\017opp_robot_angle\030\007 \001(\001\022#\n\006"
-    "shapes\030\010 \003(\0132\023.outputPacket.shape\022-\n\rmis"
-    "sion1_data\030\t \001(\0132\026.outputPacket.Mission1"
-    "\022-\n\rmission2_data\030\n \001(\0132\026.outputPacket.M"
-    "ission2\022-\n\rmission3_data\030\013 \001(\0132\026.outputP"
-    "acket.Mission3\032 \n\010vector2D\022\t\n\001x\030\001 \002(\002\022\t\n"
-    "\001y\030\002 \002(\002\032P\n\006rect2D\022\"\n\002tl\030\001 \002(\0132\026.outputP"
-    "acket.vector2D\022\"\n\002br\030\002 \002(\0132\026.outputPacke"
-    "t.vector2D\032\216\001\n\010Mission1\022\017\n\007isValid\030\001 \002(\010"
-    "\022%\n\007region1\030\002 \002(\0132\024.outputPacket.rect2D\022"
-    "%\n\007region2\030\003 \002(\0132\024.outputPacket.rect2D\022#"
-    "\n\003end\030\004 \002(\0132\026.outputPacket.vector2D\032R\n\004l"
-    "ine\022%\n\005start\030\001 \002(\0132\026.outputPacket.vector"
-    "2D\022#\n\003end\030\002 \002(\0132\026.outputPacket.vector2D\032"
-    "c\n\010Mission2\022\017\n\007isValid\030\001 \002(\010\022!\n\005lines\030\002 "
-    "\003(\0132\022.outputPacket.line\022#\n\003end\030\003 \002(\0132\026.o"
-    "utputPacket.vector2D\032B\n\010circle2D\022&\n\006cent"
-    "er\030\001 \002(\0132\026.outputPacket.vector2D\022\016\n\006radi"
-    "os\030\002 \002(\001\032\254\001\n\010Mission3\022\017\n\007isValid\030\001 \002(\010\022\022"
-    "\n\nisAttacker\030\002 \002(\010\022-\n\rcircularBorde\030\003 \002("
-    "\0132\026.outputPacket.vector2D\022%\n\005goal1\030\004 \002(\013"
-    "2\026.outputPacket.vector2D\022%\n\005goal2\030\005 \002(\0132"
-    "\026.outputPacket.vector2D\032^\n\005shape\022\014\n\004type"
-    "\030\001 \002(\t\022\r\n\005color\030\002 \002(\t\022(\n\010position\030\003 \002(\0132"
-    "\026.outputPacket.vector2D\022\016\n\006radios\030\004 \002(\001\""
-    "\'\n\013MessageType\022\016\n\nINITIALIZE\020\000\022\010\n\004DATA\020\001", 1280);
+    "\n\020GameGround.proto\"\324\010\n\014outputPacket\022\017\n\007m"
+    "ission\030\001 \002(\005\022\025\n\rnumberOfShape\030\002 \002(\005\022\014\n\004t"
+    "ype\030\003 \002(\005\022\034\n\024our_robot_position_x\030\004 \001(\002\022"
+    "\034\n\024our_robot_position_y\030\005 \001(\002\022\027\n\017our_rob"
+    "ot_angle\030\006 \001(\001\022\034\n\024opp_robot_position_x\030\007"
+    " \001(\002\022\034\n\024opp_robot_position_y\030\010 \001(\002\022\027\n\017op"
+    "p_robot_angle\030\t \001(\001\022#\n\006shapes\030\n \003(\0132\023.ou"
+    "tputPacket.shape\022\030\n\020mission1_isValid\030\013 \001"
+    "(\010\022\035\n\025mission1_region1_tl_x\030\014 \001(\002\022\035\n\025mis"
+    "sion1_region1_tl_y\030\r \001(\002\022\035\n\025mission1_reg"
+    "ion1_br_x\030\016 \001(\002\022\035\n\025mission1_region1_br_y"
+    "\030\017 \001(\002\022\035\n\025mission1_region2_tl_x\030\020 \001(\002\022\035\n"
+    "\025mission1_region2_tl_y\030\021 \001(\002\022\035\n\025mission1"
+    "_region2_br_x\030\022 \001(\002\022\035\n\025mission1_region2_"
+    "br_y\030\023 \001(\002\022\026\n\016mission1_end_x\030\024 \001(\002\022\026\n\016mi"
+    "ssion1_end_y\030\025 \001(\002\022\030\n\020mission2_isValid\030\026"
+    " \001(\010\022\026\n\016mission2_end_x\030\027 \001(\002\022\026\n\016mission2"
+    "_end_y\030\030 \001(\002\022*\n\016mission2_lines\030\031 \003(\0132\022.o"
+    "utputPacket.line\022\030\n\020mission3_isValid\030\032 \001"
+    "(\010\022\033\n\023mission3_isAttacker\030\033 \001(\010\022 \n\030missi"
+    "on3_circularBorde_x\030\034 \001(\002\022 \n\030mission3_ci"
+    "rcularBorde_y\030\035 \001(\002\022\030\n\020mission3_goal1_x\030"
+    "\036 \001(\002\022\030\n\020mission3_goal1_y\030\037 \001(\002\022\030\n\020missi"
+    "on3_goal2_x\030  \001(\002\022\030\n\020mission3_goal2_y\030! "
+    "\001(\002\032F\n\004line\022\017\n\007start_x\030\001 \002(\002\022\017\n\007start_y\030"
+    "\002 \002(\002\022\r\n\005end_x\030\003 \002(\002\022\r\n\005end_y\030\004 \002(\002\032\\\n\005s"
+    "hape\022\014\n\004type\030\001 \002(\t\022\r\n\005color\030\002 \002(\t\022\022\n\npos"
+    "ition_x\030\003 \002(\002\022\022\n\nposition_y\030\004 \002(\002\022\016\n\006rad"
+    "ios\030\005 \002(\001", 1129);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "GameGround.proto", &protobuf_RegisterTypes);
   outputPacket::default_instance_ = new outputPacket();
-  outputPacket_vector2D::default_instance_ = new outputPacket_vector2D();
-  outputPacket_rect2D::default_instance_ = new outputPacket_rect2D();
-  outputPacket_Mission1::default_instance_ = new outputPacket_Mission1();
   outputPacket_line::default_instance_ = new outputPacket_line();
-  outputPacket_Mission2::default_instance_ = new outputPacket_Mission2();
-  outputPacket_circle2D::default_instance_ = new outputPacket_circle2D();
-  outputPacket_Mission3::default_instance_ = new outputPacket_Mission3();
   outputPacket_shape::default_instance_ = new outputPacket_shape();
   outputPacket::default_instance_->InitAsDefaultInstance();
-  outputPacket_vector2D::default_instance_->InitAsDefaultInstance();
-  outputPacket_rect2D::default_instance_->InitAsDefaultInstance();
-  outputPacket_Mission1::default_instance_->InitAsDefaultInstance();
   outputPacket_line::default_instance_->InitAsDefaultInstance();
-  outputPacket_Mission2::default_instance_->InitAsDefaultInstance();
-  outputPacket_circle2D::default_instance_->InitAsDefaultInstance();
-  outputPacket_Mission3::default_instance_->InitAsDefaultInstance();
   outputPacket_shape::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_GameGround_2eproto);
 }
@@ -342,888 +206,11 @@ struct StaticDescriptorInitializer_GameGround_2eproto {
 
 // ===================================================================
 
-const ::google::protobuf::EnumDescriptor* outputPacket_MessageType_descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_MessageType_descriptor_;
-}
-bool outputPacket_MessageType_IsValid(int value) {
-  switch(value) {
-    case 0:
-    case 1:
-      return true;
-    default:
-      return false;
-  }
-}
-
 #ifndef _MSC_VER
-const outputPacket_MessageType outputPacket::INITIALIZE;
-const outputPacket_MessageType outputPacket::DATA;
-const outputPacket_MessageType outputPacket::MessageType_MIN;
-const outputPacket_MessageType outputPacket::MessageType_MAX;
-const int outputPacket::MessageType_ARRAYSIZE;
-#endif  // _MSC_VER
-#ifndef _MSC_VER
-const int outputPacket_vector2D::kXFieldNumber;
-const int outputPacket_vector2D::kYFieldNumber;
-#endif  // !_MSC_VER
-
-outputPacket_vector2D::outputPacket_vector2D()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void outputPacket_vector2D::InitAsDefaultInstance() {
-}
-
-outputPacket_vector2D::outputPacket_vector2D(const outputPacket_vector2D& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void outputPacket_vector2D::SharedCtor() {
-  _cached_size_ = 0;
-  x_ = 0;
-  y_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-outputPacket_vector2D::~outputPacket_vector2D() {
-  SharedDtor();
-}
-
-void outputPacket_vector2D::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void outputPacket_vector2D::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* outputPacket_vector2D::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_vector2D_descriptor_;
-}
-
-const outputPacket_vector2D& outputPacket_vector2D::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
-}
-
-outputPacket_vector2D* outputPacket_vector2D::default_instance_ = NULL;
-
-outputPacket_vector2D* outputPacket_vector2D::New() const {
-  return new outputPacket_vector2D;
-}
-
-void outputPacket_vector2D::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    x_ = 0;
-    y_ = 0;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool outputPacket_vector2D::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required float x = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &x_)));
-          set_has_x();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(21)) goto parse_y;
-        break;
-      }
-      
-      // required float y = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_y:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &y_)));
-          set_has_y();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void outputPacket_vector2D::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required float x = 1;
-  if (has_x()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->x(), output);
-  }
-  
-  // required float y = 2;
-  if (has_y()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->y(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* outputPacket_vector2D::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required float x = 1;
-  if (has_x()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->x(), target);
-  }
-  
-  // required float y = 2;
-  if (has_y()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->y(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int outputPacket_vector2D::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required float x = 1;
-    if (has_x()) {
-      total_size += 1 + 4;
-    }
-    
-    // required float y = 2;
-    if (has_y()) {
-      total_size += 1 + 4;
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void outputPacket_vector2D::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const outputPacket_vector2D* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_vector2D*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void outputPacket_vector2D::MergeFrom(const outputPacket_vector2D& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_x()) {
-      set_x(from.x());
-    }
-    if (from.has_y()) {
-      set_y(from.y());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void outputPacket_vector2D::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void outputPacket_vector2D::CopyFrom(const outputPacket_vector2D& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool outputPacket_vector2D::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-  
-  return true;
-}
-
-void outputPacket_vector2D::Swap(outputPacket_vector2D* other) {
-  if (other != this) {
-    std::swap(x_, other->x_);
-    std::swap(y_, other->y_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata outputPacket_vector2D::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = outputPacket_vector2D_descriptor_;
-  metadata.reflection = outputPacket_vector2D_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
-const int outputPacket_rect2D::kTlFieldNumber;
-const int outputPacket_rect2D::kBrFieldNumber;
-#endif  // !_MSC_VER
-
-outputPacket_rect2D::outputPacket_rect2D()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void outputPacket_rect2D::InitAsDefaultInstance() {
-  tl_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  br_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-}
-
-outputPacket_rect2D::outputPacket_rect2D(const outputPacket_rect2D& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void outputPacket_rect2D::SharedCtor() {
-  _cached_size_ = 0;
-  tl_ = NULL;
-  br_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-outputPacket_rect2D::~outputPacket_rect2D() {
-  SharedDtor();
-}
-
-void outputPacket_rect2D::SharedDtor() {
-  if (this != default_instance_) {
-    delete tl_;
-    delete br_;
-  }
-}
-
-void outputPacket_rect2D::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* outputPacket_rect2D::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_rect2D_descriptor_;
-}
-
-const outputPacket_rect2D& outputPacket_rect2D::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
-}
-
-outputPacket_rect2D* outputPacket_rect2D::default_instance_ = NULL;
-
-outputPacket_rect2D* outputPacket_rect2D::New() const {
-  return new outputPacket_rect2D;
-}
-
-void outputPacket_rect2D::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_tl()) {
-      if (tl_ != NULL) tl_->::outputPacket_vector2D::Clear();
-    }
-    if (has_br()) {
-      if (br_ != NULL) br_->::outputPacket_vector2D::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool outputPacket_rect2D::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .outputPacket.vector2D tl = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_tl()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_br;
-        break;
-      }
-      
-      // required .outputPacket.vector2D br = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_br:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_br()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void outputPacket_rect2D::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .outputPacket.vector2D tl = 1;
-  if (has_tl()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->tl(), output);
-  }
-  
-  // required .outputPacket.vector2D br = 2;
-  if (has_br()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->br(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* outputPacket_rect2D::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required .outputPacket.vector2D tl = 1;
-  if (has_tl()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->tl(), target);
-  }
-  
-  // required .outputPacket.vector2D br = 2;
-  if (has_br()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->br(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int outputPacket_rect2D::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .outputPacket.vector2D tl = 1;
-    if (has_tl()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->tl());
-    }
-    
-    // required .outputPacket.vector2D br = 2;
-    if (has_br()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->br());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void outputPacket_rect2D::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const outputPacket_rect2D* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_rect2D*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void outputPacket_rect2D::MergeFrom(const outputPacket_rect2D& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_tl()) {
-      mutable_tl()->::outputPacket_vector2D::MergeFrom(from.tl());
-    }
-    if (from.has_br()) {
-      mutable_br()->::outputPacket_vector2D::MergeFrom(from.br());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void outputPacket_rect2D::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void outputPacket_rect2D::CopyFrom(const outputPacket_rect2D& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool outputPacket_rect2D::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-  
-  if (has_tl()) {
-    if (!this->tl().IsInitialized()) return false;
-  }
-  if (has_br()) {
-    if (!this->br().IsInitialized()) return false;
-  }
-  return true;
-}
-
-void outputPacket_rect2D::Swap(outputPacket_rect2D* other) {
-  if (other != this) {
-    std::swap(tl_, other->tl_);
-    std::swap(br_, other->br_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata outputPacket_rect2D::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = outputPacket_rect2D_descriptor_;
-  metadata.reflection = outputPacket_rect2D_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
-const int outputPacket_Mission1::kIsValidFieldNumber;
-const int outputPacket_Mission1::kRegion1FieldNumber;
-const int outputPacket_Mission1::kRegion2FieldNumber;
-const int outputPacket_Mission1::kEndFieldNumber;
-#endif  // !_MSC_VER
-
-outputPacket_Mission1::outputPacket_Mission1()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void outputPacket_Mission1::InitAsDefaultInstance() {
-  region1_ = const_cast< ::outputPacket_rect2D*>(&::outputPacket_rect2D::default_instance());
-  region2_ = const_cast< ::outputPacket_rect2D*>(&::outputPacket_rect2D::default_instance());
-  end_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-}
-
-outputPacket_Mission1::outputPacket_Mission1(const outputPacket_Mission1& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void outputPacket_Mission1::SharedCtor() {
-  _cached_size_ = 0;
-  isvalid_ = false;
-  region1_ = NULL;
-  region2_ = NULL;
-  end_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-outputPacket_Mission1::~outputPacket_Mission1() {
-  SharedDtor();
-}
-
-void outputPacket_Mission1::SharedDtor() {
-  if (this != default_instance_) {
-    delete region1_;
-    delete region2_;
-    delete end_;
-  }
-}
-
-void outputPacket_Mission1::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* outputPacket_Mission1::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_Mission1_descriptor_;
-}
-
-const outputPacket_Mission1& outputPacket_Mission1::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
-}
-
-outputPacket_Mission1* outputPacket_Mission1::default_instance_ = NULL;
-
-outputPacket_Mission1* outputPacket_Mission1::New() const {
-  return new outputPacket_Mission1;
-}
-
-void outputPacket_Mission1::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    isvalid_ = false;
-    if (has_region1()) {
-      if (region1_ != NULL) region1_->::outputPacket_rect2D::Clear();
-    }
-    if (has_region2()) {
-      if (region2_ != NULL) region2_->::outputPacket_rect2D::Clear();
-    }
-    if (has_end()) {
-      if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool outputPacket_Mission1::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bool isValid = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &isvalid_)));
-          set_has_isvalid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_region1;
-        break;
-      }
-      
-      // required .outputPacket.rect2D region1 = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_region1:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_region1()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_region2;
-        break;
-      }
-      
-      // required .outputPacket.rect2D region2 = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_region2:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_region2()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_end;
-        break;
-      }
-      
-      // required .outputPacket.vector2D end = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_end:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_end()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void outputPacket_Mission1::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required bool isValid = 1;
-  if (has_isvalid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isvalid(), output);
-  }
-  
-  // required .outputPacket.rect2D region1 = 2;
-  if (has_region1()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->region1(), output);
-  }
-  
-  // required .outputPacket.rect2D region2 = 3;
-  if (has_region2()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->region2(), output);
-  }
-  
-  // required .outputPacket.vector2D end = 4;
-  if (has_end()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->end(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* outputPacket_Mission1::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required bool isValid = 1;
-  if (has_isvalid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isvalid(), target);
-  }
-  
-  // required .outputPacket.rect2D region1 = 2;
-  if (has_region1()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->region1(), target);
-  }
-  
-  // required .outputPacket.rect2D region2 = 3;
-  if (has_region2()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->region2(), target);
-  }
-  
-  // required .outputPacket.vector2D end = 4;
-  if (has_end()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        4, this->end(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int outputPacket_Mission1::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bool isValid = 1;
-    if (has_isvalid()) {
-      total_size += 1 + 1;
-    }
-    
-    // required .outputPacket.rect2D region1 = 2;
-    if (has_region1()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->region1());
-    }
-    
-    // required .outputPacket.rect2D region2 = 3;
-    if (has_region2()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->region2());
-    }
-    
-    // required .outputPacket.vector2D end = 4;
-    if (has_end()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->end());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void outputPacket_Mission1::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const outputPacket_Mission1* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_Mission1*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void outputPacket_Mission1::MergeFrom(const outputPacket_Mission1& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_isvalid()) {
-      set_isvalid(from.isvalid());
-    }
-    if (from.has_region1()) {
-      mutable_region1()->::outputPacket_rect2D::MergeFrom(from.region1());
-    }
-    if (from.has_region2()) {
-      mutable_region2()->::outputPacket_rect2D::MergeFrom(from.region2());
-    }
-    if (from.has_end()) {
-      mutable_end()->::outputPacket_vector2D::MergeFrom(from.end());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void outputPacket_Mission1::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void outputPacket_Mission1::CopyFrom(const outputPacket_Mission1& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool outputPacket_Mission1::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
-  
-  if (has_region1()) {
-    if (!this->region1().IsInitialized()) return false;
-  }
-  if (has_region2()) {
-    if (!this->region2().IsInitialized()) return false;
-  }
-  if (has_end()) {
-    if (!this->end().IsInitialized()) return false;
-  }
-  return true;
-}
-
-void outputPacket_Mission1::Swap(outputPacket_Mission1* other) {
-  if (other != this) {
-    std::swap(isvalid_, other->isvalid_);
-    std::swap(region1_, other->region1_);
-    std::swap(region2_, other->region2_);
-    std::swap(end_, other->end_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata outputPacket_Mission1::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = outputPacket_Mission1_descriptor_;
-  metadata.reflection = outputPacket_Mission1_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
-const int outputPacket_line::kStartFieldNumber;
-const int outputPacket_line::kEndFieldNumber;
+const int outputPacket_line::kStartXFieldNumber;
+const int outputPacket_line::kStartYFieldNumber;
+const int outputPacket_line::kEndXFieldNumber;
+const int outputPacket_line::kEndYFieldNumber;
 #endif  // !_MSC_VER
 
 outputPacket_line::outputPacket_line()
@@ -1232,8 +219,6 @@ outputPacket_line::outputPacket_line()
 }
 
 void outputPacket_line::InitAsDefaultInstance() {
-  start_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  end_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
 outputPacket_line::outputPacket_line(const outputPacket_line& from)
@@ -1244,8 +229,10 @@ outputPacket_line::outputPacket_line(const outputPacket_line& from)
 
 void outputPacket_line::SharedCtor() {
   _cached_size_ = 0;
-  start_ = NULL;
-  end_ = NULL;
+  start_x_ = 0;
+  start_y_ = 0;
+  end_x_ = 0;
+  end_y_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1255,8 +242,6 @@ outputPacket_line::~outputPacket_line() {
 
 void outputPacket_line::SharedDtor() {
   if (this != default_instance_) {
-    delete start_;
-    delete end_;
   }
 }
 
@@ -1282,12 +267,10 @@ outputPacket_line* outputPacket_line::New() const {
 
 void outputPacket_line::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_start()) {
-      if (start_ != NULL) start_->::outputPacket_vector2D::Clear();
-    }
-    if (has_end()) {
-      if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
-    }
+    start_x_ = 0;
+    start_y_ = 0;
+    end_x_ = 0;
+    end_y_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1299,26 +282,62 @@ bool outputPacket_line::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .outputPacket.vector2D start = 1;
+      // required float start_x = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_start()));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &start_x_)));
+          set_has_start_x();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_end;
+        if (input->ExpectTag(21)) goto parse_start_y;
         break;
       }
       
-      // required .outputPacket.vector2D end = 2;
+      // required float start_y = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_end:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_end()));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_start_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &start_y_)));
+          set_has_start_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(29)) goto parse_end_x;
+        break;
+      }
+      
+      // required float end_x = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_end_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &end_x_)));
+          set_has_end_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(37)) goto parse_end_y;
+        break;
+      }
+      
+      // required float end_y = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_end_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &end_y_)));
+          set_has_end_y();
         } else {
           goto handle_uninterpreted;
         }
@@ -1344,16 +363,24 @@ bool outputPacket_line::MergePartialFromCodedStream(
 
 void outputPacket_line::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .outputPacket.vector2D start = 1;
-  if (has_start()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->start(), output);
+  // required float start_x = 1;
+  if (has_start_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->start_x(), output);
   }
   
-  // required .outputPacket.vector2D end = 2;
-  if (has_end()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->end(), output);
+  // required float start_y = 2;
+  if (has_start_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->start_y(), output);
+  }
+  
+  // required float end_x = 3;
+  if (has_end_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->end_x(), output);
+  }
+  
+  // required float end_y = 4;
+  if (has_end_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->end_y(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -1364,18 +391,24 @@ void outputPacket_line::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* outputPacket_line::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required .outputPacket.vector2D start = 1;
-  if (has_start()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->start(), target);
+  // required float start_x = 1;
+  if (has_start_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->start_x(), target);
   }
   
-  // required .outputPacket.vector2D end = 2;
-  if (has_end()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->end(), target);
+  // required float start_y = 2;
+  if (has_start_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->start_y(), target);
+  }
+  
+  // required float end_x = 3;
+  if (has_end_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->end_x(), target);
+  }
+  
+  // required float end_y = 4;
+  if (has_end_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->end_y(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -1389,18 +422,24 @@ int outputPacket_line::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .outputPacket.vector2D start = 1;
-    if (has_start()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->start());
+    // required float start_x = 1;
+    if (has_start_x()) {
+      total_size += 1 + 4;
     }
     
-    // required .outputPacket.vector2D end = 2;
-    if (has_end()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->end());
+    // required float start_y = 2;
+    if (has_start_y()) {
+      total_size += 1 + 4;
+    }
+    
+    // required float end_x = 3;
+    if (has_end_x()) {
+      total_size += 1 + 4;
+    }
+    
+    // required float end_y = 4;
+    if (has_end_y()) {
+      total_size += 1 + 4;
     }
     
   }
@@ -1430,11 +469,17 @@ void outputPacket_line::MergeFrom(const ::google::protobuf::Message& from) {
 void outputPacket_line::MergeFrom(const outputPacket_line& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_start()) {
-      mutable_start()->::outputPacket_vector2D::MergeFrom(from.start());
+    if (from.has_start_x()) {
+      set_start_x(from.start_x());
     }
-    if (from.has_end()) {
-      mutable_end()->::outputPacket_vector2D::MergeFrom(from.end());
+    if (from.has_start_y()) {
+      set_start_y(from.start_y());
+    }
+    if (from.has_end_x()) {
+      set_end_x(from.end_x());
+    }
+    if (from.has_end_y()) {
+      set_end_y(from.end_y());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1453,21 +498,17 @@ void outputPacket_line::CopyFrom(const outputPacket_line& from) {
 }
 
 bool outputPacket_line::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
   
-  if (has_start()) {
-    if (!this->start().IsInitialized()) return false;
-  }
-  if (has_end()) {
-    if (!this->end().IsInitialized()) return false;
-  }
   return true;
 }
 
 void outputPacket_line::Swap(outputPacket_line* other) {
   if (other != this) {
-    std::swap(start_, other->start_);
-    std::swap(end_, other->end_);
+    std::swap(start_x_, other->start_x_);
+    std::swap(start_y_, other->start_y_);
+    std::swap(end_x_, other->end_x_);
+    std::swap(end_y_, other->end_y_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1486,948 +527,10 @@ void outputPacket_line::Swap(outputPacket_line* other) {
 // -------------------------------------------------------------------
 
 #ifndef _MSC_VER
-const int outputPacket_Mission2::kIsValidFieldNumber;
-const int outputPacket_Mission2::kLinesFieldNumber;
-const int outputPacket_Mission2::kEndFieldNumber;
-#endif  // !_MSC_VER
-
-outputPacket_Mission2::outputPacket_Mission2()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void outputPacket_Mission2::InitAsDefaultInstance() {
-  end_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-}
-
-outputPacket_Mission2::outputPacket_Mission2(const outputPacket_Mission2& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void outputPacket_Mission2::SharedCtor() {
-  _cached_size_ = 0;
-  isvalid_ = false;
-  end_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-outputPacket_Mission2::~outputPacket_Mission2() {
-  SharedDtor();
-}
-
-void outputPacket_Mission2::SharedDtor() {
-  if (this != default_instance_) {
-    delete end_;
-  }
-}
-
-void outputPacket_Mission2::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* outputPacket_Mission2::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_Mission2_descriptor_;
-}
-
-const outputPacket_Mission2& outputPacket_Mission2::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
-}
-
-outputPacket_Mission2* outputPacket_Mission2::default_instance_ = NULL;
-
-outputPacket_Mission2* outputPacket_Mission2::New() const {
-  return new outputPacket_Mission2;
-}
-
-void outputPacket_Mission2::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    isvalid_ = false;
-    if (has_end()) {
-      if (end_ != NULL) end_->::outputPacket_vector2D::Clear();
-    }
-  }
-  lines_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool outputPacket_Mission2::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bool isValid = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &isvalid_)));
-          set_has_isvalid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_lines;
-        break;
-      }
-      
-      // repeated .outputPacket.line lines = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_lines:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_lines()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_lines;
-        if (input->ExpectTag(26)) goto parse_end;
-        break;
-      }
-      
-      // required .outputPacket.vector2D end = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_end:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_end()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void outputPacket_Mission2::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required bool isValid = 1;
-  if (has_isvalid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isvalid(), output);
-  }
-  
-  // repeated .outputPacket.line lines = 2;
-  for (int i = 0; i < this->lines_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->lines(i), output);
-  }
-  
-  // required .outputPacket.vector2D end = 3;
-  if (has_end()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->end(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* outputPacket_Mission2::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required bool isValid = 1;
-  if (has_isvalid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isvalid(), target);
-  }
-  
-  // repeated .outputPacket.line lines = 2;
-  for (int i = 0; i < this->lines_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->lines(i), target);
-  }
-  
-  // required .outputPacket.vector2D end = 3;
-  if (has_end()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->end(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int outputPacket_Mission2::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bool isValid = 1;
-    if (has_isvalid()) {
-      total_size += 1 + 1;
-    }
-    
-    // required .outputPacket.vector2D end = 3;
-    if (has_end()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->end());
-    }
-    
-  }
-  // repeated .outputPacket.line lines = 2;
-  total_size += 1 * this->lines_size();
-  for (int i = 0; i < this->lines_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->lines(i));
-  }
-  
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void outputPacket_Mission2::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const outputPacket_Mission2* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_Mission2*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void outputPacket_Mission2::MergeFrom(const outputPacket_Mission2& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  lines_.MergeFrom(from.lines_);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_isvalid()) {
-      set_isvalid(from.isvalid());
-    }
-    if (from.has_end()) {
-      mutable_end()->::outputPacket_vector2D::MergeFrom(from.end());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void outputPacket_Mission2::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void outputPacket_Mission2::CopyFrom(const outputPacket_Mission2& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool outputPacket_Mission2::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000005) != 0x00000005) return false;
-  
-  for (int i = 0; i < lines_size(); i++) {
-    if (!this->lines(i).IsInitialized()) return false;
-  }
-  if (has_end()) {
-    if (!this->end().IsInitialized()) return false;
-  }
-  return true;
-}
-
-void outputPacket_Mission2::Swap(outputPacket_Mission2* other) {
-  if (other != this) {
-    std::swap(isvalid_, other->isvalid_);
-    lines_.Swap(&other->lines_);
-    std::swap(end_, other->end_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata outputPacket_Mission2::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = outputPacket_Mission2_descriptor_;
-  metadata.reflection = outputPacket_Mission2_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
-const int outputPacket_circle2D::kCenterFieldNumber;
-const int outputPacket_circle2D::kRadiosFieldNumber;
-#endif  // !_MSC_VER
-
-outputPacket_circle2D::outputPacket_circle2D()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void outputPacket_circle2D::InitAsDefaultInstance() {
-  center_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-}
-
-outputPacket_circle2D::outputPacket_circle2D(const outputPacket_circle2D& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void outputPacket_circle2D::SharedCtor() {
-  _cached_size_ = 0;
-  center_ = NULL;
-  radios_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-outputPacket_circle2D::~outputPacket_circle2D() {
-  SharedDtor();
-}
-
-void outputPacket_circle2D::SharedDtor() {
-  if (this != default_instance_) {
-    delete center_;
-  }
-}
-
-void outputPacket_circle2D::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* outputPacket_circle2D::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_circle2D_descriptor_;
-}
-
-const outputPacket_circle2D& outputPacket_circle2D::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
-}
-
-outputPacket_circle2D* outputPacket_circle2D::default_instance_ = NULL;
-
-outputPacket_circle2D* outputPacket_circle2D::New() const {
-  return new outputPacket_circle2D;
-}
-
-void outputPacket_circle2D::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_center()) {
-      if (center_ != NULL) center_->::outputPacket_vector2D::Clear();
-    }
-    radios_ = 0;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool outputPacket_circle2D::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required .outputPacket.vector2D center = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_center()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(17)) goto parse_radios;
-        break;
-      }
-      
-      // required double radios = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
-         parse_radios:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   double, ::google::protobuf::internal::WireFormatLite::TYPE_DOUBLE>(
-                 input, &radios_)));
-          set_has_radios();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void outputPacket_circle2D::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required .outputPacket.vector2D center = 1;
-  if (has_center()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->center(), output);
-  }
-  
-  // required double radios = 2;
-  if (has_radios()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(2, this->radios(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* outputPacket_circle2D::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required .outputPacket.vector2D center = 1;
-  if (has_center()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->center(), target);
-  }
-  
-  // required double radios = 2;
-  if (has_radios()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(2, this->radios(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int outputPacket_circle2D::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required .outputPacket.vector2D center = 1;
-    if (has_center()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->center());
-    }
-    
-    // required double radios = 2;
-    if (has_radios()) {
-      total_size += 1 + 8;
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void outputPacket_circle2D::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const outputPacket_circle2D* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_circle2D*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void outputPacket_circle2D::MergeFrom(const outputPacket_circle2D& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_center()) {
-      mutable_center()->::outputPacket_vector2D::MergeFrom(from.center());
-    }
-    if (from.has_radios()) {
-      set_radios(from.radios());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void outputPacket_circle2D::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void outputPacket_circle2D::CopyFrom(const outputPacket_circle2D& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool outputPacket_circle2D::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
-  
-  if (has_center()) {
-    if (!this->center().IsInitialized()) return false;
-  }
-  return true;
-}
-
-void outputPacket_circle2D::Swap(outputPacket_circle2D* other) {
-  if (other != this) {
-    std::swap(center_, other->center_);
-    std::swap(radios_, other->radios_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata outputPacket_circle2D::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = outputPacket_circle2D_descriptor_;
-  metadata.reflection = outputPacket_circle2D_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
-const int outputPacket_Mission3::kIsValidFieldNumber;
-const int outputPacket_Mission3::kIsAttackerFieldNumber;
-const int outputPacket_Mission3::kCircularBordeFieldNumber;
-const int outputPacket_Mission3::kGoal1FieldNumber;
-const int outputPacket_Mission3::kGoal2FieldNumber;
-#endif  // !_MSC_VER
-
-outputPacket_Mission3::outputPacket_Mission3()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void outputPacket_Mission3::InitAsDefaultInstance() {
-  circularborde_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  goal1_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  goal2_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-}
-
-outputPacket_Mission3::outputPacket_Mission3(const outputPacket_Mission3& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void outputPacket_Mission3::SharedCtor() {
-  _cached_size_ = 0;
-  isvalid_ = false;
-  isattacker_ = false;
-  circularborde_ = NULL;
-  goal1_ = NULL;
-  goal2_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-outputPacket_Mission3::~outputPacket_Mission3() {
-  SharedDtor();
-}
-
-void outputPacket_Mission3::SharedDtor() {
-  if (this != default_instance_) {
-    delete circularborde_;
-    delete goal1_;
-    delete goal2_;
-  }
-}
-
-void outputPacket_Mission3::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* outputPacket_Mission3::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return outputPacket_Mission3_descriptor_;
-}
-
-const outputPacket_Mission3& outputPacket_Mission3::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_GameGround_2eproto();  return *default_instance_;
-}
-
-outputPacket_Mission3* outputPacket_Mission3::default_instance_ = NULL;
-
-outputPacket_Mission3* outputPacket_Mission3::New() const {
-  return new outputPacket_Mission3;
-}
-
-void outputPacket_Mission3::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    isvalid_ = false;
-    isattacker_ = false;
-    if (has_circularborde()) {
-      if (circularborde_ != NULL) circularborde_->::outputPacket_vector2D::Clear();
-    }
-    if (has_goal1()) {
-      if (goal1_ != NULL) goal1_->::outputPacket_vector2D::Clear();
-    }
-    if (has_goal2()) {
-      if (goal2_ != NULL) goal2_->::outputPacket_vector2D::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool outputPacket_Mission3::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required bool isValid = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &isvalid_)));
-          set_has_isvalid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_isAttacker;
-        break;
-      }
-      
-      // required bool isAttacker = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_isAttacker:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &isattacker_)));
-          set_has_isattacker();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_circularBorde;
-        break;
-      }
-      
-      // required .outputPacket.vector2D circularBorde = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_circularBorde:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_circularborde()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_goal1;
-        break;
-      }
-      
-      // required .outputPacket.vector2D goal1 = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_goal1:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_goal1()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(42)) goto parse_goal2;
-        break;
-      }
-      
-      // required .outputPacket.vector2D goal2 = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_goal2:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_goal2()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-      
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void outputPacket_Mission3::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // required bool isValid = 1;
-  if (has_isvalid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(1, this->isvalid(), output);
-  }
-  
-  // required bool isAttacker = 2;
-  if (has_isattacker()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(2, this->isattacker(), output);
-  }
-  
-  // required .outputPacket.vector2D circularBorde = 3;
-  if (has_circularborde()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->circularborde(), output);
-  }
-  
-  // required .outputPacket.vector2D goal1 = 4;
-  if (has_goal1()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->goal1(), output);
-  }
-  
-  // required .outputPacket.vector2D goal2 = 5;
-  if (has_goal2()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->goal2(), output);
-  }
-  
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* outputPacket_Mission3::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // required bool isValid = 1;
-  if (has_isvalid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(1, this->isvalid(), target);
-  }
-  
-  // required bool isAttacker = 2;
-  if (has_isattacker()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(2, this->isattacker(), target);
-  }
-  
-  // required .outputPacket.vector2D circularBorde = 3;
-  if (has_circularborde()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->circularborde(), target);
-  }
-  
-  // required .outputPacket.vector2D goal1 = 4;
-  if (has_goal1()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        4, this->goal1(), target);
-  }
-  
-  // required .outputPacket.vector2D goal2 = 5;
-  if (has_goal2()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        5, this->goal2(), target);
-  }
-  
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int outputPacket_Mission3::ByteSize() const {
-  int total_size = 0;
-  
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required bool isValid = 1;
-    if (has_isvalid()) {
-      total_size += 1 + 1;
-    }
-    
-    // required bool isAttacker = 2;
-    if (has_isattacker()) {
-      total_size += 1 + 1;
-    }
-    
-    // required .outputPacket.vector2D circularBorde = 3;
-    if (has_circularborde()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->circularborde());
-    }
-    
-    // required .outputPacket.vector2D goal1 = 4;
-    if (has_goal1()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->goal1());
-    }
-    
-    // required .outputPacket.vector2D goal2 = 5;
-    if (has_goal2()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->goal2());
-    }
-    
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void outputPacket_Mission3::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const outputPacket_Mission3* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const outputPacket_Mission3*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void outputPacket_Mission3::MergeFrom(const outputPacket_Mission3& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_isvalid()) {
-      set_isvalid(from.isvalid());
-    }
-    if (from.has_isattacker()) {
-      set_isattacker(from.isattacker());
-    }
-    if (from.has_circularborde()) {
-      mutable_circularborde()->::outputPacket_vector2D::MergeFrom(from.circularborde());
-    }
-    if (from.has_goal1()) {
-      mutable_goal1()->::outputPacket_vector2D::MergeFrom(from.goal1());
-    }
-    if (from.has_goal2()) {
-      mutable_goal2()->::outputPacket_vector2D::MergeFrom(from.goal2());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void outputPacket_Mission3::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void outputPacket_Mission3::CopyFrom(const outputPacket_Mission3& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool outputPacket_Mission3::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
-  
-  if (has_circularborde()) {
-    if (!this->circularborde().IsInitialized()) return false;
-  }
-  if (has_goal1()) {
-    if (!this->goal1().IsInitialized()) return false;
-  }
-  if (has_goal2()) {
-    if (!this->goal2().IsInitialized()) return false;
-  }
-  return true;
-}
-
-void outputPacket_Mission3::Swap(outputPacket_Mission3* other) {
-  if (other != this) {
-    std::swap(isvalid_, other->isvalid_);
-    std::swap(isattacker_, other->isattacker_);
-    std::swap(circularborde_, other->circularborde_);
-    std::swap(goal1_, other->goal1_);
-    std::swap(goal2_, other->goal2_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata outputPacket_Mission3::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = outputPacket_Mission3_descriptor_;
-  metadata.reflection = outputPacket_Mission3_reflection_;
-  return metadata;
-}
-
-
-// -------------------------------------------------------------------
-
-#ifndef _MSC_VER
 const int outputPacket_shape::kTypeFieldNumber;
 const int outputPacket_shape::kColorFieldNumber;
-const int outputPacket_shape::kPositionFieldNumber;
+const int outputPacket_shape::kPositionXFieldNumber;
+const int outputPacket_shape::kPositionYFieldNumber;
 const int outputPacket_shape::kRadiosFieldNumber;
 #endif  // !_MSC_VER
 
@@ -2437,7 +540,6 @@ outputPacket_shape::outputPacket_shape()
 }
 
 void outputPacket_shape::InitAsDefaultInstance() {
-  position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
 }
 
 outputPacket_shape::outputPacket_shape(const outputPacket_shape& from)
@@ -2450,7 +552,8 @@ void outputPacket_shape::SharedCtor() {
   _cached_size_ = 0;
   type_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   color_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  position_ = NULL;
+  position_x_ = 0;
+  position_y_ = 0;
   radios_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -2467,7 +570,6 @@ void outputPacket_shape::SharedDtor() {
     delete color_;
   }
   if (this != default_instance_) {
-    delete position_;
   }
 }
 
@@ -2503,9 +605,8 @@ void outputPacket_shape::Clear() {
         color_->clear();
       }
     }
-    if (has_position()) {
-      if (position_ != NULL) position_->::outputPacket_vector2D::Clear();
-    }
+    position_x_ = 0;
+    position_y_ = 0;
     radios_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -2547,26 +648,44 @@ bool outputPacket_shape::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_position;
+        if (input->ExpectTag(29)) goto parse_position_x;
         break;
       }
       
-      // required .outputPacket.vector2D position = 3;
+      // required float position_x = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_position:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_position()));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_position_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &position_x_)));
+          set_has_position_x();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(33)) goto parse_radios;
+        if (input->ExpectTag(37)) goto parse_position_y;
         break;
       }
       
-      // required double radios = 4;
+      // required float position_y = 4;
       case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_position_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &position_y_)));
+          set_has_position_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(41)) goto parse_radios;
+        break;
+      }
+      
+      // required double radios = 5;
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_radios:
@@ -2617,15 +736,19 @@ void outputPacket_shape::SerializeWithCachedSizes(
       2, this->color(), output);
   }
   
-  // required .outputPacket.vector2D position = 3;
-  if (has_position()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->position(), output);
+  // required float position_x = 3;
+  if (has_position_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->position_x(), output);
   }
   
-  // required double radios = 4;
+  // required float position_y = 4;
+  if (has_position_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->position_y(), output);
+  }
+  
+  // required double radios = 5;
   if (has_radios()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(4, this->radios(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->radios(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -2656,16 +779,19 @@ void outputPacket_shape::SerializeWithCachedSizes(
         2, this->color(), target);
   }
   
-  // required .outputPacket.vector2D position = 3;
-  if (has_position()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->position(), target);
+  // required float position_x = 3;
+  if (has_position_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->position_x(), target);
   }
   
-  // required double radios = 4;
+  // required float position_y = 4;
+  if (has_position_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->position_y(), target);
+  }
+  
+  // required double radios = 5;
   if (has_radios()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(4, this->radios(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->radios(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -2693,14 +819,17 @@ int outputPacket_shape::ByteSize() const {
           this->color());
     }
     
-    // required .outputPacket.vector2D position = 3;
-    if (has_position()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->position());
+    // required float position_x = 3;
+    if (has_position_x()) {
+      total_size += 1 + 4;
     }
     
-    // required double radios = 4;
+    // required float position_y = 4;
+    if (has_position_y()) {
+      total_size += 1 + 4;
+    }
+    
+    // required double radios = 5;
     if (has_radios()) {
       total_size += 1 + 8;
     }
@@ -2738,8 +867,11 @@ void outputPacket_shape::MergeFrom(const outputPacket_shape& from) {
     if (from.has_color()) {
       set_color(from.color());
     }
-    if (from.has_position()) {
-      mutable_position()->::outputPacket_vector2D::MergeFrom(from.position());
+    if (from.has_position_x()) {
+      set_position_x(from.position_x());
+    }
+    if (from.has_position_y()) {
+      set_position_y(from.position_y());
     }
     if (from.has_radios()) {
       set_radios(from.radios());
@@ -2761,11 +893,8 @@ void outputPacket_shape::CopyFrom(const outputPacket_shape& from) {
 }
 
 bool outputPacket_shape::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
+  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
   
-  if (has_position()) {
-    if (!this->position().IsInitialized()) return false;
-  }
   return true;
 }
 
@@ -2773,7 +902,8 @@ void outputPacket_shape::Swap(outputPacket_shape* other) {
   if (other != this) {
     std::swap(type_, other->type_);
     std::swap(color_, other->color_);
-    std::swap(position_, other->position_);
+    std::swap(position_x_, other->position_x_);
+    std::swap(position_y_, other->position_y_);
     std::swap(radios_, other->radios_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -2796,14 +926,36 @@ void outputPacket_shape::Swap(outputPacket_shape* other) {
 const int outputPacket::kMissionFieldNumber;
 const int outputPacket::kNumberOfShapeFieldNumber;
 const int outputPacket::kTypeFieldNumber;
-const int outputPacket::kOurRobotPositionFieldNumber;
+const int outputPacket::kOurRobotPositionXFieldNumber;
+const int outputPacket::kOurRobotPositionYFieldNumber;
 const int outputPacket::kOurRobotAngleFieldNumber;
-const int outputPacket::kOppRobotPositionFieldNumber;
+const int outputPacket::kOppRobotPositionXFieldNumber;
+const int outputPacket::kOppRobotPositionYFieldNumber;
 const int outputPacket::kOppRobotAngleFieldNumber;
 const int outputPacket::kShapesFieldNumber;
-const int outputPacket::kMission1DataFieldNumber;
-const int outputPacket::kMission2DataFieldNumber;
-const int outputPacket::kMission3DataFieldNumber;
+const int outputPacket::kMission1IsValidFieldNumber;
+const int outputPacket::kMission1Region1TlXFieldNumber;
+const int outputPacket::kMission1Region1TlYFieldNumber;
+const int outputPacket::kMission1Region1BrXFieldNumber;
+const int outputPacket::kMission1Region1BrYFieldNumber;
+const int outputPacket::kMission1Region2TlXFieldNumber;
+const int outputPacket::kMission1Region2TlYFieldNumber;
+const int outputPacket::kMission1Region2BrXFieldNumber;
+const int outputPacket::kMission1Region2BrYFieldNumber;
+const int outputPacket::kMission1EndXFieldNumber;
+const int outputPacket::kMission1EndYFieldNumber;
+const int outputPacket::kMission2IsValidFieldNumber;
+const int outputPacket::kMission2EndXFieldNumber;
+const int outputPacket::kMission2EndYFieldNumber;
+const int outputPacket::kMission2LinesFieldNumber;
+const int outputPacket::kMission3IsValidFieldNumber;
+const int outputPacket::kMission3IsAttackerFieldNumber;
+const int outputPacket::kMission3CircularBordeXFieldNumber;
+const int outputPacket::kMission3CircularBordeYFieldNumber;
+const int outputPacket::kMission3Goal1XFieldNumber;
+const int outputPacket::kMission3Goal1YFieldNumber;
+const int outputPacket::kMission3Goal2XFieldNumber;
+const int outputPacket::kMission3Goal2YFieldNumber;
 #endif  // !_MSC_VER
 
 outputPacket::outputPacket()
@@ -2812,11 +964,6 @@ outputPacket::outputPacket()
 }
 
 void outputPacket::InitAsDefaultInstance() {
-  our_robot_position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  opp_robot_position_ = const_cast< ::outputPacket_vector2D*>(&::outputPacket_vector2D::default_instance());
-  mission1_data_ = const_cast< ::outputPacket_Mission1*>(&::outputPacket_Mission1::default_instance());
-  mission2_data_ = const_cast< ::outputPacket_Mission2*>(&::outputPacket_Mission2::default_instance());
-  mission3_data_ = const_cast< ::outputPacket_Mission3*>(&::outputPacket_Mission3::default_instance());
 }
 
 outputPacket::outputPacket(const outputPacket& from)
@@ -2829,14 +976,35 @@ void outputPacket::SharedCtor() {
   _cached_size_ = 0;
   mission_ = 0;
   numberofshape_ = 0;
-  type_ = 1;
-  our_robot_position_ = NULL;
+  type_ = 0;
+  our_robot_position_x_ = 0;
+  our_robot_position_y_ = 0;
   our_robot_angle_ = 0;
-  opp_robot_position_ = NULL;
+  opp_robot_position_x_ = 0;
+  opp_robot_position_y_ = 0;
   opp_robot_angle_ = 0;
-  mission1_data_ = NULL;
-  mission2_data_ = NULL;
-  mission3_data_ = NULL;
+  mission1_isvalid_ = false;
+  mission1_region1_tl_x_ = 0;
+  mission1_region1_tl_y_ = 0;
+  mission1_region1_br_x_ = 0;
+  mission1_region1_br_y_ = 0;
+  mission1_region2_tl_x_ = 0;
+  mission1_region2_tl_y_ = 0;
+  mission1_region2_br_x_ = 0;
+  mission1_region2_br_y_ = 0;
+  mission1_end_x_ = 0;
+  mission1_end_y_ = 0;
+  mission2_isvalid_ = false;
+  mission2_end_x_ = 0;
+  mission2_end_y_ = 0;
+  mission3_isvalid_ = false;
+  mission3_isattacker_ = false;
+  mission3_circularborde_x_ = 0;
+  mission3_circularborde_y_ = 0;
+  mission3_goal1_x_ = 0;
+  mission3_goal1_y_ = 0;
+  mission3_goal2_x_ = 0;
+  mission3_goal2_y_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2846,11 +1014,6 @@ outputPacket::~outputPacket() {
 
 void outputPacket::SharedDtor() {
   if (this != default_instance_) {
-    delete our_robot_position_;
-    delete opp_robot_position_;
-    delete mission1_data_;
-    delete mission2_data_;
-    delete mission3_data_;
   }
 }
 
@@ -2878,28 +1041,46 @@ void outputPacket::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     mission_ = 0;
     numberofshape_ = 0;
-    type_ = 1;
-    if (has_our_robot_position()) {
-      if (our_robot_position_ != NULL) our_robot_position_->::outputPacket_vector2D::Clear();
-    }
+    type_ = 0;
+    our_robot_position_x_ = 0;
+    our_robot_position_y_ = 0;
     our_robot_angle_ = 0;
-    if (has_opp_robot_position()) {
-      if (opp_robot_position_ != NULL) opp_robot_position_->::outputPacket_vector2D::Clear();
-    }
-    opp_robot_angle_ = 0;
+    opp_robot_position_x_ = 0;
+    opp_robot_position_y_ = 0;
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (has_mission1_data()) {
-      if (mission1_data_ != NULL) mission1_data_->::outputPacket_Mission1::Clear();
-    }
-    if (has_mission2_data()) {
-      if (mission2_data_ != NULL) mission2_data_->::outputPacket_Mission2::Clear();
-    }
-    if (has_mission3_data()) {
-      if (mission3_data_ != NULL) mission3_data_->::outputPacket_Mission3::Clear();
-    }
+    opp_robot_angle_ = 0;
+    mission1_isvalid_ = false;
+    mission1_region1_tl_x_ = 0;
+    mission1_region1_tl_y_ = 0;
+    mission1_region1_br_x_ = 0;
+    mission1_region1_br_y_ = 0;
+    mission1_region2_tl_x_ = 0;
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    mission1_region2_tl_y_ = 0;
+    mission1_region2_br_x_ = 0;
+    mission1_region2_br_y_ = 0;
+    mission1_end_x_ = 0;
+    mission1_end_y_ = 0;
+    mission2_isvalid_ = false;
+    mission2_end_x_ = 0;
+    mission2_end_y_ = 0;
+  }
+  if (_has_bits_[25 / 32] & (0xffu << (25 % 32))) {
+    mission3_isvalid_ = false;
+    mission3_isattacker_ = false;
+    mission3_circularborde_x_ = 0;
+    mission3_circularborde_y_ = 0;
+    mission3_goal1_x_ = 0;
+    mission3_goal1_y_ = 0;
+    mission3_goal2_x_ = 0;
+  }
+  if (_has_bits_[32 / 32] & (0xffu << (32 % 32))) {
+    mission3_goal2_y_ = 0;
   }
   shapes_.Clear();
+  mission2_lines_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -2941,43 +1122,56 @@ bool outputPacket::MergePartialFromCodedStream(
         break;
       }
       
-      // required .outputPacket.MessageType type = 3 [default = DATA];
+      // required int32 type = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_type:
-          int value;
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   int, ::google::protobuf::internal::WireFormatLite::TYPE_ENUM>(
-                 input, &value)));
-          if (::outputPacket_MessageType_IsValid(value)) {
-            set_type(static_cast< ::outputPacket_MessageType >(value));
-          } else {
-            mutable_unknown_fields()->AddVarint(3, value);
-          }
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &type_)));
+          set_has_type();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(34)) goto parse_our_robot_position;
+        if (input->ExpectTag(37)) goto parse_our_robot_position_x;
         break;
       }
       
-      // optional .outputPacket.vector2D our_robot_position = 4;
+      // optional float our_robot_position_x = 4;
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_our_robot_position:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_our_robot_position()));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_our_robot_position_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &our_robot_position_x_)));
+          set_has_our_robot_position_x();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(41)) goto parse_our_robot_angle;
+        if (input->ExpectTag(45)) goto parse_our_robot_position_y;
         break;
       }
       
-      // optional double our_robot_angle = 5;
+      // optional float our_robot_position_y = 5;
       case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_our_robot_position_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &our_robot_position_y_)));
+          set_has_our_robot_position_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(49)) goto parse_our_robot_angle;
+        break;
+      }
+      
+      // optional double our_robot_angle = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_our_robot_angle:
@@ -2988,26 +1182,44 @@ bool outputPacket::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(50)) goto parse_opp_robot_position;
+        if (input->ExpectTag(61)) goto parse_opp_robot_position_x;
         break;
       }
       
-      // optional .outputPacket.vector2D opp_robot_position = 6;
-      case 6: {
+      // optional float opp_robot_position_x = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_opp_robot_position:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_opp_robot_position()));
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_opp_robot_position_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &opp_robot_position_x_)));
+          set_has_opp_robot_position_x();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(57)) goto parse_opp_robot_angle;
+        if (input->ExpectTag(69)) goto parse_opp_robot_position_y;
         break;
       }
       
-      // optional double opp_robot_angle = 7;
-      case 7: {
+      // optional float opp_robot_position_y = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_opp_robot_position_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &opp_robot_position_y_)));
+          set_has_opp_robot_position_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(73)) goto parse_opp_robot_angle;
+        break;
+      }
+      
+      // optional double opp_robot_angle = 9;
+      case 9: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED64) {
          parse_opp_robot_angle:
@@ -3018,12 +1230,12 @@ bool outputPacket::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(66)) goto parse_shapes;
+        if (input->ExpectTag(82)) goto parse_shapes;
         break;
       }
       
-      // repeated .outputPacket.shape shapes = 8;
-      case 8: {
+      // repeated .outputPacket.shape shapes = 10;
+      case 10: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_shapes:
@@ -3032,46 +1244,371 @@ bool outputPacket::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(66)) goto parse_shapes;
-        if (input->ExpectTag(74)) goto parse_mission1_data;
+        if (input->ExpectTag(82)) goto parse_shapes;
+        if (input->ExpectTag(88)) goto parse_mission1_isValid;
         break;
       }
       
-      // optional .outputPacket.Mission1 mission1_data = 9;
-      case 9: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_mission1_data:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_mission1_data()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(82)) goto parse_mission2_data;
-        break;
-      }
-      
-      // optional .outputPacket.Mission2 mission2_data = 10;
-      case 10: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_mission2_data:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_mission2_data()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(90)) goto parse_mission3_data;
-        break;
-      }
-      
-      // optional .outputPacket.Mission3 mission3_data = 11;
+      // optional bool mission1_isValid = 11;
       case 11: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_mission1_isValid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &mission1_isvalid_)));
+          set_has_mission1_isvalid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(101)) goto parse_mission1_region1_tl_x;
+        break;
+      }
+      
+      // optional float mission1_region1_tl_x = 12;
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region1_tl_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region1_tl_x_)));
+          set_has_mission1_region1_tl_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(109)) goto parse_mission1_region1_tl_y;
+        break;
+      }
+      
+      // optional float mission1_region1_tl_y = 13;
+      case 13: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region1_tl_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region1_tl_y_)));
+          set_has_mission1_region1_tl_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(117)) goto parse_mission1_region1_br_x;
+        break;
+      }
+      
+      // optional float mission1_region1_br_x = 14;
+      case 14: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region1_br_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region1_br_x_)));
+          set_has_mission1_region1_br_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(125)) goto parse_mission1_region1_br_y;
+        break;
+      }
+      
+      // optional float mission1_region1_br_y = 15;
+      case 15: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region1_br_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region1_br_y_)));
+          set_has_mission1_region1_br_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(133)) goto parse_mission1_region2_tl_x;
+        break;
+      }
+      
+      // optional float mission1_region2_tl_x = 16;
+      case 16: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region2_tl_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region2_tl_x_)));
+          set_has_mission1_region2_tl_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(141)) goto parse_mission1_region2_tl_y;
+        break;
+      }
+      
+      // optional float mission1_region2_tl_y = 17;
+      case 17: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region2_tl_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region2_tl_y_)));
+          set_has_mission1_region2_tl_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(149)) goto parse_mission1_region2_br_x;
+        break;
+      }
+      
+      // optional float mission1_region2_br_x = 18;
+      case 18: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region2_br_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region2_br_x_)));
+          set_has_mission1_region2_br_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(157)) goto parse_mission1_region2_br_y;
+        break;
+      }
+      
+      // optional float mission1_region2_br_y = 19;
+      case 19: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_region2_br_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_region2_br_y_)));
+          set_has_mission1_region2_br_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(165)) goto parse_mission1_end_x;
+        break;
+      }
+      
+      // optional float mission1_end_x = 20;
+      case 20: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_end_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_end_x_)));
+          set_has_mission1_end_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(173)) goto parse_mission1_end_y;
+        break;
+      }
+      
+      // optional float mission1_end_y = 21;
+      case 21: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission1_end_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission1_end_y_)));
+          set_has_mission1_end_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(176)) goto parse_mission2_isValid;
+        break;
+      }
+      
+      // optional bool mission2_isValid = 22;
+      case 22: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_mission2_isValid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &mission2_isvalid_)));
+          set_has_mission2_isvalid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(189)) goto parse_mission2_end_x;
+        break;
+      }
+      
+      // optional float mission2_end_x = 23;
+      case 23: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission2_end_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission2_end_x_)));
+          set_has_mission2_end_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(197)) goto parse_mission2_end_y;
+        break;
+      }
+      
+      // optional float mission2_end_y = 24;
+      case 24: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission2_end_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission2_end_y_)));
+          set_has_mission2_end_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(202)) goto parse_mission2_lines;
+        break;
+      }
+      
+      // repeated .outputPacket.line mission2_lines = 25;
+      case 25: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_mission3_data:
+         parse_mission2_lines:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_mission3_data()));
+                input, add_mission2_lines()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(202)) goto parse_mission2_lines;
+        if (input->ExpectTag(208)) goto parse_mission3_isValid;
+        break;
+      }
+      
+      // optional bool mission3_isValid = 26;
+      case 26: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_mission3_isValid:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &mission3_isvalid_)));
+          set_has_mission3_isvalid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(216)) goto parse_mission3_isAttacker;
+        break;
+      }
+      
+      // optional bool mission3_isAttacker = 27;
+      case 27: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_mission3_isAttacker:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &mission3_isattacker_)));
+          set_has_mission3_isattacker();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(229)) goto parse_mission3_circularBorde_x;
+        break;
+      }
+      
+      // optional float mission3_circularBorde_x = 28;
+      case 28: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission3_circularBorde_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission3_circularborde_x_)));
+          set_has_mission3_circularborde_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(237)) goto parse_mission3_circularBorde_y;
+        break;
+      }
+      
+      // optional float mission3_circularBorde_y = 29;
+      case 29: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission3_circularBorde_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission3_circularborde_y_)));
+          set_has_mission3_circularborde_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(245)) goto parse_mission3_goal1_x;
+        break;
+      }
+      
+      // optional float mission3_goal1_x = 30;
+      case 30: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission3_goal1_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission3_goal1_x_)));
+          set_has_mission3_goal1_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(253)) goto parse_mission3_goal1_y;
+        break;
+      }
+      
+      // optional float mission3_goal1_y = 31;
+      case 31: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission3_goal1_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission3_goal1_y_)));
+          set_has_mission3_goal1_y();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(261)) goto parse_mission3_goal2_x;
+        break;
+      }
+      
+      // optional float mission3_goal2_x = 32;
+      case 32: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission3_goal2_x:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission3_goal2_x_)));
+          set_has_mission3_goal2_x();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(269)) goto parse_mission3_goal2_y;
+        break;
+      }
+      
+      // optional float mission3_goal2_y = 33;
+      case 33: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_mission3_goal2_y:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &mission3_goal2_y_)));
+          set_has_mission3_goal2_y();
         } else {
           goto handle_uninterpreted;
         }
@@ -3107,56 +1644,161 @@ void outputPacket::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->numberofshape(), output);
   }
   
-  // required .outputPacket.MessageType type = 3 [default = DATA];
+  // required int32 type = 3;
   if (has_type()) {
-    ::google::protobuf::internal::WireFormatLite::WriteEnum(
-      3, this->type(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->type(), output);
   }
   
-  // optional .outputPacket.vector2D our_robot_position = 4;
-  if (has_our_robot_position()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->our_robot_position(), output);
+  // optional float our_robot_position_x = 4;
+  if (has_our_robot_position_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->our_robot_position_x(), output);
   }
   
-  // optional double our_robot_angle = 5;
+  // optional float our_robot_position_y = 5;
+  if (has_our_robot_position_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->our_robot_position_y(), output);
+  }
+  
+  // optional double our_robot_angle = 6;
   if (has_our_robot_angle()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(5, this->our_robot_angle(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(6, this->our_robot_angle(), output);
   }
   
-  // optional .outputPacket.vector2D opp_robot_position = 6;
-  if (has_opp_robot_position()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      6, this->opp_robot_position(), output);
+  // optional float opp_robot_position_x = 7;
+  if (has_opp_robot_position_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(7, this->opp_robot_position_x(), output);
   }
   
-  // optional double opp_robot_angle = 7;
+  // optional float opp_robot_position_y = 8;
+  if (has_opp_robot_position_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(8, this->opp_robot_position_y(), output);
+  }
+  
+  // optional double opp_robot_angle = 9;
   if (has_opp_robot_angle()) {
-    ::google::protobuf::internal::WireFormatLite::WriteDouble(7, this->opp_robot_angle(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteDouble(9, this->opp_robot_angle(), output);
   }
   
-  // repeated .outputPacket.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 10;
   for (int i = 0; i < this->shapes_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      8, this->shapes(i), output);
+      10, this->shapes(i), output);
   }
   
-  // optional .outputPacket.Mission1 mission1_data = 9;
-  if (has_mission1_data()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      9, this->mission1_data(), output);
+  // optional bool mission1_isValid = 11;
+  if (has_mission1_isvalid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(11, this->mission1_isvalid(), output);
   }
   
-  // optional .outputPacket.Mission2 mission2_data = 10;
-  if (has_mission2_data()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      10, this->mission2_data(), output);
+  // optional float mission1_region1_tl_x = 12;
+  if (has_mission1_region1_tl_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(12, this->mission1_region1_tl_x(), output);
   }
   
-  // optional .outputPacket.Mission3 mission3_data = 11;
-  if (has_mission3_data()) {
+  // optional float mission1_region1_tl_y = 13;
+  if (has_mission1_region1_tl_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(13, this->mission1_region1_tl_y(), output);
+  }
+  
+  // optional float mission1_region1_br_x = 14;
+  if (has_mission1_region1_br_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(14, this->mission1_region1_br_x(), output);
+  }
+  
+  // optional float mission1_region1_br_y = 15;
+  if (has_mission1_region1_br_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(15, this->mission1_region1_br_y(), output);
+  }
+  
+  // optional float mission1_region2_tl_x = 16;
+  if (has_mission1_region2_tl_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(16, this->mission1_region2_tl_x(), output);
+  }
+  
+  // optional float mission1_region2_tl_y = 17;
+  if (has_mission1_region2_tl_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(17, this->mission1_region2_tl_y(), output);
+  }
+  
+  // optional float mission1_region2_br_x = 18;
+  if (has_mission1_region2_br_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(18, this->mission1_region2_br_x(), output);
+  }
+  
+  // optional float mission1_region2_br_y = 19;
+  if (has_mission1_region2_br_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(19, this->mission1_region2_br_y(), output);
+  }
+  
+  // optional float mission1_end_x = 20;
+  if (has_mission1_end_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(20, this->mission1_end_x(), output);
+  }
+  
+  // optional float mission1_end_y = 21;
+  if (has_mission1_end_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(21, this->mission1_end_y(), output);
+  }
+  
+  // optional bool mission2_isValid = 22;
+  if (has_mission2_isvalid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(22, this->mission2_isvalid(), output);
+  }
+  
+  // optional float mission2_end_x = 23;
+  if (has_mission2_end_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(23, this->mission2_end_x(), output);
+  }
+  
+  // optional float mission2_end_y = 24;
+  if (has_mission2_end_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(24, this->mission2_end_y(), output);
+  }
+  
+  // repeated .outputPacket.line mission2_lines = 25;
+  for (int i = 0; i < this->mission2_lines_size(); i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      11, this->mission3_data(), output);
+      25, this->mission2_lines(i), output);
+  }
+  
+  // optional bool mission3_isValid = 26;
+  if (has_mission3_isvalid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(26, this->mission3_isvalid(), output);
+  }
+  
+  // optional bool mission3_isAttacker = 27;
+  if (has_mission3_isattacker()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(27, this->mission3_isattacker(), output);
+  }
+  
+  // optional float mission3_circularBorde_x = 28;
+  if (has_mission3_circularborde_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(28, this->mission3_circularborde_x(), output);
+  }
+  
+  // optional float mission3_circularBorde_y = 29;
+  if (has_mission3_circularborde_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(29, this->mission3_circularborde_y(), output);
+  }
+  
+  // optional float mission3_goal1_x = 30;
+  if (has_mission3_goal1_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(30, this->mission3_goal1_x(), output);
+  }
+  
+  // optional float mission3_goal1_y = 31;
+  if (has_mission3_goal1_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(31, this->mission3_goal1_y(), output);
+  }
+  
+  // optional float mission3_goal2_x = 32;
+  if (has_mission3_goal2_x()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(32, this->mission3_goal2_x(), output);
+  }
+  
+  // optional float mission3_goal2_y = 33;
+  if (has_mission3_goal2_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(33, this->mission3_goal2_y(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -3177,62 +1819,163 @@ void outputPacket::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->numberofshape(), target);
   }
   
-  // required .outputPacket.MessageType type = 3 [default = DATA];
+  // required int32 type = 3;
   if (has_type()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteEnumToArray(
-      3, this->type(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->type(), target);
   }
   
-  // optional .outputPacket.vector2D our_robot_position = 4;
-  if (has_our_robot_position()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        4, this->our_robot_position(), target);
+  // optional float our_robot_position_x = 4;
+  if (has_our_robot_position_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->our_robot_position_x(), target);
   }
   
-  // optional double our_robot_angle = 5;
+  // optional float our_robot_position_y = 5;
+  if (has_our_robot_position_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->our_robot_position_y(), target);
+  }
+  
+  // optional double our_robot_angle = 6;
   if (has_our_robot_angle()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(5, this->our_robot_angle(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(6, this->our_robot_angle(), target);
   }
   
-  // optional .outputPacket.vector2D opp_robot_position = 6;
-  if (has_opp_robot_position()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        6, this->opp_robot_position(), target);
+  // optional float opp_robot_position_x = 7;
+  if (has_opp_robot_position_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(7, this->opp_robot_position_x(), target);
   }
   
-  // optional double opp_robot_angle = 7;
+  // optional float opp_robot_position_y = 8;
+  if (has_opp_robot_position_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(8, this->opp_robot_position_y(), target);
+  }
+  
+  // optional double opp_robot_angle = 9;
   if (has_opp_robot_angle()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(7, this->opp_robot_angle(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteDoubleToArray(9, this->opp_robot_angle(), target);
   }
   
-  // repeated .outputPacket.shape shapes = 8;
+  // repeated .outputPacket.shape shapes = 10;
   for (int i = 0; i < this->shapes_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        8, this->shapes(i), target);
+        10, this->shapes(i), target);
   }
   
-  // optional .outputPacket.Mission1 mission1_data = 9;
-  if (has_mission1_data()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        9, this->mission1_data(), target);
+  // optional bool mission1_isValid = 11;
+  if (has_mission1_isvalid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(11, this->mission1_isvalid(), target);
   }
   
-  // optional .outputPacket.Mission2 mission2_data = 10;
-  if (has_mission2_data()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        10, this->mission2_data(), target);
+  // optional float mission1_region1_tl_x = 12;
+  if (has_mission1_region1_tl_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(12, this->mission1_region1_tl_x(), target);
   }
   
-  // optional .outputPacket.Mission3 mission3_data = 11;
-  if (has_mission3_data()) {
+  // optional float mission1_region1_tl_y = 13;
+  if (has_mission1_region1_tl_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(13, this->mission1_region1_tl_y(), target);
+  }
+  
+  // optional float mission1_region1_br_x = 14;
+  if (has_mission1_region1_br_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(14, this->mission1_region1_br_x(), target);
+  }
+  
+  // optional float mission1_region1_br_y = 15;
+  if (has_mission1_region1_br_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(15, this->mission1_region1_br_y(), target);
+  }
+  
+  // optional float mission1_region2_tl_x = 16;
+  if (has_mission1_region2_tl_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(16, this->mission1_region2_tl_x(), target);
+  }
+  
+  // optional float mission1_region2_tl_y = 17;
+  if (has_mission1_region2_tl_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(17, this->mission1_region2_tl_y(), target);
+  }
+  
+  // optional float mission1_region2_br_x = 18;
+  if (has_mission1_region2_br_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(18, this->mission1_region2_br_x(), target);
+  }
+  
+  // optional float mission1_region2_br_y = 19;
+  if (has_mission1_region2_br_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(19, this->mission1_region2_br_y(), target);
+  }
+  
+  // optional float mission1_end_x = 20;
+  if (has_mission1_end_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(20, this->mission1_end_x(), target);
+  }
+  
+  // optional float mission1_end_y = 21;
+  if (has_mission1_end_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(21, this->mission1_end_y(), target);
+  }
+  
+  // optional bool mission2_isValid = 22;
+  if (has_mission2_isvalid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(22, this->mission2_isvalid(), target);
+  }
+  
+  // optional float mission2_end_x = 23;
+  if (has_mission2_end_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(23, this->mission2_end_x(), target);
+  }
+  
+  // optional float mission2_end_y = 24;
+  if (has_mission2_end_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(24, this->mission2_end_y(), target);
+  }
+  
+  // repeated .outputPacket.line mission2_lines = 25;
+  for (int i = 0; i < this->mission2_lines_size(); i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        11, this->mission3_data(), target);
+        25, this->mission2_lines(i), target);
+  }
+  
+  // optional bool mission3_isValid = 26;
+  if (has_mission3_isvalid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(26, this->mission3_isvalid(), target);
+  }
+  
+  // optional bool mission3_isAttacker = 27;
+  if (has_mission3_isattacker()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(27, this->mission3_isattacker(), target);
+  }
+  
+  // optional float mission3_circularBorde_x = 28;
+  if (has_mission3_circularborde_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(28, this->mission3_circularborde_x(), target);
+  }
+  
+  // optional float mission3_circularBorde_y = 29;
+  if (has_mission3_circularborde_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(29, this->mission3_circularborde_y(), target);
+  }
+  
+  // optional float mission3_goal1_x = 30;
+  if (has_mission3_goal1_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(30, this->mission3_goal1_x(), target);
+  }
+  
+  // optional float mission3_goal1_y = 31;
+  if (has_mission3_goal1_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(31, this->mission3_goal1_y(), target);
+  }
+  
+  // optional float mission3_goal2_x = 32;
+  if (has_mission3_goal2_x()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(32, this->mission3_goal2_x(), target);
+  }
+  
+  // optional float mission3_goal2_y = 33;
+  if (has_mission3_goal2_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(33, this->mission3_goal2_y(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -3260,66 +2003,176 @@ int outputPacket::ByteSize() const {
           this->numberofshape());
     }
     
-    // required .outputPacket.MessageType type = 3 [default = DATA];
+    // required int32 type = 3;
     if (has_type()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::EnumSize(this->type());
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->type());
     }
     
-    // optional .outputPacket.vector2D our_robot_position = 4;
-    if (has_our_robot_position()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->our_robot_position());
+    // optional float our_robot_position_x = 4;
+    if (has_our_robot_position_x()) {
+      total_size += 1 + 4;
     }
     
-    // optional double our_robot_angle = 5;
+    // optional float our_robot_position_y = 5;
+    if (has_our_robot_position_y()) {
+      total_size += 1 + 4;
+    }
+    
+    // optional double our_robot_angle = 6;
     if (has_our_robot_angle()) {
       total_size += 1 + 8;
     }
     
-    // optional .outputPacket.vector2D opp_robot_position = 6;
-    if (has_opp_robot_position()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->opp_robot_position());
+    // optional float opp_robot_position_x = 7;
+    if (has_opp_robot_position_x()) {
+      total_size += 1 + 4;
     }
     
-    // optional double opp_robot_angle = 7;
-    if (has_opp_robot_angle()) {
-      total_size += 1 + 8;
+    // optional float opp_robot_position_y = 8;
+    if (has_opp_robot_position_y()) {
+      total_size += 1 + 4;
     }
     
   }
   if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    // optional .outputPacket.Mission1 mission1_data = 9;
-    if (has_mission1_data()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->mission1_data());
+    // optional double opp_robot_angle = 9;
+    if (has_opp_robot_angle()) {
+      total_size += 1 + 8;
     }
     
-    // optional .outputPacket.Mission2 mission2_data = 10;
-    if (has_mission2_data()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->mission2_data());
+    // optional bool mission1_isValid = 11;
+    if (has_mission1_isvalid()) {
+      total_size += 1 + 1;
     }
     
-    // optional .outputPacket.Mission3 mission3_data = 11;
-    if (has_mission3_data()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->mission3_data());
+    // optional float mission1_region1_tl_x = 12;
+    if (has_mission1_region1_tl_x()) {
+      total_size += 1 + 4;
+    }
+    
+    // optional float mission1_region1_tl_y = 13;
+    if (has_mission1_region1_tl_y()) {
+      total_size += 1 + 4;
+    }
+    
+    // optional float mission1_region1_br_x = 14;
+    if (has_mission1_region1_br_x()) {
+      total_size += 1 + 4;
+    }
+    
+    // optional float mission1_region1_br_y = 15;
+    if (has_mission1_region1_br_y()) {
+      total_size += 1 + 4;
+    }
+    
+    // optional float mission1_region2_tl_x = 16;
+    if (has_mission1_region2_tl_x()) {
+      total_size += 2 + 4;
     }
     
   }
-  // repeated .outputPacket.shape shapes = 8;
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    // optional float mission1_region2_tl_y = 17;
+    if (has_mission1_region2_tl_y()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission1_region2_br_x = 18;
+    if (has_mission1_region2_br_x()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission1_region2_br_y = 19;
+    if (has_mission1_region2_br_y()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission1_end_x = 20;
+    if (has_mission1_end_x()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission1_end_y = 21;
+    if (has_mission1_end_y()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional bool mission2_isValid = 22;
+    if (has_mission2_isvalid()) {
+      total_size += 2 + 1;
+    }
+    
+    // optional float mission2_end_x = 23;
+    if (has_mission2_end_x()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission2_end_y = 24;
+    if (has_mission2_end_y()) {
+      total_size += 2 + 4;
+    }
+    
+  }
+  if (_has_bits_[25 / 32] & (0xffu << (25 % 32))) {
+    // optional bool mission3_isValid = 26;
+    if (has_mission3_isvalid()) {
+      total_size += 2 + 1;
+    }
+    
+    // optional bool mission3_isAttacker = 27;
+    if (has_mission3_isattacker()) {
+      total_size += 2 + 1;
+    }
+    
+    // optional float mission3_circularBorde_x = 28;
+    if (has_mission3_circularborde_x()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission3_circularBorde_y = 29;
+    if (has_mission3_circularborde_y()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission3_goal1_x = 30;
+    if (has_mission3_goal1_x()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission3_goal1_y = 31;
+    if (has_mission3_goal1_y()) {
+      total_size += 2 + 4;
+    }
+    
+    // optional float mission3_goal2_x = 32;
+    if (has_mission3_goal2_x()) {
+      total_size += 2 + 4;
+    }
+    
+  }
+  if (_has_bits_[32 / 32] & (0xffu << (32 % 32))) {
+    // optional float mission3_goal2_y = 33;
+    if (has_mission3_goal2_y()) {
+      total_size += 2 + 4;
+    }
+    
+  }
+  // repeated .outputPacket.shape shapes = 10;
   total_size += 1 * this->shapes_size();
   for (int i = 0; i < this->shapes_size(); i++) {
     total_size +=
       ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
         this->shapes(i));
+  }
+  
+  // repeated .outputPacket.line mission2_lines = 25;
+  total_size += 2 * this->mission2_lines_size();
+  for (int i = 0; i < this->mission2_lines_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->mission2_lines(i));
   }
   
   if (!unknown_fields().empty()) {
@@ -3348,6 +2201,7 @@ void outputPacket::MergeFrom(const ::google::protobuf::Message& from) {
 void outputPacket::MergeFrom(const outputPacket& from) {
   GOOGLE_CHECK_NE(&from, this);
   shapes_.MergeFrom(from.shapes_);
+  mission2_lines_.MergeFrom(from.mission2_lines_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_mission()) {
       set_mission(from.mission());
@@ -3358,28 +2212,97 @@ void outputPacket::MergeFrom(const outputPacket& from) {
     if (from.has_type()) {
       set_type(from.type());
     }
-    if (from.has_our_robot_position()) {
-      mutable_our_robot_position()->::outputPacket_vector2D::MergeFrom(from.our_robot_position());
+    if (from.has_our_robot_position_x()) {
+      set_our_robot_position_x(from.our_robot_position_x());
+    }
+    if (from.has_our_robot_position_y()) {
+      set_our_robot_position_y(from.our_robot_position_y());
     }
     if (from.has_our_robot_angle()) {
       set_our_robot_angle(from.our_robot_angle());
     }
-    if (from.has_opp_robot_position()) {
-      mutable_opp_robot_position()->::outputPacket_vector2D::MergeFrom(from.opp_robot_position());
+    if (from.has_opp_robot_position_x()) {
+      set_opp_robot_position_x(from.opp_robot_position_x());
     }
-    if (from.has_opp_robot_angle()) {
-      set_opp_robot_angle(from.opp_robot_angle());
+    if (from.has_opp_robot_position_y()) {
+      set_opp_robot_position_y(from.opp_robot_position_y());
     }
   }
   if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
-    if (from.has_mission1_data()) {
-      mutable_mission1_data()->::outputPacket_Mission1::MergeFrom(from.mission1_data());
+    if (from.has_opp_robot_angle()) {
+      set_opp_robot_angle(from.opp_robot_angle());
     }
-    if (from.has_mission2_data()) {
-      mutable_mission2_data()->::outputPacket_Mission2::MergeFrom(from.mission2_data());
+    if (from.has_mission1_isvalid()) {
+      set_mission1_isvalid(from.mission1_isvalid());
     }
-    if (from.has_mission3_data()) {
-      mutable_mission3_data()->::outputPacket_Mission3::MergeFrom(from.mission3_data());
+    if (from.has_mission1_region1_tl_x()) {
+      set_mission1_region1_tl_x(from.mission1_region1_tl_x());
+    }
+    if (from.has_mission1_region1_tl_y()) {
+      set_mission1_region1_tl_y(from.mission1_region1_tl_y());
+    }
+    if (from.has_mission1_region1_br_x()) {
+      set_mission1_region1_br_x(from.mission1_region1_br_x());
+    }
+    if (from.has_mission1_region1_br_y()) {
+      set_mission1_region1_br_y(from.mission1_region1_br_y());
+    }
+    if (from.has_mission1_region2_tl_x()) {
+      set_mission1_region2_tl_x(from.mission1_region2_tl_x());
+    }
+  }
+  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    if (from.has_mission1_region2_tl_y()) {
+      set_mission1_region2_tl_y(from.mission1_region2_tl_y());
+    }
+    if (from.has_mission1_region2_br_x()) {
+      set_mission1_region2_br_x(from.mission1_region2_br_x());
+    }
+    if (from.has_mission1_region2_br_y()) {
+      set_mission1_region2_br_y(from.mission1_region2_br_y());
+    }
+    if (from.has_mission1_end_x()) {
+      set_mission1_end_x(from.mission1_end_x());
+    }
+    if (from.has_mission1_end_y()) {
+      set_mission1_end_y(from.mission1_end_y());
+    }
+    if (from.has_mission2_isvalid()) {
+      set_mission2_isvalid(from.mission2_isvalid());
+    }
+    if (from.has_mission2_end_x()) {
+      set_mission2_end_x(from.mission2_end_x());
+    }
+    if (from.has_mission2_end_y()) {
+      set_mission2_end_y(from.mission2_end_y());
+    }
+  }
+  if (from._has_bits_[25 / 32] & (0xffu << (25 % 32))) {
+    if (from.has_mission3_isvalid()) {
+      set_mission3_isvalid(from.mission3_isvalid());
+    }
+    if (from.has_mission3_isattacker()) {
+      set_mission3_isattacker(from.mission3_isattacker());
+    }
+    if (from.has_mission3_circularborde_x()) {
+      set_mission3_circularborde_x(from.mission3_circularborde_x());
+    }
+    if (from.has_mission3_circularborde_y()) {
+      set_mission3_circularborde_y(from.mission3_circularborde_y());
+    }
+    if (from.has_mission3_goal1_x()) {
+      set_mission3_goal1_x(from.mission3_goal1_x());
+    }
+    if (from.has_mission3_goal1_y()) {
+      set_mission3_goal1_y(from.mission3_goal1_y());
+    }
+    if (from.has_mission3_goal2_x()) {
+      set_mission3_goal2_x(from.mission3_goal2_x());
+    }
+  }
+  if (from._has_bits_[32 / 32] & (0xffu << (32 % 32))) {
+    if (from.has_mission3_goal2_y()) {
+      set_mission3_goal2_y(from.mission3_goal2_y());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -3400,23 +2323,11 @@ void outputPacket::CopyFrom(const outputPacket& from) {
 bool outputPacket::IsInitialized() const {
   if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
   
-  if (has_our_robot_position()) {
-    if (!this->our_robot_position().IsInitialized()) return false;
-  }
-  if (has_opp_robot_position()) {
-    if (!this->opp_robot_position().IsInitialized()) return false;
-  }
   for (int i = 0; i < shapes_size(); i++) {
     if (!this->shapes(i).IsInitialized()) return false;
   }
-  if (has_mission1_data()) {
-    if (!this->mission1_data().IsInitialized()) return false;
-  }
-  if (has_mission2_data()) {
-    if (!this->mission2_data().IsInitialized()) return false;
-  }
-  if (has_mission3_data()) {
-    if (!this->mission3_data().IsInitialized()) return false;
+  for (int i = 0; i < mission2_lines_size(); i++) {
+    if (!this->mission2_lines(i).IsInitialized()) return false;
   }
   return true;
 }
@@ -3426,15 +2337,38 @@ void outputPacket::Swap(outputPacket* other) {
     std::swap(mission_, other->mission_);
     std::swap(numberofshape_, other->numberofshape_);
     std::swap(type_, other->type_);
-    std::swap(our_robot_position_, other->our_robot_position_);
+    std::swap(our_robot_position_x_, other->our_robot_position_x_);
+    std::swap(our_robot_position_y_, other->our_robot_position_y_);
     std::swap(our_robot_angle_, other->our_robot_angle_);
-    std::swap(opp_robot_position_, other->opp_robot_position_);
+    std::swap(opp_robot_position_x_, other->opp_robot_position_x_);
+    std::swap(opp_robot_position_y_, other->opp_robot_position_y_);
     std::swap(opp_robot_angle_, other->opp_robot_angle_);
     shapes_.Swap(&other->shapes_);
-    std::swap(mission1_data_, other->mission1_data_);
-    std::swap(mission2_data_, other->mission2_data_);
-    std::swap(mission3_data_, other->mission3_data_);
+    std::swap(mission1_isvalid_, other->mission1_isvalid_);
+    std::swap(mission1_region1_tl_x_, other->mission1_region1_tl_x_);
+    std::swap(mission1_region1_tl_y_, other->mission1_region1_tl_y_);
+    std::swap(mission1_region1_br_x_, other->mission1_region1_br_x_);
+    std::swap(mission1_region1_br_y_, other->mission1_region1_br_y_);
+    std::swap(mission1_region2_tl_x_, other->mission1_region2_tl_x_);
+    std::swap(mission1_region2_tl_y_, other->mission1_region2_tl_y_);
+    std::swap(mission1_region2_br_x_, other->mission1_region2_br_x_);
+    std::swap(mission1_region2_br_y_, other->mission1_region2_br_y_);
+    std::swap(mission1_end_x_, other->mission1_end_x_);
+    std::swap(mission1_end_y_, other->mission1_end_y_);
+    std::swap(mission2_isvalid_, other->mission2_isvalid_);
+    std::swap(mission2_end_x_, other->mission2_end_x_);
+    std::swap(mission2_end_y_, other->mission2_end_y_);
+    mission2_lines_.Swap(&other->mission2_lines_);
+    std::swap(mission3_isvalid_, other->mission3_isvalid_);
+    std::swap(mission3_isattacker_, other->mission3_isattacker_);
+    std::swap(mission3_circularborde_x_, other->mission3_circularborde_x_);
+    std::swap(mission3_circularborde_y_, other->mission3_circularborde_y_);
+    std::swap(mission3_goal1_x_, other->mission3_goal1_x_);
+    std::swap(mission3_goal1_y_, other->mission3_goal1_y_);
+    std::swap(mission3_goal2_x_, other->mission3_goal2_x_);
+    std::swap(mission3_goal2_y_, other->mission3_goal2_y_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_has_bits_[1], other->_has_bits_[1]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
