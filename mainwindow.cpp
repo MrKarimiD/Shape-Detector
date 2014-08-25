@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     firstPointSelected=false;
     imProcDataAvailable=false;
 
+    permissionForSending = false;
+
     semaphore=new QSemaphore(1);
     sendingSocket = new NetworkSender();
 
@@ -392,6 +394,8 @@ void MainWindow::setInitializeMessage(int mission)
     {
         case 1 :
         {
+            mission = 1;
+
             imageProcessor->result.set_mission(1);
             imageProcessor->result.set_type(0);
             imageProcessor->result.set_numberofshape(0);
@@ -414,8 +418,10 @@ void MainWindow::setInitializeMessage(int mission)
         }
         case 2 :
         {
+            mission = 2;
+
             imageProcessor->result.set_mission(2);
-            imageProcessor->result.set_type(11);
+            imageProcessor->result.set_type(0);
             imageProcessor->result.set_numberofshape(0);
 
             imageProcessor->result.set_mission2_isvalid(true);
@@ -436,6 +442,8 @@ void MainWindow::setInitializeMessage(int mission)
         }
         case 3:
         {
+            mission = 3;
+
             imageProcessor->result.set_mission(3);
             imageProcessor->result.set_type(0);
             imageProcessor->result.set_numberofshape(0);
@@ -462,6 +470,11 @@ void MainWindow::setInitializeMessage(int mission)
             break;
         }
     }
+}
+
+void MainWindow::preapreDataForSending()
+{
+
 }
 
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
@@ -545,6 +558,13 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
 
         imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
         ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
+    }
+
+    if(permissionForSending)
+    {
+        imageProcessor->result.set_mission(mission);
+        imageProcessor->result.set_type(1);
+        sendDataPacket();
     }
 }
 
@@ -838,6 +858,7 @@ void MainWindow::on_go_button_clicked()
     }
 
     sendDataPacket();
+    permissionForSending = true;
     send_timer->start(15);
 }
 

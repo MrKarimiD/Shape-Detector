@@ -17,6 +17,7 @@ ImageProcessing::ImageProcessing(QObject *parent) :
 Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 {
     result.clear_shapes();
+    result.set_numberofshape(0);
 
     // Find contours
     vector<vector<Point> > contours;
@@ -298,14 +299,12 @@ Mat ImageProcessing::returnCropedImage()
 
 void ImageProcessing::addShape(float x, float y, double radius, string type, string color)
 {
-//    outputPacket_shape *shape=result.add_shapes();
-//    shape->set_radios(radius);
-//    shape->set_type(type);
-//    shape->set_color(color);
-//    outputPacket_vector2D pos;
-//    pos.set_x(x);
-//    pos.set_y(y);
-//    shape->mutable_position()->CopyFrom(pos);
+    outputPacket_shape *shape=result.add_shapes();
+    shape->set_radios(radius);
+    shape->set_type(type);
+    shape->set_color(color);
+    shape->set_position_x(x);
+    shape->set_position_y(y);
 }
 
 void ImageProcessing::findColors(Mat input)
@@ -344,6 +343,7 @@ bool ImageProcessing::checkAspectRatioForRotatedRect(RotatedRect input)
 
 void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString type)
 {
+    result.set_numberofshape(result.numberofshape()+1);
     Point2f center;
     float radius;
     minEnclosingCircle( (Mat)contour, center, radius );

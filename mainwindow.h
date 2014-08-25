@@ -122,9 +122,11 @@ private:
     QTimer *cam_timer,*send_timer;
     VideoCapture cap;
     bool cameraIsOpened,mouseButtonClicked,firstPointSelected,imProcDataAvailable;
+    bool permissionForSending;
     filterSettings *filterSetting;
     QSemaphore *semaphore;
     NetworkSender *sendingSocket;
+    int mission;
 
     void enableCameraSetting();
 
@@ -179,6 +181,8 @@ private:
     void disableSecondMission();
 
     void setInitializeMessage(int mission);
+
+    void preapreDataForSending();
 
 signals:
     void imageReady(Mat image);
