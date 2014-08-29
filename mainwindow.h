@@ -130,6 +130,20 @@ private slots:
 
     void on_use_black_checkBox_toggled(bool checked);
 
+    void on_redSelect_button_clicked();
+
+    void on_blueSelect_button_clicked();
+
+    void on_greenSelect_button_clicked();
+
+    void on_yellowSelect_button_clicked();
+
+    void on_violetSelect_button_clicked();
+
+    void on_cyanSelect_button_clicked();
+
+    void on_blackSelect_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
@@ -141,6 +155,8 @@ private:
     QSemaphore *semaphore;
     NetworkSender *sendingSocket;
     int mission;
+    bool colorMode;
+    QString whichColor;
 
     void enableCameraSetting();
 
@@ -221,6 +237,8 @@ private:
     void enableSelectBlack();
 
     void disableSelectBlack();
+
+    bool isValidPlaceForSelect(int x,int y);
 
     void setInitializeMessage(int mission);
 

@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     cameraIsOpened=false;
     mouseButtonClicked=false;
+    colorMode = false;
     firstPointSelected=false;
     imProcDataAvailable=false;
 
@@ -556,6 +557,21 @@ void MainWindow::disableSelectBlack()
     ui->black_status_label->setDisabled(true);
 }
 
+bool MainWindow::isValidPlaceForSelect(int x, int y)
+{
+    bool isValid = false ;
+
+    if((x > ui->outputLabel->x() && x<(ui->outputLabel->x()+ui->outputLabel->width())))
+    {
+        if(y>ui->outputLabel->y() && y<ui->outputLabel->y()+ui->outputLabel->height())
+        {
+            isValid = true;
+        }
+    }
+
+    return isValid;
+}
+
 void MainWindow::setInitializeMessage(int mission)
 {
     switch(mission)
@@ -956,23 +972,32 @@ void MainWindow::on_mouse_button_clicked()
 
 void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
 {
-     if(mouseButtonClicked)
+     if(isValidPlaceForSelect(event->x(),event->y()))
      {
-         if(!firstPointSelected)
+         if(mouseButtonClicked)
+         {
+             if(!firstPointSelected)
+             {
+                 qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
+                 ui->fX_lineEdit->setText(QString::number(event->x()));
+                 ui->fY_lineEdit->setText(QString::number(event->y()));
+                 firstPointSelected=true;
+             }
+             else
+             {
+                 qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
+                 ui->sX_lineEdit->setText(QString::number(event->x()));
+                 ui->sY_lineEdit->setText(QString::number(event->y()));
+                 firstPointSelected=false;
+             }
+         }
+
+         if(colorMode)
          {
              qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-             ui->fX_lineEdit->setText(QString::number(event->x()));
-             ui->fY_lineEdit->setText(QString::number(event->y()));
-             firstPointSelected=true;
+             //image processing functions
          }
-         else
-         {
-             qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-             ui->sX_lineEdit->setText(QString::number(event->x()));
-             ui->sY_lineEdit->setText(QString::number(event->y()));
-             firstPointSelected=false;
-         }
-     }
+    }
 }
 
 void MainWindow::on_drawCrop_checkBox_stateChanged()
@@ -1146,4 +1171,46 @@ void MainWindow::on_use_black_checkBox_toggled(bool checked)
     {
         disableSelectBlack();
     }
+}
+
+void MainWindow::on_redSelect_button_clicked()
+{
+    whichColor = "red";
+    colorMode = true;
+}
+
+void MainWindow::on_blueSelect_button_clicked()
+{
+    whichColor = "blue";
+    colorMode = true;
+}
+
+void MainWindow::on_greenSelect_button_clicked()
+{
+    whichColor = "green";
+    colorMode = true;
+}
+
+void MainWindow::on_yellowSelect_button_clicked()
+{
+    whichColor = "yellow";
+    colorMode = true;
+}
+
+void MainWindow::on_violetSelect_button_clicked()
+{
+    whichColor = "violet";
+    colorMode = true;
+}
+
+void MainWindow::on_cyanSelect_button_clicked()
+{
+    whichColor = "cyan";
+    colorMode = true;
+}
+
+void MainWindow::on_blackSelect_button_clicked()
+{
+    whichColor = "black";
+    colorMode = true;
 }
