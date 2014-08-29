@@ -13,8 +13,7 @@
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/nonfree/cuda.hpp>
 #include <Prototype_Messages/GameGround.pb.h>
-
-#define ASPECT_RATIO_TRESH 4
+#include "Constants.h"
 
 using namespace cv;
 using namespace std;
@@ -56,6 +55,7 @@ public:
 private:
     vector<Vec3f> finding_circles;
     filterSettings *filterSetting;
+    cv::Size imSize;
     //Mat cameraMatrix, distCoeffs;
     bool drawContoursBool,drawGeometricLabels,drawBoundedRect,drawRotatedRect,drawBoundries;
     bool checkAspectRatio(vector<Point> contours_poly);

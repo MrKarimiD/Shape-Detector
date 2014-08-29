@@ -394,7 +394,7 @@ void MainWindow::setInitializeMessage(int mission)
     {
         case 1 :
         {
-            mission = 1;
+            this->mission = 1;
 
             imageProcessor->result.set_mission(1);
             imageProcessor->result.set_type(0);
@@ -418,7 +418,7 @@ void MainWindow::setInitializeMessage(int mission)
         }
         case 2 :
         {
-            mission = 2;
+            this->mission = 2;
 
             imageProcessor->result.set_mission(2);
             imageProcessor->result.set_type(0);
@@ -442,7 +442,7 @@ void MainWindow::setInitializeMessage(int mission)
         }
         case 3:
         {
-            mission = 3;
+            this->mission = 3;
 
             imageProcessor->result.set_mission(3);
             imageProcessor->result.set_type(0);
@@ -878,13 +878,20 @@ void MainWindow::on_thirsM_rButton_toggled(bool checked)
 
 void MainWindow::sendDataPacket()
 {
-//    imageProcessor->result.set_type(1);
-//    imageProcessor->result.set_numberofshape(0);
+    qDebug()<<"--------------";
+    qDebug()<<"mission:"<<imageProcessor->result.mission();
+    qDebug()<<"number:"<<imageProcessor->result.numberofshape();
+    qDebug()<<"type:"<<imageProcessor->result.type();
+    for(int i=0;i<imageProcessor->result.shapes_size();i++)
+    {
+        qDebug()<<"shape "<<i<<" seen at:"<<imageProcessor->result.shapes(i).position_x()<<","<<imageProcessor->result.shapes(i).position_y();
+    }
+    qDebug()<<"--------------";
+
     string data;
     imageProcessor->result.SerializeToString(&data);
     QString s = QString::fromStdString(data);
     QByteArray q_data;
     q_data.append(s);
     sendingSocket->sendData(q_data);
-
 }

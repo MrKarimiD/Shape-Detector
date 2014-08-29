@@ -59,7 +59,8 @@ HEADERS  += mainwindow.h \
     geom/triangulation.h \
     geom/vector_2d.h \
     geom/geom.h \
-    Prototype_Messages/GameGround.pb.h
+    Prototype_Messages/GameGround.pb.h \
+    Constants.h
 
 FORMS    += mainwindow.ui
 

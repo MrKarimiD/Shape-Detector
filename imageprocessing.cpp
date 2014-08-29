@@ -16,6 +16,9 @@ ImageProcessing::ImageProcessing(QObject *parent) :
 
 Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 {
+    imSize.width = input.cols;
+    imSize.height = input.rows;
+
     result.clear_shapes();
     result.set_numberofshape(0);
 
@@ -347,5 +350,5 @@ void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString 
     Point2f center;
     float radius;
     minEnclosingCircle( (Mat)contour, center, radius );
-    addShape(center.x,center.y,radius,type.toStdString(),"UnCheck");
+    addShape(center.x/imSize.width,center.y/imSize.height,radius,type.toStdString(),"UnCheck");
 }
