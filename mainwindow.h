@@ -116,6 +116,20 @@ private slots:
 
     void sendDataPacket();
 
+    void on_use_blue_checkBox_toggled(bool checked);
+
+    void on_use_red_checkBox_toggled(bool checked);
+
+    void on_use_green_checkBox_toggled(bool checked);
+
+    void on_use_yellow_checkBox_toggled(bool checked);
+
+    void on_use_violet_checkBox_toggled(bool checked);
+
+    void on_use_cyan_checkBox_toggled(bool checked);
+
+    void on_use_black_checkBox_toggled(bool checked);
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
@@ -179,6 +193,34 @@ private:
     void enableSecondMission();
 
     void disableSecondMission();
+
+    void enableSelectRed();
+
+    void disableSelectRed();
+
+    void enableSelectBlue();
+
+    void disableSelectBlue();
+
+    void enableSelectGreen();
+
+    void disableSelectGreen();
+
+    void enableSelectYellow();
+
+    void disableSelectYellow();
+
+    void enableSelectViolet();
+
+    void disableSelectViolet();
+
+    void enableSelectCyan();
+
+    void disableSelectCyan();
+
+    void enableSelectBlack();
+
+    void disableSelectBlack();
 
     void setInitializeMessage(int mission);
 

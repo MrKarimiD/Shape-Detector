@@ -25,6 +25,34 @@ MainWindow::MainWindow(QWidget *parent) :
     fps_items<<"15"<<"30"<<"60";
     ui->fps_comboBox->addItems(fps_items);
 
+    QPalette red_pal(Qt::red);
+    ui->redSelect_button->setAutoFillBackground(true);
+    ui->redSelect_button->setPalette(red_pal);
+
+    QPalette blue_pal(Qt::blue);
+    ui->blueSelect_button->setAutoFillBackground(true);
+    ui->blueSelect_button->setPalette(blue_pal);
+
+    QPalette green_pal(Qt::green);
+    ui->greenSelect_button->setAutoFillBackground(true);
+    ui->greenSelect_button->setPalette(green_pal);
+
+    QPalette yellow_pal(Qt::yellow);
+    ui->yellowSelect_button->setAutoFillBackground(true);
+    ui->yellowSelect_button->setPalette(yellow_pal);
+
+    QPalette purple_pal(QColor(148,0,211));
+    ui->violetSelect_button->setAutoFillBackground(true);
+    ui->violetSelect_button->setPalette(purple_pal);
+
+    QPalette cyan_pal(Qt::cyan);
+    ui->cyanSelect_button->setAutoFillBackground(true);
+    ui->cyanSelect_button->setPalette(cyan_pal);
+
+    QPalette black_pal(Qt::black);
+    ui->blackSelect_button->setAutoFillBackground(true);
+    ui->blackSelect_button->setPalette(black_pal);
+
     QStringList output_items;
     output_items<<"Croped"<<"Adaptive Threshold"<<"Threshold"<<"Canny"<<"Final";
     ui->out_comboBox->addItems(output_items);
@@ -386,6 +414,146 @@ void MainWindow::disableSecondMission()
     ui->sMendX_lineEdit->setDisabled(true);
     ui->sMendY_lineEdit->setDisabled(true);
     ui->sMend_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectRed()
+{
+    ui->redSelect_button->setEnabled(true);
+    ui->red_hue_lineEdit->setEnabled(true);
+    ui->red_sat_lineEdit->setEnabled(true);
+    ui->red_value_lineEdit->setEnabled(true);
+    ui->add_red_button->setEnabled(true);
+    ui->red_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectRed()
+{
+    ui->redSelect_button->setDisabled(true);
+    ui->red_hue_lineEdit->setDisabled(true);
+    ui->red_sat_lineEdit->setDisabled(true);
+    ui->red_value_lineEdit->setDisabled(true);
+    ui->add_red_button->setDisabled(true);
+    ui->red_status_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectBlue()
+{
+    ui->blueSelect_button->setEnabled(true);
+    ui->blue_hue_lineEdit->setEnabled(true);
+    ui->blue_sat_lineEdit->setEnabled(true);
+    ui->blue_value_lineEdit->setEnabled(true);
+    ui->add_blue_button->setEnabled(true);
+    ui->blue_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectBlue()
+{
+    ui->blueSelect_button->setDisabled(true);
+    ui->blue_hue_lineEdit->setDisabled(true);
+    ui->blue_sat_lineEdit->setDisabled(true);
+    ui->blue_value_lineEdit->setDisabled(true);
+    ui->add_blue_button->setDisabled(true);
+    ui->blue_status_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectGreen()
+{
+    ui->greenSelect_button->setEnabled(true);
+    ui->green_hue_lineEdit->setEnabled(true);
+    ui->green_sat_lineEdit->setEnabled(true);
+    ui->green_value_lineEdit->setEnabled(true);
+    ui->add_green_button->setEnabled(true);
+    ui->green_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectGreen()
+{
+    ui->greenSelect_button->setDisabled(true);
+    ui->green_hue_lineEdit->setDisabled(true);
+    ui->green_sat_lineEdit->setDisabled(true);
+    ui->green_value_lineEdit->setDisabled(true);
+    ui->add_green_button->setDisabled(true);
+    ui->green_status_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectYellow()
+{
+    ui->yellowSelect_button->setEnabled(true);
+    ui->yellow_hue_lineEdit->setEnabled(true);
+    ui->yellow_sat_lineEdit->setEnabled(true);
+    ui->yellow_value_lineEdit->setEnabled(true);
+    ui->add_yellow_button->setEnabled(true);
+    ui->yellow_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectYellow()
+{
+    ui->yellowSelect_button->setDisabled(true);
+    ui->yellow_hue_lineEdit->setDisabled(true);
+    ui->yellow_sat_lineEdit->setDisabled(true);
+    ui->yellow_value_lineEdit->setDisabled(true);
+    ui->add_yellow_button->setDisabled(true);
+    ui->yellow_status_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectViolet()
+{
+    ui->violetSelect_button->setEnabled(true);
+    ui->violet_hue_lineEdit->setEnabled(true);
+    ui->violet_sat_lineEdit->setEnabled(true);
+    ui->violet_value_lineEdit->setEnabled(true);
+    ui->add_violet_button->setEnabled(true);
+    ui->violet_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectViolet()
+{
+    ui->violetSelect_button->setDisabled(true);
+    ui->violet_hue_lineEdit->setDisabled(true);
+    ui->violet_sat_lineEdit->setDisabled(true);
+    ui->violet_value_lineEdit->setDisabled(true);
+    ui->add_violet_button->setDisabled(true);
+    ui->violet_status_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectCyan()
+{
+    ui->cyanSelect_button->setEnabled(true);
+    ui->cyan_hue_lineEdit->setEnabled(true);
+    ui->cyan_sat_lineEdit->setEnabled(true);
+    ui->cyan_value_lineEdit->setEnabled(true);
+    ui->add_cyan_button->setEnabled(true);
+    ui->cyan_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectCyan()
+{
+    ui->cyanSelect_button->setDisabled(true);
+    ui->cyan_hue_lineEdit->setDisabled(true);
+    ui->cyan_sat_lineEdit->setDisabled(true);
+    ui->cyan_value_lineEdit->setDisabled(true);
+    ui->add_cyan_button->setDisabled(true);
+    ui->cyan_status_label->setDisabled(true);
+}
+
+void MainWindow::enableSelectBlack()
+{
+    ui->blackSelect_button->setEnabled(true);
+    ui->black_hue_lineEdit->setEnabled(true);
+    ui->black_sat_lineEdit->setEnabled(true);
+    ui->black_value_lineEdit->setEnabled(true);
+    ui->add_black_button->setEnabled(true);
+    ui->black_status_label->setEnabled(true);
+}
+
+void MainWindow::disableSelectBlack()
+{
+    ui->blackSelect_button->setDisabled(true);
+    ui->black_hue_lineEdit->setDisabled(true);
+    ui->black_sat_lineEdit->setDisabled(true);
+    ui->black_value_lineEdit->setDisabled(true);
+    ui->add_black_button->setDisabled(true);
+    ui->black_status_label->setDisabled(true);
 }
 
 void MainWindow::setInitializeMessage(int mission)
@@ -894,4 +1062,88 @@ void MainWindow::sendDataPacket()
     QByteArray q_data;
     q_data.append(s);
     sendingSocket->sendData(q_data);
+}
+
+void MainWindow::on_use_blue_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectBlue();
+    }
+    else
+    {
+        disableSelectBlue();
+    }
+}
+
+void MainWindow::on_use_red_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectRed();
+    }
+    else
+    {
+        disableSelectRed();
+    }
+}
+
+void MainWindow::on_use_green_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectGreen();
+    }
+    else
+    {
+        disableSelectGreen();
+    }
+}
+
+void MainWindow::on_use_yellow_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectYellow();
+    }
+    else
+    {
+        disableSelectYellow();
+    }
+}
+
+void MainWindow::on_use_violet_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectViolet();
+    }
+    else
+    {
+        disableSelectViolet();
+    }
+}
+
+void MainWindow::on_use_cyan_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectCyan();
+    }
+    else
+    {
+        disableSelectCyan();
+    }
+}
+
+void MainWindow::on_use_black_checkBox_toggled(bool checked)
+{
+    if(checked)
+    {
+        enableSelectBlack();
+    }
+    else
+    {
+        disableSelectBlack();
+    }
 }
