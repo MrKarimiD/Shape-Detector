@@ -359,5 +359,5 @@ void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString 
     float Xman = Orgin_X - (center.x/imSize.width)*Width;
     float Yman = Orgin_Y + (center.y/imSize.height)*Height;
     //---------------------------------
-    addShape(Xman,Yman,radius,type.toStdString(),"UnCheck");
+    addShape(Xman+100,Yman-100,radius,type.toStdString(),"UnCheck");
 }
