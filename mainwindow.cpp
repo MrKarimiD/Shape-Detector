@@ -995,6 +995,7 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
          if(colorMode)
          {
              qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
+             QApplication::setOverrideCursor(Qt::ArrowCursor);
              //image processing functions
          }
     }
@@ -1177,40 +1178,47 @@ void MainWindow::on_redSelect_button_clicked()
 {
     whichColor = "red";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
 
 void MainWindow::on_blueSelect_button_clicked()
 {
     whichColor = "blue";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
 
 void MainWindow::on_greenSelect_button_clicked()
 {
     whichColor = "green";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
 
 void MainWindow::on_yellowSelect_button_clicked()
 {
     whichColor = "yellow";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
 
 void MainWindow::on_violetSelect_button_clicked()
 {
     whichColor = "violet";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
 
 void MainWindow::on_cyanSelect_button_clicked()
 {
     whichColor = "cyan";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
 
 void MainWindow::on_blackSelect_button_clicked()
 {
     whichColor = "black";
     colorMode = true;
+    QApplication::setOverrideCursor(Qt::CrossCursor);
 }
