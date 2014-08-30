@@ -979,15 +979,15 @@ void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
              if(!firstPointSelected)
              {
                  qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-                 ui->fX_lineEdit->setText(QString::number(event->x()));
-                 ui->fY_lineEdit->setText(QString::number(event->y()));
+                 ui->fX_lineEdit->setText(QString::number(event->x()-ui->outputLabel->x()));
+                 ui->fY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
                  firstPointSelected=true;
              }
              else
              {
                  qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-                 ui->sX_lineEdit->setText(QString::number(event->x()));
-                 ui->sY_lineEdit->setText(QString::number(event->y()));
+                 ui->sX_lineEdit->setText(QString::number(event->x()-ui->outputLabel->x()));
+                 ui->sY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
                  firstPointSelected=false;
              }
          }
