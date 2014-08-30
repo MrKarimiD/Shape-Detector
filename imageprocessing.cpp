@@ -200,12 +200,12 @@ Mat ImageProcessing::undistortImage(Mat input)
 {
     Mat cameraMatrix = Mat::eye(3, 3, CV_64F);
 
-    cameraMatrix.at<double>(0,0) = 6.4219946415087361e+02;
+    cameraMatrix.at<double>(0,0) = 6.7055726712006776e+02;
     cameraMatrix.at<double>(0,1) = 0;
     cameraMatrix.at<double>(0,2) = 3.8950000000000000e+02;
 
     cameraMatrix.at<double>(1,0) = 0;
-    cameraMatrix.at<double>(1,1) = 6.4219946415087361e+02;
+    cameraMatrix.at<double>(1,1) = 6.7055726712006776e+02;
     cameraMatrix.at<double>(1,2) = 2.8950000000000000e+02;
 
     cameraMatrix.at<double>(2,0) = 0;
@@ -214,26 +214,31 @@ Mat ImageProcessing::undistortImage(Mat input)
 
     Mat distCoeffs = Mat::zeros(8, 1, CV_64F);
 
-    distCoeffs.at<double>(0,0) = -4.1145405087132914e-01;
-    distCoeffs.at<double>(1,0) = 2.8900635140870623e-01;
+    distCoeffs.at<double>(0,0) = -3.7087470577837894e-01;
+    distCoeffs.at<double>(1,0) = 1.8508542088322785e-01;
     distCoeffs.at<double>(2,0) = 0;
     distCoeffs.at<double>(3,0) = 0;
-    distCoeffs.at<double>(4,0) = -9.8587683887241317e-02;
+    distCoeffs.at<double>(4,0) = -3.4799226907590207e-02;
+
+    Mat inputFrame;
+    input.copyTo(inputFrame);
+
+//    bitwise_not(inputFrame, inputFrame);
 
     Mat outputFrame;
-    undistort(input,outputFrame,cameraMatrix,distCoeffs);
+//    undistort(input,outputFrame,cameraMatrix,distCoeffs);
     Size imageSize = input.size();
     Mat view, rview, map1, map2;
 
     initUndistortRectifyMap(cameraMatrix, distCoeffs, Mat(),
-        getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 1, imageSize, 0),
+        getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 0, imageSize, 0),
         imageSize, CV_16SC2, map1, map2);
-    view = outputFrame;
+    view = inputFrame;
     remap(view, rview, map1, map2, INTER_LINEAR);
 
-    //blur(outputFrame,outputFrame,Size(3,3));
-    //imshow("dis",input);
-//    imshow("undis",rview);
+//    //blur(outputFrame,outputFrame,Size(3,3));
+//    //imshow("dis",input);
+////    imshow("undis",rview);
     return rview;
 }
 
@@ -350,5 +355,9 @@ void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString 
     Point2f center;
     float radius;
     minEnclosingCircle( (Mat)contour, center, radius );
-    addShape(center.x/imSize.width,center.y/imSize.height,radius,type.toStdString(),"UnCheck");
+    //--------mohsen khare---------------
+    float Xman = Orgin_X - (center.x/imSize.width)*Width;
+    float Yman = Orgin_Y + (center.y/imSize.height)*Height;
+    //---------------------------------
+    addShape(Xman,Yman,radius,type.toStdString(),"UnCheck");
 }

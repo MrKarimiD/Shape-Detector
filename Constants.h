@@ -8,5 +8,11 @@
 
 #define ASPECT_RATIO_TRESH 4
 
+#define Width 2746
+#define Height 2803
+
+#define Orgin_X 2677
+#define Orgin_Y -1537
+
 
 #endif // CONSTANTS_H
