@@ -612,16 +612,17 @@ void MainWindow::setInitializeMessage(int mission)
             imageProcessor->result.set_mission2_end_x(ui->sMendX_lineEdit->text().toFloat());
             imageProcessor->result.set_mission2_end_y(ui->sMendY_lineEdit->text().toFloat());
 
-            qDebug()<<"endpoint:"<<imageProcessor->result.mission2_end_x()<<","<<imageProcessor->result.mission2_end_y();
-            if(imageProcessor->result.IsInitialized())
-            {
-                qDebug()<<"is valid";
-            }
-            else
-            {
-                qDebug()<<"not valid";
-            }
+            outputPacket_line *line1=imageProcessor->result.add_mission2_lines();
+            line1->set_start_x(1300);
+            line1->set_start_y(-1500);
+            line1->set_end_x(1700);
+            line1->set_end_y(0);
 
+            outputPacket_line *line2=imageProcessor->result.add_mission2_lines();
+            line2->set_start_x(1700);
+            line2->set_start_y(0);
+            line2->set_end_x(1300);
+            line2->set_end_y(1500);
             break;
         }
         case 3:
@@ -1221,4 +1222,144 @@ void MainWindow::on_blackSelect_button_clicked()
     whichColor = "black";
     colorMode = true;
     QApplication::setOverrideCursor(Qt::CrossCursor);
+}
+
+void MainWindow::on_save_set_button_clicked()
+{
+    SystemSettings setting;
+
+    setting.set_input_edit_camera_setting(ui->camSet_checkBox->isChecked());
+    setting.set_input_white_balance_blue_u(ui->blue_slider->value());
+    setting.set_input_white_balance_red_v(ui->red_slider->value());
+    setting.set_input_exposure(ui->exposure_slider->value());
+    setting.set_input_brightness(ui->brightness_slider->value());
+    setting.set_input_sharpness(ui->sharpness_slider->value());
+    setting.set_input_gain(ui->gain_slider->value());
+    setting.set_input_network_ip(ui->ip_lineEdit->text().toStdString());
+    setting.set_input_network_port(ui->port_lineEdit->text().toStdString());
+
+    setting.set_filters_crop_photo(ui->crop_checkBox->isChecked());
+    setting.set_filters_crop_firstpoint_x(ui->fX_lineEdit->text().toStdString());
+    setting.set_filters_crop_firstpoint_y(ui->fY_lineEdit->text().toStdString());
+    setting.set_filters_crop_secondpoint_x(ui->sX_lineEdit->text().toStdString());
+    setting.set_filters_crop_secondpoint_y(ui->sY_lineEdit->text().toStdString());
+
+    setting.set_filters_median_blur(ui->medianBlur_checkBox->isChecked());
+    setting.set_filters_median_blur_kernelsize(ui->kernelSize_lineEdit->text().toStdString());
+
+    setting.set_filters_adaptive_threshold(ui->adaptiveThreshold_checkBox->isChecked());
+    setting.set_filters_adaptive_threshold_blocksize(ui->blockSize_slider->value());
+    setting.set_filters_adaptive_threshold_c(ui->C_slider->value());
+
+    setting.set_filters_threshold(ui->thresh_checkBox->isChecked());
+    setting.set_filters_threshold_value(ui->thresh_slider->value());
+
+    setting.set_filters_dilate(ui->dilate_checkBox->isChecked());
+    setting.set_filters_dilationsize(ui->dilateSize_lineEdit->text().toStdString());
+
+    setting.set_filters_canny(ui->canny_checkBox->isChecked());
+    setting.set_filters_canny_aperturesize(ui->apertureSize_lineEdit->text().toStdString());
+    setting.set_filters_canny_first_threshold(ui->firstThresh_slider->value());
+    setting.set_filters_canny_second_threshold(ui->secondThresh_slider->value());
+
+    setting.set_have_red(ui->use_red_checkBox->isChecked());
+    setting.set_have_blue(ui->use_blue_checkBox->isChecked());
+    setting.set_have_green(ui->use_green_checkBox->isChecked());
+    setting.set_have_yellow(ui->use_yellow_checkBox->isChecked());
+    setting.set_have_violet(ui->use_violet_checkBox->isChecked());
+    setting.set_have_cyan(ui->use_cyan_checkBox->isChecked());
+    setting.set_have_black(ui->use_black_checkBox->isChecked());
+
+    //Add Colors!
+
+    QString fileAddress = QFileDialog::getSaveFileName(this,tr("Select Directory..."), "/home", tr("Text File (*.txt)"));
+    QFile file(fileAddress);
+
+    if(file.open(QIODevice::WriteOnly | QIODevice::Text ))
+    {
+        qDebug() << "File Has Been Created" << endl;
+    }
+    else
+    {
+        qDebug() << "Failed to Create File" << endl;
+    }
+
+    //file.close();
+    fstream output;
+    output.open(fileAddress.toUtf8(), fstream::out | fstream::trunc | fstream::binary);;
+    if (!setting.SerializeToOstream(&output)) {
+      qDebug() << "Failed to write data." << endl;
+    }
+}
+
+void MainWindow::on_open_set_button_clicked()
+{
+    SystemSettings setting;
+    QString fileAddress = QFileDialog::getOpenFileName(this,tr("Select Setting File"), "/home", tr("Text File (*.txt)"));
+
+    fstream input;
+    input.open(fileAddress.toUtf8(), ios::in | ios::binary);
+    if (!input)
+    {
+        qDebug() << fileAddress << ": File not found.  Creating a new file." << endl;
+    }
+    else if (!setting.ParseFromIstream(&input))
+    {
+          qDebug() << "Faile";
+    }
+
+    ui->camSet_checkBox->setCheckable(setting.input_edit_camera_setting());
+    ui->blue_slider->setValue(setting.input_white_balance_blue_u());
+    ui->red_slider->setValue(setting.input_white_balance_red_v());
+    ui->exposure_slider->setValue(setting.input_exposure());
+    ui->brightness_slider->setValue(setting.input_brightness());
+    ui->sharpness_slider->setValue(setting.input_sharpness());
+    ui->gain_slider->setValue(setting.input_gain());
+    ui->ip_lineEdit->setText(QString::fromStdString(setting.input_network_ip()));
+    ui->port_lineEdit->setText(QString::fromStdString(setting.input_network_port()));
+
+    ui->crop_checkBox->setChecked(setting.filters_crop_photo());
+    ui->fX_lineEdit->setText(QString::fromStdString(setting.filters_crop_firstpoint_x()));
+    ui->fY_lineEdit->setText(QString::fromStdString(setting.filters_crop_firstpoint_y()));
+    ui->sX_lineEdit->setText(QString::fromStdString(setting.filters_crop_secondpoint_x()));
+    ui->sY_lineEdit->setText(QString::fromStdString(setting.filters_crop_secondpoint_y()));
+
+    ui->medianBlur_checkBox->setChecked(setting.filters_median_blur());
+    ui->kernelSize_lineEdit->setText(QString::fromStdString(setting.filters_median_blur_kernelsize()));
+
+    ui->adaptiveThreshold_checkBox->setChecked(setting.filters_adaptive_threshold());
+    ui->blockSize_slider->setValue(setting.filters_adaptive_threshold_blocksize());
+    ui->C_slider->setValue(setting.filters_adaptive_threshold_c());
+
+    ui->thresh_checkBox->setChecked(setting.filters_threshold());
+    ui->thresh_slider->setValue(setting.filters_threshold_value());
+
+    ui->dilate_checkBox->setChecked(setting.filters_dilate());
+    ui->dilateSize_lineEdit->setText(setting.filters_dilationsize());
+
+    ui->canny_checkBox->setChecked(setting.filters_canny());
+    ui->firstThresh_slider->setValue(setting.filters_canny_first_threshold());
+    ui->secondThresh_slider->setValue(setting.filters_canny_second_threshold());
+    ui->apertureSize_lineEdit->setText(setting.filters_canny_aperturesize());
+
+    ui->use_red_checkBox->setChecked(setting.have_red());
+    //Add red Colors
+
+    ui->use_blue_checkBox->setChecked(setting.have_blue());
+    //Add blue colors
+
+    ui->use_green_checkBox->setCheckable(setting.have_green());
+    //Add green colors
+
+    ui->use_yellow_checkBox->setCheckable(setting.have_yellow());
+    //Add yellow colors
+
+    ui->use_violet_checkBox->setCheckable(setting.have_violet());
+    //Add violet colors
+
+    ui->use_cyan_checkBox->setCheckable(setting.have_cyan());
+    //Add cyan colors
+
+    ui->use_black_checkBox->setCheckable(setting.have_black());
+    //Add black colors
 }

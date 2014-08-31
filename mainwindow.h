@@ -20,6 +20,9 @@
 #include "QMessageBox"
 #include "networksender.h"
 #include "Prototype_Messages/GameGround.pb.h"
+#include "System_Protobuf/SystemSettings.pb.h"
+#include <iostream>
+#include <fstream>
 
 
 using namespace cv;
@@ -143,6 +146,10 @@ private slots:
     void on_cyanSelect_button_clicked();
 
     void on_blackSelect_button_clicked();
+
+    void on_save_set_button_clicked();
+
+    void on_open_set_button_clicked();
 
 private:
     Ui::MainWindow *ui;

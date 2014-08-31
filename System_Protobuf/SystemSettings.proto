@@ -1,0 +1,68 @@
+message SystemSettings
+{
+	message color
+	{
+		required int32 hue = 1;
+		required int32 sat = 2;
+		required int32 val = 3;
+	}
+		
+	
+	//Input Tab
+	required bool input_edit_camera_setting = 1;
+	required int64 input_WHITE_BALANCE_BLUE_U = 2;
+	required int64 input_WHITE_BALANCE_RED_V = 3;
+	required int64 input_EXPOSURE = 4;
+	required int64 input_BRIGHTNESS = 5;
+	required int32 input_SHARPNESS = 6;
+	required int64 input_GAIN = 7;
+	required string input_network_ip = 8;
+	required string input_network_port = 9;
+
+	//filters tab	
+	required bool filters_crop_photo = 10;
+	required string filters_crop_firstPoint_x = 11;
+	required string filters_crop_firstPoint_y = 12;
+	required string filters_crop_secondPoint_x = 13;
+	required string filters_crop_secondPoint_y = 14;
+	
+	required bool filters_median_blur = 15;
+	required string filters_median_blur_kernelSize = 16;
+	
+	required bool filters_Adaptive_threshold = 17;
+	required int64 filters_Adaptive_threshold_blockSize = 18;
+	required int64 filters_Adaptive_threshold_C = 19;
+		
+	required bool filters_Threshold = 20;
+	required int64 filters_Threshold_value = 21;
+	
+	required bool filters_dilate = 22;
+	required string filters_dilationSize = 23;
+	
+	required bool filters_Canny = 24;
+	required int64 filters_Canny_First_Threshold  = 25;
+	required int64 filters_Canny_Second_Threshold = 26;
+	required string filters_Canny_apertureSize = 27;
+
+	//Colors tab
+	required bool have_red = 28;	
+	repeated color red_instances = 29;
+	
+	required bool have_blue = 30;
+	repeated color blue_instances = 31;
+	
+	required bool have_green = 32;	
+	repeated color green_instances = 33;
+	
+	required bool have_yellow = 34;
+	repeated color yellow_instances = 35;	
+	
+	required bool have_violet = 36;
+	repeated color violet_instances = 37;
+	
+	required bool have_cyan = 38;
+	repeated color cyan_instances = 39;
+	
+	required bool have_black = 41;
+	repeated color black_instances = 42;
+}
