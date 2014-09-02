@@ -1010,12 +1010,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
         rubberBand->show();
         firstPointSelectedIsValid = true;
     }
-//    else
-//    {
-//        rubberBand->hide();
-//        firstPointSelectedIsValid = false;
-//    }
-
 }
 
 void MainWindow::mouseMoveEvent(QMouseEvent *event)
@@ -1039,11 +1033,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         {
             if(mouseButtonClicked)
             {
-                qDebug()<<"X:"+QString::number(origin.x())+"-- Y:"+QString::number(origin.y());
                 ui->fX_lineEdit->setText(QString::number(origin.x()-ui->outputLabel->x()));
                 ui->fY_lineEdit->setText(QString::number(origin.y()-ui->outputLabel->y()));
 
-                qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
                 ui->sX_lineEdit->setText(QString::number(event->x()-ui->outputLabel->x()));
                 ui->sY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
             }
