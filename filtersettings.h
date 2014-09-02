@@ -9,6 +9,7 @@ class filterSettings : public QObject
 public:
     explicit filterSettings(QObject *parent = 0);
 
+    void setUseUndisort(bool input);
     void setUseMedianBlur(bool input);
     void setKernelSize(int input);
     void setUseAdaptiveThresh(bool input);
@@ -23,6 +24,7 @@ public:
     void setSecondThresh(int input);
     void setApertureSize(int input);
 
+    bool getUseUndisort();
     bool getUseMedianBlur();
     int getKernelSize();
     bool getUseAdaptiveThresh();
@@ -42,6 +44,7 @@ signals:
 public slots:
 
 private:
+    bool useUndisort;
     bool useMedianBlur;
     int kernelSize;
     bool useAdaptiveThresh;

@@ -18,6 +18,11 @@ filterSettings::filterSettings(QObject *parent) :
     apertureSize=5;
 }
 
+void filterSettings::setUseUndisort(bool input)
+{
+    this->useUndisort = input;
+}
+
 void filterSettings::setUseMedianBlur(bool input)
 {
     this->useMedianBlur=input;
@@ -96,6 +101,11 @@ void filterSettings::setApertureSize(int input)
         this->apertureSize=input;
     else
         this->apertureSize=input-1;
+}
+
+bool filterSettings::getUseUndisort()
+{
+    return this->useUndisort;
 }
 
 bool filterSettings::getUseMedianBlur()

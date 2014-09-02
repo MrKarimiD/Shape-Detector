@@ -338,6 +338,8 @@ void MainWindow::disableCannySetting()
 
 void MainWindow::updateFilterSetting()
 {
+    filterSetting->setUseUndisort(ui->undisort_checkBox->isChecked());
+
     filterSetting->setUseMedianBlur(ui->medianBlur_checkBox->isChecked());
     filterSetting->setKernelSize(ui->kernelSize_lineEdit->text().toInt());
 
@@ -674,7 +676,7 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
     //undisort image
     Mat inputFrame;
-    if(ui->camera_rButton->isChecked())
+    if(ui->camera_rButton->isChecked() && ui->undisort_checkBox->isChecked())
     {
         imageProcessor->undistortImage(input_mat).copyTo(inputFrame);
     }
@@ -1418,4 +1420,9 @@ void MainWindow::on_open_set_button_clicked()
     }
 
     connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
+}
+
+void MainWindow::on_undisort_checkBox_stateChanged()
+{
+
 }

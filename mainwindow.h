@@ -158,6 +158,8 @@ private slots:
 
     void on_open_set_button_clicked();
 
+    void on_undisort_checkBox_stateChanged();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;

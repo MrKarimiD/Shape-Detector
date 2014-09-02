@@ -231,7 +231,7 @@ Mat ImageProcessing::undistortImage(Mat input)
     Mat view, rview, map1, map2;
 
     initUndistortRectifyMap(cameraMatrix, distCoeffs, Mat(),
-        getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 1, imageSize, 0),
+        getOptimalNewCameraMatrix(cameraMatrix, distCoeffs, imageSize, 0, imageSize, 0),
         imageSize, CV_16SC2, map1, map2);
     view = inputFrame;
     remap(view, rview, map1, map2, INTER_LINEAR);
