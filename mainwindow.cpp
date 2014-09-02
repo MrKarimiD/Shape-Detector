@@ -7,10 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    installEventFilter(this);
+
     cameraIsOpened=false;
     mouseButtonClicked=false;
     colorMode = false;
-    firstPointSelected=false;
+    firstPointSelectedIsValid=false;
     imProcDataAvailable=false;
 
     permissionForSending = false;
@@ -19,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     sendingSocket = new NetworkSender();
 
     QStringList items;
-    items<<"0"<<"1";
+    items<<"0"<<"1"<<"Network";
     ui->cam_comboBox->addItems(items);
 
     QStringList fps_items;
@@ -113,10 +115,15 @@ void MainWindow::on_camera_rButton_toggled(bool checked)
 
 void MainWindow::on_open_button_clicked()
 {
-        sendingSocket->configure(ui->ip_lineEdit->text(),ui->port_lineEdit->text().toInt());
+    sendingSocket->configure(ui->ip_lineEdit->text(),ui->port_lineEdit->text().toInt());
 
-        Mat frame;
+    Mat frame;
 
+    if(ui->cam_comboBox->currentText() == "Network")
+    {
+    }
+    else
+    {
         if(ui->cam_comboBox->currentText()=="0")
         {
             cameraIsOpened=cap.open(CAP_FIREWIRE+0);
@@ -132,8 +139,9 @@ void MainWindow::on_open_button_clicked()
 
         cam_timer->start(5);
         connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
+    }
 
-        emit imageReady(frame);
+    emit imageReady(frame);
 }
 
 void MainWindow::cam_timeout()
@@ -576,84 +584,84 @@ void MainWindow::setInitializeMessage(int mission)
 {
     switch(mission)
     {
-        case 1 :
-        {
-            this->mission = 1;
+    case 1 :
+    {
+        this->mission = 1;
 
-            imageProcessor->result.set_mission(1);
-            imageProcessor->result.set_type(0);
-            imageProcessor->result.set_numberofshape(0);
+        imageProcessor->result.set_mission(1);
+        imageProcessor->result.set_type(0);
+        imageProcessor->result.set_numberofshape(0);
 
-            imageProcessor->result.set_mission1_isvalid(true);
-            imageProcessor->result.set_mission1_region1_tl_x(ui->region1_tlX_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_region1_tl_y(ui->region1_tlY_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_region1_br_x(ui->region1_brX_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_region1_br_y(ui->region1_brY_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_isvalid(true);
+        imageProcessor->result.set_mission1_region1_tl_x(ui->region1_tlX_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region1_tl_y(ui->region1_tlY_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region1_br_x(ui->region1_brX_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region1_br_y(ui->region1_brY_lineEdit->text().toFloat());
 
-            imageProcessor->result.set_mission1_region2_tl_x(ui->region2_tlX_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_region2_tl_y(ui->region2_tlY_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_region2_br_x(ui->region2_brX_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_region2_br_y(ui->region2_brY_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region2_tl_x(ui->region2_tlX_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region2_tl_y(ui->region2_tlY_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region2_br_x(ui->region2_brX_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_region2_br_y(ui->region2_brY_lineEdit->text().toFloat());
 
-            imageProcessor->result.set_mission1_end_x(ui->fMendX_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission1_end_y(ui->fMendY_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_end_x(ui->fMendX_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission1_end_y(ui->fMendY_lineEdit->text().toFloat());
 
-            break;
-        }
-        case 2 :
-        {
-            this->mission = 2;
+        break;
+    }
+    case 2 :
+    {
+        this->mission = 2;
 
-            imageProcessor->result.set_mission(2);
-            imageProcessor->result.set_type(0);
-            imageProcessor->result.set_numberofshape(0);
+        imageProcessor->result.set_mission(2);
+        imageProcessor->result.set_type(0);
+        imageProcessor->result.set_numberofshape(0);
 
-            imageProcessor->result.set_mission2_isvalid(true);
-            imageProcessor->result.set_mission2_end_x(ui->sMendX_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission2_end_y(ui->sMendY_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission2_isvalid(true);
+        imageProcessor->result.set_mission2_end_x(ui->sMendX_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission2_end_y(ui->sMendY_lineEdit->text().toFloat());
 
-            outputPacket_line *line1=imageProcessor->result.add_mission2_lines();
-            line1->set_start_x(1300);
-            line1->set_start_y(-1500);
-            line1->set_end_x(1700);
-            line1->set_end_y(0);
+        outputPacket_line *line1=imageProcessor->result.add_mission2_lines();
+        line1->set_start_x(1300);
+        line1->set_start_y(-1500);
+        line1->set_end_x(1700);
+        line1->set_end_y(0);
 
-            outputPacket_line *line2=imageProcessor->result.add_mission2_lines();
-            line2->set_start_x(1700);
-            line2->set_start_y(0);
-            line2->set_end_x(1300);
-            line2->set_end_y(1500);
-            break;
-        }
-        case 3:
-        {
-            this->mission = 3;
+        outputPacket_line *line2=imageProcessor->result.add_mission2_lines();
+        line2->set_start_x(1700);
+        line2->set_start_y(0);
+        line2->set_end_x(1300);
+        line2->set_end_y(1500);
+        break;
+    }
+    case 3:
+    {
+        this->mission = 3;
 
-            imageProcessor->result.set_mission(3);
-            imageProcessor->result.set_type(0);
-            imageProcessor->result.set_numberofshape(0);
+        imageProcessor->result.set_mission(3);
+        imageProcessor->result.set_type(0);
+        imageProcessor->result.set_numberofshape(0);
 
-            imageProcessor->result.set_mission3_isvalid(true);
+        imageProcessor->result.set_mission3_isvalid(true);
 
-            if(ui->attacker_rButton->isChecked())
-                imageProcessor->result.set_mission3_isattacker(true);
-            else if(ui->defender_rButton->isChecked())
-                imageProcessor->result.set_mission3_isattacker(false);
+        if(ui->attacker_rButton->isChecked())
+            imageProcessor->result.set_mission3_isattacker(true);
+        else if(ui->defender_rButton->isChecked())
+            imageProcessor->result.set_mission3_isattacker(false);
 
-            //Border Center
-            imageProcessor->result.set_mission3_circularborde_x(ui->border_X_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission3_circularborde_y(ui->border_Y_lineEdit->text().toFloat());
+        //Border Center
+        imageProcessor->result.set_mission3_circularborde_x(ui->border_X_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission3_circularborde_y(ui->border_Y_lineEdit->text().toFloat());
 
-            //goal1 center
-            imageProcessor->result.set_mission3_goal1_x(ui->goal1_X_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission3_goal1_y(ui->goal1_Y_lineEdit->text().toFloat());
+        //goal1 center
+        imageProcessor->result.set_mission3_goal1_x(ui->goal1_X_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission3_goal1_y(ui->goal1_Y_lineEdit->text().toFloat());
 
-            //goal2 center
-            imageProcessor->result.set_mission3_goal2_x(ui->goal2_X_lineEdit->text().toFloat());
-            imageProcessor->result.set_mission3_goal2_x(ui->goal2_Y_lineEdit->text().toFloat());
+        //goal2 center
+        imageProcessor->result.set_mission3_goal2_x(ui->goal2_X_lineEdit->text().toFloat());
+        imageProcessor->result.set_mission3_goal2_x(ui->goal2_Y_lineEdit->text().toFloat());
 
-            break;
-        }
+        break;
+    }
     }
 }
 
@@ -693,7 +701,7 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
         Mat CropFrame(inputFrame,cropedRect);
         CropFrame.copyTo(crop);
         imageProcessor->applyFilters(CropFrame).copyTo(filteredImage);
-   }
+    }
     else
     {
         imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
@@ -739,7 +747,7 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
         else
         {
             cvtColor(outputFrame, outputFrame, COLOR_GRAY2RGB);
-       }
+        }
 
         imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
         ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
@@ -971,35 +979,84 @@ void MainWindow::on_mouse_button_clicked()
     ui->mouse_button->setText(temp);
 }
 
-void MainWindow::mouseDoubleClickEvent(QMouseEvent *event)
+bool MainWindow::eventFilter(QObject *obj, QEvent *event)
 {
-     if(isValidPlaceForSelect(event->x(),event->y()))
-     {
-         if(mouseButtonClicked)
-         {
-             if(!firstPointSelected)
-             {
-                 qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-                 ui->fX_lineEdit->setText(QString::number(event->x()-ui->outputLabel->x()));
-                 ui->fY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
-                 firstPointSelected=true;
-             }
-             else
-             {
-                 qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-                 ui->sX_lineEdit->setText(QString::number(event->x()-ui->outputLabel->x()));
-                 ui->sY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
-                 firstPointSelected=false;
-             }
-         }
-
-         if(colorMode)
-         {
-             qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
-             QApplication::setOverrideCursor(Qt::ArrowCursor);
-             //image processing functions
-         }
+    if (event->type() == QEvent::MouseButtonPress || event->type() == QEvent::MouseMove || event->type() == QEvent::MouseButtonRelease)
+    {
+        if(colorMode || mouseButtonClicked)
+        {
+            return QMainWindow::eventFilter(obj, event);
+        }
+        else
+        {
+            qDebug()<<"Select a mode!";
+        }
     }
+    else
+    {
+        // pass the event on to the parent class
+        return QMainWindow::eventFilter(obj, event);
+    }
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *event)
+{
+    if(isValidPlaceForSelect(event->x(),event->y()))
+    {
+        origin = event->pos();
+        if (!rubberBand)
+            rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
+        rubberBand->setGeometry(QRect(origin, QSize()));
+        rubberBand->show();
+        firstPointSelectedIsValid = true;
+    }
+//    else
+//    {
+//        rubberBand->hide();
+//        firstPointSelectedIsValid = false;
+//    }
+
+}
+
+void MainWindow::mouseMoveEvent(QMouseEvent *event)
+{
+    if(isValidPlaceForSelect(event->x(),event->y()))
+    {
+        rubberBand->setGeometry(QRect(origin, event->pos()).normalized());
+    }
+    else
+    {
+        rubberBand->hide();
+        firstPointSelectedIsValid = false;
+    }
+}
+
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(isValidPlaceForSelect(event->x(),event->y()))
+    {
+        if(firstPointSelectedIsValid)
+        {
+            if(mouseButtonClicked)
+            {
+                qDebug()<<"X:"+QString::number(origin.x())+"-- Y:"+QString::number(origin.y());
+                ui->fX_lineEdit->setText(QString::number(origin.x()-ui->outputLabel->x()));
+                ui->fY_lineEdit->setText(QString::number(origin.y()-ui->outputLabel->y()));
+
+                qDebug()<<"X:"+QString::number(event->x())+"-- Y:"+QString::number(event->y());
+                ui->sX_lineEdit->setText(QString::number(event->x()-ui->outputLabel->x()));
+                ui->sY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
+            }
+
+            else if(colorMode)
+            {
+
+            }
+        }
+    }
+
+    rubberBand->hide();
+    firstPointSelectedIsValid = false;
 }
 
 void MainWindow::on_drawCrop_checkBox_stateChanged()
@@ -1283,8 +1340,8 @@ void MainWindow::on_save_set_button_clicked()
         fstream output;
         output.open(fileAddress.toUtf8(), fstream::out | fstream::trunc | fstream::binary);;
         if (!setting.SerializeToOstream(&output)) {
-          qDebug() << "Failed to write data." << endl;
-          //file.close();
+            qDebug() << "Failed to write data." << endl;
+            //file.close();
         }
     }
     else
@@ -1365,7 +1422,7 @@ void MainWindow::on_open_set_button_clicked()
     }
     else if (!setting.ParseFromIstream(&input))
     {
-          qDebug() << "Failed";
+        qDebug() << "Failed";
     }
 
     connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));

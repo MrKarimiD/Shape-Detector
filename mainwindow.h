@@ -23,6 +23,7 @@
 #include "System_Protobuf/SystemSettings.pb.h"
 #include <iostream>
 #include <fstream>
+#include "QRubberBand"
 
 
 using namespace cv;
@@ -105,7 +106,13 @@ private slots:
 
     void on_mouse_button_clicked();
 
-    void mouseDoubleClickEvent(QMouseEvent *event);
+    bool eventFilter(QObject *obj, QEvent *event);
+
+    void mousePressEvent(QMouseEvent *event);
+
+    void mouseMoveEvent(QMouseEvent *event);
+
+    void mouseReleaseEvent(QMouseEvent *event);
 
     void on_drawCrop_checkBox_stateChanged();
 
@@ -156,7 +163,7 @@ private:
     ImageProcessing *imageProcessor;
     QTimer *cam_timer,*send_timer;
     VideoCapture cap;
-    bool cameraIsOpened,mouseButtonClicked,firstPointSelected,imProcDataAvailable;
+    bool cameraIsOpened,mouseButtonClicked,firstPointSelectedIsValid,imProcDataAvailable;
     bool permissionForSending;
     filterSettings *filterSetting;
     QSemaphore *semaphore;
@@ -164,6 +171,8 @@ private:
     int mission;
     bool colorMode;
     QString whichColor;
+    QPoint origin;
+    QRubberBand *rubberBand;
 
     void enableCameraSetting();
 
