@@ -1335,12 +1335,12 @@ void MainWindow::on_open_set_button_clicked()
     ui->thresh_slider->setValue(setting.filters_threshold_value());
 
     ui->dilate_checkBox->setChecked(setting.filters_dilate());
-    ui->dilateSize_lineEdit->setText(setting.filters_dilationsize());
+    ui->dilateSize_lineEdit->setText(QString::fromStdString(setting.filters_dilationsize()));
 
     ui->canny_checkBox->setChecked(setting.filters_canny());
     ui->firstThresh_slider->setValue(setting.filters_canny_first_threshold());
     ui->secondThresh_slider->setValue(setting.filters_canny_second_threshold());
-    ui->apertureSize_lineEdit->setText(setting.filters_canny_aperturesize());
+    ui->apertureSize_lineEdit->setText(QString::fromStdString(setting.filters_canny_aperturesize()));
 
     ui->use_red_checkBox->setChecked(setting.have_red());
     //Add red Colors
