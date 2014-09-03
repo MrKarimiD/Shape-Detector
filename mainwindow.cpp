@@ -17,8 +17,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     permissionForSending = false;
 
+    rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
+
     semaphore=new QSemaphore(1);
     sendingSocket = new NetworkSender();
+    semaphoreForColorImage = new QSemaphore(1);
 
     QStringList items;
     items<<"0"<<"1"<<"Network";
@@ -67,6 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
+    connect(this,SIGNAL(dataReadyForSend()),this,SLOT(sendDataPacket()));
     //connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
 
     imageProcessor=new ImageProcessing();
@@ -689,6 +693,10 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     updateFilterSetting();
     imageProcessor->updateFilterSettings(filterSetting);
 
+    semaphoreForColorImage->acquire(1);
+    frameForColorDetection = inputFrame;
+    semaphoreForColorImage->release(1);
+
     //croped image for better performance
     Mat filteredImage;
     Mat crop;
@@ -759,7 +767,8 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     {
         imageProcessor->result.set_mission(mission);
         imageProcessor->result.set_type(1);
-        sendDataPacket();
+        //sendDataPacket();
+        emit dataReadyForSend();
     }
 }
 
@@ -1006,8 +1015,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event)
     if(isValidPlaceForSelect(event->x(),event->y()))
     {
         origin = event->pos();
-        if (!rubberBand)
-            rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
         rubberBand->setGeometry(QRect(origin, QSize()));
         rubberBand->show();
         firstPointSelectedIsValid = true;
@@ -1042,8 +1049,22 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
                 ui->sY_lineEdit->setText(QString::number(event->y()-ui->outputLabel->y()));
             }
 
-            else if(colorMode)
+            if(colorMode)
             {
+                semaphoreForColorImage->acquire(1);
+                cam_timer->stop();
+
+                Rect cropedRect;
+                cropedRect.width = event->x()-origin.x();
+                cropedRect.height = event->y()-origin.y();
+                cropedRect.x = origin.x()-ui->outputLabel->x();
+                cropedRect.y = origin.y()-ui->outputLabel->y();
+
+                Mat CropFrame(frameForColorDetection,cropedRect);
+                imageProcessor->returnHsv(CropFrame);
+
+                cam_timer->start();
+                semaphoreForColorImage->release(1);
 
             }
         }
@@ -1103,7 +1124,8 @@ void MainWindow::on_go_button_clicked()
         qDebug()<<"Error : Select a Mission!";
     }
 
-    sendDataPacket();
+    //sendDataPacket();
+    emit dataReadyForSend();
     permissionForSending = true;
     send_timer->start(15);
 }

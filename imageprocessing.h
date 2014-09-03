@@ -32,6 +32,8 @@ public:
 
     Mat shapeDetection(Mat input,Mat src,Rect cropedRect);
 
+    QString returnHsv(Mat input);
+
     void findColors(Mat input);
 
     void changeOutputSetting(bool con,bool geom,bool bound,bool rotate,bool boundries);

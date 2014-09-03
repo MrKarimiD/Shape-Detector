@@ -141,6 +141,19 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
    return dst;
 }
 
+QString ImageProcessing::returnHsv(Mat input)
+{
+    Mat Hsv,img;
+    cvtColor(input,Hsv,COLOR_RGB2HSV);
+    imshow("hsv",Hsv);
+    //inRange(Hsv, Scalar(0, 0, 0), Scalar(38, 255, 255), img);
+    //imshow("img",img);
+    Scalar ff= mean(Hsv);
+    qDebug()<<"mean:"<<QString::number(ff.val[0]);
+    qDebug()<<"mean:"<<QString::number(ff.val[1]);
+    qDebug()<<"mean:"<<QString::number(ff.val[2]);
+}
+
 Mat ImageProcessing::applyFilters(Mat input)
 {
     Mat src = input.clone();

@@ -175,6 +175,8 @@ private:
     QString whichColor;
     QPoint origin;
     QRubberBand *rubberBand;
+    Mat frameForColorDetection;
+    QSemaphore *semaphoreForColorImage;
 
     void enableCameraSetting();
 
@@ -265,6 +267,7 @@ private:
 signals:
     void imageReady(Mat image);
     void cameraSettingChanged();
+    void dataReadyForSend();
 
 };
 
