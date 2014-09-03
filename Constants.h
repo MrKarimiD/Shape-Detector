@@ -14,5 +14,7 @@
 #define Orgin_X 2677
 #define Orgin_Y -1537
 
+#define ColorThresh 20
+
 
 #endif // CONSTANTS_H

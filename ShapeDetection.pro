@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     geom/triangle_2d.cpp \
     geom/vector_2d.cpp \
     Prototype_Messages/GameGround.pb.cc \
-    System_Protobuf/SystemSettings.pb.cc
+    System_Protobuf/SystemSettings.pb.cc \
+    shape.cpp
 
 HEADERS  += mainwindow.h \
     imageprocessing.h \
@@ -62,7 +63,8 @@ HEADERS  += mainwindow.h \
     geom/geom.h \
     Prototype_Messages/GameGround.pb.h \
     Constants.h \
-    System_Protobuf/SystemSettings.pb.h
+    System_Protobuf/SystemSettings.pb.h \
+    shape.h
 
 FORMS    += mainwindow.ui
 

@@ -106,6 +106,7 @@ private slots:
 
     void on_mouse_button_clicked();
 
+    //-------Mouse Functions---------
     bool eventFilter(QObject *obj, QEvent *event);
 
     void mousePressEvent(QMouseEvent *event);
@@ -158,7 +159,21 @@ private slots:
 
     void on_open_set_button_clicked();
 
-    void on_undisort_checkBox_stateChanged();
+    void on_add_red_button_clicked();
+
+    void on_add_blue_button_clicked();
+
+    void on_add_green_button_clicked();
+
+    void on_add_yellow_button_clicked();
+
+    void on_add_violet_button_clicked();
+
+    void on_add_cyan_button_clicked();
+
+    void on_add_black_button_clicked();
+
+    void on_cancel_button_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -84,7 +84,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
         if (approx.size() == 3)
         {
             setLabel(dst, "TRI", contours[i],cropedRect);    // Triangles
-            prepareDataForOutput(contours[i],"TRI");
+            prepareDataForOutput(contours[i],"TRI",src,cropedRect);
         }
         else if (approx.size() >= 4 && approx.size() <= 6)
         {
@@ -108,17 +108,18 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
             if (vtc == 4 && mincos >= -0.1 && maxcos <= 0.3)
             {
                 setLabel(dst, "RECT", contours[i],cropedRect);
-                prepareDataForOutput(contours[i],"RECT");
+                //imshow("in",src);
+                prepareDataForOutput(contours[i],"RECT",src,cropedRect);
             }
             else if (vtc == 5 && mincos >= -0.34 && maxcos <= -0.27)
             {
                 setLabel(dst, "PENTA", contours[i],cropedRect);
-                prepareDataForOutput(contours[i],"PENTA");
+                prepareDataForOutput(contours[i],"PENTA",src,cropedRect);
             }
             else if (vtc == 6 && mincos >= -0.55 && maxcos <= -0.45)
             {
                     setLabel(dst, "HEXA", contours[i],cropedRect);
-                    prepareDataForOutput(contours[i],"HEXA");
+                    prepareDataForOutput(contours[i],"HEXA",src,cropedRect);
             }
         }
         else
@@ -132,7 +133,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
                 abs(1 - (area / (CV_PI * pow(radius, 2)))) <= 0.2)
             {
                 setLabel(dst, "CIR", contours[i],cropedRect);
-                prepareDataForOutput(contours[i],"CIR");
+                prepareDataForOutput(contours[i],"CIR",src,cropedRect);
             }
         }
     }
@@ -152,6 +153,100 @@ QString ImageProcessing::returnHsv(Mat input)
     qDebug()<<"mean:"<<QString::number(ff.val[0]);
     qDebug()<<"mean:"<<QString::number(ff.val[1]);
     qDebug()<<"mean:"<<QString::number(ff.val[2]);
+}
+
+Scalar ImageProcessing::returnColor(Mat input)
+{
+    //imshow("color",input);
+    return mean(input);
+}
+
+QString ImageProcessing::findColor(Vec3b pixel)
+{
+    QString color = "not found";
+
+    for(int j=0;j<red_samples.size();j++)
+    {
+        if(colorIsInRange(pixel,red_samples.at(j)))
+        {
+            color = "red";
+            break;
+        }
+    }
+
+    if(color == "not found")
+    {
+        for(int j=0;j<blue_samples.size();j++)
+        {
+            if(colorIsInRange(pixel,blue_samples.at(j)))
+            {
+                color = "blue";
+                break;
+            }
+        }
+    }
+
+    if(color == "not found")
+    {
+        for(int j=0;j<green_samples.size();j++)
+        {
+            if(colorIsInRange(pixel,green_samples.at(j)))
+            {
+                color = "green";
+                break;
+            }
+        }
+    }
+
+    if(color == "not found")
+    {
+        for(int j=0;j<yellow_samples.size();j++)
+        {
+            if(colorIsInRange(pixel,yellow_samples.at(j)))
+            {
+                color = "yellow";
+                break;
+            }
+        }
+    }
+
+    if(color == "not found")
+    {
+        for(int j=0;j<cyan_samples.size();j++)
+        {
+            if(colorIsInRange(pixel,cyan_samples.at(j)))
+            {
+                color = "cyan";
+                break;
+            }
+        }
+    }
+
+    if(color == "not found")
+    {
+        for(int j=0;j<violet_samples.size();j++)
+        {
+            if(colorIsInRange(pixel,violet_samples.at(j)))
+            {
+                color = "violet";
+                break;
+            }
+        }
+    }
+
+    if(color == "not found")
+    {
+        for(int j=0;j<black_samples.size();j++)
+        {
+            if(colorIsInRange(pixel,black_samples.at(j)))
+            {
+                color = "black";
+                break;
+            }
+        }
+    }
+
+    return color;
 }
 
 Mat ImageProcessing::applyFilters(Mat input)
@@ -284,6 +379,21 @@ void ImageProcessing::setLabel(Mat &im, const string label, std::vector<Point> &
     }
 }
 
+bool ImageProcessing::colorIsInRange(Vec3b inputColor, Vec3b sourceColor)
+{
+//    qDebug()<<"input color:"<<inputColor.val[0]<<","<<inputColor.val[1]<<","<<inputColor.val[2];
+//    qDebug()<<"source color:"<<sourceColor.val[0]<<","<<sourceColor.val[1]<<","<<sourceColor.val[2];
+    if( (abs(inputColor.val[0]-sourceColor.val[0]) < ColorThresh) &&  (abs(inputColor.val[1]-sourceColor.val[1]) < ColorThresh)
+        && (abs(inputColor.val[2]-sourceColor.val[2]) < ColorThresh) )
+    {
+        return true;
+    }
+    else
+        return false;
+
+
+}
+
 void ImageProcessing::changeOutputSetting(bool con, bool geom, bool bound, bool rotate,bool boundries)
 {
     this->drawContoursBool=con;
@@ -328,15 +438,6 @@ void ImageProcessing::addShape(float x, float y, double radius, string type, str
     shape->set_position_y(y);
 }
 
-void ImageProcessing::findColors(Mat input)
-{
-    Mat src,thresh;
-//    input.copyTo(src);
-
-    cvtColor(input,src,COLOR_BGR2HSV);
-    inRange(src, Scalar(90,150,150), Scalar(170,255,255), thresh);
-}
-
 bool ImageProcessing::checkAspectRatio(vector<Point> contours_poly)
 {
     Rect boundedRect=boundingRect( Mat(contours_poly) );
@@ -362,15 +463,34 @@ bool ImageProcessing::checkAspectRatioForRotatedRect(RotatedRect input)
     return out;
 }
 
-void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString type)
+void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString type, Mat frame,Rect crop)
 {
     result.set_numberofshape(result.numberofshape()+1);
     Point2f center;
     float radius;
     minEnclosingCircle( (Mat)contour, center, radius );
+
+    Point2f realCenter;
+    realCenter.x = center.x + crop.tl().x;
+    realCenter.y = center.y + crop.tl().y;
+
+    Rect sample_crop;
+    sample_crop.x = realCenter.x-10;
+    sample_crop.y = realCenter.y-10;
+    sample_crop.height = 20;
+    sample_crop.width = 20;
+
+    Mat sample_frame(frame,sample_crop);
+    Scalar color_mean = mean(sample_frame);
+
+    Vec3b inputForDetect;
+    inputForDetect.val[0] = color_mean.val[0];
+    inputForDetect.val[1] = color_mean.val[1];
+    inputForDetect.val[2] = color_mean.val[2];
+
     //--------mohsen khare---------------
     float Xman = Orgin_X - (center.x/imSize.width)*Width;
     float Yman = Orgin_Y + (center.y/imSize.height)*Height;
     //---------------------------------
-    addShape(Xman+100,Yman-100,radius,type.toStdString(),"UnCheck");
+    addShape(Xman+100,Yman-100,radius,type.toStdString(),findColor(inputForDetect).toStdString());
 }

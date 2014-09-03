@@ -61,7 +61,7 @@
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -1652,7 +1652,7 @@ Intrrupt</string>
        </font>
       </property>
       <property name="text">
-       <string>Hue</string>
+       <string>B</string>
       </property>
      </widget>
      <widget class="QLabel" name="sat_label">
@@ -1670,7 +1670,7 @@ Intrrupt</string>
        </font>
       </property>
       <property name="text">
-       <string>Sat.</string>
+       <string>G</string>
       </property>
      </widget>
      <widget class="QLabel" name="value_label">
@@ -1688,7 +1688,7 @@ Intrrupt</string>
        </font>
       </property>
       <property name="text">
-       <string>Value</string>
+       <string>R</string>
       </property>
      </widget>
      <widget class="QCheckBox" name="use_red_checkBox">
@@ -2045,7 +2045,7 @@ Intrrupt</string>
        <rect>
         <x>10</x>
         <y>52</y>
-        <width>81</width>
+        <width>101</width>
         <height>17</height>
        </rect>
       </property>
@@ -2352,7 +2352,7 @@ Intrrupt</string>
        <enum>Qt::Vertical</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="set_colors_button">
+     <widget class="QPushButton" name="cancel_button">
       <property name="geometry">
        <rect>
         <x>38</x>
@@ -2367,7 +2367,7 @@ Intrrupt</string>
        </font>
       </property>
       <property name="text">
-       <string>Set Colors</string>
+       <string>Cancel</string>
       </property>
      </widget>
     </widget>
