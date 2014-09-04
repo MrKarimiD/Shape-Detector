@@ -15,6 +15,7 @@
 #define Orgin_Y -1537
 
 #define ColorThresh 20
+#define ColorPercentage 5
 
 
 #endif // CONSTANTS_H

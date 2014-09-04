@@ -175,6 +175,8 @@ private slots:
 
     void on_cancel_button_clicked();
 
+    void on_stall_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
@@ -187,11 +189,13 @@ private:
     NetworkSender *sendingSocket;
     int mission;
     bool colorMode;
+    bool stallMode;
     QString whichColor;
     QPoint origin;
     QRubberBand *rubberBand;
     Mat frameForColorDetection;
     QSemaphore *semaphoreForColorImage;
+    QSemaphore *access2StallMode;
 
     void enableCameraSetting();
 
@@ -278,6 +282,8 @@ private:
     void setInitializeMessage(int mission);
 
     void preapreDataForSending();
+
+    void openSetting(QString fileAddress);
 
 signals:
     void imageReady(Mat image);

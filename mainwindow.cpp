@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent) :
     firstPointSelectedIsValid=false;
     imProcDataAvailable=false;
 
+    stallMode = false;
+
     permissionForSending = false;
 
     rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
@@ -22,6 +24,7 @@ MainWindow::MainWindow(QWidget *parent) :
     semaphore=new QSemaphore(1);
     sendingSocket = new NetworkSender();
     semaphoreForColorImage = new QSemaphore(1);
+    access2StallMode = new QSemaphore(1);
 
     QStringList items;
     items<<"0"<<"1"<<"Network";
@@ -74,6 +77,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
 
     imageProcessor=new ImageProcessing();
+
+    openSetting("/home/kn2c/setting.txt");
 }
 
 MainWindow::~MainWindow()
@@ -676,6 +681,161 @@ void MainWindow::preapreDataForSending()
 
 }
 
+void MainWindow::openSetting(QString fileAddress)
+{
+    SystemSettings setting;
+
+    fstream input;
+    input.open(fileAddress.toUtf8(), ios::in | ios::binary);
+    if (!input)
+    {
+        qDebug() << fileAddress << ": File not found.  Creating a new file." << endl;
+
+    }
+    else if (!setting.ParseFromIstream(&input))
+    {
+        qDebug() << "Failed";
+    }
+    else
+    {
+        ui->camSet_checkBox->setCheckable(setting.input_edit_camera_setting());
+
+        ui->blue_slider->setValue(setting.input_white_balance_blue_u());
+        ui->blueOut_label->setText(QString::number(setting.input_white_balance_blue_u()));
+
+        ui->red_slider->setValue(setting.input_white_balance_red_v());
+        ui->redOut_label->setText(QString::number(setting.input_white_balance_red_v()));
+
+        ui->exposure_slider->setValue(setting.input_exposure());
+        ui->expoOut_label->setText(QString::number(setting.input_exposure()));
+
+        ui->brightness_slider->setValue(setting.input_brightness());
+        ui->brightnessOut_label->setText(QString::number(setting.input_brightness()));
+
+        ui->sharpness_slider->setValue(setting.input_sharpness());
+        ui->sharpnessOut_label->setText(QString::number(setting.input_sharpness()));
+
+        ui->gain_slider->setValue(setting.input_gain());
+        ui->gainOut_label->setText(QString::number(setting.input_gain()));
+
+        ui->ip_lineEdit->setText(QString::fromStdString(setting.input_network_ip()));
+        ui->port_lineEdit->setText(QString::fromStdString(setting.input_network_port()));
+
+        ui->crop_checkBox->setChecked(setting.filters_crop_photo());
+        ui->fX_lineEdit->setText(QString::fromStdString(setting.filters_crop_firstpoint_x()));
+        ui->fY_lineEdit->setText(QString::fromStdString(setting.filters_crop_firstpoint_y()));
+        ui->sX_lineEdit->setText(QString::fromStdString(setting.filters_crop_secondpoint_x()));
+        ui->sY_lineEdit->setText(QString::fromStdString(setting.filters_crop_secondpoint_y()));
+
+        ui->medianBlur_checkBox->setChecked(setting.filters_median_blur());
+        ui->kernelSize_lineEdit->setText(QString::fromStdString(setting.filters_median_blur_kernelsize()));
+
+        ui->adaptiveThreshold_checkBox->setChecked(setting.filters_adaptive_threshold());
+        ui->blockSize_slider->setValue(setting.filters_adaptive_threshold_blocksize());
+        ui->blockSizeOut_label->setText(QString::number(setting.filters_adaptive_threshold_blocksize()));
+        ui->C_slider->setValue(setting.filters_adaptive_threshold_c());
+        ui->cOut_label->setText(QString::number(setting.filters_adaptive_threshold_c()));
+
+        ui->thresh_checkBox->setChecked(setting.filters_threshold());
+        ui->thresh_slider->setValue(setting.filters_threshold_value());
+        ui->threshOut_label->setText(QString::number(setting.filters_threshold_value()));
+
+        ui->dilate_checkBox->setChecked(setting.filters_dilate());
+        ui->dilateSize_lineEdit->setText(QString::fromStdString(setting.filters_dilationsize()));
+
+        ui->canny_checkBox->setChecked(setting.filters_canny());
+        ui->firstThresh_slider->setValue(setting.filters_canny_first_threshold());
+        ui->firstThreshOut_label->setText(QString::number(setting.filters_canny_first_threshold()));
+        ui->secondThresh_slider->setValue(setting.filters_canny_second_threshold());
+        ui->secondThreshOut_label->setText(QString::number(setting.filters_canny_second_threshold()));
+        ui->apertureSize_lineEdit->setText(QString::fromStdString(setting.filters_canny_aperturesize()));
+
+        ui->use_red_checkBox->setChecked(setting.have_red());
+        //Add red Colors
+        for(int i=0;i<setting.red_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.red_instances(i).hue();
+            colorSample.val[1] = setting.red_instances(i).sat();
+            colorSample.val[2] = setting.red_instances(i).val();
+            imageProcessor->red_samples.push_back(colorSample);
+        }
+        ui->red_status_label->setText(QString::number(imageProcessor->red_samples.size())+" Color at list.");
+
+        ui->use_blue_checkBox->setChecked(setting.have_blue());
+        //Add blue colors
+        for(int i=0;i<setting.blue_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.blue_instances(i).hue();
+            colorSample.val[1] = setting.blue_instances(i).sat();
+            colorSample.val[2] = setting.blue_instances(i).val();
+            imageProcessor->blue_samples.push_back(colorSample);
+        }
+        ui->blue_status_label->setText(QString::number(imageProcessor->blue_samples.size())+" Color at list.");
+
+        ui->use_green_checkBox->setChecked(setting.have_green());
+        //Add green colors
+        for(int i=0;i<setting.green_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.green_instances(i).hue();
+            colorSample.val[1] = setting.green_instances(i).sat();
+            colorSample.val[2] = setting.green_instances(i).val();
+            imageProcessor->green_samples.push_back(colorSample);
+        }
+        ui->green_status_label->setText(QString::number(imageProcessor->green_samples.size())+" Color at list.");
+
+        ui->use_yellow_checkBox->setChecked(setting.have_yellow());
+        //Add yellow colors
+        for(int i=0;i<setting.yellow_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.yellow_instances(i).hue();
+            colorSample.val[1] = setting.yellow_instances(i).sat();
+            colorSample.val[2] = setting.yellow_instances(i).val();
+            imageProcessor->yellow_samples.push_back(colorSample);
+        }
+        ui->yellow_status_label->setText(QString::number(imageProcessor->yellow_samples.size())+" Color at list.");
+
+        ui->use_violet_checkBox->setChecked(setting.have_violet());
+        //Add violet colors
+        for(int i=0;i<setting.violet_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.violet_instances(i).hue();
+            colorSample.val[1] = setting.violet_instances(i).sat();
+            colorSample.val[2] = setting.violet_instances(i).val();
+            imageProcessor->violet_samples.push_back(colorSample);
+        }
+        ui->violet_status_label->setText(QString::number(imageProcessor->violet_samples.size())+" Color at list.");
+
+        ui->use_cyan_checkBox->setChecked(setting.have_cyan());
+        //Add cyan colors
+        for(int i=0;i<setting.cyan_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.cyan_instances(i).hue();
+            colorSample.val[1] = setting.cyan_instances(i).sat();
+            colorSample.val[2] = setting.cyan_instances(i).val();
+            imageProcessor->cyan_samples.push_back(colorSample);
+        }
+        ui->cyan_status_label->setText(QString::number(imageProcessor->cyan_samples.size())+" Color at list.");
+
+        ui->use_black_checkBox->setChecked(setting.have_black());
+        //Add black colors
+        for(int i=0;i<setting.black_instances_size();i++)
+        {
+            Vec3b colorSample;
+            colorSample.val[0] = setting.black_instances(i).hue();
+            colorSample.val[1] = setting.black_instances(i).sat();
+            colorSample.val[2] = setting.black_instances(i).val();
+            imageProcessor->black_samples.push_back(colorSample);
+        }
+        ui->black_status_label->setText(QString::number(imageProcessor->black_samples.size())+" Color at list.");
+    }
+}
+
 void MainWindow::callImageProcessingFunctions(Mat input_mat)
 {
     //undisort image
@@ -1189,16 +1349,25 @@ void MainWindow::on_thirsM_rButton_toggled(bool checked)
 
 void MainWindow::sendDataPacket()
 {
-    qDebug()<<"--------------";
-    qDebug()<<"mission:"<<imageProcessor->result.mission();
-    qDebug()<<"number:"<<imageProcessor->result.numberofshape();
-    qDebug()<<"type:"<<imageProcessor->result.type();
-    for(int i=0;i<imageProcessor->result.shapes_size();i++)
+    access2StallMode->acquire(1);
+    if(!stallMode)
     {
-        qDebug()<<"shape "<<i<<" seen at:"<<imageProcessor->result.shapes(i).position_x()<<","<<imageProcessor->result.shapes(i).position_y();
-        qDebug()<<"color:"<<QString::fromStdString(imageProcessor->result.shapes(i).color());
+        qDebug()<<"--------------";
+        qDebug()<<"mission:"<<imageProcessor->result.mission();
+        qDebug()<<"number:"<<imageProcessor->result.numberofshape();
+        qDebug()<<"type:"<<imageProcessor->result.type();
+        for(int i=0;i<imageProcessor->result.shapes_size();i++)
+        {
+            qDebug()<<"shape "<<i<<" seen at:"<<imageProcessor->result.shapes(i).position_x()<<","<<imageProcessor->result.shapes(i).position_y();
+            qDebug()<<"color:"<<QString::fromStdString(imageProcessor->result.shapes(i).color());
+        }
+        qDebug()<<"--------------";
     }
-    qDebug()<<"--------------";
+    else
+    {
+        imageProcessor->result.set_mission(0);
+    }
+    access2StallMode->release(1);
 
     string data;
     imageProcessor->result.SerializeToString(&data);
@@ -1471,158 +1640,9 @@ void MainWindow::on_open_set_button_clicked()
 {
     disconnect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
 
-    SystemSettings setting;
     QString fileAddress = QFileDialog::getOpenFileName(this,tr("Select Setting File"), "/home", tr("Text File (*.txt)"));
 
-    fstream input;
-    input.open(fileAddress.toUtf8(), ios::in | ios::binary);
-    if (!input)
-    {
-        qDebug() << fileAddress << ": File not found.  Creating a new file." << endl;
-
-    }
-    else if (!setting.ParseFromIstream(&input))
-    {
-        qDebug() << "Failed";
-    }
-    else
-    {
-        ui->camSet_checkBox->setCheckable(setting.input_edit_camera_setting());
-
-        ui->blue_slider->setValue(setting.input_white_balance_blue_u());
-        ui->blueOut_label->setText(QString::number(setting.input_white_balance_blue_u()));
-
-        ui->red_slider->setValue(setting.input_white_balance_red_v());
-        ui->redOut_label->setText(QString::number(setting.input_white_balance_red_v()));
-
-        ui->exposure_slider->setValue(setting.input_exposure());
-        ui->expoOut_label->setText(QString::number(setting.input_exposure()));
-
-        ui->brightness_slider->setValue(setting.input_brightness());
-        ui->brightnessOut_label->setText(QString::number(setting.input_brightness()));
-
-        ui->sharpness_slider->setValue(setting.input_sharpness());
-        ui->sharpnessOut_label->setText(QString::number(setting.input_sharpness()));
-
-        ui->gain_slider->setValue(setting.input_gain());
-        ui->gainOut_label->setText(QString::number(setting.input_gain()));
-
-        ui->ip_lineEdit->setText(QString::fromStdString(setting.input_network_ip()));
-        ui->port_lineEdit->setText(QString::fromStdString(setting.input_network_port()));
-
-        ui->crop_checkBox->setChecked(setting.filters_crop_photo());
-        ui->fX_lineEdit->setText(QString::fromStdString(setting.filters_crop_firstpoint_x()));
-        ui->fY_lineEdit->setText(QString::fromStdString(setting.filters_crop_firstpoint_y()));
-        ui->sX_lineEdit->setText(QString::fromStdString(setting.filters_crop_secondpoint_x()));
-        ui->sY_lineEdit->setText(QString::fromStdString(setting.filters_crop_secondpoint_y()));
-
-        ui->medianBlur_checkBox->setChecked(setting.filters_median_blur());
-        ui->kernelSize_lineEdit->setText(QString::fromStdString(setting.filters_median_blur_kernelsize()));
-
-        ui->adaptiveThreshold_checkBox->setChecked(setting.filters_adaptive_threshold());
-        ui->blockSize_slider->setValue(setting.filters_adaptive_threshold_blocksize());
-        ui->blockSizeOut_label->setText(QString::number(setting.filters_adaptive_threshold_blocksize()));
-        ui->C_slider->setValue(setting.filters_adaptive_threshold_c());
-        ui->cOut_label->setText(QString::number(setting.filters_adaptive_threshold_c()));
-
-        ui->thresh_checkBox->setChecked(setting.filters_threshold());
-        ui->thresh_slider->setValue(setting.filters_threshold_value());
-        ui->threshOut_label->setText(QString::number(setting.filters_threshold_value()));
-
-        ui->dilate_checkBox->setChecked(setting.filters_dilate());
-        ui->dilateSize_lineEdit->setText(QString::fromStdString(setting.filters_dilationsize()));
-
-        ui->canny_checkBox->setChecked(setting.filters_canny());
-        ui->firstThresh_slider->setValue(setting.filters_canny_first_threshold());
-        ui->firstThreshOut_label->setText(QString::number(setting.filters_canny_first_threshold()));
-        ui->secondThresh_slider->setValue(setting.filters_canny_second_threshold());
-        ui->secondThreshOut_label->setText(QString::number(setting.filters_canny_second_threshold()));
-        ui->apertureSize_lineEdit->setText(QString::fromStdString(setting.filters_canny_aperturesize()));
-
-        ui->use_red_checkBox->setChecked(setting.have_red());
-        //Add red Colors
-        for(int i=0;i<setting.red_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.red_instances(i).hue();
-            colorSample.val[1] = setting.red_instances(i).sat();
-            colorSample.val[2] = setting.red_instances(i).val();
-            imageProcessor->red_samples.push_back(colorSample);
-        }
-        ui->red_status_label->setText(QString::number(imageProcessor->red_samples.size())+" Color at list.");
-
-        ui->use_blue_checkBox->setChecked(setting.have_blue());
-        //Add blue colors
-        for(int i=0;i<setting.blue_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.blue_instances(i).hue();
-            colorSample.val[1] = setting.blue_instances(i).sat();
-            colorSample.val[2] = setting.blue_instances(i).val();
-            imageProcessor->blue_samples.push_back(colorSample);
-        }
-        ui->blue_status_label->setText(QString::number(imageProcessor->blue_samples.size())+" Color at list.");
-
-        ui->use_green_checkBox->setChecked(setting.have_green());
-        //Add green colors
-        for(int i=0;i<setting.green_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.green_instances(i).hue();
-            colorSample.val[1] = setting.green_instances(i).sat();
-            colorSample.val[2] = setting.green_instances(i).val();
-            imageProcessor->green_samples.push_back(colorSample);
-        }
-        ui->green_status_label->setText(QString::number(imageProcessor->green_samples.size())+" Color at list.");
-
-        ui->use_yellow_checkBox->setChecked(setting.have_yellow());
-        //Add yellow colors
-        for(int i=0;i<setting.yellow_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.yellow_instances(i).hue();
-            colorSample.val[1] = setting.yellow_instances(i).sat();
-            colorSample.val[2] = setting.yellow_instances(i).val();
-            imageProcessor->yellow_samples.push_back(colorSample);
-        }
-        ui->yellow_status_label->setText(QString::number(imageProcessor->yellow_samples.size())+" Color at list.");
-
-        ui->use_violet_checkBox->setChecked(setting.have_violet());
-        //Add violet colors
-        for(int i=0;i<setting.violet_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.violet_instances(i).hue();
-            colorSample.val[1] = setting.violet_instances(i).sat();
-            colorSample.val[2] = setting.violet_instances(i).val();
-            imageProcessor->violet_samples.push_back(colorSample);
-        }
-        ui->violet_status_label->setText(QString::number(imageProcessor->violet_samples.size())+" Color at list.");
-
-        ui->use_cyan_checkBox->setChecked(setting.have_cyan());
-        //Add cyan colors
-        for(int i=0;i<setting.cyan_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.cyan_instances(i).hue();
-            colorSample.val[1] = setting.cyan_instances(i).sat();
-            colorSample.val[2] = setting.cyan_instances(i).val();
-            imageProcessor->cyan_samples.push_back(colorSample);
-        }
-        ui->cyan_status_label->setText(QString::number(imageProcessor->cyan_samples.size())+" Color at list.");
-
-        ui->use_black_checkBox->setChecked(setting.have_black());
-        //Add black colors
-        for(int i=0;i<setting.black_instances_size();i++)
-        {
-            Vec3b colorSample;
-            colorSample.val[0] = setting.black_instances(i).hue();
-            colorSample.val[1] = setting.black_instances(i).sat();
-            colorSample.val[2] = setting.black_instances(i).val();
-            imageProcessor->black_samples.push_back(colorSample);
-        }
-        ui->black_status_label->setText(QString::number(imageProcessor->black_samples.size())+" Color at list.");
-    }
+    openSetting(fileAddress);
 
     connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
 }
@@ -1721,4 +1741,13 @@ void MainWindow::on_add_black_button_clicked()
 void MainWindow::on_cancel_button_clicked()
 {
     QApplication::setOverrideCursor(Qt::ArrowCursor);
+}
+
+void MainWindow::on_stall_button_clicked()
+{
+    access2StallMode->acquire(1);
+    stallMode = !stallMode;
+    QString temp=(stallMode)?"Resume":"Stall";
+    ui->stall_button->setText(temp);
+    access2StallMode->release(1);
 }

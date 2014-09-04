@@ -381,10 +381,18 @@ void ImageProcessing::setLabel(Mat &im, const string label, std::vector<Point> &
 
 bool ImageProcessing::colorIsInRange(Vec3b inputColor, Vec3b sourceColor)
 {
-//    qDebug()<<"input color:"<<inputColor.val[0]<<","<<inputColor.val[1]<<","<<inputColor.val[2];
-//    qDebug()<<"source color:"<<sourceColor.val[0]<<","<<sourceColor.val[1]<<","<<sourceColor.val[2];
-    if( (abs(inputColor.val[0]-sourceColor.val[0]) < ColorThresh) &&  (abs(inputColor.val[1]-sourceColor.val[1]) < ColorThresh)
-        && (abs(inputColor.val[2]-sourceColor.val[2]) < ColorThresh) )
+//    if( (abs(inputColor.val[0]-sourceColor.val[0]) < ColorThresh) &&  (abs(inputColor.val[1]-sourceColor.val[1]) < ColorThresh)
+//        && (abs(inputColor.val[2]-sourceColor.val[2]) < ColorThresh) )
+//    {
+//        return true;
+//    }
+//    else
+//        return false;
+    double aucqodean_dis =sqrt(pow(inputColor.val[0]-sourceColor.val[0],2)+pow(inputColor.val[1]-sourceColor.val[1],2)
+            +pow(inputColor.val[2]-sourceColor.val[2],2 ));
+    double reference_dis = 441.67295593;
+
+    if( (aucqodean_dis/reference_dis)*100 < ColorPercentage )
     {
         return true;
     }

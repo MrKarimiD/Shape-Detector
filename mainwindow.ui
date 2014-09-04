@@ -61,7 +61,7 @@
      <cursorShape>ArrowCursor</cursorShape>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="input_tab">
      <attribute name="title">
@@ -2606,9 +2606,9 @@ Intrrupt</string>
      <widget class="QPushButton" name="go_button">
       <property name="geometry">
        <rect>
-        <x>3</x>
+        <x>33</x>
         <y>388</y>
-        <width>271</width>
+        <width>211</width>
         <height>41</height>
        </rect>
       </property>
@@ -3147,16 +3147,16 @@ Intrrupt</string>
    <widget class="QPushButton" name="stall_button">
     <property name="geometry">
      <rect>
-      <x>710</x>
+      <x>670</x>
       <y>467</y>
-      <width>181</width>
+      <width>261</width>
       <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
       <family>Serif</family>
-      <pointsize>16</pointsize>
+      <pointsize>24</pointsize>
       <weight>75</weight>
       <bold>true</bold>
      </font>
