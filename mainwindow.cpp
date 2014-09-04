@@ -1751,3 +1751,63 @@ void MainWindow::on_stall_button_clicked()
     ui->stall_button->setText(temp);
     access2StallMode->release(1);
 }
+
+void MainWindow::on_clear_red_button_clicked()
+{
+    imageProcessor->red_samples.clear();
+    ui->red_status_label->setText(QString::number(imageProcessor->red_samples.size()) + " Color at list.");
+}
+
+void MainWindow::on_clear_blue_button_clicked()
+{
+    imageProcessor->blue_samples.clear();
+    ui->blue_status_label->setText(QString::number(imageProcessor->blue_samples.size()) + " Color at list.");
+    ui->red_hue_lineEdit->clear();
+    ui->red_sat_lineEdit->clear();
+    ui->red_value_lineEdit->clear();
+}
+
+void MainWindow::on_clear_green_button_clicked()
+{
+    imageProcessor->green_samples.clear();
+    ui->green_status_label->setText(QString::number(imageProcessor->green_samples.size()) + " Color at list.");
+    ui->green_hue_lineEdit->clear();
+    ui->green_sat_lineEdit->clear();
+    ui->green_value_lineEdit->clear();
+}
+
+void MainWindow::on_clear_yellow_button_clicked()
+{
+    imageProcessor->yellow_samples.clear();
+    ui->yellow_status_label->setText(QString::number(imageProcessor->yellow_samples.size()) + " Color at list.");
+    ui->yellow_hue_lineEdit->clear();
+    ui->yellow_sat_lineEdit->clear();
+    ui->yellow_value_lineEdit->clear();
+}
+
+void MainWindow::on_clear_violet_button_clicked()
+{
+    imageProcessor->violet_samples.clear();
+    ui->violet_status_label->setText(QString::number(imageProcessor->violet_samples.size()) + " Color at list.");
+    ui->violet_hue_lineEdit->clear();
+    ui->violet_sat_lineEdit->clear();
+    ui->violet_value_lineEdit->clear();
+}
+
+void MainWindow::on_clear_cyan_button_clicked()
+{
+    imageProcessor->cyan_samples.clear();
+    ui->cyan_status_label->setText(QString::number(imageProcessor->cyan_samples.size()) + " Color at list.");
+    ui->cyan_hue_lineEdit->clear();
+    ui->cyan_sat_lineEdit->clear();
+    ui->cyan_value_lineEdit->clear();
+}
+
+void MainWindow::on_clear_black_button_clicked()
+{
+    imageProcessor->black_samples.clear();
+    ui->black_status_label->setText(QString::number(imageProcessor->black_samples.size()) + " Color at list.");
+    ui->black_hue_lineEdit->clear();
+    ui->black_sat_lineEdit->clear();
+    ui->black_value_lineEdit->clear();
+}

@@ -177,6 +177,20 @@ private slots:
 
     void on_stall_button_clicked();
 
+    void on_clear_red_button_clicked();
+
+    void on_clear_blue_button_clicked();
+
+    void on_clear_green_button_clicked();
+
+    void on_clear_yellow_button_clicked();
+
+    void on_clear_violet_button_clicked();
+
+    void on_clear_cyan_button_clicked();
+
+    void on_clear_black_button_clicked();
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
