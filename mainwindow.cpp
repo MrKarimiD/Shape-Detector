@@ -1563,7 +1563,7 @@ void MainWindow::on_open_set_button_clicked()
         }
         ui->blue_status_label->setText(QString::number(imageProcessor->blue_samples.size())+" Color at list.");
 
-        ui->use_green_checkBox->setCheckable(setting.have_green());
+        ui->use_green_checkBox->setChecked(setting.have_green());
         //Add green colors
         for(int i=0;i<setting.green_instances_size();i++)
         {
@@ -1575,7 +1575,7 @@ void MainWindow::on_open_set_button_clicked()
         }
         ui->green_status_label->setText(QString::number(imageProcessor->green_samples.size())+" Color at list.");
 
-        ui->use_yellow_checkBox->setCheckable(setting.have_yellow());
+        ui->use_yellow_checkBox->setChecked(setting.have_yellow());
         //Add yellow colors
         for(int i=0;i<setting.yellow_instances_size();i++)
         {
@@ -1587,7 +1587,7 @@ void MainWindow::on_open_set_button_clicked()
         }
         ui->yellow_status_label->setText(QString::number(imageProcessor->yellow_samples.size())+" Color at list.");
 
-        ui->use_violet_checkBox->setCheckable(setting.have_violet());
+        ui->use_violet_checkBox->setChecked(setting.have_violet());
         //Add violet colors
         for(int i=0;i<setting.violet_instances_size();i++)
         {
@@ -1599,7 +1599,7 @@ void MainWindow::on_open_set_button_clicked()
         }
         ui->violet_status_label->setText(QString::number(imageProcessor->violet_samples.size())+" Color at list.");
 
-        ui->use_cyan_checkBox->setCheckable(setting.have_cyan());
+        ui->use_cyan_checkBox->setChecked(setting.have_cyan());
         //Add cyan colors
         for(int i=0;i<setting.cyan_instances_size();i++)
         {
@@ -1611,7 +1611,7 @@ void MainWindow::on_open_set_button_clicked()
         }
         ui->cyan_status_label->setText(QString::number(imageProcessor->cyan_samples.size())+" Color at list.");
 
-        ui->use_black_checkBox->setCheckable(setting.have_black());
+        ui->use_black_checkBox->setChecked(setting.have_black());
         //Add black colors
         for(int i=0;i<setting.black_instances_size();i++)
         {
