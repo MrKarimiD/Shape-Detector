@@ -87,10 +87,9 @@ void protobuf_AssignDesc_SystemSettings_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(SystemSettings));
   SystemSettings_color_descriptor_ = SystemSettings_descriptor_->nested_type(0);
-  static const int SystemSettings_color_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemSettings_color, hue_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemSettings_color, sat_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemSettings_color, val_),
+  static const int SystemSettings_color_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemSettings_color, min_hue_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(SystemSettings_color, max_hue_),
   };
   SystemSettings_color_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -137,7 +136,7 @@ void protobuf_AddDesc_SystemSettings_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\024SystemSettings.proto\"\372\n\n\016SystemSetting"
+    "\n\024SystemSettings.proto\"\365\n\n\016SystemSetting"
     "s\022!\n\031input_edit_camera_setting\030\001 \002(\010\022\"\n\032"
     "input_WHITE_BALANCE_BLUE_U\030\002 \002(\003\022!\n\031inpu"
     "t_WHITE_BALANCE_RED_V\030\003 \002(\003\022\026\n\016input_EXP"
@@ -171,8 +170,8 @@ void protobuf_AddDesc_SystemSettings_2eproto() {
     "color\022\021\n\thave_cyan\030& \002(\010\022-\n\016cyan_instanc"
     "es\030\' \003(\0132\025.SystemSettings.color\022\022\n\nhave_"
     "black\030) \002(\010\022.\n\017black_instances\030* \003(\0132\025.S"
-    "ystemSettings.color\032.\n\005color\022\013\n\003hue\030\001 \002("
-    "\005\022\013\n\003sat\030\002 \002(\005\022\013\n\003val\030\003 \002(\005", 1427);
+    "ystemSettings.color\032)\n\005color\022\017\n\007min_hue\030"
+    "\001 \002(\002\022\017\n\007max_hue\030\002 \002(\002", 1422);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "SystemSettings.proto", &protobuf_RegisterTypes);
   SystemSettings::default_instance_ = new SystemSettings();
@@ -193,9 +192,8 @@ struct StaticDescriptorInitializer_SystemSettings_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int SystemSettings_color::kHueFieldNumber;
-const int SystemSettings_color::kSatFieldNumber;
-const int SystemSettings_color::kValFieldNumber;
+const int SystemSettings_color::kMinHueFieldNumber;
+const int SystemSettings_color::kMaxHueFieldNumber;
 #endif  // !_MSC_VER
 
 SystemSettings_color::SystemSettings_color()
@@ -214,9 +212,8 @@ SystemSettings_color::SystemSettings_color(const SystemSettings_color& from)
 
 void SystemSettings_color::SharedCtor() {
   _cached_size_ = 0;
-  hue_ = 0;
-  sat_ = 0;
-  val_ = 0;
+  min_hue_ = 0;
+  max_hue_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -251,9 +248,8 @@ SystemSettings_color* SystemSettings_color::New() const {
 
 void SystemSettings_color::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    hue_ = 0;
-    sat_ = 0;
-    val_ = 0;
+    min_hue_ = 0;
+    max_hue_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -265,46 +261,30 @@ bool SystemSettings_color::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 hue = 1;
+      // required float min_hue = 1;
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &hue_)));
-          set_has_hue();
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &min_hue_)));
+          set_has_min_hue();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_sat;
+        if (input->ExpectTag(21)) goto parse_max_hue;
         break;
       }
       
-      // required int32 sat = 2;
+      // required float max_hue = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_sat:
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_max_hue:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &sat_)));
-          set_has_sat();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_val;
-        break;
-      }
-      
-      // required int32 val = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_val:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &val_)));
-          set_has_val();
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &max_hue_)));
+          set_has_max_hue();
         } else {
           goto handle_uninterpreted;
         }
@@ -330,19 +310,14 @@ bool SystemSettings_color::MergePartialFromCodedStream(
 
 void SystemSettings_color::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // required int32 hue = 1;
-  if (has_hue()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->hue(), output);
+  // required float min_hue = 1;
+  if (has_min_hue()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->min_hue(), output);
   }
   
-  // required int32 sat = 2;
-  if (has_sat()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->sat(), output);
-  }
-  
-  // required int32 val = 3;
-  if (has_val()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->val(), output);
+  // required float max_hue = 2;
+  if (has_max_hue()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->max_hue(), output);
   }
   
   if (!unknown_fields().empty()) {
@@ -353,19 +328,14 @@ void SystemSettings_color::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* SystemSettings_color::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // required int32 hue = 1;
-  if (has_hue()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->hue(), target);
+  // required float min_hue = 1;
+  if (has_min_hue()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->min_hue(), target);
   }
   
-  // required int32 sat = 2;
-  if (has_sat()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->sat(), target);
-  }
-  
-  // required int32 val = 3;
-  if (has_val()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->val(), target);
+  // required float max_hue = 2;
+  if (has_max_hue()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->max_hue(), target);
   }
   
   if (!unknown_fields().empty()) {
@@ -379,25 +349,14 @@ int SystemSettings_color::ByteSize() const {
   int total_size = 0;
   
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // required int32 hue = 1;
-    if (has_hue()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->hue());
+    // required float min_hue = 1;
+    if (has_min_hue()) {
+      total_size += 1 + 4;
     }
     
-    // required int32 sat = 2;
-    if (has_sat()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->sat());
-    }
-    
-    // required int32 val = 3;
-    if (has_val()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->val());
+    // required float max_hue = 2;
+    if (has_max_hue()) {
+      total_size += 1 + 4;
     }
     
   }
@@ -427,14 +386,11 @@ void SystemSettings_color::MergeFrom(const ::google::protobuf::Message& from) {
 void SystemSettings_color::MergeFrom(const SystemSettings_color& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_hue()) {
-      set_hue(from.hue());
+    if (from.has_min_hue()) {
+      set_min_hue(from.min_hue());
     }
-    if (from.has_sat()) {
-      set_sat(from.sat());
-    }
-    if (from.has_val()) {
-      set_val(from.val());
+    if (from.has_max_hue()) {
+      set_max_hue(from.max_hue());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -453,16 +409,15 @@ void SystemSettings_color::CopyFrom(const SystemSettings_color& from) {
 }
 
 bool SystemSettings_color::IsInitialized() const {
-  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
+  if ((_has_bits_[0] & 0x00000003) != 0x00000003) return false;
   
   return true;
 }
 
 void SystemSettings_color::Swap(SystemSettings_color* other) {
   if (other != this) {
-    std::swap(hue_, other->hue_);
-    std::swap(sat_, other->sat_);
-    std::swap(val_, other->val_);
+    std::swap(min_hue_, other->min_hue_);
+    std::swap(max_hue_, other->max_hue_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

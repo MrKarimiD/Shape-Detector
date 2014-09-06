@@ -89,44 +89,34 @@ class SystemSettings_color : public ::google::protobuf::Message {
   
   // accessors -------------------------------------------------------
   
-  // required int32 hue = 1;
-  inline bool has_hue() const;
-  inline void clear_hue();
-  static const int kHueFieldNumber = 1;
-  inline ::google::protobuf::int32 hue() const;
-  inline void set_hue(::google::protobuf::int32 value);
+  // required float min_hue = 1;
+  inline bool has_min_hue() const;
+  inline void clear_min_hue();
+  static const int kMinHueFieldNumber = 1;
+  inline float min_hue() const;
+  inline void set_min_hue(float value);
   
-  // required int32 sat = 2;
-  inline bool has_sat() const;
-  inline void clear_sat();
-  static const int kSatFieldNumber = 2;
-  inline ::google::protobuf::int32 sat() const;
-  inline void set_sat(::google::protobuf::int32 value);
-  
-  // required int32 val = 3;
-  inline bool has_val() const;
-  inline void clear_val();
-  static const int kValFieldNumber = 3;
-  inline ::google::protobuf::int32 val() const;
-  inline void set_val(::google::protobuf::int32 value);
+  // required float max_hue = 2;
+  inline bool has_max_hue() const;
+  inline void clear_max_hue();
+  static const int kMaxHueFieldNumber = 2;
+  inline float max_hue() const;
+  inline void set_max_hue(float value);
   
   // @@protoc_insertion_point(class_scope:SystemSettings.color)
  private:
-  inline void set_has_hue();
-  inline void clear_has_hue();
-  inline void set_has_sat();
-  inline void clear_has_sat();
-  inline void set_has_val();
-  inline void clear_has_val();
+  inline void set_has_min_hue();
+  inline void clear_has_min_hue();
+  inline void set_has_max_hue();
+  inline void clear_has_max_hue();
   
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
   
-  ::google::protobuf::int32 hue_;
-  ::google::protobuf::int32 sat_;
-  ::google::protobuf::int32 val_;
+  float min_hue_;
+  float max_hue_;
   
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
   
   friend void  protobuf_AddDesc_SystemSettings_2eproto();
   friend void protobuf_AssignDesc_SystemSettings_2eproto();
@@ -683,70 +673,48 @@ class SystemSettings : public ::google::protobuf::Message {
 
 // SystemSettings_color
 
-// required int32 hue = 1;
-inline bool SystemSettings_color::has_hue() const {
+// required float min_hue = 1;
+inline bool SystemSettings_color::has_min_hue() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void SystemSettings_color::set_has_hue() {
+inline void SystemSettings_color::set_has_min_hue() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void SystemSettings_color::clear_has_hue() {
+inline void SystemSettings_color::clear_has_min_hue() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void SystemSettings_color::clear_hue() {
-  hue_ = 0;
-  clear_has_hue();
+inline void SystemSettings_color::clear_min_hue() {
+  min_hue_ = 0;
+  clear_has_min_hue();
 }
-inline ::google::protobuf::int32 SystemSettings_color::hue() const {
-  return hue_;
+inline float SystemSettings_color::min_hue() const {
+  return min_hue_;
 }
-inline void SystemSettings_color::set_hue(::google::protobuf::int32 value) {
-  set_has_hue();
-  hue_ = value;
+inline void SystemSettings_color::set_min_hue(float value) {
+  set_has_min_hue();
+  min_hue_ = value;
 }
 
-// required int32 sat = 2;
-inline bool SystemSettings_color::has_sat() const {
+// required float max_hue = 2;
+inline bool SystemSettings_color::has_max_hue() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void SystemSettings_color::set_has_sat() {
+inline void SystemSettings_color::set_has_max_hue() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void SystemSettings_color::clear_has_sat() {
+inline void SystemSettings_color::clear_has_max_hue() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void SystemSettings_color::clear_sat() {
-  sat_ = 0;
-  clear_has_sat();
+inline void SystemSettings_color::clear_max_hue() {
+  max_hue_ = 0;
+  clear_has_max_hue();
 }
-inline ::google::protobuf::int32 SystemSettings_color::sat() const {
-  return sat_;
+inline float SystemSettings_color::max_hue() const {
+  return max_hue_;
 }
-inline void SystemSettings_color::set_sat(::google::protobuf::int32 value) {
-  set_has_sat();
-  sat_ = value;
-}
-
-// required int32 val = 3;
-inline bool SystemSettings_color::has_val() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SystemSettings_color::set_has_val() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SystemSettings_color::clear_has_val() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SystemSettings_color::clear_val() {
-  val_ = 0;
-  clear_has_val();
-}
-inline ::google::protobuf::int32 SystemSettings_color::val() const {
-  return val_;
-}
-inline void SystemSettings_color::set_val(::google::protobuf::int32 value) {
-  set_has_val();
-  val_ = value;
+inline void SystemSettings_color::set_max_hue(float value) {
+  set_has_max_hue();
+  max_hue_ = value;
 }
 
 // -------------------------------------------------------------------

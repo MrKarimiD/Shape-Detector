@@ -35,7 +35,7 @@ public:
 
     QString returnHsv(Mat input);
 
-    Scalar returnColor(Mat input);
+    Vec2f returnColor(Mat input, Mat src);
 
     void changeOutputSetting(bool con,bool geom,bool bound,bool rotate,bool boundries);
 
@@ -55,13 +55,21 @@ public:
 
     outputPacket result;
 
-    QList<Vec3b> red_samples;
-    QList<Vec3b> blue_samples;
-    QList<Vec3b> green_samples;
-    QList<Vec3b> yellow_samples;
-    QList<Vec3b> cyan_samples;
-    QList<Vec3b> violet_samples;
-    QList<Vec3b> black_samples;
+//    QList<Vec3b> red_samples;
+//    QList<Vec3b> blue_samples;
+//    QList<Vec3b> green_samples;
+//    QList<Vec3b> yellow_samples;
+//    QList<Vec3b> cyan_samples;
+//    QList<Vec3b> violet_samples;
+//    QList<Vec3b> black_samples;
+
+    QList<Vec2f> red_samples;
+    QList<Vec2f> blue_samples;
+    QList<Vec2f> green_samples;
+    QList<Vec2f> yellow_samples;
+    QList<Vec2f> cyan_samples;
+    QList<Vec2f> violet_samples;
+    QList<Vec2f> black_samples;
 
 private:
     vector<Vec3f> finding_circles;
@@ -82,7 +90,7 @@ private:
 
     bool colorIsInRange(Vec3b inputColor,Vec3b sourceColor);
 
-    QString findColor(Vec3b pixel);
+    QString findColor(vector<Mat> hsvPlanes);
 
 signals:
 

@@ -24,7 +24,7 @@
 #include <iostream>
 #include <fstream>
 #include "QRubberBand"
-
+#include "camerasetting.h"
 
 using namespace cv;
 using namespace std;
@@ -69,6 +69,8 @@ private slots:
     void on_rotate_checkBox_stateChanged();
 
     //-----filter Setting Changed-----
+    void on_undisort_checkBox_stateChanged();
+
     void on_crop_checkBox_stateChanged();
 
     void on_fX_lineEdit_textChanged();
@@ -214,6 +216,8 @@ private slots:
 
     void responseForFilterSettingsChanged();
 
+
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;
@@ -222,6 +226,7 @@ private:
     bool cameraIsOpened,mouseButtonClicked,firstPointSelectedIsValid,imProcDataAvailable;
     bool permissionForSending;
     filterSettings *filterSetting;
+    cameraSetting *camSetting;
     QSemaphore *semaphore;
     NetworkSender *sendingSocket;
     int mission;

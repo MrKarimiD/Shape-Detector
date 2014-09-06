@@ -2,9 +2,12 @@ message SystemSettings
 {
 	message color
 	{
-		required int32 hue = 1;
-		required int32 sat = 2;
-		required int32 val = 3;
+		//required int32 hue = 1;
+		//required int32 sat = 2;
+		//required int32 val = 3;
+
+		required float min_hue = 1;
+		required float max_hue = 2;
 	}
 		
 	

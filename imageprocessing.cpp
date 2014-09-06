@@ -155,19 +155,53 @@ QString ImageProcessing::returnHsv(Mat input)
     qDebug()<<"mean:"<<QString::number(ff.val[2]);
 }
 
-Scalar ImageProcessing::returnColor(Mat input)
+Vec2f ImageProcessing::returnColor(Mat input,Mat src)
 {
     //imshow("color",input);
-    return mean(input);
+    Mat HSV,show;
+    cvtColor(input,HSV,COLOR_RGB2HSV);
+    cvtColor(src,show,COLOR_RGB2HSV);
+
+    vector<cv::Mat> hsvPlanes;
+    vector<cv::Mat> hsvPlanes_show;
+    split(HSV, hsvPlanes);
+    split(show, hsvPlanes_show);
+
+    // compute statistics for Hue value
+    Scalar means, stddev;
+    meanStdDev(hsvPlanes[0], means, stddev);
+
+    // ensure we get 95% of all valid Hue samples (statistics 3*sigma rule)
+    float minHue = means[0] - stddev[0]*3;
+    float maxHue = means[0] + stddev[0]*3;
+
+    // STEP 2: detection phase
+    Mat imgThreshed;
+    inRange(hsvPlanes_show[0], Scalar(minHue), Scalar(maxHue), imgThreshed);
+    imshow("thresholded", imgThreshed);
+
+    Vec2f hue;
+    hue.val[0]=minHue;
+    hue.val[1]=maxHue;
+
+    return hue;
 }
 
-QString ImageProcessing::findColor(Vec3b pixel)
+QString ImageProcessing::findColor( vector<Mat> hsvPlanes)
 {
     QString color = "not found";
 
+    Mat thresh;
+
+    Mat src = hsvPlanes[0];
+
     for(int j=0;j<red_samples.size();j++)
     {
-        if(colorIsInRange(pixel,red_samples.at(j)))
+        inRange(src, Scalar(red_samples.at(j).val[0]), Scalar(red_samples.at(j).val[1]), thresh);
+        int numberOfWhitePixels = countNonZero(thresh);
+        double percent = numberOfWhitePixels/(src.rows*src.cols)*100;
+        //qDebug()<<"percent:"<<QString::number(percent);
+        if( percent > ColorPercentage)
         {
             color = "red";
             break;
@@ -178,7 +212,9 @@ QString ImageProcessing::findColor(Vec3b pixel)
     {
         for(int j=0;j<blue_samples.size();j++)
         {
-            if(colorIsInRange(pixel,blue_samples.at(j)))
+            inRange(src, Scalar(blue_samples.at(j).val[0]), Scalar(blue_samples.at(j).val[1]), thresh);
+            int numberOfWhitePixels = countNonZero(thresh);
+            if( (numberOfWhitePixels*100/(src.rows*src.cols)) > ColorPercentage)
             {
                 color = "blue";
                 break;
@@ -190,7 +226,9 @@ QString ImageProcessing::findColor(Vec3b pixel)
     {
         for(int j=0;j<green_samples.size();j++)
         {
-            if(colorIsInRange(pixel,green_samples.at(j)))
+            inRange(src, Scalar(green_samples.at(j).val[0]), Scalar(green_samples.at(j).val[1]), thresh);
+            int numberOfWhitePixels = countNonZero(thresh);
+            if( (numberOfWhitePixels*100/(src.rows*src.cols)) > ColorPercentage)
             {
                 color = "green";
                 break;
@@ -202,7 +240,9 @@ QString ImageProcessing::findColor(Vec3b pixel)
     {
         for(int j=0;j<yellow_samples.size();j++)
         {
-            if(colorIsInRange(pixel,yellow_samples.at(j)))
+            inRange(src, Scalar(yellow_samples.at(j).val[0]), Scalar(yellow_samples.at(j).val[1]), thresh);
+            int numberOfWhitePixels = countNonZero(thresh);
+            if( (numberOfWhitePixels*100/(src.rows*src.cols)) > ColorPercentage)
             {
                 color = "yellow";
                 break;
@@ -214,7 +254,9 @@ QString ImageProcessing::findColor(Vec3b pixel)
     {
         for(int j=0;j<cyan_samples.size();j++)
         {
-            if(colorIsInRange(pixel,cyan_samples.at(j)))
+            inRange(src, Scalar(cyan_samples.at(j).val[0]), Scalar(cyan_samples.at(j).val[1]), thresh);
+            int numberOfWhitePixels = countNonZero(thresh);
+            if( (numberOfWhitePixels*100/(src.rows*src.cols)) > ColorPercentage)
             {
                 color = "cyan";
                 break;
@@ -226,7 +268,9 @@ QString ImageProcessing::findColor(Vec3b pixel)
     {
         for(int j=0;j<violet_samples.size();j++)
         {
-            if(colorIsInRange(pixel,violet_samples.at(j)))
+            inRange(src, Scalar(violet_samples.at(j).val[0]), Scalar(violet_samples.at(j).val[1]), thresh);
+            int numberOfWhitePixels = countNonZero(thresh);
+            if( (numberOfWhitePixels*100/(src.rows*src.cols)) > ColorPercentage)
             {
                 color = "violet";
                 break;
@@ -238,7 +282,9 @@ QString ImageProcessing::findColor(Vec3b pixel)
     {
         for(int j=0;j<black_samples.size();j++)
         {
-            if(colorIsInRange(pixel,black_samples.at(j)))
+            inRange(src, Scalar(black_samples.at(j).val[0]), Scalar(black_samples.at(j).val[1]), thresh);
+            int numberOfWhitePixels = countNonZero(thresh);
+            if( (numberOfWhitePixels*100/(src.rows*src.cols)) > ColorPercentage)
             {
                 color = "black";
                 break;
@@ -489,16 +535,22 @@ void ImageProcessing::prepareDataForOutput(std::vector<Point> &contour, QString 
     sample_crop.width = 20;
 
     Mat sample_frame(frame,sample_crop);
-    Scalar color_mean = mean(sample_frame);
+    //Scalar color_mean = mean(sample_frame);
 
-    Vec3b inputForDetect;
-    inputForDetect.val[0] = color_mean.val[0];
-    inputForDetect.val[1] = color_mean.val[1];
-    inputForDetect.val[2] = color_mean.val[2];
+//    Vec3b inputForDetect;
+//    inputForDetect.val[0] = color_mean.val[0];
+//    inputForDetect.val[1] = color_mean.val[1];
+//    inputForDetect.val[2] = color_mean.val[2];
+
+    Mat HSV;
+    cvtColor(sample_frame,HSV,COLOR_RGB2HSV);
+
+    vector<Mat> hsvPlanes;
+    split(HSV, hsvPlanes);
 
     //--------mohsen khare---------------
     float Xman = Orgin_X - (center.x/imSize.width)*Width;
     float Yman = Orgin_Y + (center.y/imSize.height)*Height;
     //---------------------------------
-    addShape(Xman+100,Yman-100,radius,type.toStdString(),findColor(inputForDetect).toStdString());
+    addShape(Xman+100,Yman-100,radius,type.toStdString(),findColor(hsvPlanes).toStdString());
 }

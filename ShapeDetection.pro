@@ -36,7 +36,8 @@ SOURCES += main.cpp\
     geom/vector_2d.cpp \
     Prototype_Messages/GameGround.pb.cc \
     System_Protobuf/SystemSettings.pb.cc \
-    shape.cpp
+    shape.cpp \
+    camerasetting.cpp
 
 HEADERS  += mainwindow.h \
     imageprocessing.h \
@@ -64,7 +65,8 @@ HEADERS  += mainwindow.h \
     Prototype_Messages/GameGround.pb.h \
     Constants.h \
     System_Protobuf/SystemSettings.pb.h \
-    shape.h
+    shape.h \
+    camerasetting.h
 
 FORMS    += mainwindow.ui
 
