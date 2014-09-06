@@ -13,6 +13,9 @@ public:
     void set_BRIGHTNESS(int input);
     void set_SHARPNESS(int input);
     void set_GAIN(int input);
+    void set_HUE(int input);
+    int set_SATURATION(int input);
+    int set_CONTRAST(int input);
 
     int get_fps();
     int get_WHITE_BALANCE_BLUE_U();
@@ -30,6 +33,9 @@ private:
     int BRIGHTNESS;
     int SHARPNESS;
     int GAIN;
+    int HUE;
+    int SATURATION;
+    int CONTRAST;
 };
 
 #endif // CAMERASETTING_H

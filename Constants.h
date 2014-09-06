@@ -8,8 +8,8 @@
 
 #define ASPECT_RATIO_TRESH 4
 
-#define Width 2746
-#define Height 2803
+#define Width 2150//2746
+#define Height 1930//2803
 
 #define Orgin_X 2677
 #define Orgin_Y -1537

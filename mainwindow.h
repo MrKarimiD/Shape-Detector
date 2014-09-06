@@ -218,6 +218,12 @@ private slots:
 
 
 
+    void on_hue_slider_sliderMoved(int position);
+
+    void on_saturation_slider_sliderMoved(int position);
+
+    void on_contrast_slider_sliderMoved(int position);
+
 private:
     Ui::MainWindow *ui;
     ImageProcessing *imageProcessor;

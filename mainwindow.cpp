@@ -1157,6 +1157,15 @@ void MainWindow::setCameraSetting()
 
         cap.set(CAP_PROP_GAIN,ui->gain_slider->value());
         camSetting->set_GAIN(ui->gain_slider->value());
+
+        cap.set(CAP_PROP_HUE,ui->hue_slider->value());
+        camSetting->set_HUE(ui->hue_slider->value());
+
+        cap.set(CAP_PROP_SATURATION,ui->saturation_slider->value());
+        camSetting->set_SATURATION(ui->saturation_slider->value());
+
+        cap.set(CAP_PROP_CONTRAST,ui->contrast_slider->value());
+        camSetting->set_CONTRAST(ui->contrast_slider->value());
     }
 }
 
@@ -1914,4 +1923,22 @@ void MainWindow::on_sY_lineEdit_textChanged()
 void MainWindow::on_undisort_checkBox_stateChanged()
 {
     emit filterSettingChanged();
+}
+
+void MainWindow::on_hue_slider_sliderMoved(int position)
+{
+    ui->hueOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::on_saturation_slider_sliderMoved(int position)
+{
+    ui->saturationOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
+}
+
+void MainWindow::on_contrast_slider_sliderMoved(int position)
+{
+    ui->contrastOut_label->setText(QString::number(position));
+    emit cameraSettingChanged();
 }
