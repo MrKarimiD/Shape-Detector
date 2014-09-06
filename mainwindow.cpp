@@ -74,6 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
     connect(this,SIGNAL(dataReadyForSend()),this,SLOT(sendDataPacket()));
+    connect(this,SIGNAL(filterSettingChanged()),this,SLOT(responseForFilterSettingsChanged()));
     //connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
 
     imageProcessor=new ImageProcessing();
@@ -349,6 +350,12 @@ void MainWindow::updateFilterSetting()
 {
     filterSetting->setUseUndisort(ui->undisort_checkBox->isChecked());
 
+    filterSetting->setUseCrop(ui->crop_checkBox->isChecked());
+    filterSetting->setCrop_firstX(ui->fX_lineEdit->text().toInt());
+    filterSetting->setCrop_firstY(ui->fY_lineEdit->text().toInt());
+    filterSetting->setCrop_secondX(ui->sX_lineEdit->text().toInt());
+    filterSetting->setCrop_secondY(ui->sY_lineEdit->text().toInt());
+
     filterSetting->setUseMedianBlur(ui->medianBlur_checkBox->isChecked());
     filterSetting->setKernelSize(ui->kernelSize_lineEdit->text().toInt());
 
@@ -380,7 +387,7 @@ void MainWindow::enableCropSetting()
     ui->sX_lineEdit->setEnabled(true);
     ui->sY_lineEdit->setEnabled(true);
 
-    ui->mouse_button->setEnabled(true);
+    //ui->mouse_button->setEnabled(true);
 }
 
 void MainWindow::disableCropSetting()
@@ -395,7 +402,7 @@ void MainWindow::disableCropSetting()
     ui->sX_lineEdit->setDisabled(true);
     ui->sY_lineEdit->setDisabled(true);
 
-    ui->mouse_button->setDisabled(true);
+    //ui->mouse_button->setDisabled(true);
 }
 
 void MainWindow::enableFirstMission()
@@ -850,8 +857,8 @@ void MainWindow::callImageProcessingFunctions(Mat input_mat)
     }
 
     //update filter setting from ui
-    updateFilterSetting();
-    imageProcessor->updateFilterSettings(filterSetting);
+//    updateFilterSetting();
+//    imageProcessor->updateFilterSettings(filterSetting);
 
     semaphoreForColorImage->acquire(1);
     frameForColorDetection = inputFrame;
@@ -1011,6 +1018,7 @@ void MainWindow::on_medianBlur_checkBox_stateChanged()
     {
         disableMedianBlur();
     }
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_adaptiveThreshold_checkBox_stateChanged()
@@ -1023,6 +1031,7 @@ void MainWindow::on_adaptiveThreshold_checkBox_stateChanged()
     {
         disableAdaptiveThresholdSetting();
     }
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_thresh_checkBox_stateChanged()
@@ -1035,6 +1044,7 @@ void MainWindow::on_thresh_checkBox_stateChanged()
     {
         disableThresholdSetting();
     }
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_dilate_checkBox_stateChanged()
@@ -1047,6 +1057,7 @@ void MainWindow::on_dilate_checkBox_stateChanged()
     {
         disableDilateSetting();
     }
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_canny_checkBox_stateChanged()
@@ -1059,31 +1070,37 @@ void MainWindow::on_canny_checkBox_stateChanged()
     {
         disableCannySetting();
     }
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_blockSize_slider_sliderMoved(int position)
 {
     ui->blockSizeOut_label->setText(QString::number(position));
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_C_slider_sliderMoved(int position)
 {
     ui->cOut_label->setText(QString::number(position));
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_thresh_slider_sliderMoved(int position)
 {
     ui->threshOut_label->setText(QString::number(position));
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_firstThresh_slider_sliderMoved(int position)
 {
     ui->firstThreshOut_label->setText(QString::number(position));
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_secondThresh_slider_sliderMoved(int position)
 {
     ui->secondThreshOut_label->setText(QString::number(position));
+    emit filterSettingChanged();
 }
 
 void MainWindow::on_blue_slider_sliderMoved(int position)
@@ -1810,4 +1827,58 @@ void MainWindow::on_clear_black_button_clicked()
     ui->black_hue_lineEdit->clear();
     ui->black_sat_lineEdit->clear();
     ui->black_value_lineEdit->clear();
+}
+
+void MainWindow::responseForFilterSettingsChanged()
+{
+    updateFilterSetting();
+    imageProcessor->updateFilterSettings(filterSetting);
+}
+
+void MainWindow::on_kernelSize_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_dilateSize_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_apertureSize_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_crop_checkBox_stateChanged()
+{
+    if(ui->crop_checkBox->isChecked())
+    {
+        enableCropSetting();
+    }
+    else
+    {
+        disableCropSetting();
+    }
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_fX_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_fY_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_sX_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
+}
+
+void MainWindow::on_sY_lineEdit_textChanged()
+{
+    emit filterSettingChanged();
 }

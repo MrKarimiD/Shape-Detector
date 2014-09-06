@@ -23,6 +23,31 @@ void filterSettings::setUseUndisort(bool input)
     this->useUndisort = input;
 }
 
+void filterSettings::setUseCrop(bool input)
+{
+    this->useCrop = input;
+}
+
+void filterSettings::setCrop_firstX(int input)
+{
+    this->crop_firstX = input;
+}
+
+void filterSettings::setCrop_firstY(int input)
+{
+    this->crop_firstY = input;
+}
+
+void filterSettings::setCrop_secondX(int input)
+{
+    this->crop_secondX = input;
+}
+
+void filterSettings::setCrop_secondY(int input)
+{
+    this->crop_secondY = input;
+}
+
 void filterSettings::setUseMedianBlur(bool input)
 {
     this->useMedianBlur=input;
@@ -106,6 +131,31 @@ void filterSettings::setApertureSize(int input)
 bool filterSettings::getUseUndisort()
 {
     return this->useUndisort;
+}
+
+bool filterSettings::getUseCrop()
+{
+    return this->useCrop;
+}
+
+int filterSettings::getCropFirstX()
+{
+    return this->crop_firstX;
+}
+
+int filterSettings::getCropFirstY()
+{
+    return this->crop_firstY;
+}
+
+int filterSettings::getCropSecondX()
+{
+    return this->crop_secondX;
+}
+
+int filterSettings::getCropSecondY()
+{
+    return this->crop_secondY;
 }
 
 bool filterSettings::getUseMedianBlur()

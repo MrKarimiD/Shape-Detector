@@ -68,13 +68,28 @@ private slots:
 
     void on_rotate_checkBox_stateChanged();
 
+    //-----filter Setting Changed-----
+    void on_crop_checkBox_stateChanged();
+
+    void on_fX_lineEdit_textChanged();
+
+    void on_fY_lineEdit_textChanged();
+
+    void on_sX_lineEdit_textChanged();
+
+    void on_sY_lineEdit_textChanged();
+
     void on_medianBlur_checkBox_stateChanged();
+
+    void on_kernelSize_lineEdit_textChanged();
 
     void on_adaptiveThreshold_checkBox_stateChanged();
 
     void on_thresh_checkBox_stateChanged();
 
     void on_dilate_checkBox_stateChanged();
+
+    void on_dilateSize_lineEdit_textChanged();
 
     void on_canny_checkBox_stateChanged();
 
@@ -88,6 +103,9 @@ private slots:
 
     void on_secondThresh_slider_sliderMoved(int position);
 
+    void on_apertureSize_lineEdit_textChanged();
+
+    //-----camera setting changed----------------
     void on_blue_slider_sliderMoved(int position);
 
     void on_red_slider_sliderMoved(int position);
@@ -103,6 +121,7 @@ private slots:
     void on_sharpness_slider_sliderMoved(int position);
 
     void on_gain_slider_sliderMoved(int position);
+    //---------------------------------------------
 
     void on_mouse_button_clicked();
 
@@ -114,6 +133,8 @@ private slots:
     void mouseMoveEvent(QMouseEvent *event);
 
     void mouseReleaseEvent(QMouseEvent *event);
+
+    //-------------------------------
 
     void on_drawCrop_checkBox_stateChanged();
 
@@ -190,6 +211,8 @@ private slots:
     void on_clear_cyan_button_clicked();
 
     void on_clear_black_button_clicked();
+
+    void responseForFilterSettingsChanged();
 
 private:
     Ui::MainWindow *ui;
@@ -303,6 +326,7 @@ signals:
     void imageReady(Mat image);
     void cameraSettingChanged();
     void dataReadyForSend();
+    void filterSettingChanged();
 
 };
 
