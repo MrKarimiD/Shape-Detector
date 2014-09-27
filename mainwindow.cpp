@@ -148,7 +148,7 @@ void MainWindow::on_open_button_clicked()
 
         cap.read(frame);
 
-        cam_timer->start(5);
+        cam_timer->start(1000*(1/ui->fps_comboBox->currentText().toInt()));
         connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
     }
 

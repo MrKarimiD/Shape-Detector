@@ -40,9 +40,17 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
         // to the contour perimeter
         approxPolyDP(Mat(contours[i]), approx, arcLength(Mat(contours[i]), true)*0.02, true);
 
+        if(this->drawContoursBool)
+        {
+            Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point(cropedRect.x,cropedRect.y) );
+        }
         // Skip small or non-convex objects
         if (fabs(contourArea(contours[i])) < 100 || !isContourConvex(approx))
-            continue;
+        {
+           /* if(fabs(contourArea(contours[i])) > )
+                else*/ continue;
+        }
 
         if(!checkAspectRatio(contours[i]))
             continue;
@@ -53,11 +61,7 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
             continue;
         }
 
-        if(this->drawContoursBool)
-        {
-            Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
-            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point(cropedRect.x,cropedRect.y) );
-        }
+
 
         if(drawBoundedRect)
         {
