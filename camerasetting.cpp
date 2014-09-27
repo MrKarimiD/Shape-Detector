@@ -44,12 +44,12 @@ void cameraSetting::set_HUE(int input)
     this->HUE = input;
 }
 
-int cameraSetting::set_SATURATION(int input)
+void cameraSetting::set_SATURATION(int input)
 {
     this->SATURATION = input;
 }
 
-int cameraSetting::set_CONTRAST(int input)
+void cameraSetting::set_CONTRAST(int input)
 {
     this->CONTRAST = input;
 }
@@ -87,4 +87,19 @@ int cameraSetting::get_SHARPNESS()
 int cameraSetting::get_GAIN()
 {
     return this->GAIN;
+}
+
+int cameraSetting::get_HUE()
+{
+    return this->HUE;
+}
+
+int cameraSetting::get_SATURATION()
+{
+    return this->SATURATION;
+}
+
+int cameraSetting::get_CONTRAST()
+{
+    return this->CONTRAST;
 }

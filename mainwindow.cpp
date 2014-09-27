@@ -7,13 +7,26 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    qRegisterMetaType<MatArray>("MatArray");
+
     installEventFilter(this);
+
+    shapeWorker = new shapeDetector();
+    getWorker = new getImage();
+    filterWorker = new filterProcces();
+
+    getThread = new QThread();
+    filterThread = new QThread();
+    shapeThread = new QThread();
+
+    getWorker->moveToThread(getThread);
+    filterWorker->moveToThread(filterThread);
+    shapeWorker->moveToThread(shapeThread);
 
     cameraIsOpened=false;
     mouseButtonClicked=false;
     colorMode = false;
     firstPointSelectedIsValid=false;
-    imProcDataAvailable=false;
 
     stallMode = false;
 
@@ -21,7 +34,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
 
-    semaphore=new QSemaphore(1);
     sendingSocket = new NetworkSender();
     semaphoreForColorImage = new QSemaphore(1);
     access2StallMode = new QSemaphore(1);
@@ -31,7 +43,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->cam_comboBox->addItems(items);
 
     QStringList fps_items;
-    fps_items<<"15"<<"30"<<"60";
+    fps_items<<"60"<<"15"<<"30";
     ui->fps_comboBox->addItems(fps_items);
 
     QPalette red_pal(Qt::red);
@@ -67,20 +79,25 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->out_comboBox->addItems(output_items);
     ui->out_comboBox->setCurrentIndex(4);
 
-    cam_timer = new QTimer();
-    send_timer = new QTimer();
     filterSetting=new filterSettings();
     camSetting = new cameraSetting();
 
-    connect(this,SIGNAL(imageReady(Mat)),this,SLOT(callImageProcessingFunctions(Mat)));
     connect(this,SIGNAL(cameraSettingChanged()),this,SLOT(updateCameraSetting()));
     connect(this,SIGNAL(dataReadyForSend()),this,SLOT(sendDataPacket()));
     connect(this,SIGNAL(filterSettingChanged()),this,SLOT(responseForFilterSettingsChanged()));
-    //connect(send_timer,SIGNAL(timeout()),this,SLOT(send_timer_interval()));
+    connect(this,SIGNAL(showSettingChanged()),this,SLOT(updateOutputOptions()));
 
-    imageProcessor=new ImageProcessing();
+    connect(getWorker,SIGNAL(done(MatArray)),this,SLOT(getOriginalFrame(MatArray)));
+    connect(filterWorker,SIGNAL(done(MatArray)),this,SLOT(getFilterdFrame(MatArray)));
+    connect(shapeWorker,SIGNAL(done(MatArray)),this,SLOT(getOutputFrame(MatArray)));
 
-    //openSetting("/home/kn2c/setting.txt");
+    semaphoreForGetWorker = new QSemaphore(1);
+    semaphoreForFilterWorker = new QSemaphore(1);
+    semaphoreForShapeWorker = new QSemaphore(1);
+
+    showSetting = new showOutputSetting();
+
+    openSetting("/home/kn2c/setting.txt");
 }
 
 MainWindow::~MainWindow()
@@ -88,78 +105,45 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_image_rButton_toggled(bool checked)
-{
-    if(checked)
-    {
-        enableOpenImage();
-
-    }
-    else
-    {
-        disableOpenImage();
-    }
-}
-
-void MainWindow::on_address_button_clicked()
-{
-    QString fileAddress = QFileDialog::getOpenFileName(this,tr("Select Your Source Image"), "/home", tr("Image Files (*.png *.jpg *.bmp)"));
-    ui->address_lineEdit->setText(fileAddress);
-    Mat inputFrame=imread(fileAddress.toStdString());
-    emit imageReady(inputFrame);
-}
-
-void MainWindow::on_camera_rButton_toggled(bool checked)
-{
-    if(checked)
-    {
-        enableOpenCamera();
-    }
-    else
-    {
-        disableOpenCamera();
-        disableCameraSetting();
-        disableXML();
-        cam_timer->stop();
-    }
-}
-
 void MainWindow::on_open_button_clicked()
 {
     sendingSocket->configure(ui->ip_lineEdit->text(),ui->port_lineEdit->text().toInt());
 
-    Mat frame;
+//    Mat frame;
 
-    if(ui->cam_comboBox->currentText() == "Network")
-    {
-    }
-    else
-    {
-        if(ui->cam_comboBox->currentText()=="0")
-        {
-            cameraIsOpened=cap.open(CAP_FIREWIRE+0);
-        }
-        else
-        {
-            cameraIsOpened=cap.open(CAP_FIREWIRE+1);
-        }
+//    if(ui->cam_comboBox->currentText() == "Network")
+//    {
+//    }
+//    else
+//    {
+//        if(ui->cam_comboBox->currentText()=="0")
+//        {
+//            cameraIsOpened=cap.open(CAP_FIREWIRE+0);
+//        }
+//        else
+//        {
+//            cameraIsOpened=cap.open(CAP_FIREWIRE+1);
+//        }
 
-        setCameraSetting();
+//        setCameraSetting();
 
-        cap.read(frame);
+//        cap.read(frame);
 
-        cam_timer->start(1000*(1/ui->fps_comboBox->currentText().toInt()));
-        connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
-    }
+//        cam_timer->start(5);
+//        connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
+//    }
 
-    emit imageReady(frame);
-}
+    getWorker->setInputType(ui->cam_comboBox->currentText());
+    getWorker->setTimerInterval(ui->fps_comboBox->currentText().toInt());
+    getWorker->updateCameraSetting(camSetting);
+    getWorker->updateFilterSetting(filterSetting);
 
-void MainWindow::cam_timeout()
-{
-    Mat frame;
-    cap.read(frame);
-    emit imageReady(frame);
+    filterWorker->updateFilterSetting(filterSetting);
+
+    shapeWorker->updateFilterSetting(filterSetting);
+    getThread->start();
+    filterThread->start();
+    shapeThread->start();
 }
 
 void MainWindow::enableCameraSetting()
@@ -210,38 +194,6 @@ void MainWindow::disableCameraSetting()
     ui->sharpnessOut_label->setDisabled(true);
 }
 
-void MainWindow::enableOpenCamera()
-{
-    ui->cam_label->setEnabled(true);
-    ui->cam_comboBox->setEnabled(true);
-    ui->open_button->setEnabled(true);
-    ui->camSet_checkBox->setEnabled(true);
-    ui->xml_checkBox->setEnabled(true);
-}
-
-void MainWindow::disableOpenCamera()
-{
-    ui->cam_label->setDisabled(true);
-    ui->cam_comboBox->setDisabled(true);
-    ui->open_button->setDisabled(true);
-    ui->camSet_checkBox->setDisabled(true);
-    ui->xml_checkBox->setDisabled(true);
-}
-
-void MainWindow::enableOpenImage()
-{
-    ui->add_label->setEnabled(true);
-    ui->address_button->setEnabled(true);
-    ui->address_lineEdit->setEnabled(true);
-}
-
-void MainWindow::disableOpenImage()
-{
-    ui->add_label->setDisabled(true);
-    ui->address_button->setDisabled(true);
-    ui->address_lineEdit->setDisabled(true);
-}
-
 void MainWindow::enableXML()
 {
     ui->xmlAdd_lineEdit->setEnabled(true);
@@ -256,9 +208,77 @@ void MainWindow::disableXML()
 
 void MainWindow::updateOutputOptions()
 {
-    imageProcessor->changeOutputSetting(ui->cont_checkBox->isChecked(),ui->geom_checkBox->isChecked()
-                                        ,ui->bound_checkBox->isChecked(),ui->rotate_checkBox->isChecked()
-                                        ,ui->drawCrop_checkBox->isChecked());
+    showSetting->set_drawContoursBool(ui->cont_checkBox->isChecked());
+    showSetting->set_drawGeometricLabels(ui->geom_checkBox->isChecked());
+    showSetting->set_drawBoundedRect(ui->bound_checkBox->isChecked());
+    showSetting->set_drawRotatedRect(ui->rotate_checkBox->isChecked());
+    showSetting->set_drawBoundries(ui->drawCrop_checkBox->isChecked());
+
+    shapeWorker->updateShowSetting(showSetting);
+}
+
+void MainWindow::getOriginalFrame(MatArray input)
+{
+    semaphoreForColorImage->acquire(1);
+    frameForColorDetection = input.final;
+    semaphoreForColorImage->release(1);
+    filterWorker->setImage(input);
+}
+
+void MainWindow::getFilterdFrame(MatArray input)
+{
+    shapeWorker->setImage(input);
+}
+
+void MainWindow::getOutputFrame(MatArray input)
+{
+    Mat outputFrame;
+
+    if(ui->out_comboBox->currentText() == "Croped")
+    {
+        input.crop.copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Adaptive Threshold")
+    {
+        input.addaptiveThreshold.copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Threshold")
+    {
+        input.threshold.copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Canny")
+    {
+        input.canny.copyTo(outputFrame);
+    }
+    else if(ui->out_comboBox->currentText() == "Final")
+    {
+        input.final.copyTo(outputFrame);
+    }
+
+    if(!outputFrame.empty())
+    {
+        cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
+        QImage imgIn;
+        if(ui->out_comboBox->currentText() == "Final" || ui->out_comboBox->currentText() == "Croped")
+        {
+            cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
+        }
+        else
+        {
+            cvtColor(outputFrame, outputFrame, COLOR_GRAY2RGB);
+        }
+
+        imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
+        ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
+    }
+
+    if(permissionForSending)
+    {
+        shapeWorker->result.set_mission(mission);
+        shapeWorker->result.set_type(1);
+        //sendDataPacket();
+        emit dataReadyForSend();
+    }
 }
 
 void MainWindow::enableMedianBlur()
@@ -607,23 +627,23 @@ void MainWindow::setInitializeMessage(int mission)
     {
         this->mission = 1;
 
-        imageProcessor->result.set_mission(1);
-        imageProcessor->result.set_type(0);
-        imageProcessor->result.set_numberofshape(0);
+        shapeWorker->result.set_mission(1);
+        shapeWorker->result.set_type(0);
+        shapeWorker->result.set_numberofshape(0);
 
-        imageProcessor->result.set_mission1_isvalid(true);
-        imageProcessor->result.set_mission1_region1_tl_x(ui->region1_tlX_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_region1_tl_y(ui->region1_tlY_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_region1_br_x(ui->region1_brX_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_region1_br_y(ui->region1_brY_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_isvalid(true);
+        shapeWorker->result.set_mission1_region1_tl_x(ui->region1_tlX_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region1_tl_y(ui->region1_tlY_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region1_br_x(ui->region1_brX_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region1_br_y(ui->region1_brY_lineEdit->text().toFloat());
 
-        imageProcessor->result.set_mission1_region2_tl_x(ui->region2_tlX_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_region2_tl_y(ui->region2_tlY_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_region2_br_x(ui->region2_brX_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_region2_br_y(ui->region2_brY_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region2_tl_x(ui->region2_tlX_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region2_tl_y(ui->region2_tlY_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region2_br_x(ui->region2_brX_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_region2_br_y(ui->region2_brY_lineEdit->text().toFloat());
 
-        imageProcessor->result.set_mission1_end_x(ui->fMendX_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission1_end_y(ui->fMendY_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_end_x(ui->fMendX_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission1_end_y(ui->fMendY_lineEdit->text().toFloat());
 
         break;
     }
@@ -631,21 +651,21 @@ void MainWindow::setInitializeMessage(int mission)
     {
         this->mission = 2;
 
-        imageProcessor->result.set_mission(2);
-        imageProcessor->result.set_type(0);
-        imageProcessor->result.set_numberofshape(0);
+        shapeWorker->result.set_mission(2);
+        shapeWorker->result.set_type(0);
+        shapeWorker->result.set_numberofshape(0);
 
-        imageProcessor->result.set_mission2_isvalid(true);
-        imageProcessor->result.set_mission2_end_x(ui->sMendX_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission2_end_y(ui->sMendY_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission2_isvalid(true);
+        shapeWorker->result.set_mission2_end_x(ui->sMendX_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission2_end_y(ui->sMendY_lineEdit->text().toFloat());
 
-        outputPacket_line *line1=imageProcessor->result.add_mission2_lines();
+        outputPacket_line *line1=shapeWorker->result.add_mission2_lines();
         line1->set_start_x(1300);
         line1->set_start_y(-1500);
         line1->set_end_x(1700);
         line1->set_end_y(0);
 
-        outputPacket_line *line2=imageProcessor->result.add_mission2_lines();
+        outputPacket_line *line2=shapeWorker->result.add_mission2_lines();
         line2->set_start_x(1700);
         line2->set_start_y(0);
         line2->set_end_x(1300);
@@ -656,28 +676,28 @@ void MainWindow::setInitializeMessage(int mission)
     {
         this->mission = 3;
 
-        imageProcessor->result.set_mission(3);
-        imageProcessor->result.set_type(0);
-        imageProcessor->result.set_numberofshape(0);
+        shapeWorker->result.set_mission(3);
+        shapeWorker->result.set_type(0);
+        shapeWorker->result.set_numberofshape(0);
 
-        imageProcessor->result.set_mission3_isvalid(true);
+        shapeWorker->result.set_mission3_isvalid(true);
 
         if(ui->attacker_rButton->isChecked())
-            imageProcessor->result.set_mission3_isattacker(true);
+            shapeWorker->result.set_mission3_isattacker(true);
         else if(ui->defender_rButton->isChecked())
-            imageProcessor->result.set_mission3_isattacker(false);
+            shapeWorker->result.set_mission3_isattacker(false);
 
         //Border Center
-        imageProcessor->result.set_mission3_circularborde_x(ui->border_X_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission3_circularborde_y(ui->border_Y_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission3_circularborde_x(ui->border_X_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission3_circularborde_y(ui->border_Y_lineEdit->text().toFloat());
 
         //goal1 center
-        imageProcessor->result.set_mission3_goal1_x(ui->goal1_X_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission3_goal1_y(ui->goal1_Y_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission3_goal1_x(ui->goal1_X_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission3_goal1_y(ui->goal1_Y_lineEdit->text().toFloat());
 
         //goal2 center
-        imageProcessor->result.set_mission3_goal2_x(ui->goal2_X_lineEdit->text().toFloat());
-        imageProcessor->result.set_mission3_goal2_x(ui->goal2_Y_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission3_goal2_x(ui->goal2_X_lineEdit->text().toFloat());
+        shapeWorker->result.set_mission3_goal2_x(ui->goal2_Y_lineEdit->text().toFloat());
 
         break;
     }
@@ -766,9 +786,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.red_instances(i).min_hue();
             colorSample.val[1] = setting.red_instances(i).max_hue();
             //colorSample.val[2] = setting.red_instances(i).val();
-            imageProcessor->red_samples.push_back(colorSample);
+            shapeWorker->colorDetector->red_samples.push_back(colorSample);
         }
-        ui->red_status_label->setText(QString::number(imageProcessor->red_samples.size())+" Color at list.");
+        ui->red_status_label->setText(QString::number(shapeWorker->colorDetector->red_samples.size())+" Color at list.");
 
         ui->use_blue_checkBox->setChecked(setting.have_blue());
         //Add blue colors
@@ -778,9 +798,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.blue_instances(i).min_hue();
             colorSample.val[1] = setting.blue_instances(i).max_hue();
             //colorSample.val[2] = setting.blue_instances(i).val();
-            imageProcessor->blue_samples.push_back(colorSample);
+            shapeWorker->colorDetector->blue_samples.push_back(colorSample);
         }
-        ui->blue_status_label->setText(QString::number(imageProcessor->blue_samples.size())+" Color at list.");
+        ui->blue_status_label->setText(QString::number(shapeWorker->colorDetector->blue_samples.size())+" Color at list.");
 
         ui->use_green_checkBox->setChecked(setting.have_green());
         //Add green colors
@@ -790,9 +810,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.green_instances(i).min_hue();
             colorSample.val[1] = setting.green_instances(i).max_hue();
             //colorSample.val[2] = setting.green_instances(i).val();
-            imageProcessor->green_samples.push_back(colorSample);
+            shapeWorker->colorDetector->green_samples.push_back(colorSample);
         }
-        ui->green_status_label->setText(QString::number(imageProcessor->green_samples.size())+" Color at list.");
+        ui->green_status_label->setText(QString::number(shapeWorker->colorDetector->green_samples.size())+" Color at list.");
 
         ui->use_yellow_checkBox->setChecked(setting.have_yellow());
         //Add yellow colors
@@ -802,9 +822,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.yellow_instances(i).min_hue();
             colorSample.val[1] = setting.yellow_instances(i).max_hue();
             //colorSample.val[2] = setting.yellow_instances(i).val();
-            imageProcessor->yellow_samples.push_back(colorSample);
+            shapeWorker->colorDetector->yellow_samples.push_back(colorSample);
         }
-        ui->yellow_status_label->setText(QString::number(imageProcessor->yellow_samples.size())+" Color at list.");
+        ui->yellow_status_label->setText(QString::number(shapeWorker->colorDetector->yellow_samples.size())+" Color at list.");
 
         ui->use_violet_checkBox->setChecked(setting.have_violet());
         //Add violet colors
@@ -814,9 +834,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.violet_instances(i).min_hue();
             colorSample.val[1] = setting.violet_instances(i).max_hue();
             //colorSample.val[2] = setting.violet_instances(i).val();
-            imageProcessor->violet_samples.push_back(colorSample);
+            shapeWorker->colorDetector->violet_samples.push_back(colorSample);
         }
-        ui->violet_status_label->setText(QString::number(imageProcessor->violet_samples.size())+" Color at list.");
+        ui->violet_status_label->setText(QString::number(shapeWorker->colorDetector->violet_samples.size())+" Color at list.");
 
         ui->use_cyan_checkBox->setChecked(setting.have_cyan());
         //Add cyan colors
@@ -826,9 +846,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.cyan_instances(i).min_hue();
             colorSample.val[1] = setting.cyan_instances(i).max_hue();
             //colorSample.val[2] = setting.cyan_instances(i).val();
-            imageProcessor->cyan_samples.push_back(colorSample);
+            shapeWorker->colorDetector->cyan_samples.push_back(colorSample);
         }
-        ui->cyan_status_label->setText(QString::number(imageProcessor->cyan_samples.size())+" Color at list.");
+        ui->cyan_status_label->setText(QString::number(shapeWorker->colorDetector->cyan_samples.size())+" Color at list.");
 
         ui->use_black_checkBox->setChecked(setting.have_black());
         //Add black colors
@@ -838,104 +858,9 @@ void MainWindow::openSetting(QString fileAddress)
             colorSample.val[0] = setting.black_instances(i).min_hue();
             colorSample.val[1] = setting.black_instances(i).max_hue();
             //colorSample.val[2] = setting.black_instances(i).val();
-            imageProcessor->black_samples.push_back(colorSample);
+            shapeWorker->colorDetector->black_samples.push_back(colorSample);
         }
-        ui->black_status_label->setText(QString::number(imageProcessor->black_samples.size())+" Color at list.");
-    }
-}
-
-void MainWindow::callImageProcessingFunctions(Mat input_mat)
-{
-    //undisort image
-    Mat inputFrame;
-    if(ui->camera_rButton->isChecked() && ui->undisort_checkBox->isChecked())
-    {
-        imageProcessor->undistortImage(input_mat).copyTo(inputFrame);
-    }
-    else
-    {
-        input_mat.copyTo(inputFrame);
-    }
-
-    //update filter setting from ui
-//    updateFilterSetting();
-//    imageProcessor->updateFilterSettings(filterSetting);
-
-    semaphoreForColorImage->acquire(1);
-    frameForColorDetection = inputFrame;
-    semaphoreForColorImage->release(1);
-
-    //croped image for better performance
-    Mat filteredImage;
-    Mat crop;
-    Rect cropedRect;
-    if(ui->crop_checkBox->isChecked())
-    {
-        cropedRect.width = ui->sX_lineEdit->text().toInt()-ui->fX_lineEdit->text().toInt();
-        cropedRect.height = ui->sY_lineEdit->text().toInt()-ui->fY_lineEdit->text().toInt();
-        cropedRect.x = ui->fX_lineEdit->text().toInt();
-        cropedRect.y = ui->fY_lineEdit->text().toInt();
-
-        Mat CropFrame(inputFrame,cropedRect);
-        CropFrame.copyTo(crop);
-        imageProcessor->applyFilters(CropFrame).copyTo(filteredImage);
-    }
-    else
-    {
-        imageProcessor->applyFilters(inputFrame).copyTo(filteredImage);
-        cropedRect.width = inputFrame.rows;
-        cropedRect.height = inputFrame.cols;
-        cropedRect.x = 0;
-        cropedRect.y = 0;
-    }
-
-    semaphore->acquire();
-    imProcDataAvailable=false;
-    Mat outputFrame;
-    imageProcessor->shapeDetection(filteredImage,inputFrame,cropedRect).copyTo(outputFrame);
-    imProcDataAvailable=true;
-    semaphore->release();
-
-    if(ui->out_comboBox->currentText() == "Croped")
-    {
-        crop.copyTo(outputFrame);
-    }
-    else if(ui->out_comboBox->currentText() == "Adaptive Threshold")
-    {
-        imageProcessor->returnAdaptiveThreshlodImage().copyTo(outputFrame);
-    }
-    else if(ui->out_comboBox->currentText() == "Threshold")
-    {
-        imageProcessor->returnThreshlodImage().copyTo(outputFrame);
-    }
-    else if(ui->out_comboBox->currentText() == "Canny")
-    {
-        imageProcessor->returnCannyImage().copyTo(outputFrame);
-    }
-
-    if(!outputFrame.empty())
-    {
-        cv::resize(outputFrame,outputFrame,Size(640,480),0,0,INTER_CUBIC);
-        QImage imgIn;
-        if(ui->out_comboBox->currentText() == "Final" || ui->out_comboBox->currentText() == "Croped")
-        {
-            cvtColor(outputFrame, outputFrame, COLOR_BGR2RGB);
-        }
-        else
-        {
-            cvtColor(outputFrame, outputFrame, COLOR_GRAY2RGB);
-        }
-
-        imgIn= QImage((uchar*) outputFrame.data, outputFrame.cols, outputFrame.rows, outputFrame.step, QImage::Format_RGB888);
-        ui->outputLabel->setPixmap(QPixmap::fromImage(imgIn));
-    }
-
-    if(permissionForSending)
-    {
-        imageProcessor->result.set_mission(mission);
-        imageProcessor->result.set_type(1);
-        //sendDataPacket();
-        emit dataReadyForSend();
+        ui->black_status_label->setText(QString::number(shapeWorker->colorDetector->black_samples.size())+" Color at list.");
     }
 }
 
@@ -991,22 +916,22 @@ void MainWindow::on_xml_button_clicked()
 
 void MainWindow::on_cont_checkBox_stateChanged()
 {
-    updateOutputOptions();
+    emit showSettingChanged();
 }
 
 void MainWindow::on_geom_checkBox_stateChanged()
 {
-    updateOutputOptions();
+    emit showSettingChanged();
 }
 
 void MainWindow::on_bound_checkBox_stateChanged()
 {
-    updateOutputOptions();
+    emit showSettingChanged();
 }
 
 void MainWindow::on_rotate_checkBox_stateChanged()
 {
-    updateOutputOptions();
+    emit showSettingChanged();
 }
 
 void MainWindow::on_medianBlur_checkBox_stateChanged()
@@ -1131,42 +1056,21 @@ void MainWindow::on_brightness_slider_sliderMoved(int position)
 void MainWindow::updateCameraSetting()
 {
     setCameraSetting();
+    getWorker->updateCameraSetting(camSetting);
 }
 
 void MainWindow::setCameraSetting()
 {
-    if(cameraIsOpened)
-    {
-        cap.set(CAP_PROP_FPS, ui->fps_comboBox->currentText().toInt());
-        camSetting->set_fps(ui->fps_comboBox->currentText().toInt());
-
-        cap.set(CAP_PROP_WHITE_BALANCE_BLUE_U,ui->blue_slider->value());
-        camSetting->set_WHITE_BALANCE_BLUE_U(ui->blue_slider->value());
-
-        cap.set(CAP_PROP_WHITE_BALANCE_RED_V,ui->red_slider->value());
-        camSetting->set_WHITE_BALANCE_RED_V(ui->red_slider->value());
-
-        cap.set(CAP_PROP_BRIGHTNESS,ui->brightness_slider->value());
-        camSetting->set_BRIGHTNESS(ui->brightness_slider->value());
-
-        cap.set(CAP_PROP_EXPOSURE,ui->exposure_slider->value());
-        camSetting->set_EXPOSURE(ui->exposure_slider->value());
-
-        cap.set(CAP_PROP_SHARPNESS,ui->sharpness_slider->value());
-        camSetting->set_SHARPNESS(ui->sharpness_slider->value());
-
-        cap.set(CAP_PROP_GAIN,ui->gain_slider->value());
-        camSetting->set_GAIN(ui->gain_slider->value());
-
-        cap.set(CAP_PROP_HUE,ui->hue_slider->value());
-        camSetting->set_HUE(ui->hue_slider->value());
-
-        cap.set(CAP_PROP_SATURATION,ui->saturation_slider->value());
-        camSetting->set_SATURATION(ui->saturation_slider->value());
-
-        cap.set(CAP_PROP_CONTRAST,ui->contrast_slider->value());
-        camSetting->set_CONTRAST(ui->contrast_slider->value());
-    }
+    camSetting->set_fps(ui->fps_comboBox->currentText().toInt());
+    camSetting->set_WHITE_BALANCE_BLUE_U(ui->blue_slider->value());
+    camSetting->set_WHITE_BALANCE_RED_V(ui->red_slider->value());
+    camSetting->set_BRIGHTNESS(ui->brightness_slider->value());
+    camSetting->set_EXPOSURE(ui->exposure_slider->value());
+    camSetting->set_SHARPNESS(ui->sharpness_slider->value());
+    camSetting->set_GAIN(ui->gain_slider->value());
+    camSetting->set_HUE(ui->hue_slider->value());
+    camSetting->set_SATURATION(ui->saturation_slider->value());
+    camSetting->set_CONTRAST(ui->contrast_slider->value());
 }
 
 void MainWindow::on_sharpness_slider_sliderMoved(int position)
@@ -1251,7 +1155,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
             if(colorMode)
             {
                 semaphoreForColorImage->acquire(1);
-                cam_timer->stop();
+                Mat reference;
+                frameForColorDetection.copyTo(reference);
+                semaphoreForColorImage->release(1);
 
                 Rect cropedRect;
                 cropedRect.width = event->x()-origin.x();
@@ -1259,9 +1165,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
                 cropedRect.x = origin.x()-ui->outputLabel->x();
                 cropedRect.y = origin.y()-ui->outputLabel->y();
 
-                Mat CropFrame(frameForColorDetection,cropedRect);
-                //imageProcessor->returnHsv(CropFrame);
-                Vec2f color = imageProcessor->returnColor(CropFrame,frameForColorDetection);
+                Mat CropFrame(reference,cropedRect);
+
+                Vec2f color = shapeWorker->colorDetector->returnColor(CropFrame,reference);
 
                 if(whichColor == "red")
                 {
@@ -1305,10 +1211,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
                     ui->black_sat_lineEdit->setText(QString::number((int)color.val[1]));
                     //ui->black_value_lineEdit->setText(QString::number((int)color.val[2]));
                 }
-
-                cam_timer->start();
-                semaphoreForColorImage->release(1);
-
             }
         }
     }
@@ -1319,7 +1221,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
 
 void MainWindow::on_drawCrop_checkBox_stateChanged()
 {
-    updateOutputOptions();
+    emit showSettingChanged();
 }
 
 void MainWindow::on_firstM_rButton_toggled(bool checked)
@@ -1348,29 +1250,30 @@ void MainWindow::on_secondM_rButton_toggled(bool checked)
 
 void MainWindow::on_go_button_clicked()
 {
-    imageProcessor->result.Clear();
+    shapeWorker->result.Clear();
 
     if(ui->firstM_rButton->isChecked())
     {
         setInitializeMessage(1);
+        emit dataReadyForSend();
+        permissionForSending = true;
     }
     else if(ui->secondM_rButton->isChecked())
     {
         setInitializeMessage(2);
+        emit dataReadyForSend();
+        permissionForSending = true;
     }
     else if(ui->thirsM_rButton->isChecked())
     {
         setInitializeMessage(3);
+        emit dataReadyForSend();
+        permissionForSending = true;
     }
     else
     {
         qDebug()<<"Error : Select a Mission!";
     }
-
-    //sendDataPacket();
-    emit dataReadyForSend();
-    permissionForSending = true;
-    send_timer->start(15);
 }
 
 void MainWindow::on_thirsM_rButton_toggled(bool checked)
@@ -1393,24 +1296,24 @@ void MainWindow::sendDataPacket()
     if(!stallMode)
     {
         qDebug()<<"--------------";
-        qDebug()<<"mission:"<<imageProcessor->result.mission();
-        qDebug()<<"number:"<<imageProcessor->result.numberofshape();
-        qDebug()<<"type:"<<imageProcessor->result.type();
-        for(int i=0;i<imageProcessor->result.shapes_size();i++)
+        qDebug()<<"mission:"<<shapeWorker->result.mission();
+        qDebug()<<"number:"<<shapeWorker->result.numberofshape();
+        qDebug()<<"type:"<<shapeWorker->result.type();
+        for(int i=0;i<shapeWorker->result.shapes_size();i++)
         {
-            qDebug()<<"shape "<<i<<" seen at:"<<imageProcessor->result.shapes(i).position_x()<<","<<imageProcessor->result.shapes(i).position_y();
-            qDebug()<<"color:"<<QString::fromStdString(imageProcessor->result.shapes(i).color());
+            qDebug()<<"shape "<<i<<" seen at:"<<shapeWorker->result.shapes(i).position_x()<<","<<shapeWorker->result.shapes(i).position_y();
+            qDebug()<<"color:"<<QString::fromStdString(shapeWorker->result.shapes(i).color());
         }
         qDebug()<<"--------------";
     }
     else
     {
-        imageProcessor->result.set_mission(0);
+        shapeWorker->result.set_mission(0);
     }
     access2StallMode->release(1);
 
     string data;
-    imageProcessor->result.SerializeToString(&data);
+    shapeWorker->result.SerializeToString(&data);
     QString s = QString::fromStdString(data);
     QByteArray q_data;
     q_data.append(s);
@@ -1552,8 +1455,6 @@ void MainWindow::on_blackSelect_button_clicked()
 
 void MainWindow::on_save_set_button_clicked()
 {
-    disconnect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
-
     SystemSettings setting;
 
     setting.set_input_edit_camera_setting(ui->camSet_checkBox->isChecked());
@@ -1599,61 +1500,61 @@ void MainWindow::on_save_set_button_clicked()
     setting.set_have_black(ui->use_black_checkBox->isChecked());
 
 //    //Add Colors!
-//    for(int i=0;i<imageProcessor->red_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_red_instances();
-//        color->set_hue(imageProcessor->red_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->red_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->red_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->red_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_red_instances();
+        color->set_min_hue(shapeWorker->colorDetector->red_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->red_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->red_samples.at(i).val[2]);
+    }
 
-//    for(int i=0;i<imageProcessor->blue_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_blue_instances();
-//        color->set_hue(imageProcessor->blue_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->blue_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->blue_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->blue_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_blue_instances();
+        color->set_min_hue(shapeWorker->colorDetector->blue_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->blue_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->blue_samples.at(i).val[2]);
+    }
 
-//    for(int i=0;i<imageProcessor->green_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_green_instances();
-//        color->set_hue(imageProcessor->green_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->green_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->green_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->green_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_green_instances();
+        color->set_max_hue(shapeWorker->colorDetector->green_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->green_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->green_samples.at(i).val[2]);
+    }
 
-//    for(int i=0;i<imageProcessor->yellow_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_yellow_instances();
-//        color->set_hue(imageProcessor->yellow_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->yellow_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->yellow_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->yellow_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_yellow_instances();
+        color->set_max_hue(shapeWorker->colorDetector->yellow_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->yellow_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->yellow_samples.at(i).val[2]);
+    }
 
-//    for(int i=0;i<imageProcessor->violet_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_violet_instances();
-//        color->set_hue(imageProcessor->violet_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->violet_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->violet_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->violet_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_violet_instances();
+        color->set_max_hue(shapeWorker->colorDetector->violet_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->violet_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->violet_samples.at(i).val[2]);
+    }
 
-//    for(int i=0;i<imageProcessor->cyan_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_cyan_instances();
-//        color->set_hue(imageProcessor->cyan_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->cyan_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->cyan_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->cyan_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_cyan_instances();
+        color->set_max_hue(shapeWorker->colorDetector->cyan_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->cyan_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->cyan_samples.at(i).val[2]);
+    }
 
-//    for(int i=0;i<imageProcessor->black_samples.size();i++)
-//    {
-//        SystemSettings_color *color = setting.add_black_instances();
-//        color->set_hue(imageProcessor->black_samples.at(i).val[0]);
-//        color->set_sat(imageProcessor->black_samples.at(i).val[1]);
-//        color->set_val(imageProcessor->black_samples.at(i).val[2]);
-//    }
+    for(int i=0;i<shapeWorker->colorDetector->black_samples.size();i++)
+    {
+        SystemSettings_color *color = setting.add_black_instances();
+        color->set_max_hue(shapeWorker->colorDetector->black_samples.at(i).val[0]);
+        color->set_max_hue(shapeWorker->colorDetector->black_samples.at(i).val[1]);
+        //color->set_val(shapeWorker->colorDetector->black_samples.at(i).val[2]);
+    }
 
     QString fileAddress = QFileDialog::getSaveFileName(this,tr("Select Directory..."), "/home", tr("Text File (*.txt)"));
     QFile file(fileAddress);
@@ -1672,19 +1573,13 @@ void MainWindow::on_save_set_button_clicked()
     {
         qDebug() << "Failed to Create File" << endl;
     }
-
-    connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
 }
 
 void MainWindow::on_open_set_button_clicked()
 {
-    disconnect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
-
     QString fileAddress = QFileDialog::getOpenFileName(this,tr("Select Setting File"), "/home", tr("Text File (*.txt)"));
 
     openSetting(fileAddress);
-
-    connect(cam_timer,SIGNAL(timeout()),this,SLOT(cam_timeout()));
 }
 
 void MainWindow::on_add_red_button_clicked()
@@ -1698,10 +1593,10 @@ void MainWindow::on_add_red_button_clicked()
     sample.val[0] = ui->red_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->red_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->red_value_lineEdit->text().toInt();
-    imageProcessor->red_samples.push_back(sample);
+    shapeWorker->colorDetector->red_samples.push_back(sample);
 
     QString status;
-    status = QString::number(imageProcessor->red_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->red_samples.size()) + " Color at list.";
     ui->red_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1713,9 +1608,9 @@ void MainWindow::on_add_blue_button_clicked()
     sample.val[0] = ui->blue_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->blue_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->blue_value_lineEdit->text().toInt();
-    imageProcessor->blue_samples.push_back(sample);
+    shapeWorker->colorDetector->blue_samples.push_back(sample);
     QString status;
-    status = QString::number(imageProcessor->blue_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->blue_samples.size()) + " Color at list.";
     ui->blue_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1727,9 +1622,9 @@ void MainWindow::on_add_green_button_clicked()
     sample.val[0] = ui->green_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->green_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->green_value_lineEdit->text().toInt();
-    imageProcessor->green_samples.push_back(sample);
+    shapeWorker->colorDetector->green_samples.push_back(sample);
     QString status;
-    status = QString::number(imageProcessor->green_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->green_samples.size()) + " Color at list.";
     ui->green_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1741,9 +1636,9 @@ void MainWindow::on_add_yellow_button_clicked()
     sample.val[0] = ui->yellow_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->yellow_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->yellow_value_lineEdit->text().toInt();
-    imageProcessor->yellow_samples.push_back(sample);
+    shapeWorker->colorDetector->yellow_samples.push_back(sample);
     QString status;
-    status = QString::number(imageProcessor->yellow_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->yellow_samples.size()) + " Color at list.";
     ui->yellow_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1755,9 +1650,9 @@ void MainWindow::on_add_violet_button_clicked()
     sample.val[0] = ui->violet_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->violet_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->violet_value_lineEdit->text().toInt();
-    imageProcessor->violet_samples.push_back(sample);
+    shapeWorker->colorDetector->violet_samples.push_back(sample);
     QString status;
-    status = QString::number(imageProcessor->violet_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->violet_samples.size()) + " Color at list.";
     ui->violet_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1769,9 +1664,9 @@ void MainWindow::on_add_cyan_button_clicked()
     sample.val[0] = ui->cyan_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->cyan_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->cyan_value_lineEdit->text().toInt();
-    imageProcessor->cyan_samples.push_back(sample);
+    shapeWorker->colorDetector->cyan_samples.push_back(sample);
     QString status;
-    status = QString::number(imageProcessor->cyan_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->cyan_samples.size()) + " Color at list.";
     ui->cyan_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1783,9 +1678,9 @@ void MainWindow::on_add_black_button_clicked()
     sample.val[0] = ui->black_hue_lineEdit->text().toFloat();
     sample.val[1] = ui->black_sat_lineEdit->text().toFloat();
     //sample.val[2] = ui->black_value_lineEdit->text().toInt();
-    imageProcessor->black_samples.push_back(sample);
+    shapeWorker->colorDetector->black_samples.push_back(sample);
     QString status;
-    status = QString::number(imageProcessor->black_samples.size()) + " Color at list.";
+    status = QString::number(shapeWorker->colorDetector->black_samples.size()) + " Color at list.";
     ui->black_status_label->setText(status);
     QApplication::setOverrideCursor(Qt::ArrowCursor);
     colorMode = false;
@@ -1808,23 +1703,26 @@ void MainWindow::on_stall_button_clicked()
 
 void MainWindow::on_clear_red_button_clicked()
 {
-    imageProcessor->red_samples.clear();
-    ui->red_status_label->setText(QString::number(imageProcessor->red_samples.size()) + " Color at list.");
-}
-
-void MainWindow::on_clear_blue_button_clicked()
-{
-    imageProcessor->blue_samples.clear();
-    ui->blue_status_label->setText(QString::number(imageProcessor->blue_samples.size()) + " Color at list.");
+    shapeWorker->colorDetector->red_samples.clear();
+    ui->red_status_label->setText(QString::number(shapeWorker->colorDetector->red_samples.size()) + " Color at list.");
     ui->red_hue_lineEdit->clear();
     ui->red_sat_lineEdit->clear();
     ui->red_value_lineEdit->clear();
 }
 
+void MainWindow::on_clear_blue_button_clicked()
+{
+    shapeWorker->colorDetector->blue_samples.clear();
+    ui->blue_status_label->setText(QString::number(shapeWorker->colorDetector->blue_samples.size()) + " Color at list.");
+    ui->blue_hue_lineEdit->clear();
+    ui->blue_sat_lineEdit->clear();
+    ui->blue_value_lineEdit->clear();
+}
+
 void MainWindow::on_clear_green_button_clicked()
 {
-    imageProcessor->green_samples.clear();
-    ui->green_status_label->setText(QString::number(imageProcessor->green_samples.size()) + " Color at list.");
+    shapeWorker->colorDetector->green_samples.clear();
+    ui->green_status_label->setText(QString::number(shapeWorker->colorDetector->green_samples.size()) + " Color at list.");
     ui->green_hue_lineEdit->clear();
     ui->green_sat_lineEdit->clear();
     ui->green_value_lineEdit->clear();
@@ -1832,8 +1730,8 @@ void MainWindow::on_clear_green_button_clicked()
 
 void MainWindow::on_clear_yellow_button_clicked()
 {
-    imageProcessor->yellow_samples.clear();
-    ui->yellow_status_label->setText(QString::number(imageProcessor->yellow_samples.size()) + " Color at list.");
+    shapeWorker->colorDetector->yellow_samples.clear();
+    ui->yellow_status_label->setText(QString::number(shapeWorker->colorDetector->yellow_samples.size()) + " Color at list.");
     ui->yellow_hue_lineEdit->clear();
     ui->yellow_sat_lineEdit->clear();
     ui->yellow_value_lineEdit->clear();
@@ -1841,8 +1739,8 @@ void MainWindow::on_clear_yellow_button_clicked()
 
 void MainWindow::on_clear_violet_button_clicked()
 {
-    imageProcessor->violet_samples.clear();
-    ui->violet_status_label->setText(QString::number(imageProcessor->violet_samples.size()) + " Color at list.");
+    shapeWorker->colorDetector->violet_samples.clear();
+    ui->violet_status_label->setText(QString::number(shapeWorker->colorDetector->violet_samples.size()) + " Color at list.");
     ui->violet_hue_lineEdit->clear();
     ui->violet_sat_lineEdit->clear();
     ui->violet_value_lineEdit->clear();
@@ -1850,8 +1748,8 @@ void MainWindow::on_clear_violet_button_clicked()
 
 void MainWindow::on_clear_cyan_button_clicked()
 {
-    imageProcessor->cyan_samples.clear();
-    ui->cyan_status_label->setText(QString::number(imageProcessor->cyan_samples.size()) + " Color at list.");
+    shapeWorker->colorDetector->cyan_samples.clear();
+    ui->cyan_status_label->setText(QString::number(shapeWorker->colorDetector->cyan_samples.size()) + " Color at list.");
     ui->cyan_hue_lineEdit->clear();
     ui->cyan_sat_lineEdit->clear();
     ui->cyan_value_lineEdit->clear();
@@ -1859,8 +1757,8 @@ void MainWindow::on_clear_cyan_button_clicked()
 
 void MainWindow::on_clear_black_button_clicked()
 {
-    imageProcessor->black_samples.clear();
-    ui->black_status_label->setText(QString::number(imageProcessor->black_samples.size()) + " Color at list.");
+    shapeWorker->colorDetector->black_samples.clear();
+    ui->black_status_label->setText(QString::number(shapeWorker->colorDetector->black_samples.size()) + " Color at list.");
     ui->black_hue_lineEdit->clear();
     ui->black_sat_lineEdit->clear();
     ui->black_value_lineEdit->clear();
@@ -1869,7 +1767,7 @@ void MainWindow::on_clear_black_button_clicked()
 void MainWindow::responseForFilterSettingsChanged()
 {
     updateFilterSetting();
-    imageProcessor->updateFilterSettings(filterSetting);
+    //imageProcessor->updateFilterSettings(filterSetting);
 }
 
 void MainWindow::on_kernelSize_lineEdit_textChanged()

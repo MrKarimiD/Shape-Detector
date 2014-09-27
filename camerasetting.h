@@ -14,8 +14,8 @@ public:
     void set_SHARPNESS(int input);
     void set_GAIN(int input);
     void set_HUE(int input);
-    int set_SATURATION(int input);
-    int set_CONTRAST(int input);
+    void set_SATURATION(int input);
+    void set_CONTRAST(int input);
 
     int get_fps();
     int get_WHITE_BALANCE_BLUE_U();
@@ -24,6 +24,9 @@ public:
     int get_BRIGHTNESS();
     int get_SHARPNESS();
     int get_GAIN();
+    int get_HUE();
+    int get_SATURATION();
+    int get_CONTRAST();
 
 private:
     int fps;

@@ -33,8 +33,6 @@ public:
 
     Mat shapeDetection(Mat input,Mat src,Rect cropedRect);
 
-    QString returnHsv(Mat input);
-
     Vec2f returnColor(Mat input, Mat src);
 
     void changeOutputSetting(bool con,bool geom,bool bound,bool rotate,bool boundries);
@@ -54,14 +52,6 @@ public:
     Mat Outputs[5];//0->Crop    1->Adaptive    2->threshold   3->canny     4->final
 
     outputPacket result;
-
-//    QList<Vec3b> red_samples;
-//    QList<Vec3b> blue_samples;
-//    QList<Vec3b> green_samples;
-//    QList<Vec3b> yellow_samples;
-//    QList<Vec3b> cyan_samples;
-//    QList<Vec3b> violet_samples;
-//    QList<Vec3b> black_samples;
 
     QList<Vec2f> red_samples;
     QList<Vec2f> blue_samples;

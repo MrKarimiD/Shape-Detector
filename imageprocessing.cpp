@@ -40,17 +40,9 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
         // to the contour perimeter
         approxPolyDP(Mat(contours[i]), approx, arcLength(Mat(contours[i]), true)*0.02, true);
 
-        if(this->drawContoursBool)
-        {
-            Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
-            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point(cropedRect.x,cropedRect.y) );
-        }
         // Skip small or non-convex objects
         if (fabs(contourArea(contours[i])) < 100 || !isContourConvex(approx))
-        {
-           /* if(fabs(contourArea(contours[i])) > )
-                else*/ continue;
-        }
+            continue;
 
         if(!checkAspectRatio(contours[i]))
             continue;
@@ -61,7 +53,11 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
             continue;
         }
 
-
+        if(this->drawContoursBool)
+        {
+            Scalar color = Scalar( rng.uniform(0, 255), rng.uniform(0,255), rng.uniform(0,255) );
+            drawContours(dst,contours, i, color, 2, 8, hierarchy, 0, Point(cropedRect.x,cropedRect.y) );
+        }
 
         if(drawBoundedRect)
         {
@@ -144,19 +140,6 @@ Mat ImageProcessing::shapeDetection(Mat input, Mat src, Rect cropedRect)
 
    dst.copyTo(Outputs[4]);
    return dst;
-}
-
-QString ImageProcessing::returnHsv(Mat input)
-{
-    Mat Hsv,img;
-    cvtColor(input,Hsv,COLOR_RGB2HSV);
-    imshow("hsv",Hsv);
-    //inRange(Hsv, Scalar(0, 0, 0), Scalar(38, 255, 255), img);
-    //imshow("img",img);
-    Scalar ff= mean(Hsv);
-    qDebug()<<"mean:"<<QString::number(ff.val[0]);
-    qDebug()<<"mean:"<<QString::number(ff.val[1]);
-    qDebug()<<"mean:"<<QString::number(ff.val[2]);
 }
 
 Vec2f ImageProcessing::returnColor(Mat input,Mat src)

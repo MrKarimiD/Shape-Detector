@@ -25,6 +25,13 @@
 #include <fstream>
 #include "QRubberBand"
 #include "camerasetting.h"
+#include "getimage.h"
+#include "filterprocces.h"
+#include "shapedetector.h"
+#include "QThread"
+#include "matarray.h"
+
+//typedef Mat MatArray;
 
 using namespace cv;
 using namespace std;
@@ -42,23 +49,16 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_image_rButton_toggled(bool checked);
-
-    void on_address_button_clicked();
-
-    void on_camera_rButton_toggled(bool checked);
-
     void on_open_button_clicked();
 
-    void cam_timeout();
-
     void on_camSet_checkBox_stateChanged();
-
-    void callImageProcessingFunctions(Mat input_mat);
 
     void on_xml_checkBox_stateChanged();
 
     void on_xml_button_clicked();
+
+    //----show settings changed----
+    void on_drawCrop_checkBox_stateChanged();
 
     void on_cont_checkBox_stateChanged();
 
@@ -138,8 +138,6 @@ private slots:
 
     //-------------------------------
 
-    void on_drawCrop_checkBox_stateChanged();
-
     void on_firstM_rButton_toggled(bool checked);
 
     void on_secondM_rButton_toggled(bool checked);
@@ -216,28 +214,31 @@ private slots:
 
     void responseForFilterSettingsChanged();
 
-
-
     void on_hue_slider_sliderMoved(int position);
 
     void on_saturation_slider_sliderMoved(int position);
 
     void on_contrast_slider_sliderMoved(int position);
 
+    void updateOutputOptions();
+
+    void getOriginalFrame(MatArray input);
+    void getFilterdFrame(MatArray input);
+    void getOutputFrame(MatArray input);
+
 private:
     Ui::MainWindow *ui;
-    ImageProcessing *imageProcessor;
-    QTimer *cam_timer,*send_timer;
     VideoCapture cap;
-    bool cameraIsOpened,mouseButtonClicked,firstPointSelectedIsValid,imProcDataAvailable;
+    bool cameraIsOpened,mouseButtonClicked,firstPointSelectedIsValid;
     bool permissionForSending;
     filterSettings *filterSetting;
     cameraSetting *camSetting;
-    QSemaphore *semaphore;
+
     NetworkSender *sendingSocket;
     int mission;
     bool colorMode;
     bool stallMode;
+
     QString whichColor;
     QPoint origin;
     QRubberBand *rubberBand;
@@ -245,23 +246,31 @@ private:
     QSemaphore *semaphoreForColorImage;
     QSemaphore *access2StallMode;
 
+    //-----for threading------
+    getImage *getWorker;
+    filterProcces *filterWorker;
+    shapeDetector *shapeWorker;
+
+    QSemaphore *semaphoreForGetWorker;
+    QSemaphore *semaphoreForFilterWorker;
+    QSemaphore *semaphoreForShapeWorker;
+
+
+    QThread *getThread;
+    QThread *filterThread;
+    QThread *shapeThread;
+
+    //--------------------------
+
+    showOutputSetting *showSetting;
+
     void enableCameraSetting();
 
     void disableCameraSetting();
 
-    void enableOpenCamera();
-
-    void disableOpenCamera();
-
-    void enableOpenImage();
-
-    void disableOpenImage();
-
     void enableXML();
 
     void disableXML();
-
-    void updateOutputOptions();
 
     void enableMedianBlur();
 
@@ -334,11 +343,10 @@ private:
     void openSetting(QString fileAddress);
 
 signals:
-    void imageReady(Mat image);
     void cameraSettingChanged();
     void dataReadyForSend();
     void filterSettingChanged();
-
+    void showSettingChanged();
 };
 
 #endif // MAINWINDOW_H
