@@ -137,6 +137,18 @@ Mat getImage::openCamera()
         cap.read(frame);
 
     }
+    else if(type == "USB0")
+    {
+        cameraIsOpened=cap.open(0);
+        cap.read(frame);
+
+    }
+    else if(type == "USB1")
+    {
+        cameraIsOpened=cap.open(1);
+        cap.read(frame);
+
+    }
     else if(type == "Network")
     {
 

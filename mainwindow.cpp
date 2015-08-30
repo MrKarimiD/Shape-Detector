@@ -39,7 +39,7 @@ MainWindow::MainWindow(QWidget *parent) :
     access2StallMode = new QSemaphore(1);
 
     QStringList items;
-    items<<"0"<<"1"<<"Network";
+    items<<"0"<<"1"<<"USB0"<<"USB1"<<"Network";
     ui->cam_comboBox->addItems(items);
 
     QStringList fps_items;
@@ -97,7 +97,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     showSetting = new showOutputSetting();
 
-    openSetting("/home/kn2c/setting.txt");
+    openSetting("setting.txt");
 }
 
 MainWindow::~MainWindow()
